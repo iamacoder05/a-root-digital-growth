@@ -3,7 +3,7 @@ import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-hero text-white">
+    <section id="contact" className="py-20 px-4 bg-gradient-hero text-white">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">

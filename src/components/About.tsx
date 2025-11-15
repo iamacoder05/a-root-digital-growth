@@ -11,7 +11,7 @@ const benefits = [
 
 const About = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-primary/5 to-primary-accent/5">
+    <section id="about" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-primary-accent/5">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
