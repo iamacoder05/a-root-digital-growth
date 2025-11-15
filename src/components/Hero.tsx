@@ -4,7 +4,7 @@ import logo from "@/assets/ar-logo.png";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-accent/20 rounded-full blur-3xl animate-pulse"></div>
@@ -13,11 +13,13 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center text-center space-y-8 animate-fade-in">
-          <img 
-            src={logo} 
-            alt="A Root Digital" 
-            className="w-48 h-48 md:w-64 md:h-64 object-contain animate-scale-in"
-          />
+          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+            <img 
+              src={logo} 
+              alt="A Root Digital" 
+              className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 object-contain animate-scale-in"
+            />
+          </div>
           
           <div className="space-y-4 max-w-4xl">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
