@@ -13,11 +13,11 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center text-center space-y-8 animate-fade-in">
-          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+          <div className="bg-white rounded-3xl p-8 shadow-2xl ring-4 ring-primary-accent/30 hover:ring-primary-accent/50 transition-all duration-300 hover:scale-105">
             <img 
               src={logo} 
               alt="A Root Digital" 
-              className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 object-contain animate-scale-in"
+              className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 object-contain animate-scale-in drop-shadow-lg"
             />
           </div>
           
