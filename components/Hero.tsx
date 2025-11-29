@@ -48,42 +48,42 @@ const Hero = () => {
     };
   }, []);
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20 sm:pt-24">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-16 sm:pt-20 md:pt-24">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary-accent/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary-lighter/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6 sm:space-y-8 animate-fade-in">
-            <div className="space-y-3 sm:space-y-4 max-w-4xl">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 animate-fade-in">
+            <div className="space-y-2 sm:space-y-3 md:space-y-4 max-w-4xl w-full">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight px-2 sm:px-0">
                 Transform Your Digital Presence
               </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-accent/90 font-light">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-primary-accent/90 font-light px-2 sm:px-0">
                 Expert digital marketing solutions that drive growth, engagement, and success
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-3 md:pt-4 w-full sm:w-auto px-2 sm:px-0">
               <Button 
                 size="lg" 
-                className="bg-primary-accent text-primary hover:bg-primary-accent/90 text-base sm:text-lg font-semibold px-6 sm:px-8 py-5 sm:py-6 rounded-full transition-all hover:scale-105 w-full sm:w-auto"
+                className="bg-primary-accent text-primary hover:bg-primary-accent/90 text-sm sm:text-base md:text-lg font-semibold px-5 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-full transition-all hover:scale-105 w-full sm:w-auto"
               >
                 Get Started <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="bg-transparent text-white border-2 border-primary-accent hover:bg-primary-accent/10 text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-full transition-all hover:scale-105 relative overflow-hidden w-full sm:w-auto min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-full sm:max-w-[90vw]"
+                className="bg-transparent text-white border-2 border-primary-accent hover:bg-primary-accent/10 text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-5 md:px-6 lg:px-8 py-3.5 sm:py-4 md:py-5 lg:py-6 rounded-full transition-all hover:scale-105 relative overflow-hidden w-full sm:w-auto min-w-[180px] sm:min-w-[200px] md:min-w-[240px] lg:min-w-[280px] max-w-full sm:max-w-[90vw]"
               >
-                <span className="relative flex items-center justify-center w-full gap-2">
+                <span className="relative flex items-center justify-center w-full gap-1.5 sm:gap-2">
                   {/* Rocket icon */}
                   <Rocket 
-                    className={`h-4 w-4 md:h-5 md:w-5 flex-shrink-0 transition-all duration-600 ease-in-out ${
+                    className={`h-4 w-4 sm:h-4 sm:w-4 md:h-5 md:w-5 flex-shrink-0 transition-all duration-600 ease-in-out ${
                       isRocketAnimating 
                         ? '-translate-y-8 opacity-0 rotate-45 scale-125' 
                         : 'translate-y-0 opacity-100 rotate-0 scale-100'
@@ -91,10 +91,10 @@ const Hero = () => {
                   />
                   
                   {/* Text container with sliding effect */}
-                  <span className="relative inline-block overflow-hidden h-5 md:h-6 flex-1 text-center">
+                  <span className="relative inline-block overflow-hidden h-5 sm:h-5 md:h-6 flex-1 text-center">
                     <span 
                       key={currentServiceIndex}
-                      className={`block transition-all duration-500 ease-in-out whitespace-nowrap ${
+                      className={`block transition-all duration-500 ease-in-out whitespace-nowrap text-xs sm:text-sm md:text-base ${
                         isRocketAnimating 
                           ? '-translate-y-full opacity-0' 
                           : 'translate-y-0 opacity-100'
@@ -107,7 +107,7 @@ const Hero = () => {
               </Button>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 pt-4 sm:pt-8 w-full max-w-4xl">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 pt-3 sm:pt-4 md:pt-6 lg:pt-8 w-full max-w-4xl px-2 sm:px-0">
               {[
                 { number: "500+", label: "Projects Completed" },
                 { number: "98%", label: "Client Satisfaction" },
@@ -119,17 +119,17 @@ const Hero = () => {
                   className="text-center animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-accent">{stat.number}</div>
-                  <div className="text-xs sm:text-sm md:text-base text-white/80 mt-1 leading-tight px-1">{stat.label}</div>
+                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary-accent">{stat.number}</div>
+                  <div className="text-xs sm:text-sm md:text-base text-white/80 mt-0.5 sm:mt-1 leading-tight px-1">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Right Column - Image */}
-          <div className="flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-full max-w-lg">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+          <div className="flex items-center justify-center animate-fade-in order-first lg:order-last" style={{ animationDelay: '0.2s' }}>
+            <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white/20">
                 <Image 
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80" 
                   alt="Digital Growth Illustration" 
