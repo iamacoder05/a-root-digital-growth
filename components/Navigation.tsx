@@ -89,7 +89,7 @@ const Navigation = () => {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.id}
@@ -115,7 +115,7 @@ const Navigation = () => {
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
-            className={`md:hidden ${isScrolled ? "text-foreground" : "text-white"}`}
+            className={`lg:hidden ${isScrolled ? "text-foreground" : "text-white"}`}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -125,7 +125,7 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div 
             id="mobile-menu"
-            className="md:hidden absolute top-20 left-0 right-0 bg-white shadow-2xl border-t-2 border-primary-accent/20 animate-fade-in z-50"
+            className="lg:hidden absolute top-20 left-0 right-0 bg-white shadow-2xl border-t-2 border-primary-accent/20 animate-fade-in z-50"
           >
             <div className="container mx-auto px-4 py-6 space-y-2">
               {navLinks.map((link) => (
