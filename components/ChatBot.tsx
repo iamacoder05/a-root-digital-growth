@@ -1,0 +1,445 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { MessageCircle, X, Send, Rocket, Bot, Sparkles, Zap } from "lucide-react";
+
+interface ChatMessage {
+  type: "bot" | "user";
+  message: string;
+}
+
+const ChatBot = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      type: "bot",
+      message: "Hello! I'm ARoot Bot, your digital growth assistant. 👋\n\nI'd love to help you get started. What's your name?",
+    },
+  ]);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    countryCode: "+1",
+    services: [] as string[],
+    message: "",
+  });
+  const [userInput, setUserInput] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showServiceOptions, setShowServiceOptions] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const availableServices = [
+    "SEO Optimization",
+    "Social Media Marketing",
+    "Content Marketing",
+    "PPC Advertising",
+    "Web Design",
+    "Analytics & Insights",
+  ];
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  }, [isOpen, currentStep]);
+
+  const handleSendMessage = () => {
+    if (!userInput.trim()) return;
+
+    const userMessage = userInput.trim();
+    setUserInput("");
+    setMessages((prev) => [...prev, { type: "user", message: userMessage }]);
+
+    // Process based on current step
+    setTimeout(() => {
+      processBotResponse(userMessage);
+    }, 500);
+  };
+
+  const handleServiceSelect = (service: string) => {
+    setFormData((prev) => {
+      const currentServices = prev.services;
+      const isSelected = currentServices.includes(service);
+      
+      let updatedServices: string[];
+      if (isSelected) {
+        // Remove service if already selected
+        updatedServices = currentServices.filter((s) => s !== service);
+      } else {
+        // Add service if not selected
+        updatedServices = [...currentServices, service];
+      }
+      
+      return { ...prev, services: updatedServices };
+    });
+  };
+
+  const handleContinueAfterServices = () => {
+    // Read current services from state
+    const currentServices = formData.services;
+    
+    if (currentServices.length === 0) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          type: "bot",
+          message: "Please select at least one service to continue.",
+        },
+      ]);
+      return;
+    }
+    
+    setShowServiceOptions(false);
+    setCurrentStep(4);
+    setMessages((prev) => [
+      ...prev,
+      {
+        type: "bot",
+        message: `Excellent choices! 🚀\n\nSelected: ${currentServices.join(", ")}\n\nIs there anything specific you'd like to tell us about your project? (You can type "skip" if you prefer)`,
+      },
+    ]);
+  };
+
+  const processBotResponse = (userMessage: string) => {
+    switch (currentStep) {
+      case 0: // Name
+        setFormData((prev) => ({ ...prev, name: userMessage }));
+        setCurrentStep(1);
+        setMessages((prev) => [
+          ...prev,
+          {
+            type: "bot",
+            message: `Nice to meet you, ${userMessage}! 😊\n\nWhat's your email address?`,
+          },
+        ]);
+        break;
+
+      case 1: // Email
+        if (!userMessage.includes("@")) {
+          setMessages((prev) => [
+            ...prev,
+            {
+              type: "bot",
+              message: "Hmm, that doesn't look like a valid email. Could you please provide a valid email address?",
+            },
+          ]);
+          return;
+        }
+        setFormData((prev) => ({ ...prev, email: userMessage }));
+        setCurrentStep(2);
+        setMessages((prev) => [
+          ...prev,
+          {
+            type: "bot",
+            message: "Great! Now, what's your phone number? (Please include country code, e.g., +1 1234567890)",
+          },
+        ]);
+        break;
+
+      case 2: // Phone
+        setFormData((prev) => ({ ...prev, phone: userMessage }));
+        setCurrentStep(3);
+        setShowServiceOptions(true);
+        setMessages((prev) => [
+          ...prev,
+          {
+            type: "bot",
+            message: "Perfect! Which services are you interested in? Please select one or more services below:",
+          },
+        ]);
+        break;
+
+      case 3: // Services - handled by handleServiceSelect
+        // This case is now handled by button clicks
+        break;
+
+      case 4: // Message
+        if (userMessage.toLowerCase() !== "skip") {
+          setFormData((prev) => ({ ...prev, message: userMessage }));
+        }
+        setCurrentStep(5);
+        submitForm();
+        break;
+    }
+  };
+
+  const parseServices = (input: string): string[] => {
+    const lowerInput = input.toLowerCase().trim();
+    if (lowerInput === "all") {
+      return availableServices;
+    }
+
+    const numbers = input
+      .split(/[,\s]+/)
+      .map((n) => parseInt(n.trim()))
+      .filter((n) => !isNaN(n) && n >= 1 && n <= availableServices.length);
+
+    return numbers.map((n) => availableServices[n - 1]);
+  };
+
+  const submitForm = async () => {
+    setIsSubmitting(true);
+    setMessages((prev) => [
+      ...prev,
+      {
+        type: "bot",
+        message: "Perfect! Let me send your details to our team... 🚀",
+      },
+    ]);
+
+    // Simulate API call
+    setTimeout(() => {
+      console.log("Form submitted:", formData);
+      setIsSubmitting(false);
+      setMessages((prev) => [
+        ...prev,
+        {
+          type: "bot",
+          message: `✅ All done! Our team has received your information:\n\n• Name: ${formData.name}\n• Email: ${formData.email}\n• Phone: ${formData.phone}\n• Services: ${formData.services.join(", ")}\n\nWe'll reach out to you immediately! Thank you for choosing ARoot Digital Growth! 🎉`,
+        },
+      ]);
+      setCurrentStep(6);
+    }, 2000);
+  };
+
+  const handleReset = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      setMessages([
+        {
+          type: "bot",
+          message: "Hello! I'm ARoot Bot, your digital growth assistant. 👋\n\nI'd love to help you get started. What's your name?",
+        },
+      ]);
+      setCurrentStep(0);
+      setShowServiceOptions(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        countryCode: "+1",
+        services: [],
+        message: "",
+      });
+      setUserInput("");
+    }, 300);
+  };
+
+  return (
+    <>
+      {/* Chat Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary text-white shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 flex items-center justify-center group ${
+          isOpen ? "scale-90 rotate-90" : "hover:scale-110 hover:rotate-12"
+        } relative overflow-hidden border-2 border-white/30 ring-2 sm:ring-4 ring-primary-accent/30`}
+        aria-label="Open ARoot Bot"
+        style={{ 
+          zIndex: 9999,
+          position: 'fixed',
+          backgroundColor: 'hsl(285, 95%, 20%)'
+        }}
+      >
+        {/* Animated background glow */}
+        <div className="absolute inset-0 bg-primary-accent/50 rounded-full animate-ping opacity-75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary-light/90 rounded-full" />
+        
+        {isOpen ? (
+          <X className="w-6 h-6 relative z-10 transition-transform duration-300 text-white drop-shadow-lg" />
+        ) : (
+          <>
+            <MessageCircle className="w-6 h-6 relative z-10 transition-transform duration-300 group-hover:scale-110 text-white drop-shadow-lg" />
+            <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-pulse relative z-10 ring-2 ring-white shadow-lg" />
+            {/* Sparkle effect */}
+            <Sparkles className="absolute top-0 right-0 w-3 h-3 text-yellow-300 animate-pulse opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+          </>
+        )}
+      </button>
+
+      {/* Chat Window */}
+      {isOpen && (
+        <div className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-24 z-[9998] w-auto sm:w-96 max-w-full sm:max-w-[calc(100vw-3rem)] h-[calc(100vh-5.5rem)] sm:h-[600px] max-h-[calc(100vh-5.5rem)] sm:max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-primary-accent/20 animate-slide-up-chat"
+        style={{ zIndex: 9998 }}
+        >
+          {/* Header */}
+          <div className="bg-gradient-primary text-white p-3 sm:p-4 flex items-center justify-between relative overflow-hidden">
+            {/* Animated background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-white rounded-full blur-3xl animate-pulse" />
+              <div className="absolute bottom-0 right-0 w-24 h-24 bg-primary-accent rounded-full blur-2xl animate-pulse" style={{ animationDelay: "1s" }} />
+            </div>
+            
+            <div className="flex items-center gap-2 sm:gap-3 relative z-10">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center relative group flex-shrink-0">
+                <div className="absolute inset-0 bg-white/30 rounded-full animate-ping" />
+                <Bot className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 animate-bounce-slow" />
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-bold text-base sm:text-lg flex items-center gap-1 sm:gap-2">
+                  ARoot Bot
+                  <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-300 animate-pulse flex-shrink-0" />
+                </h3>
+                <p className="text-xs text-white/80 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
+                  Online
+                </p>
+              </div>
+            </div>
+            {currentStep === 6 && (
+              <Button
+                onClick={handleReset}
+                size="sm"
+                variant="ghost"
+                className="text-white hover:bg-white/20 relative z-10 transition-all hover:scale-105"
+              >
+                <Rocket className="w-4 h-4 mr-1" />
+                New Chat
+              </Button>
+            )}
+          </div>
+
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-gray-50 to-white">
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"} animate-message-slide-in`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {msg.type === "bot" && (
+                  <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-2 flex-shrink-0 shadow-md">
+                    <Bot className="w-4 h-4 text-white" />
+                  </div>
+                )}
+                <div
+                  className={`max-w-[75%] rounded-2xl px-4 py-3 transition-all duration-300 hover:scale-[1.02] ${
+                    msg.type === "user"
+                      ? "bg-gradient-to-br from-primary-accent to-primary-lighter text-primary rounded-br-sm shadow-lg hover:shadow-xl"
+                      : "bg-white text-foreground rounded-bl-sm shadow-md border border-gray-200 hover:border-primary-accent/30"
+                  }`}
+                >
+                  <p className="text-sm whitespace-pre-line leading-relaxed">{msg.message}</p>
+                </div>
+                {msg.type === "user" && (
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-accent via-primary-lighter to-primary-accent flex items-center justify-center ml-2 flex-shrink-0 shadow-md ring-2 ring-white/50 hover:ring-primary-accent/50 transition-all">
+                    {formData.name ? (
+                      <span className="text-sm font-bold text-primary uppercase tracking-wide">
+                        {formData.name.trim().charAt(0)}
+                      </span>
+                    ) : (
+                      <MessageCircle className="w-4 h-4 text-primary" />
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+            {isSubmitting && (
+              <div className="flex justify-start animate-message-slide-in">
+                <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-2 flex-shrink-0 shadow-md">
+                  <Bot className="w-4 h-4 text-white animate-pulse" />
+                </div>
+                <div className="bg-white rounded-2xl rounded-bl-sm px-5 py-3 shadow-md border border-gray-200">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 bg-primary-accent rounded-full animate-bounce" style={{ animationDelay: "0s" }} />
+                    <div className="w-2.5 h-2.5 bg-primary-accent rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+                    <div className="w-2.5 h-2.5 bg-primary-accent rounded-full animate-bounce" style={{ animationDelay: "0.4s" }} />
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {/* Service Selection Options */}
+            {showServiceOptions && (
+              <div className="space-y-3 animate-message-slide-in">
+                <div className="flex flex-wrap gap-2">
+                  {availableServices.map((service) => {
+                    const isSelected = formData.services.includes(service);
+                    return (
+                      <button
+                        key={service}
+                        onClick={() => handleServiceSelect(service)}
+                        className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                          isSelected
+                            ? "bg-gradient-to-br from-primary-accent to-primary-lighter text-primary shadow-lg ring-2 ring-primary-accent/50"
+                            : "bg-white text-foreground border-2 border-gray-200 hover:border-primary-accent/50 hover:shadow-md"
+                        }`}
+                      >
+                        {isSelected && "✓ "}
+                        {service}
+                      </button>
+                    );
+                  })}
+                </div>
+                <button
+                  onClick={handleContinueAfterServices}
+                  disabled={formData.services.length === 0}
+                  className="w-full px-4 py-3 bg-gradient-to-br from-primary-accent to-primary-lighter text-primary rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+                >
+                  <Rocket className="w-4 h-4" />
+                  Continue with {formData.services.length > 0 ? `${formData.services.length} service${formData.services.length > 1 ? 's' : ''}` : 'selected services'}
+                </button>
+              </div>
+            )}
+            
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input */}
+          {currentStep < 6 && !showServiceOptions && (
+            <div className="p-3 sm:p-4 border-t-2 border-gray-200 bg-gradient-to-b from-white to-gray-50">
+              <div className="flex gap-2">
+                <div className="flex-1 relative">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={userInput}
+                    onChange={(e) => setUserInput(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSendMessage();
+                      }
+                    }}
+                    placeholder="Type your message..."
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary-accent focus:ring-2 focus:ring-primary-accent/20 transition-all duration-200 bg-white shadow-sm hover:shadow-md"
+                    disabled={isSubmitting}
+                  />
+                  {userInput.trim() && (
+                    <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    </div>
+                  )}
+                </div>
+                <Button
+                  onClick={handleSendMessage}
+                  disabled={!userInput.trim() || isSubmitting}
+                  className="bg-gradient-to-br from-primary-accent to-primary-lighter text-primary hover:from-primary-lighter hover:to-primary-accent px-4 sm:px-5 py-2 sm:py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 group flex-shrink-0"
+                >
+                  <Send className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </div>
+              <p className="text-xs text-gray-500 mt-2 text-center hidden sm:block">
+                Press <kbd className="px-2 py-1 bg-gray-100 rounded border border-gray-300">Enter</kbd> to send
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+    </>
+  );
+};
+
+export default ChatBot;
+

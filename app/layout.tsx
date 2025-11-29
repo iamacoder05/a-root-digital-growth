@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     siteName: "A-Root Digital Growth",
     images: [
       {
-        url: "/assets/ar-logo.png",
+        url: "https://arootdigital.com/assets/ar-logo.png",
         width: 1200,
-        height: 630,
+        height: 1200,
         alt: "A-Root Digital Growth Logo",
       },
     ],
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "A-Root Digital Growth | Expert Digital Marketing Services",
     description: "Transform your digital presence with our expert digital marketing services.",
-    images: ["/assets/ar-logo.png"],
+    images: ["https://arootdigital.com/assets/ar-logo.png"],
     creator: "@arootdigital",
   },
   robots: {
@@ -87,7 +87,26 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="canonical" href="https://arootdigital.com" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <meta name="msapplication-TileImage" content="/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#5a0d73" />
         <meta name="theme-color" content="#5a0d73" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://arootdigital.com" />
+        <meta property="og:title" content="A-Root Digital Growth | Expert Digital Marketing Services" />
+        <meta property="og:description" content="Transform your digital presence with our expert digital marketing services. Drive growth with SEO, social media, content strategy, and more." />
+        <meta property="og:image" content="https://arootdigital.com/assets/ar-logo.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:alt" content="A-Root Digital Growth Logo" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://arootdigital.com" />
+        <meta name="twitter:title" content="A-Root Digital Growth | Expert Digital Marketing Services" />
+        <meta name="twitter:description" content="Transform your digital presence with our expert digital marketing services." />
+        <meta name="twitter:image" content="https://arootdigital.com/assets/ar-logo.png" />
+        <meta name="twitter:creator" content="@arootdigital" />
       </head>
       <body>
         <Providers>

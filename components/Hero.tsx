@@ -1,82 +1,177 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Rocket } from "lucide-react";
 import Image from "next/image";
 
 const Hero = () => {
+  const services = [
+    "Our Services",
+    "SEO Optimization",
+    "Social Media Marketing",
+    "Content Marketing",
+    "PPC Advertising",
+    "Web Design",
+    "Analytics & Insights"
+  ];
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
+  const [isRocketAnimating, setIsRocketAnimating] = useState(false);
+
+  // Cycle through services with rocket animation
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+    
+    const cycleServices = () => {
+      // Start rocket animation
+      setIsRocketAnimating(true);
+      
+      // Wait for rocket to go up, then change text
+      setTimeout(() => {
+        setCurrentServiceIndex((prev) => (prev + 1) % services.length);
+      }, 300); // Half of rocket animation
+      
+      // Reset rocket animation after text change
+      setTimeout(() => {
+        setIsRocketAnimating(false);
+      }, 800); // After text animation completes
+    };
+
+    // Start cycling after initial delay
+    const initialDelay = setTimeout(() => {
+      intervalId = setInterval(cycleServices, 3000); // Change every 3 seconds
+    }, 2000);
+
+    return () => {
+      clearTimeout(initialDelay);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, []);
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20 sm:pt-24">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-accent/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary-lighter/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute -top-40 -right-40 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary-accent/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary-lighter/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col items-center text-center space-y-8 animate-fade-in">
-          <div className="bg-white rounded-3xl p-8 shadow-2xl ring-4 ring-primary-accent/30 hover:ring-primary-accent/50 transition-all duration-300 hover:scale-105">
-            <Image 
-              src="/assets/ar-logo.png" 
-              alt="A-Root Digital Growth - Expert Digital Marketing Services Logo" 
-              width={224}
-              height={224}
-              priority
-              loading="eager"
-              className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 object-contain animate-scale-in drop-shadow-lg"
-            />
-          </div>
-          
-          <div className="space-y-4 max-w-4xl">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-              Transform Your Digital Presence
-            </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-primary-accent/90 font-light">
-              Expert digital marketing solutions that drive growth, engagement, and success
-            </p>
-          </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6 sm:space-y-8 animate-fade-in">
+            <div className="space-y-3 sm:space-y-4 max-w-4xl">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+                Transform Your Digital Presence
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-accent/90 font-light">
+                Expert digital marketing solutions that drive growth, engagement, and success
+              </p>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button 
-              size="lg" 
-              className="bg-primary-accent text-primary hover:bg-primary-accent/90 text-lg font-semibold px-8 py-6 rounded-full transition-all hover:scale-105"
-            >
-              Get Started <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="bg-transparent text-white border-2 border-primary-accent hover:bg-primary-accent/10 text-lg font-semibold px-8 py-6 rounded-full transition-all hover:scale-105"
-            >
-              <Sparkles className="mr-2 h-5 w-5" />
-              Our Services
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 w-full max-w-4xl">
-            {[
-              { number: "500+", label: "Projects Completed" },
-              { number: "98%", label: "Client Satisfaction" },
-              { number: "50+", label: "Team Members" },
-              { number: "10+", label: "Years Experience" }
-            ].map((stat, index) => (
-              <div 
-                key={index} 
-                className="text-center animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 w-full sm:w-auto">
+              <Button 
+                size="lg" 
+                className="bg-primary-accent text-primary hover:bg-primary-accent/90 text-base sm:text-lg font-semibold px-6 sm:px-8 py-5 sm:py-6 rounded-full transition-all hover:scale-105 w-full sm:w-auto"
               >
-                <div className="text-3xl md:text-4xl font-bold text-primary-accent">{stat.number}</div>
-                <div className="text-sm md:text-base text-white/80 mt-1">{stat.label}</div>
+                Get Started <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="bg-transparent text-white border-2 border-primary-accent hover:bg-primary-accent/10 text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-full transition-all hover:scale-105 relative overflow-hidden w-full sm:w-auto min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-full sm:max-w-[90vw]"
+              >
+                <span className="relative flex items-center justify-center w-full gap-2">
+                  {/* Rocket icon */}
+                  <Rocket 
+                    className={`h-4 w-4 md:h-5 md:w-5 flex-shrink-0 transition-all duration-600 ease-in-out ${
+                      isRocketAnimating 
+                        ? '-translate-y-8 opacity-0 rotate-45 scale-125' 
+                        : 'translate-y-0 opacity-100 rotate-0 scale-100'
+                    }`}
+                  />
+                  
+                  {/* Text container with sliding effect */}
+                  <span className="relative inline-block overflow-hidden h-5 md:h-6 flex-1 text-center">
+                    <span 
+                      key={currentServiceIndex}
+                      className={`block transition-all duration-500 ease-in-out whitespace-nowrap ${
+                        isRocketAnimating 
+                          ? '-translate-y-full opacity-0' 
+                          : 'translate-y-0 opacity-100'
+                      }`}
+                    >
+                      {services[currentServiceIndex]}
+                    </span>
+                  </span>
+                </span>
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 pt-4 sm:pt-8 w-full max-w-4xl">
+              {[
+                { number: "500+", label: "Projects Completed" },
+                { number: "98%", label: "Client Satisfaction" },
+                { number: "50+", label: "Team Members" },
+                { number: "10+", label: "Years Experience" }
+              ].map((stat, index) => (
+                <div 
+                  key={index} 
+                  className="text-center animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-accent">{stat.number}</div>
+                  <div className="text-xs sm:text-sm md:text-base text-white/80 mt-1 leading-tight px-1">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column - Image */}
+          <div className="flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="relative w-full max-w-lg">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+                <Image 
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80" 
+                  alt="Digital Growth Illustration" 
+                  width={600}
+                  height={600}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+                {/* Decorative glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-accent/20 to-transparent pointer-events-none"></div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-accent/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-primary-accent rounded-full"></div>
+      {/* Rocket Scroll Indicator */}
+      <button
+        onClick={() => {
+          const servicesSection = document.getElementById("services");
+          if (servicesSection) {
+            const offset = 80;
+            const elementPosition = servicesSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 transition-all duration-300 cursor-pointer group"
+        aria-label="Scroll to services"
+      >
+        <div className="flex flex-col items-center animate-bounce">
+          <div className="relative bg-white/10 backdrop-blur-sm rounded-full p-3 border border-primary-accent/30 hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+            <Rocket 
+              className="h-6 w-6 md:h-7 md:w-7 text-primary-accent transition-transform duration-300 group-hover:rotate-12"
+            />
+            <div className="absolute inset-0 bg-primary-accent/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
         </div>
-      </div>
+      </button>
     </section>
   );
 };
