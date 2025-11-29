@@ -5,7 +5,7 @@ const testimonials = [
   {
     name: "Sarah Johnson",
     position: "CEO, TechStart Inc",
-    content: "A Root Digital transformed our online presence completely. Our website traffic increased by 300% and conversions are through the roof!",
+    content: "ARoot Digital transformed our online presence completely. Our website traffic increased by 300% and conversions are through the roof!",
     rating: 5
   },
   {

@@ -6,10 +6,13 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ChatBot from "@/components/ChatBot";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: {
+    absolute: "ARoot Digital",
+  },
   description: "Transform your digital presence with A-Root Digital Growth. Expert digital marketing services including SEO, social media marketing, content strategy, and PPC advertising.",
   alternates: {
     canonical: "https://arootdigital.com",
@@ -144,6 +147,7 @@ export default function Home() {
           <Contact />
         </main>
         <Footer />
+        <ChatBot />
       </div>
     </>
   );

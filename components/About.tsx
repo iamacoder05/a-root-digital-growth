@@ -16,7 +16,7 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
             <h2 id="about-heading" className="text-4xl md:text-5xl font-bold text-foreground">
-              Why Choose A Root Digital?
+              Why Choose ARoot Digital?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               We're not just another digital marketing agency. We're your growth partners, 

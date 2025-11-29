@@ -118,3 +118,192 @@ All colors MUST be HSL.
     font-family: 'Open Sans', sans-serif;
   }
 }
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Animated gradient shimmer effect */
+  .animate-gradient-shimmer {
+    animation: gradient-shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shimmer {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
+  /* Character fade-in animation */
+  @keyframes fadeInChar {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide up animation for text */
+  @keyframes slideUp {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  /* Slide in animation for new text */
+  @keyframes slideIn {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/* Flag emoji rendering */
+.flag-emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols", "EmojiOne Mozilla", "Twemoji Mozilla", "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+}
+
+/* Rocket horizontal animation */
+.rocket-horizontal-animation {
+  animation: rocketHorizontal 2s ease-in-out forwards;
+  left: -10%;
+  transform: translateY(-50%);
+}
+
+@keyframes rocketHorizontal {
+  0% {
+    left: -10%;
+    transform: translateY(-50%) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  50% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  100% {
+    left: 110%;
+    transform: translateY(-50%) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* ChatBot animations */
+@keyframes slide-up-chat {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-up-chat {
+  animation: slide-up-chat 0.3s ease-out forwards;
+}
+
+@keyframes message-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-message-slide-in {
+  animation: message-slide-in 0.3s ease-out forwards;
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+@keyframes logo-glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1.25);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes logo-glow-rotate {
+  0% {
+    transform: scale(1.15) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: scale(1.2) rotate(90deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25) rotate(180deg);
+    opacity: 0.5;
+  }
+  75% {
+    transform: scale(1.2) rotate(270deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.15) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+.animate-logo-glow-pulse {
+  animation: logo-glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-logo-glow-rotate {
+  animation: logo-glow-rotate 8s linear infinite;
+}

@@ -11,9 +11,16 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#5a0d73',
     icons: [
       {
-        src: '/favicon.ico',
-        sizes: 'any',
-        type: 'image/x-icon',
+        src: '/assets/ar-logo.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any maskable',
+      },
+      {
+        src: '/assets/ar-logo.png',
+        sizes: '256x256',
+        type: 'image/png',
+        purpose: 'any maskable',
       },
       {
         src: '/assets/ar-logo.png',
@@ -23,7 +30,7 @@ export default function manifest(): MetadataRoute.Manifest {
       },
       {
         src: '/assets/ar-logo.png',
-        sizes: '512x512',
+        sizes: '128x128',
         type: 'image/png',
         purpose: 'any maskable',
       },
@@ -33,4 +40,5 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'en-US',
   };
 }
+
 
