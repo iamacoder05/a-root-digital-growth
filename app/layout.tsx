@@ -2,6 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Providers } from "./providers";
+import Navigation from "@/components/Navigation";
+import ChatBot from "@/components/ChatBot";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 
@@ -111,9 +113,11 @@ export default function RootLayout({
       <body>
         <Providers>
           <TooltipProvider>
+            <Navigation />
             <Toaster />
             <Sonner />
             {children}
+            <ChatBot />
           </TooltipProvider>
         </Providers>
       </body>

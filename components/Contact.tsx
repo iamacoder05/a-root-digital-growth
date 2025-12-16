@@ -9,7 +9,7 @@ import ReactCountryFlag from "react-country-flag";
 const Contact = () => {
   const router = useRouter();
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [selectedCountryCode, setSelectedCountryCode] = useState("+1");
+  const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showRocketAnimation, setShowRocketAnimation] = useState(false);

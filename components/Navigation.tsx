@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const Navigation = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -13,9 +16,26 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  // Determine if we're on homepage based on pathname
+  const isHomePage = pathname === '/';
+
+  const handleLogoClick = () => {
+    if (pathname !== '/') {
+      // If not on homepage, navigate to home
+      router.push('/');
+    } else {
+      // If on homepage, scroll to hero section
+      scrollToSection("hero");
+    }
+  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -23,7 +43,7 @@ const Navigation = () => {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
@@ -45,45 +65,41 @@ const Navigation = () => {
       aria-label="Main navigation"
       role="navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-lg shadow-lg"
-          : "bg-transparent"
+        isHomePage && !isScrolled && !pathname.includes('/services/')
+          ? "bg-transparent"
+          : "bg-background/95 backdrop-blur-lg shadow-lg"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button
-            onClick={() => scrollToSection("hero")}
-            aria-label="Go to home section"
+            onClick={handleLogoClick}
+            aria-label="Go to home"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <div className="relative">
-              {/* Enhanced white background layers for better visibility */}
-              <div className={`absolute inset-0 transition-all duration-300 ${
-                !isScrolled 
-                  ? "bg-white/50 blur-2xl rounded-full scale-125" 
-                  : "bg-white/40 blur-xl rounded-full scale-110"
-              }`} />
-              <div className={`absolute inset-0 transition-all duration-300 ${
-                !isScrolled 
-                  ? "bg-white/35 blur-xl rounded-full scale-115" 
-                  : "bg-white/25 blur-lg rounded-full scale-105"
-              }`} />
-              <Image 
-                src="/assets/ar-logo.png" 
-                alt="A-Root Digital Growth Logo" 
-                width={96} 
-                height={96} 
+              {/* Enhanced white background layers for better visibility - only on homepage hero */}
+              {isHomePage && !isScrolled && !pathname.includes('/services/') && (
+                <>
+                  <div className="absolute inset-0 transition-all duration-300 bg-white/50 blur-2xl rounded-full scale-125" />
+                  <div className="absolute inset-0 transition-all duration-300 bg-white/35 blur-xl rounded-full scale-115" />
+                </>
+              )}
+              <Image
+                src="/assets/ar-logo.png"
+                alt="A-Root Digital Growth Logo"
+                width={96}
+                height={96}
                 priority
                 className={`relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain transition-all duration-300 ${
-                  !isScrolled 
-                    ? "drop-shadow-[0_0_40px_rgba(255,255,255,1),0_0_80px_rgba(255,255,255,0.8),0_0_120px_rgba(255,255,255,0.6)] filter brightness-125 contrast-125" 
+                  isHomePage && !isScrolled && !pathname.includes('/services/')
+                    ? "drop-shadow-[0_0_40px_rgba(255,255,255,1),0_0_80px_rgba(255,255,255,0.8),0_0_120px_rgba(255,255,255,0.6)] filter brightness-125 contrast-125"
                     : "drop-shadow-[0_0_20px_rgba(255,255,255,0.8),0_0_40px_rgba(255,255,255,0.6)] filter brightness-115 contrast-115"
                 }`}
               />
             </div>
-            <span className={`font-bold text-base sm:text-lg hidden sm:block ${isScrolled ? "text-foreground" : "text-white"}`}>
+            <span className={`font-bold text-base sm:text-lg hidden sm:block ${isHomePage && !isScrolled && !pathname.includes('/services/') ? "text-white" : "text-foreground"}`}>
               ARoot Digital
             </span>
           </button>
@@ -95,7 +111,7 @@ const Navigation = () => {
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
                 className={`font-semibold transition-colors hover:text-primary-accent ${
-                  isScrolled ? "text-foreground" : "text-white"
+                  isScrolled || pathname.includes('/services/') ? "text-foreground" : "text-white"
                 }`}
               >
                 {link.label}
@@ -115,7 +131,7 @@ const Navigation = () => {
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
-            className={`lg:hidden ${isScrolled ? "text-foreground" : "text-white"}`}
+            className={`lg:hidden ${isHomePage && !isScrolled && !pathname.includes('/services/') ? "text-white" : "text-foreground"}`}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>

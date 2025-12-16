@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import {
   Search,
   Share2,
@@ -16,31 +17,37 @@ const services = [
   {
     icon: Search,
     title: "SEO Optimization",
+    slug: "seo-optimization",
     description: "Boost your search rankings with data-driven SEO strategies that deliver measurable results.",
   },
   {
     icon: Share2,
     title: "Social Media Marketing",
+    slug: "social-media-marketing",
     description: "Engage your audience across all platforms with creative campaigns that convert.",
   },
   {
     icon: FileText,
     title: "Content Marketing",
+    slug: "content-marketing",
     description: "Compelling content that tells your story and resonates with your target audience.",
   },
   {
     icon: MousePointerClick,
     title: "PPC Advertising",
+    slug: "ppc-advertising",
     description: "Maximize ROI with strategic paid advertising campaigns across Google and social platforms.",
   },
   {
     icon: Palette,
     title: "Web Design",
+    slug: "web-design",
     description: "Beautiful, responsive websites that combine aesthetics with functionality.",
   },
   {
     icon: TrendingUp,
     title: "Analytics & Insights",
+    slug: "analytics-insights",
     description: "Data-driven insights that help you make informed decisions and track your growth.",
   },
 ];
@@ -69,7 +76,7 @@ const Services = () => {
           <h2 id="services-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-primary to-foreground px-4">
             Our Services
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 whitespace-nowrap">
             Comprehensive digital marketing solutions tailored to your unique business needs
           </p>
         </div>
@@ -90,9 +97,12 @@ const Services = () => {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
           {services.map((service, index) => (
-              <div
+              <Link
               key={index}
-                className="group flex flex-col items-center min-w-[120px] md:min-w-[160px] max-w-[140px] md:max-w-[180px] flex-shrink-0 snap-center transition-all duration-500 hover:-translate-y-3 cursor-pointer"
+              href={`/services/${service.slug}`}
+                className={`group flex flex-col items-center min-w-[120px] md:min-w-[160px] max-w-[140px] md:max-w-[180px] flex-shrink-0 snap-center transition-all duration-500 hover:-translate-y-3 cursor-pointer ${
+                  service.title === 'Social Media Marketing' ? '-ml-2 md:-ml-3' : ''
+                }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
                 <div className="relative">
@@ -111,10 +121,10 @@ const Services = () => {
                 <h3 className="text-sm md:text-base font-bold text-foreground text-center group-hover:text-primary transition-colors duration-300 leading-tight px-1">
                   {service.title}
                 </h3>
-                
+
                 {/* Animated underline */}
                 <div className="w-0 h-0.5 bg-gradient-to-r from-primary to-primary-accent rounded-full group-hover:w-12 transition-all duration-500 mt-2"></div>
-              </div>
+              </Link>
             ))}
           </div>
 

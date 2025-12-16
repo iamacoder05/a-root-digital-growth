@@ -11,6 +11,8 @@ interface ChatMessage {
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
+  const [hasInteractedInSession, setHasInteractedInSession] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       type: "bot",
@@ -54,6 +56,17 @@ const ChatBot = () => {
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [isOpen, currentStep]);
+
+  // Show welcome message after component mounts (only if user hasn't interacted in this session)
+  useEffect(() => {
+    if (!hasInteractedInSession) {
+      const timer = setTimeout(() => {
+        setShowWelcomeMessage(true);
+      }, 1500); // Show after 1.5 seconds for quick loading
+
+      return () => clearTimeout(timer);
+    }
+  }, [hasInteractedInSession]);
 
   const handleSendMessage = () => {
     if (!userInput.trim()) return;
@@ -239,9 +252,40 @@ const ChatBot = () => {
 
   return (
     <>
+      {/* Minimal Welcome Notification */}
+      {showWelcomeMessage && !isOpen && (
+        <div className="fixed bottom-12 right-20 sm:right-24 z-[9997] animate-slide-up-welcome max-w-xs">
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-primary-accent/20 p-3 relative">
+            <button
+              onClick={() => {
+                setShowWelcomeMessage(false);
+                setHasInteractedInSession(true);
+              }}
+              className="absolute top-1 right-1 text-gray-400 hover:text-gray-600 transition-colors p-1 hover:bg-gray-100 rounded-full"
+              aria-label="Close"
+            >
+              <X className="w-3 h-3" />
+            </button>
+            <div className="flex items-center gap-2 pr-6">
+              <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
+                <Bot className="w-4 h-4 text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-foreground leading-snug">
+                  Hi! 👋 Need help with digital growth?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Chat Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setHasInteractedInSession(true);
+        }}
         className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary text-white shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 flex items-center justify-center group ${
           isOpen ? "scale-90 rotate-90" : "hover:scale-110 hover:rotate-12"
         } relative overflow-hidden border-2 border-white/30 ring-2 sm:ring-4 ring-primary-accent/30`}

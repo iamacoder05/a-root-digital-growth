@@ -15,26 +15,40 @@ const Hero = () => {
     "Web Design",
     "Analytics & Insights"
   ];
+
+  const serviceImages = [
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80", // Our Services - general digital growth
+    "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=800&h=600&fit=crop&q=80", // SEO Optimization - search/analytics
+    "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop&q=80", // Social Media Marketing - social media screens
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80", // Content Marketing - content creation
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // PPC Advertising - advertising/analytics
+    "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=600&fit=crop&q=80", // Web Design - web design/development
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80"  // Analytics & Insights - analytics dashboard
+  ];
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
   const [isRocketAnimating, setIsRocketAnimating] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Cycle through services with rocket animation
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
-    
+
     const cycleServices = () => {
-      // Start rocket animation
-      setIsRocketAnimating(true);
-      
-      // Wait for rocket to go up, then change text
-      setTimeout(() => {
-        setCurrentServiceIndex((prev) => (prev + 1) % services.length);
-      }, 300); // Half of rocket animation
-      
-      // Reset rocket animation after text change
-      setTimeout(() => {
-        setIsRocketAnimating(false);
-      }, 800); // After text animation completes
+      // Only cycle if not hovered
+      if (!isHovered) {
+        // Start rocket animation
+        setIsRocketAnimating(true);
+
+        // Wait for rocket to go up, then change text
+        setTimeout(() => {
+          setCurrentServiceIndex((prev) => (prev + 1) % services.length);
+        }, 300); // Half of rocket animation
+
+        // Reset rocket animation after text change
+        setTimeout(() => {
+          setIsRocketAnimating(false);
+        }, 800); // After text animation completes
+      }
     };
 
     // Start cycling after initial delay
@@ -46,7 +60,7 @@ const Hero = () => {
       clearTimeout(initialDelay);
       if (intervalId) clearInterval(intervalId);
     };
-  }, []);
+  }, [isHovered]);
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-16 sm:pt-20 md:pt-24">
       {/* Animated background elements */}
@@ -75,10 +89,12 @@ const Hero = () => {
               >
                 Get Started <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 className="bg-transparent text-white border-2 border-primary-accent hover:bg-primary-accent/10 text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-5 md:px-6 lg:px-8 py-3.5 sm:py-4 md:py-5 lg:py-6 rounded-full transition-all hover:scale-105 relative overflow-hidden w-full sm:w-auto min-w-[180px] sm:min-w-[200px] md:min-w-[240px] lg:min-w-[280px] max-w-full sm:max-w-[90vw]"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               >
                 <span className="relative flex items-center justify-center w-full gap-1.5 sm:gap-2">
                   {/* Rocket icon */}
@@ -130,16 +146,23 @@ const Hero = () => {
           <div className="flex items-center justify-center animate-fade-in order-first lg:order-last" style={{ animationDelay: '0.2s' }}>
             <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white/20">
-                <Image 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80" 
-                  alt="Digital Growth Illustration" 
-                  width={600}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
+                {/* Image container with smooth fade transitions */}
+                <div className="relative w-full aspect-[3/2] overflow-hidden">
+                  {serviceImages.map((imageSrc, index) => (
+                    <Image
+                      key={index}
+                      src={imageSrc}
+                      alt={`${services[index]} Illustration`}
+                      fill
+                      className={`object-cover transition-opacity duration-1000 ease-in-out ${
+                        index === currentServiceIndex ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      priority={index === 0}
+                    />
+                  ))}
+                </div>
                 {/* Decorative glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-accent/20 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-accent/20 to-transparent pointer-events-none transition-opacity duration-1000"></div>
               </div>
             </div>
           </div>

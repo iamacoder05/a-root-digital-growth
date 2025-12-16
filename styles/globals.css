@@ -307,3 +307,19 @@ All colors MUST be HSL.
 .animate-logo-glow-rotate {
   animation: logo-glow-rotate 8s linear infinite;
 }
+
+/* Welcome message slide up animation */
+@keyframes slide-up-welcome {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-up-welcome {
+  animation: slide-up-welcome 0.4s ease-out forwards;
+}
