@@ -1,10 +1,11 @@
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, Phone, Mail } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer role="contentinfo" aria-label="Footer" className="bg-white text-foreground py-8 sm:py-10 md:py-12 px-4 sm:px-6 border-t border-border">
-      <div className="container mx-auto">
+    <footer role="contentinfo" aria-label="Footer" className="bg-background text-foreground border-t border-border">
+      <div className="container mx-auto max-w-7xl py-8 sm:py-10 md:py-12 px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 items-start mb-6 sm:mb-8 md:mb-10">
           <div className="space-y-4 -mt-2 sm:-mt-4 md:-mt-6 flex flex-col items-center sm:items-start">
             <Image 
@@ -38,26 +39,61 @@ const Footer = () => {
           </div>
 
           <div className="text-center sm:text-left">
-            <h4 className="font-bold text-base sm:text-lg md:text-xl mb-3 sm:mb-4 text-foreground">Follow Us</h4>
-            <div className="flex gap-3 sm:gap-4 justify-center sm:justify-start mb-2">
-              <a href="https://facebook.com/arootdigital" aria-label="Visit our Facebook page" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors flex-shrink-0">
-                <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+            <h4 className="font-bold text-base sm:text-lg md:text-xl mb-3 sm:mb-4 text-foreground">Contact Us</h4>
+            <div className="space-y-3 sm:space-y-4">
+              {/* Phone Number */}
+              <a 
+                href="tel:+911234567890" 
+                className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start text-muted-foreground hover:text-primary transition-colors text-sm md:text-base"
+                aria-label="Call us"
+              >
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                <span>+91 12345 67890</span>
               </a>
-              <a href="https://instagram.com/arootdigital" aria-label="Visit our Instagram profile" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors flex-shrink-0">
-                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              
+              {/* Email */}
+              <a 
+                href="mailto:info@arootdigital.com" 
+                className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start text-muted-foreground hover:text-primary transition-colors text-sm md:text-base break-all"
+                aria-label="Email us"
+              >
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                <span>info@arootdigital.com</span>
               </a>
-              <a href="https://linkedin.com/company/arootdigital" aria-label="Visit our LinkedIn company page" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors flex-shrink-0">
-                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-              </a>
-              <a href="https://twitter.com/arootdigital" aria-label="Visit our Twitter profile" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors flex-shrink-0">
-                <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-              </a>
+              
+              {/* Social Media Links */}
+              <div className="flex gap-3 sm:gap-4 justify-center sm:justify-start pt-2">
+                <a href="https://facebook.com/arootdigital" aria-label="Visit our Facebook page" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors flex-shrink-0">
+                  <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                </a>
+                <a href="https://instagram.com/arootdigital" aria-label="Visit our Instagram profile" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors flex-shrink-0">
+                  <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                </a>
+                <a href="https://linkedin.com/company/arootdigital" aria-label="Visit our LinkedIn company page" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors flex-shrink-0">
+                  <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                </a>
+                <a href="https://twitter.com/arootdigital" aria-label="Visit our Twitter profile" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors flex-shrink-0">
+                  <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-border pt-6 sm:pt-8 md:pt-10 text-center text-muted-foreground text-xs sm:text-sm md:text-base">
-          <p>&copy; 2025 ARoot Digital. All rights reserved.</p>
+      {/* Purple Footer Section - Full Width */}
+      <div className="bg-gradient-primary text-white pt-6 sm:pt-8 md:pt-10 pb-6 sm:pb-8 md:pb-10 w-full text-center text-xs sm:text-sm md:text-base">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+          <p className="mb-3 text-white/90">&copy; 2025 ARoot Digital. All rights reserved.</p>
+          <div className="flex items-center justify-center gap-3 sm:gap-4">
+            <Link href="/privacy-policy" className="text-white/90 hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-white/50">|</span>
+            <Link href="/terms-conditions" className="text-white/90 hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

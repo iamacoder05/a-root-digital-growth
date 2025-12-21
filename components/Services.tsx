@@ -64,16 +64,15 @@ const Services = () => {
   };
 
   return (
-    <section id="services" aria-labelledby="services-heading" className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden">
+    <section id="services" aria-labelledby="services-heading" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-b from-background via-primary/3 to-background relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/8 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-accent/15 rounded-full blur-3xl pointer-events-none"></div>
       
       <div className="container mx-auto relative z-10 px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-in">
-       
-          <h2 id="services-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-primary to-foreground px-4">
+        <div className="text-center mb-10 md:mb-12 animate-fade-in">
+          <h2 id="services-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-primary to-foreground px-4">
             Our Services
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 whitespace-nowrap">

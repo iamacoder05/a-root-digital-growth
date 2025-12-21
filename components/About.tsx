@@ -11,11 +11,11 @@ const benefits = [
 
 const About = () => {
   return (
-    <section id="about" aria-labelledby="about-heading" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-primary-accent/5">
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section id="about" aria-labelledby="about-heading" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-br from-primary/5 via-primary-accent/5 to-primary/3">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-6 animate-fade-in">
-            <h2 id="about-heading" className="text-4xl md:text-5xl font-bold text-foreground">
+            <h2 id="about-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
               Why Choose ARoot Digital?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">

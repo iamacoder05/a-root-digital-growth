@@ -3,6 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, CheckCircle, Star, Users, Target, Award, TrendingUp, Share2, ImageIcon } from 'lucide-react';
 import CallbackRequestForm from '@/components/CallbackRequestForm';
+import { Card } from '@/components/ui/card';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 // Service data with detailed information
 const serviceDetails = {
@@ -192,32 +201,34 @@ export default function ServicePage({ params }: ServicePageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-muted/20 to-background">
       {/* Breadcrumb Navigation */}
-      <div className="container mx-auto px-4 py-6 pt-24 border-b border-border/50 relative z-40 bg-background/95 backdrop-blur-sm">
-        <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
-          <Link
-            href="/"
-            className="text-muted-foreground hover:text-primary transition-colors duration-300"
-          >
-            Home
-          </Link>
-          <span className="text-muted-foreground">/</span>
-          <Link
-            href="/#services"
-            className="text-muted-foreground hover:text-primary transition-colors duration-300"
-          >
-            Services
-          </Link>
-          <span className="text-muted-foreground">/</span>
-          <span className="text-foreground font-medium">{service.title}</span>
-        </nav>
+      <div className="container mx-auto px-4 py-4 pt-24 border-b border-border/50 relative z-40 bg-background/95 backdrop-blur-sm">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/#services">Services</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{service.title}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       </div>
 
       {/* Hero Section with Callback Form */}
       <section className="py-12 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+        <div className="container mx-auto max-w-[1400px]">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
             {/* Left Side - Service Content */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 lg:pr-6 lg:border-r lg:border-border">
               <div className="text-center lg:text-left mb-8">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-primary to-foreground" style={{ lineHeight: '1.4' }}>
                   {service.title}
@@ -263,9 +274,13 @@ export default function ServicePage({ params }: ServicePageProps) {
             </div>
 
             {/* Right Side - Callback Form */}
-            <div className="lg:col-span-1 lg:sticky lg:top-8">
-              <CallbackRequestForm serviceName={service.title} />
-            </div>
+            <aside className="lg:col-span-1">
+              <div className="sticky top-24">
+                <Card className="p-8 border-primary/10 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
+                  <CallbackRequestForm serviceName={service.title} />
+                </Card>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

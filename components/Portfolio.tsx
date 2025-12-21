@@ -73,10 +73,10 @@ const projects = [
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" aria-labelledby="portfolio-heading" className="py-20 px-4 bg-background">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 id="portfolio-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+    <section id="portfolio" aria-labelledby="portfolio-heading" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-b from-background via-primary/2 to-background">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-10 md:mb-12 animate-fade-in">
+          <h2 id="portfolio-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Success Stories
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -88,7 +88,7 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-primary/10 hover:border-primary-accent/50 animate-fade-in overflow-hidden"
+              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/10 hover:border-primary-accent/50 animate-fade-in overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-0">

@@ -24,10 +24,10 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" aria-labelledby="testimonials-heading" className="py-20 px-4 bg-background">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+    <section id="testimonials" aria-labelledby="testimonials-heading" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-b from-background via-primary/3 to-background border-b border-border/50">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-10 md:mb-12 animate-fade-in">
+          <h2 id="testimonials-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             What Our Clients Say
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

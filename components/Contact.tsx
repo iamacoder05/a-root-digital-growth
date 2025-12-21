@@ -153,7 +153,7 @@ const Contact = () => {
     }, 2000);
   };
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 bg-gradient-hero text-white relative overflow-hidden">
+    <section id="contact" aria-labelledby="contact-heading" className="py-12 md:py-16 lg:py-20 px-3 sm:px-4 bg-gradient-hero text-white relative overflow-hidden">
       {/* Rocket Animation Overlay */}
       {showRocketAnimation && (
         <div className="fixed inset-0 z-[9999] bg-gradient-hero/95 backdrop-blur-sm flex items-center justify-center pointer-events-none">

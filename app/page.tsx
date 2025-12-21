@@ -2,9 +2,11 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Portfolio from "@/components/Portfolio";
+import Clients from "@/components/Clients";
+import LatestBlog from "@/components/LatestBlog";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -140,10 +142,12 @@ export default function Home() {
           <Services />
           <About />
           <Portfolio />
+          <Clients />
+          <LatestBlog />
           <Testimonials />
+          <FAQ />
           <Contact />
         </main>
-        <Footer />
       </div>
     </>
   );
