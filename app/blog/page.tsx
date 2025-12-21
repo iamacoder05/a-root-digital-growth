@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -416,7 +416,7 @@ const allBlogPosts = [
   }
 ];
 
-export default function BlogPage() {
+function BlogPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -629,6 +629,49 @@ export default function BlogPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function BlogPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background">
+        <section className="pt-24 pb-8 md:pb-12 px-4 bg-gradient-hero text-white">
+          <div className="container mx-auto max-w-7xl text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Our Blog
+            </h1>
+            <p className="text-lg md:text-xl text-primary-accent/90 max-w-2xl mx-auto">
+              Insights, tips, and strategies to help your business grow
+            </p>
+          </div>
+        </section>
+        <div className="container mx-auto px-4 py-4 border-b border-border/50 relative z-40 bg-background/95 backdrop-blur-sm">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/">Home</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Blog</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+        <section className="py-12 md:py-16 px-4">
+          <div className="container mx-auto max-w-[1400px]">
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">Loading...</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    }>
+      <BlogPageContent />
+    </Suspense>
   );
 }
 
