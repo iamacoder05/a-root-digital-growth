@@ -117,7 +117,7 @@ export default function FAQPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Breadcrumb Navigation */}
-      <div className="container mx-auto px-4 py-4 pt-24 border-b border-border/50 relative z-40 bg-background/95 backdrop-blur-sm">
+      <div className="container mx-auto px-4 py-4 pt-24 md:pt-28 border-b border-border/50 relative z-40 bg-background/95 backdrop-blur-sm">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

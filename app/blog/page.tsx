@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, ArrowRight, Check, User } from "lucide-react";
+import { Calendar, ArrowRight, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Breadcrumb,
@@ -454,7 +454,7 @@ function BlogPageContent() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section - At the top */}
-      <section className="pt-24 pb-8 md:pb-12 px-4 bg-gradient-hero text-white">
+      <section className="pt-24 md:pt-28 pb-8 md:pb-12 px-4 bg-gradient-hero text-white">
         <div className="container mx-auto max-w-7xl text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Our Blog
@@ -533,10 +533,6 @@ function BlogPageContent() {
                     <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
                       {post.excerpt}
                     </p>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-                      <User className="w-3.5 h-3.5" />
-                      <span>{post.author}</span>
-                    </div>
                     <div className="flex items-center gap-2 text-sm text-primary font-semibold group-hover:gap-3 transition-all">
                       Read More
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -636,7 +632,7 @@ export default function BlogPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-background">
-        <section className="pt-24 pb-8 md:pb-12 px-4 bg-gradient-hero text-white">
+        <section className="pt-24 md:pt-28 pb-8 md:pb-12 px-4 bg-gradient-hero text-white">
           <div className="container mx-auto max-w-7xl text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Our Blog

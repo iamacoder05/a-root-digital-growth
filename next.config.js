@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // Remove 'output: export' for Vercel deployment with API routes
+  // output: 'export',
   images: {
     domains: ['images.unsplash.com'],
     remotePatterns: [

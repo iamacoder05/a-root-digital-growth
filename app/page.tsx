@@ -7,6 +7,7 @@ import LatestBlog from "@/components/LatestBlog";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
+import SectionDivider from "@/components/SectionDivider";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -139,13 +140,21 @@ export default function Home() {
       <div className="min-h-screen">
         <main>
           <Hero />
+          <SectionDivider />
           <Services />
+          <SectionDivider />
           <About />
+          <SectionDivider />
           <Portfolio />
+          <SectionDivider />
           <Clients />
+          <SectionDivider />
           <LatestBlog />
+          <SectionDivider />
           <Testimonials />
+          <SectionDivider />
           <FAQ />
+          <SectionDivider />
           <Contact />
         </main>
       </div>

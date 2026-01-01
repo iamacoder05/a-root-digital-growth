@@ -3,8 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Phone, Calendar, ArrowRight, ChevronDown, Rocket } from "lucide-react";
+import { Phone, Calendar, ArrowRight, ChevronDown, Rocket, AlertCircle } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
+import { submitForm, checkRateLimit, sendAutoReply } from "@/lib/formSubmission";
+import { validateEmail, validatePhone, validateName, formatPhoneNumber } from "@/lib/validation";
 
 interface CallbackRequestFormProps {
   serviceName: string;
@@ -16,6 +18,18 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showRocketAnimation, setShowRocketAnimation] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+  const [fieldErrors, setFieldErrors] = useState<{
+    name?: string;
+    email?: string;
+    phone?: string;
+  }>({});
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -102,30 +116,117 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
     );
   });
 
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // Get form data
-    const form = e.currentTarget;
-    const name = (form.querySelector('[name="name"]') as HTMLInputElement)?.value || "";
-    const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value || "";
-    const phone = (form.querySelector('[name="phone"]') as HTMLInputElement)?.value || "";
-    const message = (form.querySelector('[name="message"]') as HTMLTextAreaElement)?.value || "";
-
-    // Validate required fields
-    if (!name.trim()) {
-      alert("Please enter your name.");
-      return;
-    }
-    if (!email.trim()) {
-      alert("Please enter your email.");
-      return;
-    }
+  // Validation functions
+  const validatePhoneField = (phone: string): string | undefined => {
     if (!phone.trim()) {
-      alert("Please enter your phone number.");
+      return "Please enter your phone number.";
+    }
+    
+    // Extract only digits
+    const digits = phone.replace(/\D/g, "");
+    
+    // Check if empty after removing non-digits
+    if (digits.length === 0) {
+      return "Phone number must contain only numeric digits.";
+    }
+    
+    // Check if starts with 12345...
+    if (digits.startsWith("12345")) {
+      return "Phone number cannot start with 12345.";
+    }
+    
+    // Check minimum length (7 digits)
+    if (digits.length < 7) {
+      return "Phone number must be at least 7 digits.";
+    }
+    
+    // Check maximum length (10 digits)
+    if (digits.length > 10) {
+      return "Phone number is too long (maximum 10 digits).";
+    }
+    
+    // Combine country code with phone for comprehensive validation
+    const fullPhone = `${selectedCountryCode}${digits}`;
+    const result = validatePhone(fullPhone);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const validateEmailField = (email: string): string | undefined => {
+    // Email is optional, only validate if provided
+    if (!email.trim()) {
+      return undefined; // No error if empty
+    }
+    const result = validateEmail(email);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const validateNameField = (name: string): string | undefined => {
+    const result = validateName(name);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    setIsSubmitting(true);
+
+    try {
+    // Get form data from state
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.trim();
+    const message = ""; // No message field in callback form
+
+    // Validate fields
+    const nameError = validateNameField(name);
+    const emailError = validateEmailField(email); // Email is optional
+    const phoneError = validatePhoneField(phone);
+
+    setFieldErrors({
+      name: nameError,
+      email: emailError,
+      phone: phoneError,
+    });
+
+    // If there are any errors (except email which is optional), don't submit
+    if (nameError || phoneError) {
+      setError("Please fix the errors below before submitting.");
+      setIsSubmitting(false);
       return;
     }
+
+      // Check rate limit
+      const rateLimitCheck = checkRateLimit();
+      if (!rateLimitCheck.allowed) {
+        const resetTime = rateLimitCheck.resetTime!;
+        const minutes = Math.ceil((resetTime - Date.now()) / (60 * 1000));
+        setError(`Too many submissions. Please try again in ${minutes} minute${minutes !== 1 ? 's' : ''}.`);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Format phone number with country code
+      const formattedPhone = formatPhoneNumber(phone, selectedCountryCode);
+
+      // Submit form with rate limiting and email notifications (CAPTCHA commented out for now)
+      const result = await submitForm({
+        name,
+        email,
+        phone: formattedPhone,
+        message,
+        serviceName,
+      });
+
+      if (!result.success) {
+        setError(result.error || "Failed to submit form. Please try again.");
+        setIsSubmitting(false);
+      return;
+    }
+
+      // Send auto-reply email only if email is provided
+      if (email.trim()) {
+        await sendAutoReply(email, name);
+      }
 
     // All validations passed - show rocket animation
     setShowRocketAnimation(true);
@@ -134,6 +235,10 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
     setTimeout(() => {
       router.push("/thank-you");
     }, 2000);
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -173,36 +278,6 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
               <span className="font-medium text-foreground truncate">Service:</span>
               <span className="text-primary font-semibold truncate ml-1">{serviceName}</span>
             </div>
-          </div>
-
-          {/* Name */}
-          <div>
-            <label htmlFor="callback-name" className="block text-xs font-medium mb-1 text-foreground">
-              Name <span className="text-primary">*</span>
-            </label>
-            <input
-              id="callback-name"
-              type="text"
-              placeholder="Your name"
-              name="name"
-              required
-              className="w-full px-2 py-2 text-xs rounded border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-            />
-          </div>
-
-          {/* Email */}
-          <div>
-            <label htmlFor="callback-email" className="block text-xs font-medium mb-1 text-foreground">
-              Email <span className="text-primary">*</span>
-            </label>
-            <input
-              id="callback-email"
-              type="email"
-              placeholder="your@email.com"
-              name="email"
-              required
-              className="w-full px-2 py-2 text-xs rounded border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-            />
           </div>
 
           {/* Phone */}
@@ -291,24 +366,117 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
               </div>
 
               {/* Phone Input */}
-              <input
-                id="callback-phone"
-                type="tel"
-                placeholder="Phone number"
-                name="phone"
-                required
-                className="flex-1 px-2 py-2 text-xs rounded border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-              />
+              <div className="relative flex-1">
+                <input
+                  id="callback-phone"
+                  type="tel"
+                  placeholder="Enter 10-digit mobile number"
+                  name="phone"
+                  required
+                  inputMode="numeric"
+                  maxLength={10}
+                  value={formData.phone}
+                  onChange={(e) => {
+                    // Allow only numeric digits (no alphabets, spaces, dashes, etc.)
+                    const value = e.target.value.replace(/\D/g, '');
+                    setFormData(prev => ({ ...prev, phone: value }));
+                  }}
+                  onBlur={(e) => {
+                    const error = validatePhoneField(e.target.value);
+                    setFieldErrors(prev => ({ ...prev, phone: error }));
+                  }}
+                  className={`flex-1 px-2 py-2 text-xs rounded border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors ${
+                    fieldErrors.phone
+                      ? 'border-red-500 focus:border-red-500'
+                      : 'border-border focus:border-primary'
+                  }`}
+                />
+              </div>
             </div>
+            {fieldErrors.phone && (
+              <p className="mt-1 text-xs text-red-500">{fieldErrors.phone}</p>
+            )}
           </div>
 
+          {/* Name */}
+          <div>
+            <label htmlFor="callback-name" className="block text-xs font-medium mb-1 text-foreground">
+              Name <span className="text-primary">*</span>
+            </label>
+            <input
+              id="callback-name"
+              type="text"
+              placeholder="Your name"
+              name="name"
+              required
+              value={formData.name}
+              onChange={(e) => {
+                setFormData(prev => ({ ...prev, name: e.target.value }));
+              }}
+              onBlur={(e) => {
+                const error = validateNameField(e.target.value);
+                setFieldErrors(prev => ({ ...prev, name: error }));
+              }}
+              className={`w-full px-2 py-2 text-xs rounded border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors ${
+                fieldErrors.name
+                  ? 'border-red-500 focus:border-red-500'
+                  : 'border-border focus:border-primary'
+              }`}
+            />
+            {fieldErrors.name && (
+              <p className="mt-1 text-xs text-red-500">{fieldErrors.name}</p>
+            )}
+          </div>
+
+          {/* Email */}
+          <div>
+            <label htmlFor="callback-email" className="block text-xs font-medium mb-1 text-foreground">
+              Email
+            </label>
+            <input
+              id="callback-email"
+              type="email"
+              placeholder="your@email.com (Optional)"
+              name="email"
+              value={formData.email}
+              onChange={(e) => {
+                setFormData(prev => ({ ...prev, email: e.target.value }));
+              }}
+              onBlur={(e) => {
+                const error = validateEmailField(e.target.value);
+                setFieldErrors(prev => ({ ...prev, email: error }));
+              }}
+              className={`w-full px-2 py-2 text-xs rounded border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors ${
+                fieldErrors.email
+                  ? 'border-red-500 focus:border-red-500'
+                  : 'border-border focus:border-primary'
+              }`}
+            />
+            {fieldErrors.email && (
+              <p className="mt-1 text-xs text-red-500">{fieldErrors.email}</p>
+            )}
+          </div>
+
+
+          {/* Error Message */}
+          {error && (
+            <div className="flex items-center gap-2 p-3 bg-destructive/10 border border-destructive/20 rounded text-destructive text-xs">
+              <AlertCircle className="w-4 h-4 flex-shrink-0" />
+              <span>{error}</span>
+            </div>
+          )}
 
           {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-primary to-primary-accent hover:from-primary/90 hover:to-primary-accent/90 text-white font-semibold py-2 rounded transition-all hover:scale-105 shadow hover:shadow-primary/25 text-xs"
+            disabled={isSubmitting}
+            className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2 rounded transition-all hover:scale-105 shadow hover:shadow-primary/25 text-xs disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Request Callback <ArrowRight className="ml-1 h-3 w-3" />
+            {isSubmitting ? (
+              <>Submitting...</>
+            ) : (
+              <>Request Callback <ArrowRight className="ml-1 h-3 w-3" /></>
+            )}
           </Button>
 
           <p className="text-xs text-muted-foreground text-center mt-2">

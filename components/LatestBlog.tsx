@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, ArrowRight, User, Clock } from "lucide-react";
+import { Calendar, ArrowRight, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const blogPosts = [
   {
@@ -43,6 +44,8 @@ const blogPosts = [
 ];
 
 const LatestBlog = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", { 
@@ -53,11 +56,20 @@ const LatestBlog = () => {
   };
 
   return (
-    <section id="blog" aria-labelledby="blog-heading" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-b from-background via-primary-accent/5 to-background border-b border-border/50">
+    <section 
+      ref={ref}
+      id="blog" 
+      aria-labelledby="blog-heading" 
+      className="py-8 md:py-12 lg:py-16 px-4 bg-gradient-to-b from-background via-primary-accent/5 to-background border-b border-border/50"
+    >
       <div className="container mx-auto max-w-7xl">
         {/* Header Section */}
         <div className="mb-10 md:mb-12">
-          <div className="space-y-3 animate-fade-in">
+          <div className={`space-y-3 transition-all duration-1000 ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 -translate-y-10'
+          }`}>
             <h2 id="blog-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
               Latest Blog Posts
             </h2>
@@ -72,8 +84,12 @@ const LatestBlog = () => {
           {blogPosts.map((post, index) => (
             <Card
               key={post.id}
-              className="group hover:shadow-xl transition-all duration-300 border-primary/10 overflow-hidden animate-fade-in bg-card/50 backdrop-blur-sm hover:border-primary-accent/30"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`group hover:shadow-xl transition-all duration-700 border-primary/10 overflow-hidden bg-card/50 backdrop-blur-sm hover:border-primary-accent/30 ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0 scale-100' 
+                  : 'opacity-0 translate-y-10 scale-95'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <Link href={`/blog/${post.slug}`} className="block h-full">
                 {/* Image Container */}
@@ -109,16 +125,11 @@ const LatestBlog = () => {
 
                 {/* Content */}
                 <CardContent className="p-6 space-y-4">
-                  {/* Date and Author */}
+                  {/* Date */}
                   <div className="flex items-center gap-3 text-xs text-muted-foreground">
                     <div className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
                       <span>{formatDate(post.date)}</span>
-                    </div>
-                    <span className="w-1 h-1 rounded-full bg-muted-foreground/40"></span>
-                    <div className="flex items-center gap-1.5">
-                      <User className="w-3.5 h-3.5" />
-                      <span className="font-medium">{post.author}</span>
                     </div>
                   </div>
 

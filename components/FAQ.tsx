@@ -5,6 +5,7 @@ import { ChevronDown, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface FAQItem {
   id: string;
@@ -87,6 +88,7 @@ const faqData: FAQItem[] = [
 const FAQ = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [openFAQ, setOpenFAQ] = useState<string | null>(faqData[0].id);
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
   const toggleFAQ = (id: string) => {
     setOpenFAQ(openFAQ === id ? null : id);
@@ -115,10 +117,19 @@ const FAQ = () => {
   const displayedFAQs = filteredFAQs.slice(0, 4);
 
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-b from-background via-primary-accent/5 to-background">
+    <section 
+      ref={ref}
+      id="faq" 
+      aria-labelledby="faq-heading" 
+      className="py-8 md:py-12 lg:py-16 px-4 bg-gradient-to-b from-background via-primary-accent/5 to-background"
+    >
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-12 animate-fade-in">
+        <div className={`text-center mb-10 md:mb-12 transition-all duration-1000 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 -translate-y-10'
+        }`}>
           <h2 id="faq-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Frequently Asked Questions
           </h2>
@@ -142,7 +153,7 @@ const FAQ = () => {
                     onClick={() => handleCategoryClick(category)}
                     className={`w-full flex items-center justify-between p-4 rounded-lg transition-all duration-300 ${
                       isSelected
-                        ? "bg-primary-accent text-white shadow-lg"
+                        ? "bg-primary text-white shadow-lg"
                         : "bg-muted/50 hover:bg-muted text-foreground"
                     }`}
                   >
@@ -171,12 +182,17 @@ const FAQ = () => {
           <div className="lg:col-span-3">
             <div className="space-y-4">
               {displayedFAQs.length > 0 ? (
-                displayedFAQs.map((faq) => {
+                displayedFAQs.map((faq, index) => {
                   const isOpen = openFAQ === faq.id;
                   return (
                     <Card
                       key={faq.id}
-                      className="border-primary/10 overflow-hidden hover:shadow-xl transition-all duration-300"
+                      className={`border-primary/10 overflow-hidden hover:shadow-xl transition-all duration-700 ${
+                        isVisible 
+                          ? 'opacity-100 translate-x-0' 
+                          : 'opacity-0 translate-x-10'
+                      }`}
+                      style={{ transitionDelay: `${index * 100}ms` }}
                     >
                       <button
                         onClick={() => toggleFAQ(faq.id)}
@@ -184,7 +200,7 @@ const FAQ = () => {
                         aria-expanded={isOpen}
                       >
                         <div className="flex-1 pr-4">
-                          <span className="text-xs font-semibold text-primary-accent uppercase tracking-wide mb-2 block">
+                          <span className="text-xs font-semibold text-primary uppercase tracking-wide mb-2 block">
                             {faq.category}
                           </span>
                           <h3 className="text-lg md:text-xl font-semibold text-foreground">
@@ -194,8 +210,8 @@ const FAQ = () => {
                         <div
                           className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                             isOpen
-                              ? "bg-primary-accent text-white rotate-180"
-                              : "bg-muted text-muted-foreground"
+                              ? "bg-primary text-white rotate-180"
+                              : "bg-primary/10 text-primary"
                           }`}
                         >
                           <ChevronDown className="w-5 h-5" />
@@ -207,7 +223,7 @@ const FAQ = () => {
                         }`}
                       >
                         <div className="px-6 pb-6 pt-2">
-                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                          <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
                             {faq.answer}
                           </p>
                         </div>

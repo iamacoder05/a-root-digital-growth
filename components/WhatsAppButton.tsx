@@ -2,7 +2,7 @@
 
 const WhatsAppButton = () => {
   // WhatsApp number - replace with your actual WhatsApp business number
-  const whatsappNumber = "911234567890"; // Format: country code + number without +
+  const whatsappNumber = "9561964239"; // Format: country code + number without +
   const whatsappMessage = "Hello! I'm interested in your digital marketing services.";
 
   const handleWhatsAppClick = () => {
@@ -14,7 +14,7 @@ const WhatsAppButton = () => {
   return (
     <button
       onClick={handleWhatsAppClick}
-      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[9998] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#25D366] via-[#20BA5A] to-[#128C7E] text-white shadow-2xl hover:shadow-[#25D366]/50 transition-all duration-300 flex items-center justify-center group hover:scale-110 hover:rotate-12 relative overflow-hidden border-2 border-white/30 ring-2 sm:ring-4 ring-[#25D366]/30"
+      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[9998] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#25D366] via-[#20BA5A] to-[#128C7E] text-white shadow-2xl hover:shadow-[#25D366]/50 transition-all duration-300 flex items-center justify-center group hover:scale-110 hover:rotate-12 relative overflow-hidden border-2 border-white/30 ring-2 sm:ring-4 ring-[#25D366]/30 md:hidden"
       aria-label="Contact us on WhatsApp"
       style={{ 
         zIndex: 9998,

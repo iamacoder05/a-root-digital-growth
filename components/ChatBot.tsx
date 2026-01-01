@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, X, Send, Rocket, Bot, Sparkles, Zap } from "lucide-react";
+import { MessageCircle, X, Send, Rocket, Sparkles, Zap } from "lucide-react";
 
 interface ChatMessage {
   type: "bot" | "user";
@@ -16,7 +17,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       type: "bot",
-      message: "Hello! I'm ARoot Bot, your digital growth assistant. 👋\n\nI'd love to help you get started. What's your name?",
+      message: "Hello! I'm RAYA, your digital growth assistant. 👋\n\nI'd love to help you get started. What's your name?",
     },
   ]);
   const [currentStep, setCurrentStep] = useState(0);
@@ -156,7 +157,7 @@ const ChatBot = () => {
           ...prev,
           {
             type: "bot",
-            message: "Great! Now, what's your phone number? (Please include country code, e.g., +1 1234567890)",
+            message: "Great! Now, what's your phone number? (Please include country code, e.g., +91 1234567890)",
           },
         ]);
         break;
@@ -233,7 +234,7 @@ const ChatBot = () => {
       setMessages([
         {
           type: "bot",
-          message: "Hello! I'm ARoot Bot, your digital growth assistant. 👋\n\nI'd love to help you get started. What's your name?",
+          message: "Hello! I'm RAYA, your digital growth assistant. 👋\n\nI'd love to help you get started. What's your name?",
         },
       ]);
       setCurrentStep(0);
@@ -268,7 +269,7 @@ const ChatBot = () => {
             </button>
             <div className="flex items-center gap-2 pr-6">
               <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                <Bot className="w-4 h-4 text-white" />
+                <MessageCircle className="w-4 h-4 text-white" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-foreground leading-snug">
@@ -289,7 +290,7 @@ const ChatBot = () => {
         className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary text-white shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 flex items-center justify-center group ${
           isOpen ? "scale-90 rotate-90" : "hover:scale-110 hover:rotate-12"
         } relative overflow-hidden border-2 border-white/30 ring-2 sm:ring-4 ring-primary-accent/30`}
-        aria-label="Open ARoot Bot"
+        aria-label="Open RAYA"
         style={{ 
           zIndex: 9999,
           position: 'fixed',
@@ -304,8 +305,14 @@ const ChatBot = () => {
           <X className="w-6 h-6 relative z-10 transition-transform duration-300 text-white drop-shadow-lg" />
         ) : (
           <>
-            <MessageCircle className="w-6 h-6 relative z-10 transition-transform duration-300 group-hover:scale-110 text-white drop-shadow-lg" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-pulse relative z-10 ring-2 ring-white shadow-lg" />
+            <Image
+              src="/assets/raya-img.png"
+              alt="RAYA"
+              width={64}
+              height={64}
+              className="w-full h-full object-cover relative z-10 transition-transform duration-300 group-hover:scale-110 scale-125"
+              style={{ objectPosition: 'center 10%' }}
+            />
             {/* Sparkle effect */}
             <Sparkles className="absolute top-0 right-0 w-3 h-3 text-yellow-300 animate-pulse opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
           </>
@@ -326,13 +333,20 @@ const ChatBot = () => {
             </div>
             
             <div className="flex items-center gap-2 sm:gap-3 relative z-10">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center relative group flex-shrink-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center relative group flex-shrink-0 overflow-hidden">
                 <div className="absolute inset-0 bg-white/30 rounded-full animate-ping" />
-                <Bot className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 animate-bounce-slow" />
+                <Image
+                  src="/assets/raya-img.png"
+                  alt="RAYA"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover relative z-10 scale-125"
+                  style={{ objectPosition: 'center 10%' }}
+                />
               </div>
               <div className="min-w-0">
                 <h3 className="font-bold text-base sm:text-lg flex items-center gap-1 sm:gap-2">
-                  ARoot Bot
+                  RAYA
                   <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-300 animate-pulse flex-shrink-0" />
                 </h3>
                 <p className="text-xs text-white/80 flex items-center gap-1">
@@ -363,8 +377,15 @@ const ChatBot = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {msg.type === "bot" && (
-                  <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-2 flex-shrink-0 shadow-md">
-                    <Bot className="w-4 h-4 text-white" />
+                  <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-2 flex-shrink-0 shadow-md overflow-hidden">
+                    <Image
+                      src="/assets/raya-img.png"
+                      alt="RAYA"
+                      width={32}
+                      height={32}
+                      className="w-full h-full object-cover scale-125"
+                      style={{ objectPosition: 'center 10%' }}
+                    />
                   </div>
                 )}
                 <div
@@ -391,8 +412,15 @@ const ChatBot = () => {
             ))}
             {isSubmitting && (
               <div className="flex justify-start animate-message-slide-in">
-                <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-2 flex-shrink-0 shadow-md">
-                  <Bot className="w-4 h-4 text-white animate-pulse" />
+                <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-2 flex-shrink-0 shadow-md overflow-hidden">
+                  <Image
+                    src="/assets/raya-img.png"
+                    alt="RAYA"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-cover animate-pulse scale-125"
+                    style={{ objectPosition: 'center 10%' }}
+                  />
                 </div>
                 <div className="bg-white rounded-2xl rounded-bl-sm px-5 py-3 shadow-md border border-gray-200">
                   <div className="flex gap-1.5">

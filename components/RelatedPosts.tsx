@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { User } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -66,10 +65,6 @@ const RelatedPosts = ({ relatedPosts }: RelatedPostsProps) => {
                     <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary-accent transition-colors line-clamp-2">
                       {relatedPost.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <User className="w-3 h-3" />
-                      <span>{relatedPost.author}</span>
-                    </div>
                   </CardContent>
                 </Link>
               </Card>

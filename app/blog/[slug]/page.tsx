@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Clock, User, Linkedin, Twitter } from "lucide-react";
+import { Calendar, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import CallbackRequestForm from "@/components/CallbackRequestForm";
 import RelatedPosts from "@/components/RelatedPosts";
@@ -271,58 +271,6 @@ const allBlogPosts = [
     image: "/placeholder.svg"
   }
 ];
-
-// Author information
-const authors: { [key: string]: any } = {
-  "Sarah Johnson": {
-    name: "Sarah Johnson",
-    role: "SEO Specialist",
-    bio: "Sarah is a seasoned SEO expert with over 10 years of experience helping businesses improve their search engine rankings.",
-    image: "/placeholder.svg",
-    linkedin: "https://linkedin.com/in/sarahjohnson",
-    twitter: "https://twitter.com/sarahjohnson"
-  },
-  "Michael Chen": {
-    name: "Michael Chen",
-    role: "Social Media Strategist",
-    bio: "Michael specializes in social media marketing and helps brands build engaging online communities.",
-    image: "/placeholder.svg",
-    linkedin: "https://linkedin.com/in/michaelchen",
-    twitter: "https://twitter.com/michaelchen"
-  },
-  "Emily Rodriguez": {
-    name: "Emily Rodriguez",
-    role: "Content Marketing Manager",
-    bio: "Emily creates compelling content strategies that drive engagement and conversions for businesses.",
-    image: "/placeholder.svg",
-    linkedin: "https://linkedin.com/in/emilyrodriguez",
-    twitter: "https://twitter.com/emilyrodriguez"
-  },
-  "David Thompson": {
-    name: "David Thompson",
-    role: "PPC Expert",
-    bio: "David is a PPC advertising specialist focused on maximizing ROI for digital marketing campaigns.",
-    image: "/placeholder.svg",
-    linkedin: "https://linkedin.com/in/davidthompson",
-    twitter: "https://twitter.com/davidthompson"
-  },
-  "Lisa Anderson": {
-    name: "Lisa Anderson",
-    role: "Email Marketing Specialist",
-    bio: "Lisa helps businesses automate their email marketing to increase engagement and drive sales.",
-    image: "/placeholder.svg",
-    linkedin: "https://linkedin.com/in/lisaanderson",
-    twitter: "https://twitter.com/lisaanderson"
-  },
-  "James Wilson": {
-    name: "James Wilson",
-    role: "Conversion Optimization Expert",
-    bio: "James specializes in optimizing websites to convert more visitors into customers.",
-    image: "/placeholder.svg",
-    linkedin: "https://linkedin.com/in/jameswilson",
-    twitter: "https://twitter.com/jameswilson"
-  }
-};
 
 // Blog posts data
 const blogPosts: { [key: string]: any } = {
@@ -794,7 +742,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   return (
     <div className="min-h-screen bg-background">
       {/* Breadcrumb Navigation - At the top */}
-      <div className="container mx-auto px-4 py-4 pt-24 border-b border-border/50 relative z-40 bg-background/95 backdrop-blur-sm">
+      <div className="container mx-auto px-4 py-4 pt-24 md:pt-28 border-b border-border/50 relative z-40 bg-background/95 backdrop-blur-sm">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -860,54 +808,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               />
             </div>
 
-            {/* Author and Callback Sidebar - 25% width (1 column) */}
+            {/* Callback Sidebar - 25% width (1 column) */}
             <aside className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
-                {/* Author Section - Made Bigger */}
-                {post.author && authors[post.author] && (
-                  <Card className="p-8 border-primary/10 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
-                    <div className="flex flex-col items-center text-center mb-6">
-                      <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 ring-4 ring-primary/10 shadow-md">
-                        <Image
-                          src={authors[post.author].image}
-                          alt={authors[post.author].name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <h3 className="font-bold text-xl md:text-2xl text-foreground mb-2">
-                        {authors[post.author].name}
-                      </h3>
-                      <p className="text-base md:text-lg text-muted-foreground mb-3 font-medium">
-                        {authors[post.author].role}
-                      </p>
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                        {authors[post.author].bio}
-                      </p>
-                    </div>
-                    <div className="flex justify-center gap-4 pt-6 border-t border-border">
-                      <a
-                        href={authors[post.author].linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary-accent/20 hover:scale-110 transition-all duration-300 shadow-sm"
-                        aria-label="LinkedIn"
-                      >
-                        <Linkedin className="w-5 h-5 text-muted-foreground" />
-                      </a>
-                      <a
-                        href={authors[post.author].twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary-accent/20 hover:scale-110 transition-all duration-300 shadow-sm"
-                        aria-label="Twitter"
-                      >
-                        <Twitter className="w-5 h-5 text-muted-foreground" />
-                      </a>
-                    </div>
-                  </Card>
-                )}
-
                 {/* Request Callback Form - Made Bigger */}
                 <Card className="p-8 border-primary/10 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
                   <CallbackRequestForm serviceName={post.category} />
@@ -925,7 +828,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <RelatedPosts
             relatedPosts={allBlogPosts.filter(relatedPost => 
               relatedPost.slug !== params.slug && 
-              (relatedPost.category === post.category || relatedPost.author === post.author)
+              relatedPost.category === post.category
             )}
           />
         </div>

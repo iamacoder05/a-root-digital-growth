@@ -1,5 +1,8 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const testimonials = [
   {
@@ -23,10 +26,21 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <section id="testimonials" aria-labelledby="testimonials-heading" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-b from-background via-primary/3 to-background border-b border-border/50">
+    <section 
+      ref={ref}
+      id="testimonials" 
+      aria-labelledby="testimonials-heading" 
+      className="py-8 md:py-12 lg:py-16 px-4 bg-gradient-to-b from-background via-primary/3 to-background border-b border-border/50"
+    >
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-10 md:mb-12 animate-fade-in">
+        <div className={`text-center mb-10 md:mb-12 transition-all duration-1000 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 -translate-y-10'
+        }`}>
           <h2 id="testimonials-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             What Our Clients Say
           </h2>
@@ -39,8 +53,12 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index}
-              className="hover:shadow-xl transition-all duration-300 border-primary/10 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`hover:shadow-xl transition-all duration-700 border-primary/10 ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0 scale-100' 
+                  : 'opacity-0 translate-y-10 scale-95'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <CardContent className="p-8">
                 <div className="flex gap-1 mb-4">

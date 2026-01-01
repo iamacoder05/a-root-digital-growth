@@ -3,35 +3,28 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { Menu, X, Phone, Search, Share2, FileText, MousePointerClick, Palette, TrendingUp, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Search, Share2, FileText, MousePointerClick, AppWindow, BarChart, ChevronDown, Briefcase, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import ServicesDropdown from "@/components/ServicesDropdown";
+import PortfolioDropdown from "@/components/PortfolioDropdown";
 
 const Navigation = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [servicesDropdownTimeout, setServicesDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [isPortfolioDropdownOpen, setIsPortfolioDropdownOpen] = useState(false);
+  const [portfolioDropdownTimeout, setPortfolioDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   
-  const phoneNumber = "+91 12345 67890";
-  const phoneNumberTel = "+911234567890"; // Format for tel: link
+  const phoneNumber = "+91 9561964239 ";
+  const phoneNumberTel = "+919561964239"; // Format for tel: link
 
   // Determine if we're on homepage based on pathname
   const isHomePage = pathname === '/';
-  
-  // Check if we're at the top of the page (for homepage transparency effect)
-  const shouldShowTransparent = isHomePage && !isScrolled;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
     // Handle hash navigation when landing on homepage with hash
     if (isHomePage && window.location.hash) {
       const hash = window.location.hash.substring(1);
@@ -48,10 +41,6 @@ const Navigation = () => {
         }
       }, 100);
     }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, [isHomePage]);
 
   const handleLogoClick = () => {
@@ -90,25 +79,23 @@ const Navigation = () => {
 
   const navLinks = [
     { label: "Home", id: "hero" },
-    { label: "Services", id: "services" },
     { label: "About", id: "about" },
-    { label: "Portfolio", id: "portfolio" },
+    { label: "Services", id: "services" },
+    { label: "Our Work", id: "portfolio" },
+    { label: "Industry", id: "industry" },
     { label: "Blog", id: "blog", isRoute: true },
-    { label: "Testimonials", id: "testimonials" }
+    { label: "Privacy Policy", id: "privacy-policy", isRoute: true },
+    { label: "Terms & Conditions", id: "terms-conditions", isRoute: true }
   ];
 
   return (
     <nav
       aria-label="Main navigation"
       role="navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        shouldShowTransparent
-          ? "bg-transparent"
-          : "bg-background/95 backdrop-blur-lg shadow-lg"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md"
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo */}
           <button
             onClick={handleLogoClick}
@@ -116,28 +103,16 @@ const Navigation = () => {
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <div className="relative">
-              {/* Enhanced white background layers for better visibility - only on homepage hero */}
-              {shouldShowTransparent && (
-                <>
-                  <div className="absolute inset-0 transition-all duration-300 bg-white/50 blur-2xl rounded-full scale-125" />
-                  <div className="absolute inset-0 transition-all duration-300 bg-white/35 blur-xl rounded-full scale-115" />
-                </>
-              )}
               <Image
                 src="/assets/ar-logo.png"
                 alt="A-Root Digital Growth Logo"
-                width={96}
-                height={96}
+                width={120}
+                height={120}
                 priority
-                className={`relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain transition-all duration-300 ${
-                  shouldShowTransparent
-                    ? "drop-shadow-[0_0_40px_rgba(255,255,255,1),0_0_80px_rgba(255,255,255,0.8),0_0_120px_rgba(255,255,255,0.6)] filter brightness-125 contrast-125"
-                    : "drop-shadow-[0_0_20px_rgba(255,255,255,0.8),0_0_40px_rgba(255,255,255,0.6)] filter brightness-115 contrast-115"
-                }`}
+                className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain transition-all duration-300"
               />
             </div>
-            <span className={`font-bold text-base sm:text-lg hidden sm:block ${shouldShowTransparent ? "text-white" : "text-foreground"}`}>
-              ARoot Digital
+            <span className="font-bold text-base sm:text-lg hidden sm:block text-foreground">
             </span>
           </button>
 
@@ -158,31 +133,18 @@ const Navigation = () => {
                       setIsServicesDropdownOpen(true);
                     }}
                     onMouseLeave={() => {
-                      // Add delay before closing
-                      const timeout = setTimeout(() => {
-                        setIsServicesDropdownOpen(false);
-                      }, 300); // 300ms delay
-                      setServicesDropdownTimeout(timeout);
+                      setIsServicesDropdownOpen(false);
                     }}
                   >
                     <button
                       data-services-button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        // Only toggle dropdown, don't navigate
-                        setIsServicesDropdownOpen(!isServicesDropdownOpen);
-                      }}
-                      className={`font-semibold transition-colors hover:text-primary-accent flex items-center gap-1 relative group h-full ${
-                        shouldShowTransparent ? "text-white" : "text-foreground"
-                      }`}
+                      className="font-semibold text-base md:text-lg transition-colors hover:text-primary-accent flex items-center gap-1 relative group h-full text-foreground"
                     >
                       {link.label}
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-5 h-5 md:w-5 md:h-5 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
                       <span className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${
                         isServicesDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
-                      } ${
-                        shouldShowTransparent ? 'bg-white' : 'bg-primary'
-                      }`}></span>
+                      } bg-primary`}></span>
                     </button>
                     <ServicesDropdown
                       isOpen={isServicesDropdownOpen}
@@ -197,38 +159,74 @@ const Navigation = () => {
                   </div>
                 );
               }
+              if (link.id === "portfolio") {
+                return (
+                  <div
+                    key={link.id}
+                    className="relative h-full"
+                    onMouseEnter={() => {
+                      // Clear any pending timeout
+                      if (portfolioDropdownTimeout) {
+                        clearTimeout(portfolioDropdownTimeout);
+                        setPortfolioDropdownTimeout(null);
+                      }
+                      setIsPortfolioDropdownOpen(true);
+                    }}
+                    onMouseLeave={() => {
+                      setIsPortfolioDropdownOpen(false);
+                    }}
+                  >
+                    <button
+                      data-portfolio-button
+                      className="font-semibold text-base md:text-lg transition-colors hover:text-primary-accent flex items-center gap-1 relative group h-full text-foreground"
+                    >
+                      {link.label}
+                      <ChevronDown className={`w-5 h-5 md:w-5 md:h-5 transition-transform duration-200 ${isPortfolioDropdownOpen ? 'rotate-180' : ''}`} />
+                      <span className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${
+                        isPortfolioDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
+                      } bg-primary`}></span>
+                    </button>
+                    <PortfolioDropdown
+                      isOpen={isPortfolioDropdownOpen}
+                      onClose={() => {
+                        if (portfolioDropdownTimeout) {
+                          clearTimeout(portfolioDropdownTimeout);
+                          setPortfolioDropdownTimeout(null);
+                        }
+                        setIsPortfolioDropdownOpen(false);
+                      }}
+                    />
+                  </div>
+                );
+              }
               return (
-                <button
-                  key={link.id}
+              <button
+                key={link.id}
                   onClick={() => scrollToSection(link.id, link.isRoute)}
-                  className={`font-semibold transition-colors hover:text-primary-accent relative group h-full ${
-                    shouldShowTransparent ? "text-white" : "text-foreground"
-                  }`}
-                >
-                  {link.label}
-                  <span className={`absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300 ${
-                    shouldShowTransparent ? 'bg-white' : 'bg-primary'
-                  }`}></span>
-                </button>
+                  className="font-semibold text-base md:text-lg transition-colors hover:text-primary-accent relative group h-full text-foreground"
+              >
+                {link.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300 bg-primary"></span>
+              </button>
               );
             })}
             {/* Phone Number */}
             <Button
               asChild
-              className="bg-gradient-primary text-white hover:opacity-90 font-semibold px-6 flex items-center gap-2"
+              className="bg-gradient-primary text-white hover:opacity-90 font-semibold text-base md:text-lg px-6 py-2.5 md:py-3 flex items-center gap-2"
             >
               <a
                 href={`tel:${phoneNumberTel}`}
                 aria-label={`Call ${phoneNumber}`}
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-5 h-5 md:w-5 md:h-5" />
                 <span className="hidden xl:inline">{phoneNumber}</span>
                 <span className="xl:hidden">Call</span>
               </a>
             </Button>
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-gradient-primary text-white hover:opacity-90 font-semibold px-6"
+              className="bg-gradient-primary text-white hover:opacity-90 font-semibold text-base md:text-lg px-6 py-2.5 md:py-3"
             >
               Contact Us
             </Button>
@@ -240,9 +238,9 @@ const Navigation = () => {
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
-            className={`lg:hidden ${shouldShowTransparent ? "text-white" : "text-foreground"}`}
+            className="lg:hidden text-foreground"
           >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
 
@@ -250,7 +248,7 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div 
             id="mobile-menu"
-            className="lg:hidden absolute top-20 left-0 right-0 bg-background shadow-2xl border-t-2 border-primary-accent/20 animate-fade-in z-50 max-h-[calc(100vh-5rem)] overflow-y-auto"
+            className="lg:hidden absolute top-24 md:top-28 left-0 right-0 bg-background shadow-2xl border-t-2 border-primary-accent/20 animate-fade-in z-50 max-h-[calc(100vh-6rem)] md:max-h-[calc(100vh-7rem)] overflow-y-auto"
           >
             <div className="container mx-auto px-4 py-6 space-y-2">
               {navLinks.map((link) => {
@@ -259,20 +257,20 @@ const Navigation = () => {
                     <div key={link.id} className="space-y-2">
                       <button
                         onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
-                        className="block w-full text-left font-semibold text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3 flex items-center justify-between"
+                        className="block w-full text-left font-semibold text-lg text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3 flex items-center justify-between"
                       >
                         <span>{link.label}</span>
-                        <span className={`transform transition-transform ${isServicesDropdownOpen ? 'rotate-90' : ''}`}>›</span>
+                        <span className={`text-xl transform transition-transform ${isServicesDropdownOpen ? 'rotate-90' : ''}`}>›</span>
                       </button>
                       {isServicesDropdownOpen && (
                         <div className="pl-4 space-y-2 border-l-2 border-primary/20">
                           {[
-                            { icon: Search, title: "SEO Optimization", slug: "seo-optimization" },
-                            { icon: Share2, title: "Social Media Marketing", slug: "social-media-marketing" },
+                            { icon: Search, title: "Search Engine Optimization", slug: "search-engine-optimization" },
+                            { icon: Share2, title: "Digital Marketing", slug: "digital-marketing" },
+                            { icon: AppWindow, title: "App Marketing", slug: "app-marketing" },
                             { icon: FileText, title: "Content Marketing", slug: "content-marketing" },
-                            { icon: MousePointerClick, title: "PPC Advertising", slug: "ppc-advertising" },
-                            { icon: Palette, title: "Web Design", slug: "web-design" },
-                            { icon: TrendingUp, title: "Analytics & Insights", slug: "analytics-insights" },
+                            { icon: MousePointerClick, title: "PPC/Paid Marketing", slug: "ppc-paid-marketing" },
+                            { icon: BarChart, title: "MarTech / Data Analytics", slug: "martech-data-analytics" },
                           ].map((service) => {
                             const IconComponent = service.icon;
                             return (
@@ -295,14 +293,51 @@ const Navigation = () => {
                     </div>
                   );
                 }
+                if (link.id === "portfolio") {
+                  return (
+                    <div key={link.id} className="space-y-2">
+                      <button
+                        onClick={() => setIsPortfolioDropdownOpen(!isPortfolioDropdownOpen)}
+                        className="block w-full text-left font-semibold text-lg text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3 flex items-center justify-between"
+                      >
+                        <span>{link.label}</span>
+                        <span className={`text-xl transform transition-transform ${isPortfolioDropdownOpen ? 'rotate-90' : ''}`}>›</span>
+                      </button>
+                      {isPortfolioDropdownOpen && (
+                        <div className="pl-4 space-y-2 border-l-2 border-primary/20">
+                          {[
+                            { icon: Briefcase, title: "Portfolio", id: "portfolio" },
+                            { icon: MessageSquare, title: "Testimonials", id: "testimonials" },
+                          ].map((item) => {
+                            const IconComponent = item.icon;
+                            return (
+                              <button
+                                key={item.id}
+                                onClick={() => {
+                                  scrollToSection(item.id);
+                                  setIsMobileMenuOpen(false);
+                                  setIsPortfolioDropdownOpen(false);
+                                }}
+                                className="block w-full text-left text-sm text-muted-foreground hover:text-primary hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-2 flex items-center gap-2"
+                              >
+                                <IconComponent className="w-4 h-4" />
+                                <span>{item.title}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
                 return (
-                  <button
-                    key={link.id}
+                <button
+                  key={link.id}
                     onClick={() => scrollToSection(link.id, link.isRoute)}
-                    className="block w-full text-left font-semibold text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3"
-                  >
-                    {link.label}
-                  </button>
+                  className="block w-full text-left font-semibold text-lg text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3"
+                >
+                  {link.label}
+                </button>
                 );
               })}
               {/* Phone Number */}

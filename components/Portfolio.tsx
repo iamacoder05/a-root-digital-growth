@@ -1,6 +1,9 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, TrendingUp } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const projects = [
   {
@@ -72,10 +75,21 @@ const projects = [
 ];
 
 const Portfolio = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <section id="portfolio" aria-labelledby="portfolio-heading" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-b from-background via-primary/2 to-background">
+    <section 
+      ref={ref}
+      id="portfolio" 
+      aria-labelledby="portfolio-heading" 
+      className="py-8 md:py-12 lg:py-16 px-4 bg-gradient-to-b from-background via-primary/2 to-background"
+    >
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-10 md:mb-12 animate-fade-in">
+        <div className={`text-center mb-10 md:mb-12 transition-all duration-1000 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 -translate-y-10'
+        }`}>
           <h2 id="portfolio-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Success Stories
           </h2>
@@ -88,8 +102,12 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/10 hover:border-primary-accent/50 animate-fade-in overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`group hover:shadow-xl transition-all duration-700 hover:-translate-y-2 border-primary/10 hover:border-primary-accent/50 overflow-hidden ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0 scale-100' 
+                  : 'opacity-0 translate-y-10 scale-95'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <CardContent className="p-0">
                 {/* Gradient Header */}
@@ -146,7 +164,7 @@ const Portfolio = () => {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <p className="text-lg text-muted-foreground mb-6">
+          <p className="text-[43px] font-bold text-primary mb-6">
             Ready to become our next success story?
           </p>
           <a

@@ -61,21 +61,34 @@ const Hero = () => {
       if (intervalId) clearInterval(intervalId);
     };
   }, [isHovered]);
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-16 sm:pt-20 md:pt-24">
-      {/* Animated background elements */}
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24">
+      {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary-accent/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary-lighter/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <Image
+          src={serviceImages[0]}
+          alt="Hero Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark overlay with subtle purple tint - more opaque to reduce color conflicts */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-hero opacity-15"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 animate-fade-in">
+        <div className="flex items-center justify-center">
+          {/* Text Content */}
+          <div className="flex flex-col items-center text-center space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 animate-fade-in max-w-4xl">
             <div className="space-y-2 sm:space-y-3 md:space-y-4 max-w-4xl w-full">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight px-2 sm:px-0">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight px-2 sm:px-0 relative inline-block">
+                <span className="relative inline-block">
                 Transform Your Digital Presence
+                  {/* Animated gradient underline */}
+                  <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-accent to-transparent animate-shimmer"></span>
+                </span>
               </h1>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-primary-accent/90 font-light px-2 sm:px-0">
                 Expert digital marketing solutions that drive growth, engagement, and success
@@ -86,6 +99,18 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="bg-primary-accent text-primary hover:bg-primary-accent/90 text-sm sm:text-base md:text-lg font-semibold px-5 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-full transition-all hover:scale-105 w-full sm:w-auto"
+                onClick={() => {
+                  const contactSection = document.getElementById("contact");
+                  if (contactSection) {
+                    const offset = 80;
+                    const elementPosition = contactSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth"
+                    });
+                  }
+                }}
               >
                 Get Started <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
@@ -137,8 +162,8 @@ const Hero = () => {
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 pt-3 sm:pt-4 md:pt-6 lg:pt-8 w-full max-w-4xl px-2 sm:px-0">
               {[
-                { number: "500+", label: "Projects Completed" },
-                { number: "98%", label: "Client Satisfaction" },
+                { number: "100+", label: "Projects Completed" },
+                { number: "99%", label: "Client Satisfaction" },
                 { number: "50+", label: "Team Members" },
                 { number: "10+", label: "Years Experience" }
               ].map((stat, index) => (
@@ -151,31 +176,6 @@ const Hero = () => {
                   <div className="text-xs sm:text-sm md:text-base text-white/80 mt-0.5 sm:mt-1 leading-tight px-1">{stat.label}</div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Right Column - Image */}
-          <div className="flex items-center justify-center animate-fade-in order-first lg:order-last" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
-              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white/20">
-                {/* Image container with smooth fade transitions */}
-                <div className="relative w-full aspect-[3/2] overflow-hidden">
-                  {serviceImages.map((imageSrc, index) => (
-                    <Image
-                      key={index}
-                      src={imageSrc}
-                      alt={`${services[index]} Illustration`}
-                      fill
-                      className={`object-cover transition-opacity duration-1000 ease-in-out ${
-                        index === currentServiceIndex ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      priority={index === 0}
-                    />
-                  ))}
-                </div>
-                {/* Decorative glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-accent/20 to-transparent pointer-events-none transition-opacity duration-1000"></div>
-              </div>
             </div>
           </div>
         </div>

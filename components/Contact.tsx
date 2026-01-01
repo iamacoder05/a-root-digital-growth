@@ -3,8 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Phone, MapPin, ChevronDown, Rocket } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, ChevronDown, Rocket, AlertCircle, CheckCircle2 } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
+import { submitForm, checkRateLimit, sendAutoReply } from "@/lib/formSubmission";
+import { validateEmail, validatePhone, validateName, formatPhoneNumber } from "@/lib/validation";
 
 const Contact = () => {
   const router = useRouter();
@@ -13,6 +15,28 @@ const Contact = () => {
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showRocketAnimation, setShowRocketAnimation] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<{
+    name?: string;
+    email?: string;
+    phone?: string;
+    services?: string;
+  }>({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+  const [touchedFields, setTouchedFields] = useState<{
+    name: boolean;
+    email: boolean;
+    phone: boolean;
+  }>({
+    name: false,
+    email: false,
+    phone: false,
+  });
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -114,10 +138,127 @@ const Contact = () => {
         ? prev.filter(s => s !== service)
         : [...prev, service]
     );
+    // Clear services error when user selects a service
+    if (fieldErrors.services) {
+      setFieldErrors(prev => ({ ...prev, services: undefined }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // Validation functions using proper validation library
+  const validateNameField = (name: string): string | undefined => {
+    const result = validateName(name);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const validateEmailField = (email: string): string | undefined => {
+    // Email is optional, only validate if provided
+    if (!email.trim()) {
+      return undefined; // No error if empty
+    }
+    const result = validateEmail(email);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const validatePhoneField = (phone: string): string | undefined => {
+    if (!phone.trim()) {
+      return "Please enter your phone number.";
+    }
+    
+    // Remove spaces, dashes, parentheses for validation
+    const cleaned = phone.replace(/[\s\-\(\)\.]/g, "");
+    
+    // Extract only digits
+    const digits = cleaned.replace(/\D/g, "");
+    
+    // Check if empty after removing non-digits
+    if (digits.length === 0) {
+      return "Phone number must contain only numeric digits.";
+    }
+    
+    // Check if starts with 12345...
+    if (digits.startsWith("12345")) {
+      return "Phone number cannot start with 12345.";
+    }
+    
+    // Check minimum length (7 digits)
+    if (digits.length < 7) {
+      return "Phone number must be at least 7 digits.";
+    }
+    
+    // Check maximum length (10 digits)
+    if (digits.length > 10) {
+      return "Phone number is too long (maximum 10 digits).";
+    }
+    
+    // If phone already has country code (starts with +), validate as is
+    if (cleaned.startsWith("+")) {
+      const result = validatePhone(cleaned);
+      return result.isValid ? undefined : result.error;
+    }
+    
+    // Combine country code with phone for comprehensive validation
+    const fullPhone = `${selectedCountryCode}${digits}`;
+    const result = validatePhone(fullPhone);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const validateServicesField = (services: string[]): string | undefined => {
+    if (services.length === 0) {
+      return "Please select at least one service.";
+    }
+    return undefined;
+  };
+
+  // Handle field blur (when user leaves field)
+  const handleBlur = (fieldName: 'name' | 'email' | 'phone', value: string) => {
+    setTouchedFields(prev => ({ ...prev, [fieldName]: true }));
+    
+    let error: string | undefined;
+    switch (fieldName) {
+      case 'name':
+        error = validateNameField(value);
+        break;
+      case 'email':
+        error = validateEmailField(value);
+        break;
+      case 'phone':
+        error = validatePhoneField(value);
+        break;
+    }
+    
+    setFieldErrors(prev => ({
+      ...prev,
+      [fieldName]: error,
+    }));
+  };
+
+  // Handle field change (real-time validation)
+  const handleFieldChange = (fieldName: 'name' | 'email' | 'phone', value: string) => {
+    // Only validate if field has been touched
+    if (touchedFields[fieldName]) {
+      let error: string | undefined;
+      switch (fieldName) {
+        case 'name':
+          error = validateNameField(value);
+          break;
+        case 'email':
+          error = validateEmailField(value);
+          break;
+        case 'phone':
+          error = validatePhoneField(value);
+          break;
+      }
+      
+      setFieldErrors(prev => ({
+        ...prev,
+        [fieldName]: error,
+      }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
     
     // Get form data
     const form = e.currentTarget;
@@ -126,23 +267,68 @@ const Contact = () => {
     const phone = (form.querySelector('[name="phone"]') as HTMLInputElement)?.value || "";
     const message = (form.querySelector('[name="message"]') as HTMLTextAreaElement)?.value || "";
 
-    // Validate required fields
-    if (!name.trim()) {
-      alert("Please enter your name.");
+    // Mark all fields as touched
+    setTouchedFields({
+      name: true,
+      email: true,
+      phone: true,
+    });
+
+    // Validate all fields using proper validation
+    const nameError = validateNameField(name);
+    const emailError = validateEmailField(email); // Email is optional
+    const phoneError = validatePhoneField(phone);
+    const servicesError = validateServicesField(selectedServices);
+
+    const errors = {
+      name: nameError,
+      email: emailError,
+      phone: phoneError,
+      services: servicesError,
+    };
+
+    setFieldErrors(errors);
+
+    // If there are any errors (except email which is optional), don't submit
+    if (nameError || phoneError || servicesError) {
+      setError("Please fix the errors below before submitting.");
       return;
     }
-    if (!email.trim()) {
-      alert("Please enter your email.");
+
+    setIsSubmitting(true);
+    
+    try {
+
+      // Check rate limit
+      const rateLimitCheck = checkRateLimit();
+      if (!rateLimitCheck.allowed) {
+        const resetTime = rateLimitCheck.resetTime!;
+        const minutes = Math.ceil((resetTime - Date.now()) / (60 * 1000));
+        setError(`Too many submissions. Please try again in ${minutes} minute${minutes !== 1 ? 's' : ''}.`);
+        setIsSubmitting(false);
       return;
     }
-    if (!phone.trim()) {
-      alert("Please enter your phone number.");
+
+      // Format phone number with country code
+      const formattedPhone = formatPhoneNumber(phone, selectedCountryCode);
+
+      // Submit form with rate limiting and email notifications (CAPTCHA commented out for now)
+      const result = await submitForm({
+        name,
+        email,
+        phone: formattedPhone,
+        message,
+        selectedServices,
+      });
+
+      if (!result.success) {
+        setError(result.error || "Failed to submit form. Please try again.");
+        setIsSubmitting(false);
       return;
     }
-    if (selectedServices.length === 0) {
-      alert("Please select at least one service.");
-      return;
-    }
+
+      // Send auto-reply email
+      await sendAutoReply(email, name);
 
     // All validations passed - show rocket animation
     setShowRocketAnimation(true);
@@ -151,9 +337,13 @@ const Contact = () => {
     setTimeout(() => {
       router.push("/thank-you");
     }, 2000);
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      setIsSubmitting(false);
+    }
   };
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="py-12 md:py-16 lg:py-20 px-3 sm:px-4 bg-gradient-hero text-white relative overflow-hidden">
+    <section id="contact" aria-labelledby="contact-heading" className="py-8 md:py-12 lg:py-16 px-3 sm:px-4 bg-gradient-hero text-white relative overflow-hidden">
       {/* Rocket Animation Overlay */}
       {showRocketAnimation && (
         <div className="fixed inset-0 z-[9999] bg-gradient-hero/95 backdrop-blur-sm flex items-center justify-center pointer-events-none">
@@ -173,7 +363,7 @@ const Contact = () => {
       <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start lg:items-center">
           <div className="space-y-3 sm:space-y-4 md:space-y-6 animate-fade-in">
-            <h2 id="contact-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            <h2 id="contact-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
               Ready to Grow Your Business?
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-primary-accent/90">
@@ -186,7 +376,7 @@ const Contact = () => {
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-accent" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-xs sm:text-sm md:text-base">Email Us</div>
+                  <div className="font-semibold text-xs sm:text-sm md:text-base text-white">Email Us</div>
                   <div className="text-primary-accent/80 text-xs sm:text-sm break-all">info@arootdigital.com</div>
                 </div>
               </div>
@@ -196,7 +386,7 @@ const Contact = () => {
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-accent" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-xs sm:text-sm md:text-base">Call Us</div>
+                  <div className="font-semibold text-xs sm:text-sm md:text-base text-white">Call Us</div>
                   <div className="text-primary-accent/80 text-xs sm:text-sm break-all">+1 (555) 123-4567</div>
                 </div>
               </div>
@@ -206,7 +396,7 @@ const Contact = () => {
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-accent" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-xs sm:text-sm md:text-base">Visit Us</div>
+                  <div className="font-semibold text-xs sm:text-sm md:text-base text-white">Visit Us</div>
                   <div className="text-primary-accent/80 text-xs sm:text-sm break-words">123 Digital Avenue, Marketing City</div>
                 </div>
               </div>
@@ -214,39 +404,9 @@ const Contact = () => {
           </div>
 
           <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 space-y-3 sm:space-y-4 md:space-y-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold">Get a Free Consultation</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Get a Free Consultation</h3>
             
             <form ref={formRef} className="space-y-3 sm:space-y-4" aria-label="Contact form" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="name" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-white">
-                  Your Name <span className="text-primary-accent">*</span>
-                </label>
-              <input
-                  id="name"
-                type="text"
-                placeholder="Your Name"
-                aria-label="Your name"
-                name="name"
-                required
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:border-primary-accent transition-colors"
-              />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-white">
-                  Your Email <span className="text-primary-accent">*</span>
-                </label>
-              <input
-                  id="email"
-                type="email"
-                placeholder="Your Email"
-                aria-label="Your email address"
-                name="email"
-                required
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:border-primary-accent transition-colors"
-              />
-              </div>
-              
               <div>
                 <label htmlFor="phone" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-white">
                   Your Phone <span className="text-primary-accent">*</span>
@@ -339,23 +499,129 @@ const Contact = () => {
                   </div>
                   
                   {/* Phone Input */}
+                  <div className="relative flex-1">
               <input
                     id="phone"
                 type="tel"
-                    placeholder="Phone Number"
+                      placeholder="Enter 10-digit mobile number"
                 aria-label="Your phone number"
                 name="phone"
                     required
-                    className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:border-primary-accent transition-colors"
-              />
+                      inputMode="numeric"
+                      maxLength={10}
+                      onBlur={(e) => handleBlur('phone', e.target.value)}
+                      onChange={(e) => {
+                        // Allow only numeric digits (no alphabets, spaces, dashes, etc.)
+                        const value = e.target.value.replace(/\D/g, '');
+                        e.target.value = value;
+                        handleFieldChange('phone', value);
+                      }}
+                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 text-sm sm:text-base rounded-lg bg-white/10 border text-white placeholder:text-white/60 focus:outline-none transition-colors ${
+                        touchedFields.phone
+                          ? fieldErrors.phone
+                            ? 'border-red-400 focus:border-red-400'
+                            : 'border-green-400 focus:border-green-400'
+                          : 'border-white/20 focus:border-primary-accent'
+                      }`}
+                    />
+                    {touchedFields.phone && !fieldErrors.phone && (
+                      <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-400" />
+                    )}
+                    {touchedFields.phone && fieldErrors.phone && (
+                      <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-400" />
+                    )}
                 </div>
+                </div>
+                {touchedFields.phone && fieldErrors.phone && (
+                  <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" />
+                    {fieldErrors.phone}
+                  </p>
+                )}
+              </div>
+              
+              <div>
+                <label htmlFor="name" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-white">
+                  Your Name <span className="text-primary-accent">*</span>
+                </label>
+                <div className="relative">
+              <input
+                  id="name"
+                type="text"
+                placeholder="Your Name"
+                aria-label="Your name"
+                name="name"
+                required
+                    onBlur={(e) => handleBlur('name', e.target.value)}
+                    onChange={(e) => handleFieldChange('name', e.target.value)}
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 text-sm sm:text-base rounded-lg bg-white/10 border text-white placeholder:text-white/60 focus:outline-none transition-colors ${
+                      touchedFields.name
+                        ? fieldErrors.name
+                          ? 'border-red-400 focus:border-red-400'
+                          : 'border-green-400 focus:border-green-400'
+                        : 'border-white/20 focus:border-primary-accent'
+                    }`}
+                  />
+                  {touchedFields.name && !fieldErrors.name && (
+                    <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-400" />
+                  )}
+                  {touchedFields.name && fieldErrors.name && (
+                    <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-400" />
+                  )}
+                </div>
+                {touchedFields.name && fieldErrors.name && (
+                  <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" />
+                    {fieldErrors.name}
+                  </p>
+                )}
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-white">
+                  Your Email
+                </label>
+                <div className="relative">
+              <input
+                  id="email"
+                type="email"
+                placeholder="Your Email (Optional)"
+                aria-label="Your email address"
+                name="email"
+                    onBlur={(e) => handleBlur('email', e.target.value)}
+                    onChange={(e) => {
+                      setFormData(prev => ({ ...prev, email: e.target.value }));
+                      handleFieldChange('email', e.target.value);
+                    }}
+                    value={formData.email}
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 text-sm sm:text-base rounded-lg bg-white/10 border text-white placeholder:text-white/60 focus:outline-none transition-colors ${
+                      touchedFields.email
+                        ? fieldErrors.email
+                          ? 'border-red-400 focus:border-red-400'
+                          : formData.email.trim() ? 'border-green-400 focus:border-green-400' : 'border-white/20 focus:border-primary-accent'
+                        : 'border-white/20 focus:border-primary-accent'
+                    }`}
+                  />
+                  {touchedFields.email && !fieldErrors.email && formData.email.trim() && (
+                    <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-400" />
+                  )}
+                  {touchedFields.email && fieldErrors.email && (
+                    <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-400" />
+                  )}
+                </div>
+                {touchedFields.email && fieldErrors.email && (
+                  <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" />
+                    {fieldErrors.email}
+                  </p>
+                )}
               </div>
 
               <div>
                 <label className="block text-xs sm:text-sm font-medium mb-2 sm:mb-3 text-white">
                   Select Services <span className="text-primary-accent">*</span>
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 ${fieldErrors.services ? 'border-2 border-red-400 rounded-lg p-2' : ''}`}>
                   {services.map((service) => (
                     <label
                       key={service}
@@ -371,6 +637,12 @@ const Contact = () => {
                     </label>
                   ))}
                 </div>
+                {fieldErrors.services && (
+                  <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" />
+                    {fieldErrors.services}
+                  </p>
+                )}
               </div>
               
               <div>
@@ -386,11 +658,24 @@ const Contact = () => {
                 className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:border-primary-accent transition-colors resize-none"
               />
               </div>
+              {/* Error Message */}
+              {error && (
+                <div className="flex items-center gap-2 p-3 bg-destructive/20 border border-destructive/40 rounded-lg text-white text-sm">
+                  <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
+
               <Button 
                 type="submit"
-                className="w-full bg-primary-accent text-primary hover:bg-primary-accent/90 text-base sm:text-lg font-semibold py-4 sm:py-5 md:py-6 rounded-full transition-all hover:scale-105"
+                disabled={isSubmitting}
+                className="w-full bg-primary-accent text-primary hover:bg-primary-accent/90 text-base sm:text-lg font-semibold py-4 sm:py-5 md:py-6 rounded-full transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                {isSubmitting ? (
+                  <>Submitting...</>
+                ) : (
+                  <>Send Message <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" /></>
+                )}
               </Button>
             </form>
           </div>

@@ -7,23 +7,29 @@ import {
   Share2,
   FileText,
   MousePointerClick,
-  Palette,
-  TrendingUp,
+  AppWindow,
+  BarChart,
   ChevronRight,
 } from "lucide-react";
 
 const services = [
   {
     icon: Search,
-    title: "SEO Optimization",
-    slug: "seo-optimization",
+    title: "Search Engine Optimization",
+    slug: "search-engine-optimization",
     description: "Boost your search rankings with data-driven SEO strategies.",
   },
   {
     icon: Share2,
-    title: "Social Media Marketing",
-    slug: "social-media-marketing",
-    description: "Engage your audience across all platforms with creative campaigns.",
+    title: "Digital Marketing",
+    slug: "digital-marketing",
+    description: "Comprehensive digital marketing solutions across all channels.",
+  },
+  {
+    icon: AppWindow,
+    title: "App Marketing",
+    slug: "app-marketing",
+    description: "Get your app discovered, downloaded, and used.",
   },
   {
     icon: FileText,
@@ -33,21 +39,15 @@ const services = [
   },
   {
     icon: MousePointerClick,
-    title: "PPC Advertising",
-    slug: "ppc-advertising",
+    title: "PPC/Paid Marketing",
+    slug: "ppc-paid-marketing",
     description: "Maximize ROI with strategic paid advertising campaigns.",
   },
   {
-    icon: Palette,
-    title: "Web Design",
-    slug: "web-design",
-    description: "Beautiful, responsive websites that combine aesthetics.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Analytics & Insights",
-    slug: "analytics-insights",
-    description: "Data-driven insights to make informed decisions.",
+    icon: BarChart,
+    title: "MarTech / Data Analytics",
+    slug: "martech-data-analytics",
+    description: "Data-driven insights and marketing technology solutions.",
   },
 ];
 
@@ -88,7 +88,7 @@ const ServicesDropdown = ({ isOpen, onClose }: ServicesDropdownProps) => {
   return (
     <div
       ref={dropdownRef}
-      className="absolute top-full left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] max-w-7xl bg-background/95 backdrop-blur-xl border border-primary/20 rounded-2xl shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300"
+      className="absolute top-full left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] max-w-7xl bg-background/95 backdrop-blur-xl border border-primary/20 rounded-2xl shadow-2xl z-50 overflow-hidden"
       style={{
         boxShadow: '0 20px 60px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(90, 13, 115, 0.1)',
         left: '50%',

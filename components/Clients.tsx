@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const clients = [
   { name: "TechStart Inc", logo: "/placeholder.svg" },
@@ -16,11 +17,21 @@ const clients = [
 const Clients = () => {
   // Duplicate clients array for seamless loop
   const duplicatedClients = [...clients, ...clients];
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <section id="clients" aria-labelledby="clients-heading" className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-primary-accent/8 via-primary/5 to-primary-accent/8 border-y border-primary/10 overflow-hidden">
+    <section 
+      ref={ref}
+      id="clients" 
+      aria-labelledby="clients-heading" 
+      className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-primary-accent/8 via-primary/5 to-primary-accent/8 border-y border-primary/10 overflow-hidden"
+    >
       <div className="container mx-auto max-w-7xl px-4">
-        <div className="text-center mb-10 md:mb-12 animate-fade-in">
+        <div className={`text-center mb-10 md:mb-12 transition-all duration-1000 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 -translate-y-10'
+        }`}>
           <h2 id="clients-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Our Clients
           </h2>
