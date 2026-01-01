@@ -87,21 +87,33 @@ export const phoneSchema = z
       
       // Check if it starts with + (international format)
       if (cleaned.startsWith("+")) {
-        // International format: + followed by 7-10 digits
-        const digits = cleaned.substring(1);
-        if (!/^\d{7,10}$/.test(digits)) {
+        // International format: + followed by country code + exactly 10 digits
+        const afterPlus = cleaned.substring(1);
+        // Extract only digits
+        const digits = afterPlus.replace(/\D/g, "");
+        
+        // Country codes are typically 1-3 digits, so total digits should be 11-13
+        // But we want exactly 10 digits for the phone number part (last 10 digits)
+        if (digits.length < 11 || digits.length > 13) {
+          return false;
+        }
+        
+        // Extract the last 10 digits (phone number part)
+        const phoneDigits = digits.slice(-10);
+        if (phoneDigits.length !== 10) {
           return false;
         }
       } else {
-        // National format: 7-10 digits
-        if (!/^\d{7,10}$/.test(cleaned)) {
+        // National format: exactly 10 digits
+        const digits = cleaned.replace(/\D/g, "");
+        if (digits.length !== 10) {
           return false;
         }
       }
       return true;
     },
     {
-      message: "Please enter a valid phone number (7-10 digits)",
+      message: "Phone number must be exactly 10 digits (excluding country code)",
     }
   )
   .refine(
@@ -165,18 +177,34 @@ export const phoneSchema = z
         return false; // More than 70% zeros 
       }
       
-      // Check for invalid starting digits (some countries don't allow certain starting digits)  
-      // This is a basic check - can be expanded based on country
-      const firstDigitNum = parseInt(digits[0]);
-      if (digits.length >= 10 && firstDigitNum === 0) {
-        // Most countries don't start with 0 in international format
-        return false;
+      // Check for invalid starting digits
+      // Phone number cannot start with 1, 2, 3, 4, or 5
+      // Extract the phone number part (last 10 digits if country code present, or all digits)
+      let phoneNumberDigits: string;
+      const cleaned = phone.replace(/[\s\-\(\)\.]/g, "");
+      if (cleaned.startsWith("+")) {
+        // International format: extract last 10 digits (phone number part)
+        const afterPlus = cleaned.substring(1);
+        const allDigits = afterPlus.replace(/\D/g, "");
+        phoneNumberDigits = allDigits.slice(-10);
+      } else {
+        // National format: use all digits (should be 10 digits)
+        phoneNumberDigits = digits;
+      }
+      
+      // Check if phone number starts with invalid digits (1, 2, 3, 4, or 5)
+      // Only check if we have at least 10 digits (valid phone number length)
+      if (phoneNumberDigits.length === 10) {
+        const firstDigit = parseInt(phoneNumberDigits[0]);
+        if (firstDigit >= 1 && firstDigit <= 5) {
+          return false; // Cannot start with 1, 2, 3, 4, or 5
+        }
       }
       
       return true;
     },
     {
-      message: "Phone number appears to be invalid. Please check and try again.",
+      message: "Phone number cannot start with 1, 2, 3, 4, or 5. Please enter a valid phone number.",
     }
   );
 

@@ -130,19 +130,15 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
       return "Phone number must contain only numeric digits.";
     }
     
-    // Check if starts with 12345...
-    if (digits.startsWith("12345")) {
-      return "Phone number cannot start with 12345.";
+    // Check exact length (10 digits excluding country code)
+    if (digits.length !== 10) {
+      return "Phone number must be exactly 10 digits (excluding country code).";
     }
     
-    // Check minimum length (7 digits)
-    if (digits.length < 7) {
-      return "Phone number must be at least 7 digits.";
-    }
-    
-    // Check maximum length (10 digits)
-    if (digits.length > 10) {
-      return "Phone number is too long (maximum 10 digits).";
+    // Check if starts with invalid digits (1, 2, 3, 4, or 5)
+    const firstDigit = parseInt(digits[0]);
+    if (firstDigit >= 1 && firstDigit <= 5) {
+      return "Phone number cannot start with 1, 2, 3, 4, or 5.";
     }
     
     // Combine country code with phone for comprehensive validation

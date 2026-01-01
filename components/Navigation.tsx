@@ -83,9 +83,7 @@ const Navigation = () => {
     { label: "Services", id: "services" },
     { label: "Our Work", id: "portfolio" },
     { label: "Industry", id: "industry" },
-    { label: "Blog", id: "blog", isRoute: true },
-    { label: "Privacy Policy", id: "privacy-policy", isRoute: true },
-    { label: "Terms & Conditions", id: "terms-conditions", isRoute: true }
+    { label: "Blog", id: "blog", isRoute: true }
   ];
 
   return (
