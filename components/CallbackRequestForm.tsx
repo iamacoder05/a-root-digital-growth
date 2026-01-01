@@ -281,13 +281,13 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
             <label htmlFor="callback-phone" className="block text-xs font-medium mb-1 text-foreground">
               Phone <span className="text-primary">*</span>
             </label>
-            <div className="flex gap-1">
+            <div className="flex gap-1.5 items-stretch w-full">
               {/* Country Code Selector */}
-              <div className="relative" ref={dropdownRef}>
+              <div className="relative flex-shrink-0" ref={dropdownRef}>
                 <button
                   type="button"
                   onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-                  className="flex items-center gap-1 px-2 py-2 rounded border border-border bg-background hover:bg-muted/50 focus:outline-none focus:border-primary transition-colors min-w-[70px]"
+                  className="flex items-center justify-center gap-0.5 px-1.5 py-2 rounded border border-border bg-background hover:bg-muted/50 focus:outline-none focus:border-primary transition-colors h-full w-[60px]"
                 >
                   <ReactCountryFlag
                     countryCode={getCountryCode(selectedCountryCode)}
@@ -299,7 +299,7 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
                     title={selectedCountryCode}
                   />
                   <span className="text-xs font-medium">{selectedCountryCode}</span>
-                  <ChevronDown className={`w-3 h-3 transition-transform ${isCountryDropdownOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-2.5 h-2.5 transition-transform ${isCountryDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
                 {/* Dropdown */}
@@ -362,7 +362,7 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
               </div>
 
               {/* Phone Input */}
-              <div className="relative flex-1">
+              <div className="relative flex-1 min-w-0">
                 <input
                   id="callback-phone"
                   type="tel"
@@ -381,7 +381,7 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
                     const error = validatePhoneField(e.target.value);
                     setFieldErrors(prev => ({ ...prev, phone: error }));
                   }}
-                  className={`flex-1 px-2 py-2 text-xs rounded border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors ${
+                  className={`w-full px-2 py-2 text-xs rounded border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors ${
                     fieldErrors.phone
                       ? 'border-red-500 focus:border-red-500'
                       : 'border-border focus:border-primary'
