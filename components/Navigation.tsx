@@ -17,6 +17,9 @@ const Navigation = () => {
   const [servicesDropdownTimeout, setServicesDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const [isPortfolioDropdownOpen, setIsPortfolioDropdownOpen] = useState(false);
   const [portfolioDropdownTimeout, setPortfolioDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
+  // Separate state for mobile dropdowns to avoid conflicts
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobilePortfolioOpen, setIsMobilePortfolioOpen] = useState(false);
   
   const phoneNumber = "+91 9561964239 ";
   const phoneNumberTel = "+919561964239"; // Format for tel: link
@@ -232,11 +235,19 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            type="button"
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+              // Reset mobile dropdowns when closing menu
+              if (isMobileMenuOpen) {
+                setIsMobileServicesOpen(false);
+                setIsMobilePortfolioOpen(false);
+              }
+            }}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
-            className="lg:hidden text-foreground"
+            className="lg:hidden text-foreground z-[101]"
           >
             {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
@@ -246,7 +257,7 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div 
             id="mobile-menu"
-            className="lg:hidden absolute top-24 md:top-28 left-0 right-0 bg-background shadow-2xl border-t-2 border-primary-accent/20 animate-fade-in z-50 max-h-[calc(100vh-6rem)] md:max-h-[calc(100vh-7rem)] overflow-y-auto"
+            className="lg:hidden fixed top-24 md:top-28 left-0 right-0 bg-background shadow-2xl border-t-2 border-primary-accent/20 z-[100] max-h-[calc(100vh-6rem)] md:max-h-[calc(100vh-7rem)] overflow-y-auto"
           >
             <div className="container mx-auto px-4 py-6 space-y-2">
               {navLinks.map((link) => {
@@ -254,14 +265,19 @@ const Navigation = () => {
                   return (
                     <div key={link.id} className="space-y-2">
                       <button
-                        onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setIsMobileServicesOpen(!isMobileServicesOpen);
+                        }}
                         className="block w-full text-left font-semibold text-lg text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3 flex items-center justify-between"
                       >
                         <span>{link.label}</span>
-                        <span className={`text-xl transform transition-transform ${isServicesDropdownOpen ? 'rotate-90' : ''}`}>›</span>
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
                       </button>
-                      {isServicesDropdownOpen && (
-                        <div className="pl-4 space-y-2 border-l-2 border-primary/20">
+                      {isMobileServicesOpen && (
+                        <div className="pl-4 space-y-2 border-l-2 border-primary/20 animate-fade-in">
                           {[
                             { icon: Search, title: "Search Engine Optimization", slug: "search-engine-optimization" },
                             { icon: Share2, title: "Digital Marketing", slug: "digital-marketing" },
@@ -277,7 +293,7 @@ const Navigation = () => {
                                 href={`/services/${service.slug}`}
                                 onClick={() => {
                                   setIsMobileMenuOpen(false);
-                                  setIsServicesDropdownOpen(false);
+                                  setIsMobileServicesOpen(false);
                                 }}
                                 className="block w-full text-left text-sm text-muted-foreground hover:text-primary hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-2 flex items-center gap-2"
                               >
@@ -295,14 +311,19 @@ const Navigation = () => {
                   return (
                     <div key={link.id} className="space-y-2">
                       <button
-                        onClick={() => setIsPortfolioDropdownOpen(!isPortfolioDropdownOpen)}
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setIsMobilePortfolioOpen(!isMobilePortfolioOpen);
+                        }}
                         className="block w-full text-left font-semibold text-lg text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3 flex items-center justify-between"
                       >
                         <span>{link.label}</span>
-                        <span className={`text-xl transform transition-transform ${isPortfolioDropdownOpen ? 'rotate-90' : ''}`}>›</span>
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isMobilePortfolioOpen ? 'rotate-180' : ''}`} />
                       </button>
-                      {isPortfolioDropdownOpen && (
-                        <div className="pl-4 space-y-2 border-l-2 border-primary/20">
+                      {isMobilePortfolioOpen && (
+                        <div className="pl-4 space-y-2 border-l-2 border-primary/20 animate-fade-in">
                           {[
                             { icon: Briefcase, title: "Portfolio", id: "portfolio" },
                             { icon: MessageSquare, title: "Testimonials", id: "testimonials" },
@@ -311,10 +332,11 @@ const Navigation = () => {
                             return (
                               <button
                                 key={item.id}
+                                type="button"
                                 onClick={() => {
                                   scrollToSection(item.id);
                                   setIsMobileMenuOpen(false);
-                                  setIsPortfolioDropdownOpen(false);
+                                  setIsMobilePortfolioOpen(false);
                                 }}
                                 className="block w-full text-left text-sm text-muted-foreground hover:text-primary hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-2 flex items-center gap-2"
                               >
@@ -331,6 +353,7 @@ const Navigation = () => {
                 return (
                 <button
                   key={link.id}
+                  type="button"
                     onClick={() => scrollToSection(link.id, link.isRoute)}
                   className="block w-full text-left font-semibold text-lg text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3"
                 >
