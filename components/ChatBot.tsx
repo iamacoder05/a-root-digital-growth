@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, X, Send, Rocket, Sparkles, Zap } from "lucide-react";
+import { validateEmail, validatePhone, validateName, formatPhoneNumber } from "@/lib/validation";
+import { submitForm as submitFormAPI, checkRateLimit, sendAutoReply } from "@/lib/formSubmission";
 
 interface ChatMessage {
   type: "bot" | "user";
@@ -32,16 +34,23 @@ const ChatBot = () => {
   const [userInput, setUserInput] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showServiceOptions, setShowServiceOptions] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<{
+    name?: string;
+    email?: string;
+    phone?: string;
+    services?: string;
+  }>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const availableServices = [
-    "SEO Optimization",
-    "Social Media Marketing",
+    "Search Engine Optimization",
+    "Digital Marketing",
+    "App Marketing",
     "Content Marketing",
-    "PPC Advertising",
-    "Web Design",
-    "Analytics & Insights",
+    "PPC/Paid Marketing",
+    "MarTech / Data Analytics",
+    "Web Design and Development",
   ];
 
   const scrollToBottom = () => {
@@ -104,17 +113,20 @@ const ChatBot = () => {
     // Read current services from state
     const currentServices = formData.services;
     
-    if (currentServices.length === 0) {
+    const servicesError = validateServicesField(currentServices);
+    if (servicesError) {
+      setFieldErrors((prev) => ({ ...prev, services: servicesError }));
       setMessages((prev) => [
         ...prev,
         {
           type: "bot",
-          message: "Please select at least one service to continue.",
+          message: `❌ ${servicesError}\n\nPlease select at least one service to continue.`,
         },
       ]);
       return;
     }
     
+    setFieldErrors((prev) => ({ ...prev, services: undefined }));
     setShowServiceOptions(false);
     setCurrentStep(4);
     setMessages((prev) => [
@@ -126,43 +138,141 @@ const ChatBot = () => {
     ]);
   };
 
+  // Validation functions
+  const validateNameField = (name: string): string | undefined => {
+    const result = validateName(name);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const validateEmailField = (email: string): string | undefined => {
+    // Email is optional, only validate if provided
+    if (!email.trim()) {
+      return undefined; // No error if empty
+    }
+    const result = validateEmail(email);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const validatePhoneField = (phone: string, countryCode: string = "+1"): string | undefined => {
+    if (!phone.trim()) {
+      return "Please enter your phone number.";
+    }
+    
+    // Remove spaces, dashes, parentheses for validation
+    const cleaned = phone.replace(/[\s\-\(\)\.]/g, "");
+    
+    // Extract only digits
+    const digits = cleaned.replace(/\D/g, "");
+    
+    // Check if empty after removing non-digits
+    if (digits.length === 0) {
+      return "Phone number must contain only numeric digits.";
+    }
+    
+    // Check exact length (10 digits excluding country code)
+    if (digits.length !== 10) {
+      return "Phone number must be exactly 10 digits (excluding country code).";
+    }
+    
+    // Check if starts with invalid digits (1, 2, 3, 4, or 5)
+    const firstDigit = parseInt(digits[0]);
+    if (firstDigit >= 1 && firstDigit <= 5) {
+      return "Phone number cannot start with 1, 2, 3, 4, or 5.";
+    }
+    
+    // Combine country code with phone for comprehensive validation
+    const fullPhone = `${countryCode}${digits}`;
+    const result = validatePhone(fullPhone);
+    return result.isValid ? undefined : result.error;
+  };
+
+  const validateServicesField = (services: string[]): string | undefined => {
+    if (services.length === 0) {
+      return "Please select at least one service.";
+    }
+    return undefined;
+  };
+
   const processBotResponse = (userMessage: string) => {
     switch (currentStep) {
       case 0: // Name
+        const nameError = validateNameField(userMessage);
+        if (nameError) {
+          setFieldErrors((prev) => ({ ...prev, name: nameError }));
+          setMessages((prev) => [
+            ...prev,
+            {
+              type: "bot",
+              message: `❌ ${nameError}\n\nPlease provide a valid name.`,
+            },
+          ]);
+          return;
+        }
+        setFieldErrors((prev) => ({ ...prev, name: undefined }));
         setFormData((prev) => ({ ...prev, name: userMessage }));
         setCurrentStep(1);
         setMessages((prev) => [
           ...prev,
           {
             type: "bot",
-            message: `Nice to meet you, ${userMessage}! 😊\n\nWhat's your email address?`,
+            message: `Nice to meet you, ${userMessage}! 😊\n\nWhat's your email address? (Optional - you can type "skip" if you prefer)`,
           },
         ]);
         break;
 
       case 1: // Email
-        if (!userMessage.includes("@")) {
+        if (userMessage.toLowerCase().trim() === "skip") {
+          setFormData((prev) => ({ ...prev, email: "" }));
+          setFieldErrors((prev) => ({ ...prev, email: undefined }));
+          setCurrentStep(2);
           setMessages((prev) => [
             ...prev,
             {
               type: "bot",
-              message: "Hmm, that doesn't look like a valid email. Could you please provide a valid email address?",
+              message: "No problem! Now, what's your phone number? (Please include country code, e.g., +91 6789012345)",
             },
           ]);
           return;
         }
+        
+        const emailError = validateEmailField(userMessage);
+        if (emailError) {
+          setFieldErrors((prev) => ({ ...prev, email: emailError }));
+          setMessages((prev) => [
+            ...prev,
+            {
+              type: "bot",
+              message: `❌ ${emailError}\n\nPlease provide a valid email address or type "skip" to continue without email.`,
+            },
+          ]);
+          return;
+        }
+        setFieldErrors((prev) => ({ ...prev, email: undefined }));
         setFormData((prev) => ({ ...prev, email: userMessage }));
         setCurrentStep(2);
         setMessages((prev) => [
           ...prev,
           {
             type: "bot",
-            message: "Great! Now, what's your phone number? (Please include country code, e.g., +91 1234567890)",
+            message: "Great! Now, what's your phone number?\n\n📱 Requirements:\n• Must include country code (e.g., +91)\n• Must be exactly 10 digits (excluding country code)\n• Cannot start with 1, 2, 3, 4, or 5\n\nExample: +91 6789012345",
           },
         ]);
         break;
 
       case 2: // Phone
+        const phoneError = validatePhoneField(userMessage, formData.countryCode);
+        if (phoneError) {
+          setFieldErrors((prev) => ({ ...prev, phone: phoneError }));
+          setMessages((prev) => [
+            ...prev,
+            {
+              type: "bot",
+              message: `❌ ${phoneError}\n\n📱 Please provide a valid phone number:\n• Must include country code (e.g., +91)\n• Must be exactly 10 digits (excluding country code)\n• Cannot start with 1, 2, 3, 4, or 5\n\nExample: +91 6789012345`,
+            },
+          ]);
+          return;
+        }
+        setFieldErrors((prev) => ({ ...prev, phone: undefined }));
         setFormData((prev) => ({ ...prev, phone: userMessage }));
         setCurrentStep(3);
         setShowServiceOptions(true);
@@ -204,6 +314,38 @@ const ChatBot = () => {
   };
 
   const submitForm = async () => {
+    // Validate all fields before submission
+    const nameError = validateNameField(formData.name);
+    const emailError = validateEmailField(formData.email);
+    const phoneError = validatePhoneField(formData.phone, formData.countryCode);
+    const servicesError = validateServicesField(formData.services);
+
+    const errors = {
+      name: nameError,
+      email: emailError,
+      phone: phoneError,
+      services: servicesError,
+    };
+
+    setFieldErrors(errors);
+
+    // If there are any errors (except email which is optional), don't submit
+    if (nameError || phoneError || servicesError) {
+      const errorMessages = [];
+      if (nameError) errorMessages.push(`Name: ${nameError}`);
+      if (phoneError) errorMessages.push(`Phone: ${phoneError}`);
+      if (servicesError) errorMessages.push(`Services: ${servicesError}`);
+      
+      setMessages((prev) => [
+        ...prev,
+        {
+          type: "bot",
+          message: `❌ Please fix the following errors:\n\n${errorMessages.join("\n")}\n\nPlease provide the correct information.`,
+        },
+      ]);
+      return;
+    }
+
     setIsSubmitting(true);
     setMessages((prev) => [
       ...prev,
@@ -213,19 +355,71 @@ const ChatBot = () => {
       },
     ]);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
+    try {
+      // Check rate limit
+      const rateLimitCheck = checkRateLimit();
+      if (!rateLimitCheck.allowed) {
+        const resetTime = rateLimitCheck.resetTime!;
+        const minutes = Math.ceil((resetTime - Date.now()) / (60 * 1000));
+        setMessages((prev) => [
+          ...prev,
+          {
+            type: "bot",
+            message: `⏰ Too many submissions. Please try again in ${minutes} minute${minutes !== 1 ? 's' : ''}.`,
+          },
+        ]);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Format phone number with country code
+      const formattedPhone = formatPhoneNumber(formData.phone, formData.countryCode);
+
+      // Submit form
+      const result = await submitFormAPI({
+        name: formData.name,
+        email: formData.email || undefined,
+        phone: formattedPhone,
+        message: formData.message || "",
+        selectedServices: formData.services,
+      });
+
+      if (!result.success) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            type: "bot",
+            message: `❌ ${result.error || "Failed to submit form. Please try again."}`,
+          },
+        ]);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send auto-reply email if email is provided
+      if (formData.email) {
+        await sendAutoReply(formData.email, formData.name);
+      }
+
       setIsSubmitting(false);
       setMessages((prev) => [
         ...prev,
         {
           type: "bot",
-          message: `✅ All done! Our team has received your information:\n\n• Name: ${formData.name}\n• Email: ${formData.email}\n• Phone: ${formData.phone}\n• Services: ${formData.services.join(", ")}\n\nWe'll reach out to you immediately! Thank you for choosing ARoot Digital Growth! 🎉`,
+          message: `✅ All done! Our team has received your information:\n\n• Name: ${formData.name}\n${formData.email ? `• Email: ${formData.email}\n` : ''}• Phone: ${formData.phone}\n• Services: ${formData.services.join(", ")}\n\nWe'll reach out to you immediately! Thank you for choosing ARoot Digital Growth! 🎉`,
         },
       ]);
       setCurrentStep(6);
-    }, 2000);
+    } catch (err) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          type: "bot",
+          message: "❌ An unexpected error occurred. Please try again.",
+        },
+      ]);
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -248,6 +442,7 @@ const ChatBot = () => {
         message: "",
       });
       setUserInput("");
+      setFieldErrors({});
     }, 300);
   };
 
@@ -306,7 +501,7 @@ const ChatBot = () => {
         ) : (
           <>
             <Image
-              src="/assets/raya-img.png"
+              src="/assets/raya-img.webp"
               alt="RAYA"
               width={64}
               height={64}
@@ -336,7 +531,7 @@ const ChatBot = () => {
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center relative group flex-shrink-0 overflow-hidden">
                 <div className="absolute inset-0 bg-white/30 rounded-full animate-ping" />
                 <Image
-                  src="/assets/raya-img.png"
+                  src="/assets/raya-img.webp"
                   alt="RAYA"
                   width={48}
                   height={48}
@@ -379,7 +574,7 @@ const ChatBot = () => {
                 {msg.type === "bot" && (
                   <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-2 flex-shrink-0 shadow-md overflow-hidden">
                     <Image
-                      src="/assets/raya-img.png"
+                      src="/assets/raya-img.webp"
                       alt="RAYA"
                       width={32}
                       height={32}
@@ -414,7 +609,7 @@ const ChatBot = () => {
               <div className="flex justify-start animate-message-slide-in">
                 <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-2 flex-shrink-0 shadow-md overflow-hidden">
                   <Image
-                    src="/assets/raya-img.png"
+                    src="/assets/raya-img.webp"
                     alt="RAYA"
                     width={32}
                     height={32}

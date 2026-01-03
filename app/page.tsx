@@ -1,14 +1,34 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import About from "@/components/About";
-import Portfolio from "@/components/Portfolio";
-import Clients from "@/components/Clients";
-import LatestBlog from "@/components/LatestBlog";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import Contact from "@/components/Contact";
-import SectionDivider from "@/components/SectionDivider";
+import ScrollHandler from "@/components/ScrollHandler";
 import type { Metadata } from "next";
+
+// Lazy load below-the-fold components
+const About = dynamic(() => import("@/components/About"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Portfolio = dynamic(() => import("@/components/Portfolio"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Clients = dynamic(() => import("@/components/Clients"), {
+  loading: () => <div className="min-h-[300px]" />,
+});
+const LatestBlog = dynamic(() => import("@/components/LatestBlog"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Testimonials = dynamic(() => import("@/components/Testimonials"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const FAQ = dynamic(() => import("@/components/FAQ"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Contact = dynamic(() => import("@/components/Contact"), {
+  loading: () => <div className="min-h-[600px]" />,
+});
+const SectionDivider = dynamic(() => import("@/components/SectionDivider"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: {
@@ -133,6 +153,7 @@ const structuredData = {
 export default function Home() {
   return (
     <>
+      <ScrollHandler />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

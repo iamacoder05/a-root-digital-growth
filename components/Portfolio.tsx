@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, TrendingUp } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import ScrollToSectionLink from "@/components/ScrollToSectionLink";
 
 const projects = [
   {
@@ -167,12 +168,13 @@ const Portfolio = () => {
           <p className="text-[43px] font-bold text-primary mb-6">
             Ready to become our next success story?
           </p>
-          <a
-            href="#contact"
-            className="inline-block bg-gradient-primary text-white font-semibold px-8 py-4 rounded-full hover:opacity-90 transition-opacity"
+          <ScrollToSectionLink
+            href="/"
+            sectionId="contact"
+            className="inline-block bg-gradient-primary text-white font-semibold px-8 py-4 rounded-full hover:opacity-90 transition-opacity cursor-pointer"
           >
             Start Your Project
-          </a>
+          </ScrollToSectionLink>
         </div>
       </div>
     </section>

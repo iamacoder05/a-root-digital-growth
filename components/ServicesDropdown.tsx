@@ -10,6 +10,7 @@ import {
   AppWindow,
   BarChart,
   ChevronRight,
+  Palette,
 } from "lucide-react";
 
 const services = [
@@ -48,6 +49,12 @@ const services = [
     title: "MarTech / Data Analytics",
     slug: "martech-data-analytics",
     description: "Data-driven insights and marketing technology solutions.",
+  },
+  {
+    icon: Palette,
+    title: "Web Design and Development",
+    slug: "web-design",
+    description: "Stunning, user-friendly websites that convert visitors.",
   },
 ];
 
@@ -97,7 +104,7 @@ const ServicesDropdown = ({ isOpen, onClose }: ServicesDropdownProps) => {
     >
       {/* Services Grid with enhanced design */}
       <div className="p-3 md:p-4 lg:p-5 bg-gradient-to-b from-background to-muted/20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3 lg:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 xl:grid-cols-7 gap-2 md:gap-3 lg:gap-3 xl:gap-4">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (

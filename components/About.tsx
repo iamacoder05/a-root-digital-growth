@@ -79,9 +79,9 @@ const About = () => {
             )}
 
             <div className="space-y-4 relative z-10">
-              {benefits.map((benefit, index) => (
-                <div 
-                  key={index}
+            {benefits.map((benefit, index) => (
+              <div 
+                key={index}
                   onMouseEnter={() => setHoveredIndex(index)}
                   className={`group/item relative flex items-start gap-4 p-4 rounded-lg bg-background/50 backdrop-blur-sm transition-all duration-500 cursor-pointer ${
                     isVisible 
@@ -161,8 +161,8 @@ const About = () => {
                   {hoveredIndex === index && (
                     <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-100 pointer-events-none animate-shimmer"></div>
                   )}
-                </div>
-              ))}
+              </div>
+            ))}
             </div>
           </div>
         </div>

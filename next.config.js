@@ -23,6 +23,12 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: true,
   reactStrictMode: true,
+  // Optimize production builds
+  swcMinify: true,
+  // Reduce JavaScript bundle size
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
 }
 
 module.exports = nextConfig

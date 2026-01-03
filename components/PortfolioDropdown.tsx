@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Briefcase, MessageSquare, ChevronRight } from "lucide-react";
+import { scrollToElement, scrollToElementAfterDelay } from "@/lib/scrollUtils";
 
 interface PortfolioDropdownProps {
   isOpen: boolean;
@@ -24,6 +25,7 @@ const portfolioItems = [
 
 const PortfolioDropdown = ({ isOpen, onClose }: PortfolioDropdownProps) => {
   const router = useRouter();
+  const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -49,21 +51,11 @@ const PortfolioDropdown = ({ isOpen, onClose }: PortfolioDropdownProps) => {
   }, [isOpen, onClose]);
 
   const handleItemClick = (id: string) => {
-    const pathname = window.location.pathname;
-    
     if (pathname !== '/') {
-      router.push(`/#${id}`);
+      router.push('/');
+      scrollToElementAfterDelay(id, 100);
     } else {
-      const element = document.getElementById(id);
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      }
+      scrollToElement(id);
     }
     onClose();
   };

@@ -124,12 +124,13 @@ const Contact = () => {
   });
 
   const services = [
-    "SEO Optimization",
-    "Social Media Marketing",
+    "Search Engine Optimization",
+    "Digital Marketing",
+    "App Marketing",
     "Content Marketing",
-    "PPC Advertising",
-    "Web Design",
-    "Analytics & Insights"
+    "PPC/Paid Marketing",
+    "MarTech / Data Analytics",
+    "Web Design and Development"
   ];
 
   const handleServiceToggle = (service: string) => {
@@ -383,7 +384,7 @@ const Contact = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="font-semibold text-xs sm:text-sm md:text-base text-white">Call Us</div>
-                  <div className="text-primary-accent/80 text-xs sm:text-sm break-all">+1 (555) 123-4567</div>
+                  <div className="text-primary-accent/80 text-xs sm:text-sm break-all">+91 9561964239</div>
                 </div>
               </div>
               
@@ -615,9 +616,9 @@ const Contact = () => {
 
               <div>
                 <label className="block text-xs sm:text-sm font-medium mb-2 sm:mb-3 text-white">
-                  Select Services <span className="text-primary-accent">*</span>
+                  Which services are you interested in? Please select one or more services below: <span className="text-primary-accent">*</span>
                 </label>
-                <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 ${fieldErrors.services ? 'border-2 border-red-400 rounded-lg p-2' : ''}`}>
+                <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 ${fieldErrors.services ? 'border-2 border-red-400 rounded-lg p-2' : ''}`}>
                   {services.map((service) => (
                     <label
                       key={service}

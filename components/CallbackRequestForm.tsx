@@ -222,7 +222,7 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
       // Send auto-reply email only if email is provided
       if (email.trim()) {
         await sendAutoReply(email, name);
-      }
+    }
 
     // All validations passed - show rocket animation
     setShowRocketAnimation(true);
@@ -363,12 +363,12 @@ const CallbackRequestForm = ({ serviceName }: CallbackRequestFormProps) => {
 
               {/* Phone Input */}
               <div className="relative flex-1 min-w-0">
-                <input
-                  id="callback-phone"
-                  type="tel"
+              <input
+                id="callback-phone"
+                type="tel"
                   placeholder="Enter 10-digit mobile number"
-                  name="phone"
-                  required
+                name="phone"
+                required
                   inputMode="numeric"
                   maxLength={10}
                   value={formData.phone}

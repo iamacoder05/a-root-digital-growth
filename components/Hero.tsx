@@ -1,29 +1,35 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket } from "lucide-react";
 import Image from "next/image";
+import { scrollToElement } from "@/lib/scrollUtils";
 
 const Hero = () => {
+  const router = useRouter();
+  
   const services = [
-    "Our Services",
-    "SEO Optimization",
-    "Social Media Marketing",
-    "Content Marketing",
-    "PPC Advertising",
-    "Web Design",
-    "Analytics & Insights"
+    { name: "Our Services", slug: null },
+    { name: "Search Engine Optimization", slug: "search-engine-optimization" },
+    { name: "Digital Marketing", slug: "digital-marketing" },
+    { name: "App Marketing", slug: "app-marketing" },
+    { name: "Content Marketing", slug: "content-marketing" },
+    { name: "PPC/Paid Marketing", slug: "ppc-paid-marketing" },
+    { name: "MarTech / Data Analytics", slug: "martech-data-analytics" },
+    { name: "Web Design and Development", slug: "web-design" }
   ];
 
   const serviceImages = [
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80", // Our Services - general digital growth
-    "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=800&h=600&fit=crop&q=80", // SEO Optimization - search/analytics
-    "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop&q=80", // Social Media Marketing - social media screens
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80", // Content Marketing - content creation
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // PPC Advertising - advertising/analytics
-    "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=600&fit=crop&q=80", // Web Design - web design/development
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80"  // Analytics & Insights - analytics dashboard
+    "https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=800&h=600&fit=crop&q=80", // Search Engine Optimization - search/analytics
+    "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop&q=80", // Digital Marketing - social media screens
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80", // App Marketing - app development
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // Content Marketing - content creation
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // PPC/Paid Marketing - advertising/analytics
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // MarTech / Data Analytics - analytics dashboard
+    "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=600&fit=crop&q=80"  // Web Design - web design/development
   ];
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
   const [isRocketAnimating, setIsRocketAnimating] = useState(false);
@@ -60,7 +66,7 @@ const Hero = () => {
       clearTimeout(initialDelay);
       if (intervalId) clearInterval(intervalId);
     };
-  }, [isHovered]);
+  }, [isHovered, services.length]);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24">
@@ -72,6 +78,10 @@ const Hero = () => {
           fill
           className="object-cover"
           priority
+          quality={85}
+          sizes="100vw"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
         />
         {/* Dark overlay with subtle purple tint - more opaque to reduce color conflicts */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"></div>
@@ -100,16 +110,7 @@ const Hero = () => {
                 size="lg" 
                 className="bg-primary-accent text-primary hover:bg-primary-accent/90 text-sm sm:text-base md:text-lg font-semibold px-5 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-full transition-all hover:scale-105 w-full sm:w-auto"
                 onClick={() => {
-                  const contactSection = document.getElementById("contact");
-                  if (contactSection) {
-                    const offset = 80;
-                    const elementPosition = contactSection.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: "smooth"
-                    });
-                  }
+                  scrollToElement("contact");
                 }}
               >
                 Get Started <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
@@ -121,15 +122,13 @@ const Hero = () => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 onClick={() => {
-                  const servicesSection = document.getElementById("services");
-                  if (servicesSection) {
-                    const offset = 80;
-                    const elementPosition = servicesSection.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: "smooth"
-                    });
+                  const currentService = services[currentServiceIndex];
+                  if (currentService.slug) {
+                    // Navigate to specific service page
+                    router.push(`/services/${currentService.slug}`);
+                  } else {
+                    // Navigate to services section if "Our Services" is selected
+                    scrollToElement("services");
                   }
                 }}
               >
@@ -153,7 +152,7 @@ const Hero = () => {
                           : 'translate-y-0 opacity-100'
                       }`}
                     >
-                      {services[currentServiceIndex]}
+                      {services[currentServiceIndex].name}
                     </span>
                   </span>
                 </span>
@@ -184,16 +183,7 @@ const Hero = () => {
       {/* Rocket Scroll Indicator */}
       <button
         onClick={() => {
-          const servicesSection = document.getElementById("services");
-          if (servicesSection) {
-            const offset = 80;
-            const elementPosition = servicesSection.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
-          }
+          scrollToElement("services");
         }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 transition-all duration-300 cursor-pointer group"
         aria-label="Scroll to services"

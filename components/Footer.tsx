@@ -11,10 +11,12 @@ const Footer = () => {
             <Image 
               src="/assets/ar-logo.png" 
               alt="A-Root Digital Growth - Digital Marketing Agency Logo" 
-              width={320} 
-              height={320} 
+              width={256}
+              height={256}
+              sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
               loading="lazy"
               className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain"
+              quality={85}
             />
           </div>
 

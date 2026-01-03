@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, CheckCircle, Star, Users, Target, Award, TrendingUp, Share2, ImageIcon, Building2, Brain, Sparkles, ShoppingCart, Smartphone, AppWindow, FileText, MapPin, Globe, Calendar, ArrowRight, BarChart } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Star, Users, Target, Award, TrendingUp, Share2, ImageIcon, Building2, Brain, Sparkles, ShoppingCart, Smartphone, AppWindow, FileText, MapPin, Globe, Calendar, ArrowRight, BarChart, Palette } from 'lucide-react';
 import CallbackRequestForm from '@/components/CallbackRequestForm';
 import ToolsWeUse from '@/components/ToolsWeUse';
 import SectionDivider from '@/components/SectionDivider';
 import ServiceFAQ from '@/components/ServiceFAQ';
+import ScrollToSectionLink from '@/components/ScrollToSectionLink';
 import { Card } from '@/components/ui/card';
 import {
   Breadcrumb,
@@ -138,6 +139,7 @@ const serviceToBlogCategory: Record<string, string> = {
   'content-marketing': 'Content Marketing',
   'ppc-paid-marketing': 'PPC',
   'martech-data-analytics': 'Analytics',
+  'web-design': 'Web Design and Development',
   'seo-services-dubai': 'SEO',
   'seo-services-malaysia': 'SEO',
   'digital-services-singapore': 'Digital Marketing',
@@ -315,6 +317,35 @@ const serviceDetails = {
       { label: 'Data Accuracy', value: '99.5%', icon: Award },
       { label: 'Insight Implementation', value: '95%', icon: CheckCircle },
       { label: 'Revenue Growth', value: '180%', icon: TrendingUp }
+    ]
+  },
+  'web-design': {
+    title: 'Web Design and Development',
+    icon: 'Palette',
+    image: '/assets/SEO.jpg',
+    description: 'Stunning, user-friendly websites that convert visitors into customers.',
+    longDescription: 'Our web design and development service creates beautiful, responsive, and conversion-focused websites that engage your audience and drive business results. We combine modern design principles with user experience best practices and robust development to deliver websites that not only look great but also perform exceptionally well.',
+    features: [
+      'Responsive web design and development',
+      'User experience (UX) optimization',
+      'User interface (UI) design',
+      'Front-end and back-end development',
+      'Mobile-first approach',
+      'Conversion rate optimization',
+      'Website redesign and updates',
+      'Performance optimization and maintenance'
+    ],
+    benefits: [
+      'Improved user engagement',
+      'Higher conversion rates',
+      'Better brand perception',
+      'Mobile-friendly experience',
+      'Competitive advantage'
+    ],
+    stats: [
+      { label: 'Conversion Rate Improvement', value: '120%', icon: TrendingUp },
+      { label: 'User Engagement', value: '85%', icon: Users },
+      { label: 'Client Satisfaction', value: '98%', icon: Star }
     ]
   },
   'seo-services-dubai': {
@@ -800,6 +831,32 @@ const serviceFAQs: Record<string, Array<{ question: string; answer: string }>> =
       question: "Can you help businesses outside Pune targeting Pune market?",
       answer: "Absolutely! We help businesses nationwide that want to target the Pune market. We can optimize your website for Pune-specific searches, create location-specific content, implement geo-targeting, and create strategies to attract Pune customers."
     }
+  ],
+  'web-design': [
+    {
+      question: "What is included in your web design service?",
+      answer: "Our comprehensive web design service includes responsive web design, user experience (UX) optimization, user interface (UI) design, mobile-first approach, conversion rate optimization, website redesign and updates, and performance optimization. We create websites that are both visually appealing and highly functional."
+    },
+    {
+      question: "Do you design websites for all industries?",
+      answer: "Yes! We design websites for businesses across all industries including e-commerce, healthcare, finance, technology, real estate, education, and more. Our team adapts design styles and functionality to match your industry requirements and target audience preferences."
+    },
+    {
+      question: "How long does it take to design a website?",
+      answer: "The timeline depends on the scope and complexity of your project. A simple website typically takes 2-4 weeks, while more complex sites with custom features can take 6-12 weeks. We'll provide a detailed timeline during our initial consultation based on your specific requirements."
+    },
+    {
+      question: "Will my website be mobile-responsive?",
+      answer: "Absolutely! All our websites are designed with a mobile-first approach, ensuring they look and function perfectly on all devices including smartphones, tablets, and desktops. Mobile responsiveness is a core requirement for all our web design projects."
+    },
+    {
+      question: "Can you redesign my existing website?",
+      answer: "Yes! We offer website redesign services to modernize your existing site, improve user experience, enhance functionality, and boost conversions. We'll analyze your current site and create a redesign plan that addresses your specific goals and challenges."
+    },
+    {
+      question: "Do you provide ongoing website maintenance?",
+      answer: "Yes, we offer ongoing website maintenance services including content updates, security patches, performance monitoring, and technical support. We can create a maintenance plan tailored to your needs to keep your website running smoothly and securely."
+    }
   ]
 };
 
@@ -857,7 +914,9 @@ export default function ServicePage({ params }: ServicePageProps) {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/#services">Services</Link>
+                <ScrollToSectionLink href="/" sectionId="services">
+                  Services
+                </ScrollToSectionLink>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
@@ -1191,12 +1250,13 @@ export default function ServicePage({ params }: ServicePageProps) {
             While you wait for our callback, explore how our other digital marketing services can complement your {service.title.toLowerCase()} strategy.
           </p>
           <div className="flex justify-center">
-            <Link
-              href="/#services"
+            <ScrollToSectionLink
+              href="/"
+              sectionId="services"
               className="inline-flex items-center justify-center px-6 py-3 border border-border text-foreground font-semibold rounded-lg hover:bg-muted transition-all duration-300 text-sm"
             >
               View All Services
-            </Link>
+            </ScrollToSectionLink>
           </div>
         </div>
       </section>

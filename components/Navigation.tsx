@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { Menu, X, Phone, Search, Share2, FileText, MousePointerClick, AppWindow, BarChart, ChevronDown, Briefcase, MessageSquare } from "lucide-react";
+import { Menu, X, Phone, Search, Share2, FileText, MousePointerClick, AppWindow, BarChart, ChevronDown, Briefcase, MessageSquare, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import ServicesDropdown from "@/components/ServicesDropdown";
 import PortfolioDropdown from "@/components/PortfolioDropdown";
+import { scrollToElement, scrollToElementAfterDelay } from "@/lib/scrollUtils";
 
 const Navigation = () => {
   const router = useRouter();
@@ -28,21 +29,9 @@ const Navigation = () => {
   const isHomePage = pathname === '/';
 
   useEffect(() => {
-    // Handle hash navigation when landing on homepage with hash
-    if (isHomePage && window.location.hash) {
-      const hash = window.location.hash.substring(1);
-      setTimeout(() => {
-        const element = document.getElementById(hash);
-        if (element) {
-          const offset = 80;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
-        }
-      }, 100);
+    // Remove hash from URL if present
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
     }
   }, [isHomePage]);
 
@@ -61,23 +50,16 @@ const Navigation = () => {
 
     // If not on homepage, navigate to homepage first, then scroll
     if (pathname !== '/') {
-      router.push(`/#${sectionId}`);
+      router.push('/');
       setIsMobileMenuOpen(false);
+      // Wait for navigation to complete, then scroll
+      scrollToElementAfterDelay(sectionId, 100);
       return;
     }
 
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-    setIsMobileMenuOpen(false);
+    scrollToElement(sectionId, () => {
+      setIsMobileMenuOpen(false);
+    });
   };
 
   const navLinks = [
@@ -107,10 +89,12 @@ const Navigation = () => {
               <Image
                 src="/assets/ar-logo.png"
                 alt="A-Root Digital Growth Logo"
-                width={120}
-                height={120}
+                width={112}
+                height={112}
+                sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
                 priority
                 className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain transition-all duration-300"
+                quality={85}
               />
             </div>
             <span className="font-bold text-base sm:text-lg hidden sm:block text-foreground">
@@ -285,6 +269,7 @@ const Navigation = () => {
                             { icon: FileText, title: "Content Marketing", slug: "content-marketing" },
                             { icon: MousePointerClick, title: "PPC/Paid Marketing", slug: "ppc-paid-marketing" },
                             { icon: BarChart, title: "MarTech / Data Analytics", slug: "martech-data-analytics" },
+                            { icon: Palette, title: "Web Design and Development", slug: "web-design" },
                           ].map((service) => {
                             const IconComponent = service.icon;
                             return (

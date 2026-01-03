@@ -1,13 +1,26 @@
+import dynamic from "next/dynamic";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Providers } from "./providers";
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import ChatBot from "@/components/ChatBot";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
+
+// Lazy load non-critical components
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <footer className="min-h-[200px]" />,
+  ssr: true,
+});
+// Defer ChatBot and WhatsAppButton until after initial render
+const ChatBot = dynamic(() => import("@/components/ChatBot"), {
+  ssr: false,
+  loading: () => null,
+});
+const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://arootdigital.com'),
@@ -90,6 +103,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to external domains for faster loading */}
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        
+        {/* Resource hints for performance */}
+        <link rel="prefetch" href="/assets/raya-img.webp" as="image" />
+        
         <link rel="canonical" href="https://arootdigital.com" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -120,6 +140,7 @@ export default function RootLayout({
             <Sonner />
             {children}
             <Footer />
+            {/* Defer ChatBot and WhatsAppButton - loaded client-side only */}
             <ChatBot />
             <WhatsAppButton />
           </TooltipProvider>

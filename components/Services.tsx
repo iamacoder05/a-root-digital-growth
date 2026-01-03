@@ -11,6 +11,7 @@ import {
   BarChart,
   ChevronLeft,
   ChevronRight,
+  Palette,
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -51,6 +52,12 @@ const services = [
     slug: "martech-data-analytics",
     description: "Data-driven insights and marketing technology solutions that power your growth.",
   },
+  {
+    icon: Palette,
+    title: "Web Design and Development",
+    slug: "web-design",
+    description: "Stunning, user-friendly websites that convert visitors into customers.",
+  },
 ];
 
 const Services = () => {
@@ -86,7 +93,7 @@ const Services = () => {
           <h2 id="services-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-primary to-foreground px-4">
             Our Services
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 whitespace-nowrap">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
             Comprehensive digital marketing solutions tailored to your unique business needs
           </p>
         </div>
