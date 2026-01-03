@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -143,6 +144,7 @@ export default function RootLayout({
             {/* Defer ChatBot and WhatsAppButton - loaded client-side only */}
             <ChatBot />
             <WhatsAppButton />
+            <SpeedInsights />
           </TooltipProvider>
         </Providers>
       </body>
