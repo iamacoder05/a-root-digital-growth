@@ -516,7 +516,7 @@ const ChatBot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-24 z-[9998] w-auto sm:w-96 max-w-full sm:max-w-[calc(100vw-3rem)] h-[calc(100vh-5.5rem)] sm:h-[600px] max-h-[calc(100vh-5.5rem)] sm:max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-primary-accent/20 animate-slide-up-chat"
+        <div className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-24 z-[9998] w-auto sm:w-96 max-w-full sm:max-w-[calc(100vw-3rem)] h-[60vh] sm:h-[600px] max-h-[60vh] sm:max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-primary-accent/20 animate-slide-up-chat"
         style={{ zIndex: 9998 }}
         >
           {/* Header */}
