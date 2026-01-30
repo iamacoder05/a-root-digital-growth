@@ -1965,15 +1965,17 @@ export default function ServicePage({ params }: ServicePageProps) {
                   </div>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    {service.stats.map((stat, index) => (
-                      <div key={index} className="text-center p-3 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300">
-                        <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
-                        <div className="text-xl font-bold text-foreground mb-1">{stat.value}</div>
-                        <div className="text-sm text-muted-foreground">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
+                  {'stats' in service && service.stats && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                      {service.stats.map((stat, index) => (
+                        <div key={index} className="text-center p-3 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300">
+                          <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                          <div className="text-xl font-bold text-foreground mb-1">{stat.value}</div>
+                          <div className="text-sm text-muted-foreground">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* SEO Services Cards - Only for SEO service */}
                   {params.slug === 'search-engine-optimization' && (
