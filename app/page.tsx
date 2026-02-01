@@ -63,7 +63,7 @@ const structuredData = {
       ],
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+1-555-123-4567",
+        telephone: "+91 7498826065",
         contactType: "Customer Service",
         email: "info@arootdigital.com",
         areaServed: "US",

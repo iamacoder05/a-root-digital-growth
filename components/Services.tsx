@@ -12,16 +12,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Palette,
+  MessageSquare,
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
-  {
-    icon: Search,
-    title: "Search Engine Optimization",
-    slug: "search-engine-optimization",
-    description: "Boost your search rankings with data-driven SEO strategies that deliver measurable results.",
-  },
   {
     icon: Share2,
     title: "Digital Marketing",
@@ -29,10 +24,28 @@ const services = [
     description: "Comprehensive digital marketing solutions that drive growth across all online channels.",
   },
   {
-    icon: AppWindow,
-    title: "App Marketing",
-    slug: "app-marketing",
-    description: "Get your app discovered, downloaded, and used by the right audience.",
+    icon: Search,
+    title: "Search Engine Optimization",
+    slug: "search-engine-optimization",
+    description: "Boost your search rankings with data-driven SEO strategies that deliver measurable results.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Social Media Marketing",
+    slug: "social-media-marketing",
+    description: "Strategic social media marketing that builds brands and drives real engagement.",
+  },
+  {
+    icon: MousePointerClick,
+    title: "Meta and Performance Marketing",
+    slug: "ppc-paid-marketing",
+    description: "Maximize ROI with strategic paid advertising campaigns across Google and social platforms.",
+  },
+  {
+    icon: Palette,
+    title: "Web Design and Development",
+    slug: "web-design",
+    description: "Stunning, user-friendly websites that convert visitors into customers.",
   },
   {
     icon: FileText,
@@ -41,23 +54,17 @@ const services = [
     description: "Compelling content that tells your story and resonates with your target audience.",
   },
   {
-    icon: MousePointerClick,
-    title: "PPC/Paid Marketing",
-    slug: "ppc-paid-marketing",
-    description: "Maximize ROI with strategic paid advertising campaigns across Google and social platforms.",
+    icon: AppWindow,
+    title: "App Marketing",
+    slug: "app-marketing",
+    description: "Get your app discovered, downloaded, and used by the right audience.",
   },
-  {
-    icon: BarChart,
-    title: "MarTech / Data Analytics",
-    slug: "martech-data-analytics",
-    description: "Data-driven insights and marketing technology solutions that power your growth.",
-  },
-  {
-    icon: Palette,
-    title: "Web Design and Development",
-    slug: "web-design",
-    description: "Stunning, user-friendly websites that convert visitors into customers.",
-  },
+  // {
+  //   icon: BarChart,
+  //   title: "MarTech / Data Analytics",
+  //   slug: "martech-data-analytics",
+  //   description: "Data-driven insights and marketing technology solutions that power your growth.",
+  // },
 ];
 
 const Services = () => {

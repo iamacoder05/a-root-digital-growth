@@ -206,7 +206,7 @@ const PrivacyPolicy = () => {
                 </p>
                 <div className="space-y-2 text-foreground/80">
                   <p><strong>Email:</strong> <a href="mailto:info@arootdigital.com" className="text-primary hover:underline">info@arootdigital.com</a></p>
-                  <p><strong>Phone:</strong> <a href="tel:+919561964239" className="text-primary hover:underline">+91 9561964239</a></p>
+                  <p><strong>Phone:</strong> <a href="tel:+917498826065" className="text-primary hover:underline">+91 7498826065</a></p>
                 </div>
               </div>
             </div>

@@ -16,8 +16,8 @@ const Hero = () => {
     { name: "Digital Marketing", slug: "digital-marketing" },
     { name: "App Marketing", slug: "app-marketing" },
     { name: "Content Marketing", slug: "content-marketing" },
-    { name: "PPC/Paid Marketing", slug: "ppc-paid-marketing" },
-    { name: "MarTech / Data Analytics", slug: "martech-data-analytics" },
+    { name: "Meta and Performance Marketing", slug: "ppc-paid-marketing" },
+    // { name: "MarTech / Data Analytics", slug: "martech-data-analytics" },
     { name: "Web Design and Development", slug: "web-design" }
   ];
 
@@ -28,7 +28,7 @@ const Hero = () => {
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80", // App Marketing - app development
     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // Content Marketing - content creation
     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // PPC/Paid Marketing - advertising/analytics
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // MarTech / Data Analytics - analytics dashboard
+    // "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80", // MarTech / Data Analytics - analytics dashboard
     "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=600&fit=crop&q=80"  // Web Design - web design/development
   ];
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);

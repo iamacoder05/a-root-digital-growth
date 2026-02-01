@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Phone, MapPin, ChevronDown, Rocket, AlertCircle, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Mail, Phone, ChevronDown, Rocket, AlertCircle, CheckCircle2 } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
 import { submitForm, checkRateLimit, sendAutoReply } from "@/lib/formSubmission";
 import { validateEmail, validatePhone, validateName, formatPhoneNumber } from "@/lib/validation";
@@ -128,8 +128,8 @@ const Contact = () => {
     "Digital Marketing",
     "App Marketing",
     "Content Marketing",
-    "PPC/Paid Marketing",
-    "MarTech / Data Analytics",
+    "Meta and Performance Marketing",
+    // "MarTech / Data Analytics",
     "Web Design and Development"
   ];
 
@@ -384,17 +384,7 @@ const Contact = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="font-semibold text-xs sm:text-sm md:text-base text-white">Call Us</div>
-                  <div className="text-primary-accent/80 text-xs sm:text-sm break-all">+91 9561964239</div>
-                </div>
-              </div>
-              
-              <div className="flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-0">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-accent" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-xs sm:text-sm md:text-base text-white">Visit Us</div>
-                  <div className="text-primary-accent/80 text-xs sm:text-sm break-words">123 Digital Avenue, Marketing City</div>
+                  <div className="text-primary-accent/80 text-xs sm:text-sm break-all">+91 7498826065</div>
                 </div>
               </div>
             </div>

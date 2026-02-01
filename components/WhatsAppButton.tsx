@@ -2,7 +2,7 @@
 
 const WhatsAppButton = () => {
   // WhatsApp number - replace with your actual WhatsApp business number
-  const whatsappNumber = "9561964239"; // Format: country code + number without +
+  const whatsappNumber = "7498826065"; // Format: country code + number without +
   const whatsappMessage = "Hello! I'm interested in your digital marketing services.";
 
   const handleWhatsAppClick = () => {

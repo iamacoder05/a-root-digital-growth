@@ -57,12 +57,12 @@ const Footer = () => {
             <div className="space-y-3 sm:space-y-4">
               {/* Phone Number */}
               <a 
-                href="tel:+919561964239 " 
+                href="tel:+917498826065 " 
                 className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start text-muted-foreground hover:text-primary transition-colors text-sm md:text-base"
                 aria-label="Call us"
               >
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
-                <span>+91 9561964239</span>
+                <span>+91 7498826065</span>
               </a>
               
               {/* Email */}

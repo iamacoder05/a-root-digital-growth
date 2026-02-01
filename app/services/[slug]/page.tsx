@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowLeft, CheckCircle, Star, Users, Target, Award, TrendingUp, Share2, ImageIcon, Building2, Brain, Sparkles, ShoppingCart, Smartphone, AppWindow, FileText, MapPin, Globe, Calendar, ArrowRight, BarChart, Palette } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Star, Users, Target, Award, TrendingUp, Share2, ImageIcon, Building2, Brain, Sparkles, ShoppingCart, Smartphone, AppWindow, FileText, MapPin, Globe, Calendar, ArrowRight, BarChart, Palette, Rocket, Search, MessageSquare } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import CallbackRequestForm from '@/components/CallbackRequestForm';
+import StickyCallbackScript from '@/components/StickyCallbackScript';
 import ToolsWeUse from '@/components/ToolsWeUse';
 import SectionDivider from '@/components/SectionDivider';
 import ServiceFAQ from '@/components/ServiceFAQ';
@@ -139,8 +140,9 @@ const serviceToBlogCategory: Record<string, string> = {
   'app-marketing': 'App Marketing',
   'content-marketing': 'Content Marketing',
   'ppc-paid-marketing': 'PPC',
-  'martech-data-analytics': 'Analytics',
+  // 'martech-data-analytics': 'Analytics',
   'web-design': 'Web Design and Development',
+  'social-media-marketing': 'Social Media Marketing',
   'seo-services-dubai': 'SEO',
   'seo-services-malaysia': 'SEO',
   'digital-services-singapore': 'Digital Marketing',
@@ -509,12 +511,12 @@ const serviceDetails = {
     softCTA: 'Aroot Digital can help you if you need content that sounds natural, looks high-end, and works for your business.'
   },
   'ppc-paid-marketing': {
-    title: 'PPC/Paid Marketing',
+    title: 'Meta and Performance Marketing',
     icon: 'MousePointerClick',
     image: '/assets/SEO.jpg',
-    description: 'Pay-per-click (PPC) ads that are smart and get you results quickly and with high intent',
-    subtitle: 'The goal of the subhead is very clear. Be smarter with your money. If you know how to use them, pay-per-click ads can help your business grow.',
-    longDescription: 'Businesses that work online need more than just traffic; they need traffic that turns into sales. People who are looking for what you offer will see your brand in pay-per-click (PPC) ads. Aroot Digital can help brands in India and around the world run pay-per-click ads that work and don\'t cost too much. Our plan makes sure that you get the most out of your money, whether you\'re launching a new product, entering a new market, or improving your current funnels.',
+    description: 'Meta and performance marketing campaigns that are smart and get you results quickly and with high intent',
+    subtitle: 'The goal of the subhead is very clear. Be smarter with your money. Strategic Meta and performance marketing campaigns can help your business grow.',
+    longDescription: 'Businesses that work online need more than just traffic; they need traffic that turns into sales. People who are looking for what you offer will see your brand in Meta and performance marketing campaigns. Aroot Digital can help brands in India and around the world run Meta and performance marketing campaigns that work and don\'t cost too much. Our plan makes sure that you get the most out of your money, whether you\'re launching a new product, entering a new market, or improving your current funnels.',
     features: [
       'Search Ads: Show Bing and Google users who are ready to buy your business',
       'Display ads: Use ads that are interesting and catch people\'s attention to get them to notice your business',
@@ -526,20 +528,20 @@ const serviceDetails = {
       'Writing ads and creative plans: When you write words that make people agree with you, think about what you\'re saying and why it matters'
     ],
     benefits: [
-      'It\'s clear right away: Well-planned pay-per-click (PPC) ads can help you reach people who are really interested in what you have to offer',
+      'It\'s clear right away: Well-planned Meta and performance marketing campaigns can help you reach people who are really interested in what you have to offer',
       'Putting a cap on how much you can spend on ads: Spend money, get better deals, and make sure every click helps your business reach its goal',
-      'A real push to sell: Very specific pay-per-click ads can get people to go on the trips they need to take',
+      'A real push to sell: Very specific Meta and performance marketing campaigns can get people to go on the trips they need to take',
       'Growth that can be sped up: Current information and market insights can help you change, stop, grow, or make what you\'re doing better',
       'Thoughts that are clear: Reports that give you a lot of information about what\'s going on and what will happen next'
     ],
     howItWorks: [
       {
         step: 'Step 1: Get to know the company and the words that are important',
-        description: 'To find the best basis for your pay-per-click digital marketing campaigns, we look at phrases that show intent, how your audience reacts, what your competitors are doing, and how many people are searching for your product.'
+        description: 'To find the best basis for your Meta and performance marketing campaigns, we look at phrases that show intent, how your audience reacts, what your competitors are doing, and how many people are searching for your product.'
       },
       {
         step: 'Step 2: Plan the campaign',
-        description: 'We make sure that every pay-per-click plan has small ad groups, catchy ad copy, and landing pages that are well-optimized.'
+        description: 'We make sure that every Meta and performance marketing plan has small ad groups, catchy ad copy, and landing pages that are well-optimized.'
       },
       {
         step: 'Step 3: Turn it on and keep an eye on it',
@@ -555,29 +557,29 @@ const serviceDetails = {
       }
     ],
     differentiators: [
-      'This means that the people who make your PPC plan have worked for a lot of different companies and know a lot about them',
+      'This means that the people who make your Meta and performance marketing plan have worked for a lot of different companies and know a lot about them',
       'Clear and honest execution—no guesswork, no hidden fees, just the facts',
       'Everything, from the searches to the landing pages, is set up to make people want to sell',
       'Pan-Indian and Global Reach: Have worked with a wide range of businesses and people from all over the world',
-      'PPC experts who only work on your ads and not on a lot of other ones',
+      'Meta and performance marketing experts who only work on your ads and not on a lot of other ones',
       'The screens are easy to read, and they get new information every week'
     ],
     useCases: [
       {
         title: 'Nearby businesses',
-        description: 'For some treatments at a clinic in Pune, PPC ads got better, which brought in more leads.'
+        description: 'For some treatments at a clinic in Pune, Meta and performance marketing campaigns got better, which brought in more leads.'
       },
       {
         title: 'A clothing store',
-        description: 'Made more money every month by using pay-per-click ads that were tailored to specific items and remarketing funnels.'
+        description: 'Made more money every month by using Meta and performance marketing campaigns that were tailored to specific items and remarketing funnels.'
       },
       {
         title: 'These businesses sell things to other businesses',
-        description: 'When a SaaS company ran pay-per-click digital marketing ads aimed at industry leaders, the cost per lead went down.'
+        description: 'When a SaaS company ran Meta and performance marketing campaigns aimed at industry leaders, the cost per lead went down.'
       },
       {
         title: 'Store chains that have more than one location',
-        description: 'A group of service providers put up pay-per-click ads to find out what people were looking for on each site.'
+        description: 'A group of service providers put up Meta and performance marketing campaigns to find out what people were looking for on each site.'
       }
     ],
     trustElements: [
@@ -585,86 +587,86 @@ const serviceDetails = {
       'They have worked with well-known companies in shopping, health care, education, real estate, food and drink, and other fields',
       'They can handle monthly budgets of between ₹25,000 and ₹50 lakh'
     ],
-    softCTA: 'Do you want to start your own pay-per-click (PPC) ad or get the most out of the ones you already have? The staff at Aroot Digital is ready to give you honest advice and a plan you can follow.'
+    softCTA: 'Do you want to start your own Meta and performance marketing campaign or get the most out of the ones you already have? The staff at Aroot Digital is ready to give you honest advice and a plan you can follow.'
   },
-  'martech-data-analytics': {
-    title: 'MarTech / Data Analytics',
-    icon: 'BarChart',
-    image: '/assets/SEO.jpg',
-    description: 'If you want to make decisions based on data, use advanced analytics and insights',
-    subtitle: 'You can make better, faster, and more sure of your business decisions with Aroot Digital\'s help. They help you make sense of complicated data and find insights and analytics that are useful.',
-    longDescription: 'In today\'s world, data by itself isn\'t enough. Companies need analytics and insights that take raw data and turn it into clear, confident, and measurable direction. Structured insights and analytics frameworks are what we use at Aroot Digital to help brands make smart decisions, understand complicated facts, and find hidden opportunities. You can use data to improve your marketing, learn more about your customers, or make your business run better. Our team makes sure that you always get insights that matter.',
-    features: [
-      'Predictive modeling and trend forecasting',
-      'Custom dashboards and reporting',
-      'Cohort, segmentation, and attribution studies',
-      'KPI monitoring and executive reporting',
-      'Customer journey mapping',
-      'Sales funnel and conversion insights'
-    ],
-    benefits: [
-      'Better Decision-Making: Don\'t guess now, use data to make decisions',
-      'Get to Know Your Customers: Use advanced customer analytics to find patterns, trends, and preferences',
-      'Figure out what\'s wrong and how you can fix it to improve operational efficiency',
-      'Marketing Optimization: Learn more about your data to get a better return on investment (ROI) from your campaigns',
-      'For the future, plan to use data and insights to stay ahead of market changes'
-    ],
-    howItWorks: [
-      {
-        step: 'Step 1: Gathering and putting together data',
-        description: 'All of your operational, marketing, sales, and CRM data is put together and put together by us.'
-      },
-      {
-        step: 'Step 2: Study in depth',
-        description: 'The people who work for us use technological insight frameworks, statistical models, and segmentation techniques to look for patterns that matter.'
-      },
-      {
-        step: 'Step 3: Getting insights',
-        description: 'We use unstructured data to make easy-to-read dashboards for analytics and insights.'
-      },
-      {
-        step: 'Step 4: Ideas for what you should do',
-        description: 'Because our team gives you clear plans and ideas, you can use data to get business insights that you can use right away.'
-      }
-    ],
-    differentiators: [
-      'Not Just Dashboards, But Also Interpretation by People: We don\'t just give you numbers; we break them down, explain them, and help you understand them',
-      'Key Points Based on Strategy: Our ideas connect the information to the real goals of your business',
-      'Have fun in India and all over the world: We work with companies of all sizes, from small ones just starting out to big ones',
-      'Know a lot about the business and have great skills with tech, retail, banking, hotel, and direct-to-consumer brands',
-      'Being able to work together with your teams without any issues: There are flexible work arrangements with in-house teams, marketing executives, and CXOs'
-    ],
-    useCases: [
-      {
-        title: 'Business Store and Online Shopping',
-        description: 'Advanced analytics and insights can help you improve how well your products work, how people buy them, and how often they buy them.'
-      },
-      {
-        title: 'Taking care of money and wealth',
-        description: 'Deep customer analytics can help you understand the lifecycle of a client, keep them as a client longer, and get better results from the advice you give.'
-      },
-      {
-        title: 'Food and drink, and a warm welcome',
-        description: 'Data insights that you can use to find peak hours, categories that do well, and things that keep customers coming back.'
-      },
-      {
-        title: 'For real estate',
-        description: 'Use data and insights to keep track of the leads\' quality, the agents\' work, and the number of projects that turn into sales.'
-      },
-      {
-        title: 'Cloud computing and SaaS',
-        description: 'Tech-savvy people should keep an eye on how features are being used, how many users are leaving, and how much value customers are getting.'
-      }
-    ],
-    trustElements: [
-      'Worked for more than 10 years with data-driven and digital strategy',
-      'A history of success in India, the UAE, the UK, and APAC',
-      'Clear execution with results that can be seen',
-      'Using data in a way that is moral, legal, and puts privacy first',
-      'A group of strategists, analysts, and experts in the field'
-    ],
-    softCTA: 'With better data and analytics, our staff is ready to help you make smarter choices.'
-  },
+  // 'martech-data-analytics': {
+  //   title: 'MarTech / Data Analytics',
+  //   icon: 'BarChart',
+  //   image: '/assets/SEO.jpg',
+  //   description: 'If you want to make decisions based on data, use advanced analytics and insights',
+  //   subtitle: 'You can make better, faster, and more sure of your business decisions with Aroot Digital\'s help. They help you make sense of complicated data and find insights and analytics that are useful.',
+  //   longDescription: 'In today\'s world, data by itself isn\'t enough. Companies need analytics and insights that take raw data and turn it into clear, confident, and measurable direction. Structured insights and analytics frameworks are what we use at Aroot Digital to help brands make smart decisions, understand complicated facts, and find hidden opportunities. You can use data to improve your marketing, learn more about your customers, or make your business run better. Our team makes sure that you always get insights that matter.',
+  //   features: [
+  //     'Predictive modeling and trend forecasting',
+  //     'Custom dashboards and reporting',
+  //     'Cohort, segmentation, and attribution studies',
+  //     'KPI monitoring and executive reporting',
+  //     'Customer journey mapping',
+  //     'Sales funnel and conversion insights'
+  //   ],
+  //   benefits: [
+  //     'Better Decision-Making: Don\'t guess now, use data to make decisions',
+  //     'Get to Know Your Customers: Use advanced customer analytics to find patterns, trends, and preferences',
+  //     'Figure out what\'s wrong and how you can fix it to improve operational efficiency',
+  //     'Marketing Optimization: Learn more about your data to get a better return on investment (ROI) from your campaigns',
+  //     'For the future, plan to use data and insights to stay ahead of market changes'
+  //   ],
+  //   howItWorks: [
+  //     {
+  //       step: 'Step 1: Gathering and putting together data',
+  //       description: 'All of your operational, marketing, sales, and CRM data is put together and put together by us.'
+  //     },
+  //     {
+  //       step: 'Step 2: Study in depth',
+  //       description: 'The people who work for us use technological insight frameworks, statistical models, and segmentation techniques to look for patterns that matter.'
+  //     },
+  //     {
+  //       step: 'Step 3: Getting insights',
+  //       description: 'We use unstructured data to make easy-to-read dashboards for analytics and insights.'
+  //     },
+  //     {
+  //       step: 'Step 4: Ideas for what you should do',
+  //       description: 'Because our team gives you clear plans and ideas, you can use data to get business insights that you can use right away.'
+  //     }
+  //   ],
+  //   differentiators: [
+  //     'Not Just Dashboards, But Also Interpretation by People: We don\'t just give you numbers; we break them down, explain them, and help you understand them',
+  //     'Key Points Based on Strategy: Our ideas connect the information to the real goals of your business',
+  //     'Have fun in India and all over the world: We work with companies of all sizes, from small ones just starting out to big ones',
+  //     'Know a lot about the business and have great skills with tech, retail, banking, hotel, and direct-to-consumer brands',
+  //     'Being able to work together with your teams without any issues: There are flexible work arrangements with in-house teams, marketing executives, and CXOs'
+  //   ],
+  //   useCases: [
+  //     {
+  //       title: 'Business Store and Online Shopping',
+  //       description: 'Advanced analytics and insights can help you improve how well your products work, how people buy them, and how often they buy them.'
+  //     },
+  //     {
+  //       title: 'Taking care of money and wealth',
+  //       description: 'Deep customer analytics can help you understand the lifecycle of a client, keep them as a client longer, and get better results from the advice you give.'
+  //     },
+  //     {
+  //       title: 'Food and drink, and a warm welcome',
+  //       description: 'Data insights that you can use to find peak hours, categories that do well, and things that keep customers coming back.'
+  //     },
+  //     {
+  //       title: 'For real estate',
+  //       description: 'Use data and insights to keep track of the leads\' quality, the agents\' work, and the number of projects that turn into sales.'
+  //     },
+  //     {
+  //       title: 'Cloud computing and SaaS',
+  //       description: 'Tech-savvy people should keep an eye on how features are being used, how many users are leaving, and how much value customers are getting.'
+  //     }
+  //   ],
+  //   trustElements: [
+  //     'Worked for more than 10 years with data-driven and digital strategy',
+  //     'A history of success in India, the UAE, the UK, and APAC',
+  //     'Clear execution with results that can be seen',
+  //     'Using data in a way that is moral, legal, and puts privacy first',
+  //     'A group of strategists, analysts, and experts in the field'
+  //   ],
+  //   softCTA: 'With better data and analytics, our staff is ready to help you make smarter choices.'
+  // },
   'web-design': {
     title: 'Web Design and Development',
     icon: 'Palette',
@@ -757,6 +759,95 @@ const serviceDetails = {
     ],
     softCTA: 'Your website needs more than just a template to work. It needs a plan, some creativity, and smart design. Aroot Digital is here to build it with a plan and care.'
   },
+  'social-media-marketing': {
+    title: 'Social Media Marketing',
+    icon: 'MessageSquare',
+    image: '/assets/SEO.jpg',
+    description: 'Planned social media marketing that builds brands and gets real people involved.',
+    subtitle: 'Professional, data-driven, and effect-driven social media solutions for businesses of all sizes.',
+    longDescription: 'In today\'s digital world, social media marketing is more than just a way to get your name out there. It\'s a direct link between your business and your customers. Companies that have a plan for how to use social media and marketing do better than those that just post things when they think of them or guess what will work. At Aroot Digital, we help brands get more attention online by using structured social media and ads, performance-driven content, and interacting with customers at every stage of the buying process. Our method makes sure that your brand speaks clearly, consistently, and with confidence, no matter if you\'re trying to reach a local market or do business all over the world.',
+    features: [
+      'Planning content strategically',
+      'Designing and editing videos creatively',
+      'Making reels and short-form videos',
+      'Analyzing trends and making topical content',
+      'Managing communities',
+      'Running paid ads and performance campaigns',
+      'Providing advanced analytics and reporting',
+      'Keeping an eye on competitors',
+      'Helping with crisis communication',
+      'Telling stories about the brand and setting up messaging frameworks',
+      'We are also a full-service social media marketing agency that can help with ORM, building a brand\'s name across many channels, and influencer campaigns'
+    ],
+    benefits: [
+      'Consistent Brand Visibility: Make sure your brand is easy to find on all platforms',
+      'Get your audience more involved: Talk to them about important things that will help them trust you over time',
+      'Strategy that works on certain platforms, like Instagram, LinkedIn, Facebook, YouTube, and others',
+      'Better Return on Investment (ROI) for campaigns: you can control Facebook ads exactly to get measurable results',
+      'Full Execution: coming up with ideas, making things, sharing them, keeping an eye on them, and reporting on them'
+    ],
+    howItWorks: [
+      {
+        step: 'Step 1: Look for the brand and check it out',
+        description: 'We check your current presence, your competitors, and the state of the industry to make sure that your content and campaign are on the right track.'
+      },
+      {
+        step: 'Step 2: Making a plan',
+        description: 'A custom roadmap makes sure that your business goals match what your audience wants, how the platform works, and the direction you want your art to go in.'
+      },
+      {
+        step: 'Step 3: Plan and make the content',
+        description: 'We make high-quality images, reels, ads, copy, and other creative work that is specific to each platform.'
+      },
+      {
+        step: 'Step 4: Get it done and share it',
+        description: 'Your content calendar tells you when to post and how to lay it out so that it works on all platforms.'
+      },
+      {
+        step: 'Step 5: Run campaigns and make changes as needed',
+        description: 'Data-driven Facebook ad management makes sure that your ads are seen by the right people at the right time.'
+      },
+      {
+        step: 'Step 6: Get Reports and Information',
+        description: 'Monthly performance dashboards let you keep track of engagement, audience growth, and marketing results.'
+      }
+    ],
+    differentiators: [
+      'Premium Campaign Intelligence: Our team is both creative and good at analyzing data',
+      'Knowledge of many fields, from new businesses to famous names all over the world',
+      'Structured Ad Management: Good at running Facebook ads that bring in a lot of money',
+      'Global-Standard Execution: Methods that work for people from all over the world and in all kinds of markets',
+      'Committed Relationship Managers: experts in the field who help you meet new people and make friends',
+      'An approach that is honest, open, and goal-oriented'
+    ],
+    useCases: [
+      {
+        title: 'Retail and online shopping',
+        description: 'Launching new products, running holiday sales, and working with influencers.'
+      },
+      {
+        title: 'Real estate',
+        description: 'Ads that get people to sign up for your services and getting involved in the community.'
+      },
+      {
+        title: 'Finance & Advisory',
+        description: 'Learning materials that take into account regulatory issues.'
+      },
+      {
+        title: 'Food and drink',
+        description: 'Highlights from the menu, stories told through reels, and participation based on where you are.'
+      },
+      {
+        title: 'Professional Services',
+        description: 'Content calendars based on your brand\'s authority and thought leadership. Our team can help you stay active and competitive on social media, no matter how new or old your business is.'
+      }
+    ],
+    trustElements: [
+      'We have worked together for more than 12 years',
+      'A global and pan-Indian client base, strong internal review systems, open reporting, decisions based on data, a committed support team, and a proven track record as a social media digital firm that gets results'
+    ],
+    softCTA: 'Are you ready to make a social media profile that really shows how strong your brand is? Talk to our team about a personalized, platform-specific plan that will help your business grow in the long term.'
+  },
   'seo-services-dubai': {
     title: 'SEO Services in Dubai',
     icon: 'Search',
@@ -825,7 +916,7 @@ const serviceDetails = {
       'Local and international SEO',
       'Social media management',
       'Content marketing in Singapore',
-      'PPC campaigns for Singapore',
+      'Meta and performance marketing campaigns for Singapore',
       'Performance analytics and reporting'
     ],
     benefits: [
@@ -852,7 +943,7 @@ const serviceDetails = {
       'Local SEO for New York',
       'Social media campaigns',
       'Content marketing',
-      'PPC advertising',
+      'Meta and performance marketing',
       'NYC competitor analysis',
       'Comprehensive reporting'
     ],
@@ -880,7 +971,7 @@ const serviceDetails = {
       'Local SEO optimization',
       'Social media management',
       'Content creation',
-      'PPC campaigns',
+      'Meta and performance marketing campaigns',
       'Local business optimization',
       'Performance tracking'
     ],
@@ -1035,7 +1126,7 @@ const serviceFAQs: Record<string, Array<{ question: string; answer: string }>> =
   ],
   'ppc-paid-marketing': [
     {
-      question: "Which PPC platforms do you manage?",
+      question: "Which Meta and performance marketing platforms do you manage?",
       answer: "We manage Google Ads (Search, Display, Shopping, YouTube), Microsoft Advertising, Facebook Ads, Instagram Ads, LinkedIn Ads, and other platform-specific advertising solutions. We'll help you identify which platforms offer the best ROI for your business."
     },
     {
@@ -1043,15 +1134,15 @@ const serviceFAQs: Record<string, Array<{ question: string; answer: string }>> =
       answer: "We work with businesses of all budget sizes. While there's no strict minimum, we typically recommend starting with at least $500-1000 per month for effective campaigns. We'll work with your budget to maximize results and ROI."
     },
     {
-      question: "How quickly will I see results from PPC?",
-      answer: "PPC campaigns can start generating results immediately, often within 24-48 hours of launch. However, it typically takes 2-4 weeks to optimize campaigns and see consistent performance. We continuously monitor and optimize to improve results over time."
+      question: "How quickly will I see results from Meta and performance marketing?",
+      answer: "Meta and performance marketing campaigns can start generating results immediately, often within 24-48 hours of launch. However, it typically takes 2-4 weeks to optimize campaigns and see consistent performance. We continuously monitor and optimize to improve results over time."
     },
     {
       question: "Do you create the ad copy and creative?",
       answer: "Yes! Our team creates all ad copy, graphics, and video content. We'll develop multiple ad variations to test what resonates best with your audience and continuously refine based on performance data."
     },
     {
-      question: "How do you optimize PPC campaigns?",
+      question: "How do you optimize Meta and performance marketing campaigns?",
       answer: "We optimize campaigns through keyword research and refinement, bid management, ad copy testing, landing page optimization, audience targeting adjustments, and performance analysis. We make data-driven decisions to improve your ROI continuously."
     },
     {
@@ -1059,32 +1150,32 @@ const serviceFAQs: Record<string, Array<{ question: string; answer: string }>> =
       answer: "You'll receive weekly performance summaries and comprehensive monthly reports showing impressions, clicks, conversions, cost per click, cost per acquisition, ROI, and other key metrics. We'll also provide insights and recommendations for improvement."
     }
   ],
-  'martech-data-analytics': [
-    {
-      question: "What marketing technology tools do you work with?",
-      answer: "We work with a wide range of MarTech tools including CRM systems (Salesforce, HubSpot), marketing automation platforms, analytics tools (Google Analytics, Adobe Analytics), tag management systems, data platforms, and more. We'll help you build and optimize your marketing technology stack."
-    },
-    {
-      question: "How do you help integrate marketing technology?",
-      answer: "We assess your current tech stack, identify gaps and opportunities, recommend the right tools, and help implement integrations between platforms. We ensure all your marketing tools work together seamlessly to provide a unified view of your marketing performance."
-    },
-    {
-      question: "Can you help with marketing automation?",
-      answer: "Absolutely! We set up and optimize marketing automation workflows including email campaigns, lead nurturing sequences, customer journey automation, and triggered campaigns. This helps you scale your marketing efforts while maintaining personalization."
-    },
-    {
-      question: "How do you ensure data accuracy and quality?",
-      answer: "We implement data governance practices, set up data validation rules, clean and deduplicate data, establish data quality standards, and regularly audit your data to ensure accuracy. We also help integrate data from multiple sources for a complete view."
-    },
-    {
-      question: "What kind of analytics and reporting do you provide?",
-      answer: "We provide comprehensive analytics including custom dashboards, real-time reporting, attribution modeling, ROI analysis, and predictive analytics. We'll help you understand not just what happened, but why it happened and what to do next."
-    },
-    {
-      question: "How do you help with data-driven decision making?",
-      answer: "We don't just provide data—we analyze it and provide actionable insights and recommendations. We'll help you identify trends, opportunities, and areas for improvement, then work with you to implement data-driven changes that drive business growth."
-    }
-  ],
+  // 'martech-data-analytics': [
+  //   {
+  //     question: "What marketing technology tools do you work with?",
+  //     answer: "We work with a wide range of MarTech tools including CRM systems (Salesforce, HubSpot), marketing automation platforms, analytics tools (Google Analytics, Adobe Analytics), tag management systems, data platforms, and more. We'll help you build and optimize your marketing technology stack."
+  //   },
+  //   {
+  //     question: "How do you help integrate marketing technology?",
+  //     answer: "We assess your current tech stack, identify gaps and opportunities, recommend the right tools, and help implement integrations between platforms. We ensure all your marketing tools work together seamlessly to provide a unified view of your marketing performance."
+  //   },
+  //   {
+  //     question: "Can you help with marketing automation?",
+  //     answer: "Absolutely! We set up and optimize marketing automation workflows including email campaigns, lead nurturing sequences, customer journey automation, and triggered campaigns. This helps you scale your marketing efforts while maintaining personalization."
+  //   },
+  //   {
+  //     question: "How do you ensure data accuracy and quality?",
+  //     answer: "We implement data governance practices, set up data validation rules, clean and deduplicate data, establish data quality standards, and regularly audit your data to ensure accuracy. We also help integrate data from multiple sources for a complete view."
+  //   },
+  //   {
+  //     question: "What kind of analytics and reporting do you provide?",
+  //     answer: "We provide comprehensive analytics including custom dashboards, real-time reporting, attribution modeling, ROI analysis, and predictive analytics. We'll help you understand not just what happened, but why it happened and what to do next."
+  //   },
+  //   {
+  //     question: "How do you help with data-driven decision making?",
+  //     answer: "We don't just provide data—we analyze it and provide actionable insights and recommendations. We'll help you identify trends, opportunities, and areas for improvement, then work with you to implement data-driven changes that drive business growth."
+  //   }
+  // ],
   'seo-services-dubai': [
     {
       question: "Why do I need SEO services specifically for Dubai?",
@@ -1266,6 +1357,32 @@ const serviceFAQs: Record<string, Array<{ question: string; answer: string }>> =
       question: "Do you provide ongoing website maintenance?",
       answer: "Yes, we offer ongoing website maintenance services including content updates, security patches, performance monitoring, and technical support. We can create a maintenance plan tailored to your needs to keep your website running smoothly and securely."
     }
+  ],
+  'social-media-marketing': [
+    {
+      question: "Which social media platforms do you manage?",
+      answer: "We manage campaigns and content across all major social media platforms including Facebook, Instagram, LinkedIn, Twitter/X, YouTube, TikTok, and more. We'll help you identify which platforms are best for your business and create platform-specific strategies that maximize engagement and ROI."
+    },
+    {
+      question: "How do you handle Facebook advertising management?",
+      answer: "Our Facebook advertising management includes strategic campaign planning, audience targeting, ad creative development, budget optimization, A/B testing, performance monitoring, and continuous optimization. We use data-driven approaches to ensure your Facebook ads deliver measurable results and strong ROI."
+    },
+    {
+      question: "What's included in your social media marketing service?",
+      answer: "Our comprehensive social media marketing service includes content strategy and planning, creative content creation (images, videos, reels), community management, paid advertising campaigns, performance analytics and reporting, competitor analysis, crisis communication support, and brand storytelling. We're a full-service social media marketing agency."
+    },
+    {
+      question: "How often will you post on our social media accounts?",
+      answer: "Posting frequency depends on your industry, audience, and platform. We create a customized content calendar based on best practices for each platform and your specific business goals. Typically, we recommend daily posts for platforms like Instagram and Facebook, and strategic posting for LinkedIn and Twitter."
+    },
+    {
+      question: "Do you provide social media analytics and reporting?",
+      answer: "Yes! We provide monthly performance dashboards that track engagement metrics, audience growth, campaign performance, ROI, and other key indicators. Our reports are transparent, easy to understand, and include actionable insights to help improve your social media strategy."
+    },
+    {
+      question: "Can you help with influencer marketing?",
+      answer: "Yes, as a full-service social media marketing agency, we can help with influencer campaigns, creator partnerships, and brand collaborations. We'll identify the right influencers for your brand, manage relationships, and ensure campaigns align with your marketing goals."
+    }
   ]
 };
 
@@ -1300,8 +1417,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   
   if (params.slug === 'ppc-paid-marketing') {
     return {
-      title: 'Professionals run pay-per-click (PPC) ads and campaigns.',
-      description: 'Aroot Digital\'s pay-per-click ads will bring in more visitors and customers. Pay-per-click (PPC) ads are meant to help your business grow in a way that people can see.',
+      title: 'Professionals run Meta and performance marketing campaigns.',
+      description: 'Aroot Digital\'s Meta and performance marketing campaigns will bring in more visitors and customers. Strategic Meta and performance marketing campaigns are meant to help your business grow in a way that people can see.',
     };
   }
   
@@ -1319,10 +1436,17 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     };
   }
   
-  if (params.slug === 'martech-data-analytics') {
+  // if (params.slug === 'martech-data-analytics') {
+  //   return {
+  //     title: 'You can use analytics and insights services to help you run your business better.',
+  //     description: 'Get good analytics and insights that will help you understand things better, do better, and grow. You can trust the decisions you make with the help of Aroot Digital.',
+  //   };
+  // }
+  
+  if (params.slug === 'social-media-marketing') {
     return {
-      title: 'You can use analytics and insights services to help you run your business better.',
-      description: 'Get good analytics and insights that will help you understand things better, do better, and grow. You can trust the decisions you make with the help of Aroot Digital.',
+      title: 'Aroot Digital India offers social media marketing services.',
+      description: 'We help brands in India and all over the world with their social media marketing. Strategic management of Facebook ads, campaigns, and content.',
     };
   }
   
@@ -1364,15 +1488,15 @@ export default function ServicePage({ params }: ServicePageProps) {
                   </p>
                   <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Data-driven & ROI-focused execution</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>WhatsApp message marketing + social media advertising</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Tailored app promotion strategies for India & global markets</span>
                     </li>
                   </ul>
@@ -1387,15 +1511,15 @@ export default function ServicePage({ params }: ServicePageProps) {
                   </p>
                   <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>A planned website design that works for your business</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Writing code for websites that works well and is easy to read and understand</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Making the UI and UX of your site more appealing to get more people to visit and buy things</span>
                     </li>
                   </ul>
@@ -1410,11 +1534,11 @@ export default function ServicePage({ params }: ServicePageProps) {
                   </p>
                   <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>We create unique SEO plans for your market, goals, and audience, and we also have clear steps that show real, measurable progress.</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Brands in India and around the world trust us because our SEO is ethical and good for the environment.</span>
                     </li>
                   </ul>
@@ -1422,22 +1546,22 @@ export default function ServicePage({ params }: ServicePageProps) {
               ) : params.slug === 'ppc-paid-marketing' ? (
                 <>
                   <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
-                    Pay-per-click (PPC) ads that are smart and get you results quickly and with high intent
+                    Meta and performance marketing campaigns that are smart and get you results quickly and with high intent
                   </h1>
                   <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 font-light">
-                    The goal of the subhead is very clear. Be smarter with your money. If you know how to use them, pay-per-click ads can help your business grow.
+                    The goal of the subhead is very clear. Be smarter with your money. Strategic Meta and performance marketing campaigns can help your business grow.
                   </p>
                   <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Pay-per-click (PPC) ads that use data to turn customers who are very interested into buyers</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+                      <span>Meta and performance marketing campaigns that use data to turn customers who are very interested into buyers</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>An action with a clear goal and a clear return on investment (ROI)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Full help from a professional pay-per-click advertising agency</span>
                     </li>
                   </ul>
@@ -1452,15 +1576,15 @@ export default function ServicePage({ params }: ServicePageProps) {
                   </p>
                   <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Customized programs for businesses in India and around the world</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Full-stack digital marketing solutions backed by years of experience</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Clear communication, measurable results, and long-term value</span>
                     </li>
                   </ul>
@@ -1475,39 +1599,62 @@ export default function ServicePage({ params }: ServicePageProps) {
                   </p>
                   <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Get strong, clear content for your website, blogs, and campaigns that will get people to do something</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Hire professional article writers, SEO content writers, and brand storytellers to help you</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
                       <span>Writing that meets international standards and is meant for readers in India and other countries</span>
                     </li>
                   </ul>
                 </>
-              ) : params.slug === 'martech-data-analytics' ? (
+              // ) : params.slug === 'martech-data-analytics' ? (
+              //   <>
+              //     <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
+              //       If you want to make decisions based on data, use advanced analytics and insights
+              //     </h1>
+              //     <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 font-light">
+              //       You can make better, faster, and more sure of your business decisions with Aroot Digital's help. They help you make sense of complicated data and find insights and analytics that are useful.
+              //     </p>
+              //     <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
+              //       <li className="flex items-center gap-2">
+              //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+              //         <span>Make smart decisions by using accurate data insights</span>
+              //       </li>
+              //       <li className="flex items-center gap-2">
+              //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+              //         <span>Use accurate customer analytics to learn how your customers behave</span>
+              //       </li>
+              //       <li className="flex items-center gap-2">
+              //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+              //         <span>Look through data to learn business lessons that will help you do better</span>
+              //       </li>
+              //     </ul>
+              //   </>
+              ) : params.slug === 'social-media-marketing' ? (
                 <>
                   <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
-                    If you want to make decisions based on data, use advanced analytics and insights
+                    Planned social media marketing that builds brands and gets real people involved.
                   </h1>
                   <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 font-light">
-                    You can make better, faster, and more sure of your business decisions with Aroot Digital's help. They help you make sense of complicated data and find insights and analytics that are useful.
+                    Professional, data-driven, and effect-driven social media solutions for businesses of all sizes.
                   </p>
                   <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Make smart decisions by using accurate data insights</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+                      <span>Smart content, campaigns, and Facebook ad management that are meant to help your business grow</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Use accurate customer analytics to learn how your customers behave</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+                      <span>Social media experts who can help people see your brand</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Look through data to learn business lessons that will help you do better</span>
+                      <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+                      <span>A planned way to use social media to market your business</span>
                     </li>
                   </ul>
                 </>
@@ -1528,19 +1675,6 @@ export default function ServicePage({ params }: ServicePageProps) {
                   )}
                 </>
               )}
-            </div>
-            {/* Circular Image on Right */}
-            <div className="flex-shrink-0">
-              <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
-                <Image
-                  src="/assets/SEO.jpg"
-                  alt={service.title}
-                  width={192}
-                  height={192}
-                  className="w-full h-full object-cover"
-                  priority
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -1574,10 +1708,10 @@ export default function ServicePage({ params }: ServicePageProps) {
       {/* Hero Section with Callback Form */}
       <section className="py-12 px-4">
         <div className="container mx-auto max-w-[1400px]">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start" id="content-grid">
             {/* Left Side - Service Content */}
-            <div className="lg:col-span-3 lg:pr-6 lg:border-r lg:border-border">
-              {params.slug === 'app-marketing' || params.slug === 'web-design' || params.slug === 'search-engine-optimization' || params.slug === 'ppc-paid-marketing' || params.slug === 'digital-marketing' || params.slug === 'content-marketing' || params.slug === 'martech-data-analytics' ? (
+            <div className="lg:col-span-3 lg:pr-6 lg:border-r lg:border-border order-1 lg:order-1">
+              {params.slug === 'app-marketing' || params.slug === 'web-design' || params.slug === 'search-engine-optimization' || params.slug === 'ppc-paid-marketing' || params.slug === 'digital-marketing' || params.slug === 'content-marketing' || /* params.slug === 'martech-data-analytics' || */ params.slug === 'social-media-marketing' ? (
                 <>
                   {/* Service Specific Content */}
                   <div className="space-y-12">
@@ -1596,80 +1730,91 @@ export default function ServicePage({ params }: ServicePageProps) {
                           ? '1. The start'
                           : params.slug === 'content-marketing'
                           ? '1. Introduction— Why Writing Content Is Still the Best'
+                          : params.slug === 'social-media-marketing'
+                          ? '1. The start'
                           : '1. What analytics and insights are and why they\'re important'}
                       </h2>
                       {params.slug === 'app-marketing' ? (
-                        <div className="text-base md:text-lg text-muted-foreground leading-relaxed space-y-4">
-                          <p>
+                        <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             In a crowded digital ecosystem where thousands of apps launch every week, getting users to notice your brand requires more than just a great product. You need strategic visibility, consistent engagement, and a channel mix that works every single day.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                             Aroot Digital helps brands achieve this through a structured, insight-led app marketing framework powered by whatsapp message marketing, targeted campaigns, mobile app promotion, and performance-led execution.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                             Your app gets what it needs the most — discoverability, installs, engagement, and long-term retention.
                           </p>
                         </div>
+                      ) : params.slug === 'social-media-marketing' ? (
+                        <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                            In today's digital world, social media marketing is more than just a way to get your name out there. It's a direct link between your business and your customers. Companies that have a plan for how to use social media and marketing do better than those that just post things when they think of them or guess what will work.
+                          </p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+                            At Aroot Digital, we help brands get more attention online by using structured social media and ads, performance-driven content, and interacting with customers at every stage of the buying process. Our method makes sure that your brand speaks clearly, consistently, and with confidence, no matter if you're trying to reach a local market or do business all over the world.
+                          </p>
+                        </div>
                       ) : params.slug === 'web-design' ? (
-                        <div className="text-base md:text-lg text-muted-foreground leading-relaxed space-y-4">
-                          <p>
+                        <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             When people first hear about your brand, they often go to your website first. Aroot Digital's web design, website design, and website development services make sure that this first impression is not only good, but also easy to remember, easy to use, and focused on getting visitors to buy.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                             We make digital experiences that are quick, safe, easy to use, and look great. Whether you're making a new website or updating an old one, our UI/UX design rules can help it stay interesting and grow over time.
                           </p>
                         </div>
                       ) : params.slug === 'search-engine-optimization' ? (
-                        <div className="text-base md:text-lg text-muted-foreground leading-relaxed space-y-4">
-                          <p>
+                        <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             People now need search exposure to find brands online. Aroot Digital's SEO services will make sure that people don't forget about your site, that it works right, and that it looks like real people. We value clear, simple, and long-lasting value over complicated language or empty claims. Our SEO company is up-to-date.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                             We help you stay up to date, competitive, and easy to find, whether you're trying to reach people in your area or all over the world.
                           </p>
                         </div>
                       ) : params.slug === 'ppc-paid-marketing' ? (
-                        <div className="text-base md:text-lg text-muted-foreground leading-relaxed space-y-4">
-                          <p>
-                            Businesses that work online need more than just traffic; they need traffic that turns into sales. People who are looking for what you offer will see your brand in pay-per-click (PPC) ads.
+                        <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                            Businesses that work online need more than just traffic; they need traffic that turns into sales. People who are looking for what you offer will see your brand in Meta and performance marketing campaigns.
                           </p>
-                          <p>
-                            Aroot Digital can help brands in India and around the world run pay-per-click ads that work and don't cost too much. Our plan makes sure that you get the most out of your money, whether you're launching a new product, entering a new market, or improving your current funnels.
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+                            Aroot Digital can help brands in India and around the world run Meta and performance marketing campaigns that work and don't cost too much. Our plan makes sure that you get the most out of your money, whether you're launching a new product, entering a new market, or improving your current funnels.
                           </p>
                         </div>
                       ) : params.slug === 'digital-marketing' ? (
-                        <div className="text-base md:text-lg text-muted-foreground leading-relaxed space-y-4">
-                          <p>
+                        <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             In today's digital world, every business needs to have a strong, consistent, and strategic online presence.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                             Aroot Digital is a full-service digital marketing company that can help your business grow by getting more people to see it and building trust with customers.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                             Our methodical approach makes sure that everything is clear and that you can see your progress, whether you're building new digital marketing websites or growing an old brand.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-450">
                             We are a trustworthy digital marketing company that helps businesses in India and around the world give their customers digital experiences that are safe, useful, and up to date.
                           </p>
                         </div>
                       ) : params.slug === 'content-marketing' ? (
-                        <div className="text-base md:text-lg text-muted-foreground leading-relaxed space-y-4">
-                          <p>
+                        <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             Content that is good doesn't just take up space. It helps people make decisions by earning their trust and showing them how much something is worth.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                             Aroot Digital's content writers use a mix of clarity, originality, and strategy to write content that sounds like a person wrote it, reads naturally, and makes your company the clear choice.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                             We write articles, website content, or even full website copy that is easy for your customers to understand and helps you reach your business goals.
                           </p>
                         </div>
                       ) : (
-                        <div className="text-base md:text-lg text-muted-foreground leading-relaxed space-y-4">
-                          <p>
+                        <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             In today's world, data by itself isn't enough. Companies need analytics and insights that take raw data and turn it into clear, confident, and measurable direction. Structured insights and analytics frameworks are what we use at Aroot Digital to help brands make smart decisions, understand complicated facts, and find hidden opportunities.
                           </p>
-                          <p>
+                          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                             You can use data to improve your marketing, learn more about your customers, or make your business run better. Our team makes sure that you always get insights that matter.
                           </p>
                         </div>
@@ -1692,10 +1837,12 @@ export default function ServicePage({ params }: ServicePageProps) {
                             ? '2. The main advantages'
                             : params.slug === 'content-marketing'
                             ? '2. Main Benefits—What You Get'
+                            : params.slug === 'social-media-marketing'
+                            ? '2. The main advantages'
                             : '2. Important Pros and Cons — Doable and focused on outcomes'}
                         </h2>
                         {params.slug === 'digital-marketing' && (
-                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-4">
+                          <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
                             We don't make empty promises when it comes to our internet marketing services in India and other countries. We help businesses get real results.
                           </p>
                         )}
@@ -1704,14 +1851,23 @@ export default function ServicePage({ params }: ServicePageProps) {
                             Aroot Digital is chosen by clients because:
                           </p>
                         )}
-                        <ul className="space-y-3">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {service.benefits.map((benefit: string, index: number) => (
-                            <li key={index} className="flex items-start gap-3">
-                              <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                              <span className="text-base text-muted-foreground leading-relaxed">{benefit}</span>
-                            </li>
+                            <Card 
+                              key={index} 
+                              className="group relative p-5 bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700"
+                              style={{ animationDelay: `${index * 100}ms` }}
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                              <div className="relative flex items-start gap-4">
+                                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+                                  <CheckCircle className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
+                                </div>
+                                <span className="text-base text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300 flex-1">{benefit}</span>
+                              </div>
+                            </Card>
                           ))}
-                        </ul>
+                        </div>
                       </section>
                     )}
 
@@ -1731,22 +1887,119 @@ export default function ServicePage({ params }: ServicePageProps) {
                             ? '3. How it works: How We Get Things Done'
                             : params.slug === 'content-marketing'
                             ? '3. How it works: simple, clear, and not hard to understand'
+                            : params.slug === 'social-media-marketing'
+                            ? '3. How It Works: How We Do It'
                             : '3. How it works: A clear and easy process'}
                         </h2>
                         {(params.slug === 'digital-marketing' || params.slug === 'content-marketing') && (
-                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+                          <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-6">
                             {params.slug === 'digital-marketing'
                               ? 'For all of our digital marketing needs, we have a methodical but adaptable way of doing things:'
                               : 'How it works'}
                           </p>
                         )}
-                        <div className="space-y-6">
-                          {service.howItWorks.map((step: { step: string; description: string }, index: number) => (
-                            <div key={index} className="p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50">
-                              <h3 className="text-lg font-semibold text-foreground mb-2">{step.step}</h3>
-                              <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
-                            </div>
-                          ))}
+                        <div className="relative py-4">
+                          {/* Journey Path Line */}
+                          <div className="hidden md:block absolute left-[30px] top-0 bottom-0 w-0.5">
+                            <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20 rounded-full"></div>
+                            {/* Animated progress line */}
+                            <div 
+                              className="absolute top-0 left-0 w-full bg-gradient-to-b from-primary via-primary-light to-primary-accent rounded-full transition-all duration-1000"
+                              style={{ height: '100%' }}
+                            ></div>
+                          </div>
+                          
+                          <div className="space-y-6">
+                            {service.howItWorks.map((step: { step: string; description: string }, index: number) => {
+                              // Use different icons for different services
+                              const getStepIcon = () => {
+                                if (params.slug === 'app-marketing') {
+                                  const icons = [Rocket, Smartphone, Share2, Palette, BarChart];
+                                  return icons[index] || CheckCircle;
+                                } else if (params.slug === 'web-design') {
+                                  const icons = [Palette, FileText, Building2, ImageIcon, CheckCircle];
+                                  return icons[index] || CheckCircle;
+                                } else if (params.slug === 'search-engine-optimization') {
+                                  const icons = [Search, FileText, Palette, BarChart, FileText, Share2];
+                                  return icons[index] || CheckCircle;
+                                } else if (params.slug === 'ppc-paid-marketing') {
+                                  const icons = [Target, TrendingUp, BarChart, CheckCircle];
+                                  return icons[index] || CheckCircle;
+                                } else if (params.slug === 'digital-marketing') {
+                                  const icons = [Brain, Globe, BarChart, Share2];
+                                  return icons[index] || CheckCircle;
+                                } else if (params.slug === 'content-marketing') {
+                                  const icons = [FileText, Sparkles, CheckCircle];
+                                  return icons[index] || CheckCircle;
+                                } else if (params.slug === 'social-media-marketing') {
+                                  const icons = [Search, FileText, Palette, Calendar, Target, BarChart];
+                                  return icons[index] || CheckCircle;
+                                } else {
+                                  const icons = [BarChart, Brain, Target, CheckCircle];
+                                  return icons[index] || CheckCircle;
+                                }
+                              };
+                              const StepIcon = getStepIcon();
+                              const isLast = index === service.howItWorks.length - 1;
+                              
+                              return (
+                                <div 
+                                  key={index} 
+                                  className="group relative flex gap-4 items-start"
+                                >
+                                  {/* Journey Stop Point */}
+                                  <div className="relative z-20 flex-shrink-0">
+                                    {/* Connecting Path */}
+                                    {!isLast && (
+                                      <div className="absolute left-1/2 top-[60px] -translate-x-1/2 w-0.5 h-8 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/20 group-hover:from-primary group-hover:via-primary-light group-hover:to-primary/50 transition-all duration-500 rounded-full"></div>
+                                    )}
+                                    
+                                    {/* Journey Marker */}
+                                    <div className="relative">
+                                      {/* Outer Pulse Ring */}
+                                      <div className="absolute inset-0 rounded-full bg-primary/30 blur-lg opacity-0 group-hover:opacity-100 animate-pulse scale-125 transition-opacity duration-500"></div>
+                                      
+                                      {/* Main Journey Circle */}
+                                      <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary-accent flex items-center justify-center shadow-lg border-2 border-background group-hover:scale-110 group-hover:shadow-primary/60 group-hover:rotate-6 transition-all duration-500">
+                                        {/* Inner Glow */}
+                                        <div className="absolute inset-1 rounded-full bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                        
+                                        {/* Icon */}
+                                        <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center group-hover:bg-white/25 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                                          <StepIcon className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:scale-110 transition-transform duration-300" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                  {/* Journey Content Card */}
+                                  <Card className="flex-1 p-4 md:p-5 bg-gradient-to-br from-card via-card/98 to-card/95 backdrop-blur-lg border-2 border-border/70 group-hover:border-primary/80 group-hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-500 group-hover:-translate-y-1 overflow-hidden relative">
+                                    {/* Journey Path Indicator */}
+                                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 to-primary/10 group-hover:from-primary group-hover:to-primary/30 transition-all duration-500"></div>
+                                    
+                                    {/* Animated Background */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-1/2 translate-x-1/2"></div>
+                                    
+                                    {/* Content */}
+                                    <div className="relative z-10 pl-3 md:pl-4">
+                                      {/* Step Header */}
+                                      <div className="mb-2">
+                                        <h3 className="text-sm md:text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{step.step}</h3>
+                                        <p className="text-xs md:text-sm text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300">{step.description}</p>
+                                      </div>
+                                    </div>
+                                    
+                                    {/* Shine Effect */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"></div>
+                                    
+                                    {/* Journey Corner Accent */}
+                                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-full"></div>
+                                  </Card>
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
                       </section>
                     )}
@@ -1770,32 +2023,41 @@ export default function ServicePage({ params }: ServicePageProps) {
                             : '4. Information on the items and services'}
                         </h2>
                         {(params.slug === 'digital-marketing' || params.slug === 'content-marketing') && (
-                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-4">
+                          <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
                             {params.slug === 'digital-marketing'
                               ? 'There are many digital marketing services available, such as:'
                               : 'When you hire us to write content, we can do a number of things for you:'}
                           </p>
                         )}
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                           {service.features.map((feature: string, index: number) => (
-                            <li key={index} className="flex items-start gap-3">
-                              <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                              <span className="text-base text-muted-foreground leading-relaxed">{feature}</span>
-                            </li>
+                            <Card 
+                              key={index} 
+                              className="group relative p-4 bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700"
+                              style={{ animationDelay: `${index * 50}ms` }}
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                              <div className="relative flex items-start gap-3">
+                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                                  <CheckCircle className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                                </div>
+                                <span className="text-base text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300 flex-1">{feature}</span>
+                              </div>
+                            </Card>
                           ))}
-                        </ul>
+                        </div>
                         {params.slug === 'search-engine-optimization' && (
-                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-4">
+                          <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mt-4">
                             Aroot Digital is your long-term SEO company. They make sure that your site is always up-to-date and works the way people expect it to.
                           </p>
                         )}
                         {params.slug === 'digital-marketing' && (
-                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-4">
+                          <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mt-4">
                             Your digital marketing websites will be more than just ads online; each one will be made just for you.
                           </p>
                         )}
                         {params.slug === 'content-marketing' && (
-                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-4">
+                          <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mt-4">
                             All of the things that need to be done should be neat, professional, and easy to remember.
                           </p>
                         )}
@@ -1831,14 +2093,23 @@ export default function ServicePage({ params }: ServicePageProps) {
                               : ''}
                           </p>
                         )}
-                        <ul className="space-y-3">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {service.differentiators.map((item: string, index: number) => (
-                            <li key={index} className="flex items-start gap-3">
-                              <Star className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                              <span className="text-base text-muted-foreground leading-relaxed">{item}</span>
-                            </li>
+                            <Card 
+                              key={index} 
+                              className="group relative p-5 bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-right-4 duration-700"
+                              style={{ animationDelay: `${index * 100}ms` }}
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                              <div className="relative flex items-start gap-4">
+                                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                                  <Star className="w-5 h-5 text-primary fill-primary/20 group-hover:fill-primary/40 transition-all duration-300" />
+                                </div>
+                                <span className="text-base text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300 flex-1">{item}</span>
+                              </div>
+                            </Card>
                           ))}
-                        </ul>
+                        </div>
                       </section>
                     )}
 
@@ -1861,19 +2132,65 @@ export default function ServicePage({ params }: ServicePageProps) {
                             : '6. Business Store and Online Shopping Use Cases and Scenarios'}
                         </h2>
                         {(params.slug === 'digital-marketing' || params.slug === 'content-marketing') && (
-                          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-4">
+                          <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
                             {params.slug === 'digital-marketing'
                               ? 'We help a lot of different businesses, and each one has its own set of issues:'
                               : 'When companies need something, they choose Aroot Digital.'}
                           </p>
                         )}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {service.useCases.map((useCase: { title: string; description: string }, index: number) => (
-                            <Card key={index} className="p-4 bg-card/50 backdrop-blur-sm border border-border/50">
-                              <h3 className="text-lg font-semibold text-foreground mb-2">{useCase.title}:</h3>
-                              <p className="text-base text-muted-foreground leading-relaxed">{useCase.description}</p>
-                            </Card>
-                          ))}
+                          {service.useCases.map((useCase: { title: string; description: string }, index: number) => {
+                            const isLast = index === service.useCases.length - 1;
+                            const isOddTotal = service.useCases.length % 2 !== 0;
+                            const shouldSpanFull = isLast && isOddTotal;
+                            
+                            const cardClasses = [
+                              'group',
+                              'relative',
+                              'p-6',
+                              'bg-gradient-to-br',
+                              'from-card/50',
+                              'to-card/30',
+                              'backdrop-blur-sm',
+                              'border',
+                              'border-border/50',
+                              'hover:border-primary/50',
+                              'hover:shadow-xl',
+                              'hover:shadow-primary/10',
+                              'transition-all',
+                              'duration-500',
+                              'hover:-translate-y-2',
+                              'overflow-hidden',
+                              'animate-in',
+                              'fade-in',
+                              'slide-in-from-bottom-4',
+                              'duration-700'
+                            ];
+                            
+                            if (shouldSpanFull) {
+                              cardClasses.push('md:col-span-2');
+                            }
+                            
+                            return (
+                              <Card 
+                                key={index} 
+                                className={cardClasses.join(' ')}
+                                style={{ animationDelay: `${index * 100}ms` }}
+                              >
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="relative">
+                                  <div className="flex items-center gap-3 mb-3">
+                                    <div className="w-10 h-10 rounded-lg bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                                      <span className="text-lg font-bold text-primary">{index + 1}</span>
+                                    </div>
+                                    <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300">{useCase.title}:</h3>
+                                  </div>
+                                  <p className="text-base text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300">{useCase.description}</p>
+                                </div>
+                              </Card>
+                            );
+                          })}
                         </div>
                       </section>
                     )}
@@ -1896,38 +2213,56 @@ export default function ServicePage({ params }: ServicePageProps) {
                             ? '7. Trust Elements: Why Brands Trust Us'
                             : '7. Things that clients trust that make them choose Aroot Digital'}
                         </h2>
-                        <ul className="space-y-3">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {service.trustElements.map((item: string, index: number) => (
-                            <li key={index} className="flex items-start gap-3">
-                              <Award className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                              <span className="text-base text-muted-foreground leading-relaxed">{item}</span>
-                            </li>
+                            <Card 
+                              key={index} 
+                              className="group relative p-5 bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-left-4 duration-700"
+                              style={{ animationDelay: `${index * 80}ms` }}
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                              <div className="relative flex items-start gap-4">
+                                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                                  <Award className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
+                                </div>
+                                <span className="text-base text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300 flex-1">{item}</span>
+                              </div>
+                            </Card>
                           ))}
-                        </ul>
+                        </div>
                       </section>
                     )}
 
                     {/* Soft CTA Section */}
                     {'softCTA' in service && service.softCTA && (
-                      <section className="p-6 bg-gradient-hero/10 rounded-lg border border-primary/20">
-                        <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">
-                          {params.slug === 'app-marketing' 
-                            ? '8. Soft CTA — Professional, Advisory-Led'
-                            : params.slug === 'web-design'
-                            ? '8. Soft CTA—Advice-Based'
-                            : params.slug === 'search-engine-optimization'
-                            ? 'Our staff is here to help you'
-                            : params.slug === 'ppc-paid-marketing'
-                            ? '8. Soft CTA: Professionally and skillfully led'
-                            : params.slug === 'digital-marketing'
-                            ? ''
-                            : params.slug === 'content-marketing'
-                            ? 'A Gentle, Businesslike Call to Action'
-                            : '8. Soft CTA: Be professional and don\'t try to sell'}
-                        </h2>
-                        <p className="text-lg md:text-xl text-foreground leading-relaxed font-medium">
-                          {service.softCTA}
-                        </p>
+                      <section className="relative p-6 bg-gradient-hero/10 rounded-lg border border-primary/20 group hover:bg-gradient-hero/20 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-1">
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg pointer-events-none z-0"></div>
+                        <div className="relative z-10">
+                          <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">
+                            {params.slug === 'app-marketing' 
+                              ? '8. Soft CTA — Professional, Advisory-Led'
+                              : params.slug === 'web-design'
+                              ? '8. Soft CTA—Advice-Based'
+                              : params.slug === 'search-engine-optimization'
+                              ? 'Our staff is here to help you'
+                              : params.slug === 'ppc-paid-marketing'
+                              ? '8. Soft CTA: Professionally and skillfully led'
+                              : params.slug === 'digital-marketing'
+                              ? ''
+                              : params.slug === 'content-marketing'
+                              ? 'A Gentle, Businesslike Call to Action'
+                              : '8. Soft CTA: Be professional and don\'t try to sell'}
+                          </h2>
+                          <p className="text-lg md:text-xl text-gray-900 dark:text-gray-100 leading-relaxed font-medium mb-6 group-hover:text-black dark:group-hover:text-white transition-colors duration-300">
+                            {service.softCTA}
+                          </p>
+                          <Link href="#contact" className="inline-block">
+                            <Button className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2">
+                              Contact Us
+                              <ArrowRight className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                        </div>
                       </section>
                     )}
                   </div>
@@ -1939,29 +2274,6 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                       {service.longDescription}
                     </p>
-
-                    {/* Service Image */}
-                    <div className="mt-6">
-                      {service.image ? (
-                        <div className="relative w-full max-w-lg mx-auto aspect-video rounded-lg overflow-hidden shadow-md border border-border/50">
-                          <Image
-                            src={service.image}
-                            alt={`${service.title} service illustration`}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            priority={false}
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-full max-w-lg mx-auto aspect-video rounded-lg bg-muted/30 border border-border/50 flex items-center justify-center">
-                          <div className="text-center text-muted-foreground">
-                            <ImageIcon className="w-16 h-16 mx-auto mb-1 opacity-50" />
-                            <p className="text-sm">Service Image</p>
-                          </div>
-                        </div>
-                      )}
-                    </div>
                   </div>
 
                   {/* Stats */}
@@ -2170,10 +2482,10 @@ export default function ServicePage({ params }: ServicePageProps) {
             </div>
 
             {/* Right Side - Callback Form */}
-            <aside className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
-                <Card className="p-8 border-primary/10 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
-              <CallbackRequestForm serviceName={service.title} />
+            <aside className="lg:col-span-1 w-full order-2 lg:order-1" style={{ display: 'block', visibility: 'visible', alignSelf: 'stretch' }}>
+              <div className="sticky top-24 space-y-6 z-10" id="callback-form-sticky" style={{ display: 'block', visibility: 'visible', alignSelf: 'flex-start' }}>
+                <Card className="p-8 border-primary/10 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/50 backdrop-blur-sm w-full" style={{ display: 'block', visibility: 'visible' }}>
+                  <CallbackRequestForm serviceName={service?.title || 'Service'} />
                 </Card>
 
                 {/* Related Blog Posts Section */}
@@ -2232,6 +2544,7 @@ export default function ServicePage({ params }: ServicePageProps) {
               </div>
             </aside>
           </div>
+          <StickyCallbackScript />
         </div>
       </section>
 
@@ -2239,7 +2552,9 @@ export default function ServicePage({ params }: ServicePageProps) {
       <SectionDivider />
 
       {/* Tools We Use Section */}
-      <ToolsWeUse />
+      <div id="tools-we-use-section">
+        <ToolsWeUse />
+      </div>
 
       {/* Section Divider */}
       <SectionDivider />

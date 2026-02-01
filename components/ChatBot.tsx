@@ -48,8 +48,8 @@ const ChatBot = () => {
     "Digital Marketing",
     "App Marketing",
     "Content Marketing",
-    "PPC/Paid Marketing",
-    "MarTech / Data Analytics",
+    "Meta and Performance Marketing",
+    // "MarTech / Data Analytics",
     "Web Design and Development",
   ];
 

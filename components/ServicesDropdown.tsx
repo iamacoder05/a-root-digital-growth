@@ -11,15 +11,10 @@ import {
   BarChart,
   ChevronRight,
   Palette,
+  MessageSquare,
 } from "lucide-react";
 
 const services = [
-  {
-    icon: Search,
-    title: "Search Engine Optimization",
-    slug: "search-engine-optimization",
-    description: "Boost your search rankings with data-driven SEO strategies.",
-  },
   {
     icon: Share2,
     title: "Digital Marketing",
@@ -27,10 +22,28 @@ const services = [
     description: "Comprehensive digital marketing solutions across all channels.",
   },
   {
-    icon: AppWindow,
-    title: "App Marketing",
-    slug: "app-marketing",
-    description: "Get your app discovered, downloaded, and used.",
+    icon: Search,
+    title: "Search Engine Optimization",
+    slug: "search-engine-optimization",
+    description: "Boost your search rankings with data-driven SEO strategies.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Social Media Marketing",
+    slug: "social-media-marketing",
+    description: "Strategic social media marketing that builds brands.",
+  },
+  {
+    icon: MousePointerClick,
+    title: "Meta and Performance Marketing",
+    slug: "ppc-paid-marketing",
+    description: "Maximize ROI with strategic paid advertising campaigns.",
+  },
+  {
+    icon: Palette,
+    title: "Web Design and Development",
+    slug: "web-design",
+    description: "Stunning, user-friendly websites that convert visitors.",
   },
   {
     icon: FileText,
@@ -39,23 +52,17 @@ const services = [
     description: "Compelling content that tells your story and resonates.",
   },
   {
-    icon: MousePointerClick,
-    title: "PPC/Paid Marketing",
-    slug: "ppc-paid-marketing",
-    description: "Maximize ROI with strategic paid advertising campaigns.",
+    icon: AppWindow,
+    title: "App Marketing",
+    slug: "app-marketing",
+    description: "Get your app discovered, downloaded, and used.",
   },
-  {
-    icon: BarChart,
-    title: "MarTech / Data Analytics",
-    slug: "martech-data-analytics",
-    description: "Data-driven insights and marketing technology solutions.",
-  },
-  {
-    icon: Palette,
-    title: "Web Design and Development",
-    slug: "web-design",
-    description: "Stunning, user-friendly websites that convert visitors.",
-  },
+  // {
+  //   icon: BarChart,
+  //   title: "MarTech / Data Analytics",
+  //   slug: "martech-data-analytics",
+  //   description: "Data-driven insights and marketing technology solutions.",
+  // },
 ];
 
 interface ServicesDropdownProps {
@@ -104,7 +111,7 @@ const ServicesDropdown = ({ isOpen, onClose }: ServicesDropdownProps) => {
     >
       {/* Services Grid with enhanced design */}
       <div className="p-3 md:p-4 lg:p-5 bg-gradient-to-b from-background to-muted/20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 xl:grid-cols-7 gap-2 md:gap-3 lg:gap-3 xl:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2 md:gap-3 lg:gap-3 xl:gap-4">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (

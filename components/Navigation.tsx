@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { Menu, X, Phone, Search, Share2, FileText, MousePointerClick, AppWindow, BarChart, ChevronDown, Briefcase, MessageSquare, Palette } from "lucide-react";
+import { Menu, X, Phone, Search, Share2, FileText, MousePointerClick, AppWindow, BarChart, ChevronDown, Briefcase, MessageSquare, Palette, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import ServicesDropdown from "@/components/ServicesDropdown";
@@ -22,8 +22,8 @@ const Navigation = () => {
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isMobilePortfolioOpen, setIsMobilePortfolioOpen] = useState(false);
   
-  const phoneNumber = "+91 9561964239 ";
-  const phoneNumberTel = "+919561964239"; // Format for tel: link
+  const phoneNumber = "+91 7498826065 ";
+  const phoneNumberTel = "+917498826065"; // Format for tel: link
 
   // Determine if we're on homepage based on pathname
   const isHomePage = pathname === '/';
@@ -263,13 +263,14 @@ const Navigation = () => {
                       {isMobileServicesOpen && (
                         <div className="pl-4 space-y-2 border-l-2 border-primary/20 animate-fade-in">
                           {[
-                            { icon: Search, title: "Search Engine Optimization", slug: "search-engine-optimization" },
                             { icon: Share2, title: "Digital Marketing", slug: "digital-marketing" },
-                            { icon: AppWindow, title: "App Marketing", slug: "app-marketing" },
-                            { icon: FileText, title: "Content Marketing", slug: "content-marketing" },
-                            { icon: MousePointerClick, title: "PPC/Paid Marketing", slug: "ppc-paid-marketing" },
-                            { icon: BarChart, title: "MarTech / Data Analytics", slug: "martech-data-analytics" },
+                            { icon: Search, title: "Search Engine Optimization", slug: "search-engine-optimization" },
+                            { icon: MessageSquare, title: "Social Media Marketing", slug: "social-media-marketing" },
+                            { icon: MousePointerClick, title: "Meta and Performance Marketing", slug: "ppc-paid-marketing" },
                             { icon: Palette, title: "Web Design and Development", slug: "web-design" },
+                            { icon: FileText, title: "Content Marketing", slug: "content-marketing" },
+                            { icon: AppWindow, title: "App Marketing", slug: "app-marketing" },
+                            // { icon: BarChart, title: "MarTech / Data Analytics", slug: "martech-data-analytics" },
                           ].map((service) => {
                             const IconComponent = service.icon;
                             return (
