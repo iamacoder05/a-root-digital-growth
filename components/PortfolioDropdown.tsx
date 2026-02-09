@@ -11,11 +11,11 @@ interface PortfolioDropdownProps {
 }
 
 const portfolioItems = [
-  {
-    icon: Briefcase,
-    title: "Portfolio",
-    id: "portfolio",
-  },
+  // {
+  //   icon: Briefcase,
+  //   title: "Portfolio",
+  //   id: "portfolio",
+  // },
   {
     icon: MessageSquare,
     title: "Testimonials",

@@ -10,36 +10,36 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const blogPosts = [
   {
     id: "1",
-    slug: "10-seo-tips-to-boost-your-website-ranking",
-    title: "10 SEO Tips to Boost Your Website Ranking in 2025",
-    excerpt: "Discover proven SEO strategies that can help improve your website's search engine rankings and drive more organic traffic.",
-    image: "/placeholder.svg",
-    date: "2025-01-15",
-    category: "SEO",
-    readTime: "5 min read",
-    author: "Sarah Johnson"
+    slug: "social-media-marketing-trends-2026",
+    title: "Social Media Marketing Trends to Watch in 2026",
+    excerpt: "A future-ready guide by Aroot Digital. Even just two years ago, social media looked very different in 2026. With AI-powered feeds, a lot of short-form videos, and highly personalized content ecosystems, brands need to change quickly to stay visible and relevant.",
+    image: "/assets/social-media-trends-2026.png",
+    date: "2026-01-30",
+    category: "Social Media",
+    readTime: "12 min read",
+    author: "Aroot Digital"
   },
   {
     id: "2",
-    slug: "social-media-marketing-trends-2025",
-    title: "Social Media Marketing Trends to Watch in 2025",
-    excerpt: "Stay ahead of the curve with these emerging social media marketing trends that will shape digital marketing this year.",
-    image: "/placeholder.svg",
-    date: "2025-01-10",
-    category: "Social Media",
-    readTime: "7 min read",
-    author: "Michael Chen"
+    slug: "ten-things-to-rank-higher-2026",
+    title: "Ten things you can do to make your website rank higher in 2026",
+    excerpt: "Aroot Digital has made a useful guide that has a big impact. Search engines are smarter, easier to use, and more focused on how people use them than they have ever been before in 2026. Your SEO plan needs to change as AI-driven ranking systems, brand reputation signals, and dynamic SERP layouts change.",
+    image: "/assets/seo-ranking-tips-2026.png",
+    date: "2026-01-30",
+    category: "SEO",
+    readTime: "10 min read",
+    author: "Aroot Digital"
   },
   {
     id: "3",
-    slug: "content-marketing-strategy-guide",
-    title: "Complete Guide to Content Marketing Strategy",
-    excerpt: "Learn how to create a comprehensive content marketing strategy that engages your audience and drives conversions.",
-    image: "/placeholder.svg",
-    date: "2025-01-05",
-    category: "Content Marketing",
-    readTime: "10 min read",
-    author: "Emily Rodriguez"
+    slug: "linkedin-marketing-for-business",
+    title: "LinkedIn Marketing for B2B Businesses: The Complete 2026 Guide",
+    excerpt: "LinkedIn is now the best place in the world to market to other businesses. It helps businesses gain credibility, affects people's buying decisions, and brings in high-value leads from decision-makers and executives all over the world.",
+    image: "/assets/linkedin-b2b-marketing-2026.png",
+    date: "2026-01-30",
+    category: "Social Media",
+    readTime: "15 min read",
+    author: "Aroot Digital"
   }
 ];
 

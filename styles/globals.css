@@ -328,65 +328,164 @@ All colors MUST be HSL.
   animation: slide-up-welcome 0.4s ease-out forwards;
 }
 
-/* Blog content styling */
+/* Blog content styling - Enhanced for readability */
 .blog-content {
-  line-height: 1.8;
+  line-height: 1.9;
+  color: hsl(var(--foreground));
+  font-size: 1.125rem;
+  max-width: 100%;
+}
+
+.blog-content > p:first-child {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+}
+
+.blog-content > p:first-child + p {
+  font-size: 1.125rem;
+  font-style: italic;
   color: hsl(var(--muted-foreground));
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid hsl(var(--border));
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.9;
+  color: hsl(var(--foreground));
 }
 
 .blog-content h2 {
-  font-size: 1.875rem;
+  font-size: 2rem;
   font-weight: 700;
   color: hsl(var(--foreground));
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
   line-height: 1.3;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid hsl(var(--primary) / 0.2);
+  position: relative;
+}
+
+.blog-content h2:first-of-type {
+  margin-top: 2rem;
+}
+
+.blog-content h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 60px;
+  height: 2px;
+  background: hsl(var(--primary));
 }
 
 .blog-content h3 {
   font-size: 1.5rem;
   font-weight: 600;
   color: hsl(var(--foreground));
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.3;
-}
-
-.blog-content p {
-  margin-bottom: 1.25rem;
-  font-size: 1.125rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
 .blog-content a {
-  color: hsl(var(--primary-accent));
+  color: hsl(var(--primary));
   text-decoration: underline;
+  text-underline-offset: 3px;
   transition: color 0.2s;
+  font-weight: 500;
 }
 
 .blog-content a:hover {
-  color: hsl(var(--primary));
+  color: hsl(var(--primary-accent));
 }
 
 .blog-content strong {
   color: hsl(var(--foreground));
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.blog-content em {
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
 }
 
 .blog-content ul,
 .blog-content ol {
-  margin-bottom: 1.25rem;
-  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  padding-left: 2rem;
+  line-height: 1.9;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
 }
 
 .blog-content li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.9;
+  color: hsl(var(--foreground));
+  padding-left: 0.5rem;
+}
+
+.blog-content li::marker {
+  color: hsl(var(--primary));
+  font-weight: 600;
+}
+
+.blog-content ul li {
+  list-style-type: disc;
+}
+
+.blog-content ol li {
+  list-style-type: decimal;
 }
 
 .blog-content img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem;
-  margin: 1.5rem 0;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Better spacing for sections */
+.blog-content > * + * {
+  margin-top: 0;
+}
+
+/* Style for action items or important lists */
+.blog-content ul li strong {
+  color: hsl(var(--primary));
+  font-weight: 700;
+}
+
+/* Add visual separation for better readability */
+@media (min-width: 768px) {
+  .blog-content {
+    font-size: 1.125rem;
+  }
+  
+  .blog-content p {
+    font-size: 1.125rem;
+  }
+  
+  .blog-content h2 {
+    font-size: 2.25rem;
+  }
 }
 
 /* Client logos scroll animation */

@@ -30,65 +30,321 @@ const faqCategories = [
 ];
 
 const faqData: FAQItem[] = [
+  // SECTION 1: SERVICES
   {
     id: "1",
     category: "Services",
-    question: "What digital marketing services do you offer?",
-    answer: "We offer a comprehensive range of digital marketing services including SEO (Search Engine Optimization), social media marketing, content marketing, PPC advertising, email marketing, conversion rate optimization, web design, and analytics. Our team tailors strategies to meet your specific business goals and industry requirements.",
+    question: "What kinds of things does your digital marketing agency do?",
+    answer: "Analytics, WhatsApp Automation, GMB Optimization, Branding, Content Marketing, PPC Ads, Performance Marketing, Social Media Marketing, and Website Design.",
   },
   {
     id: "2",
     category: "Services",
-    question: "Do you provide social media management services?",
-    answer: "Yes, we offer complete social media management services including content creation, posting schedules, community management, paid social advertising, and performance analytics. We work across all major platforms including Facebook, Instagram, LinkedIn, Twitter, and TikTok.",
+    question: "Do you offer SEO services?",
+    answer: "Yes, including on-page, off-page, technical SEO, keyword strategy, and local SEO.",
   },
   {
     id: "3",
     category: "Services",
-    question: "Can you help with both B2B and B2C marketing?",
-    answer: "Absolutely! We have experience working with both B2B and B2C businesses across various industries. Our strategies are adapted to your target audience, whether you're selling to businesses or directly to consumers. We understand the unique challenges and opportunities in each market.",
+    question: "Do you do social media marketing for Facebook and Instagram?",
+    answer: "Yes, that includes making ads, captions, reels, and managing the community.",
   },
   {
     id: "4",
-    category: "Pricing",
-    question: "What is your pricing structure?",
-    answer: "Our pricing is customized based on your specific needs, goals, and the scope of services required. We offer flexible pricing models including monthly retainers, project-based pricing, and performance-based options. Contact us for a free consultation and personalized quote.",
+    category: "Services",
+    question: "Do you use Google Ads and Meta Ads?",
+    answer: "Yes, we handle ad campaigns on Facebook, Instagram, YouTube, Search, and Display.",
   },
   {
     id: "5",
-    category: "Pricing",
-    question: "Do you offer packages for small businesses?",
-    answer: "Yes, we offer affordable packages specifically designed for small businesses and startups. These packages include essential digital marketing services at competitive rates, helping small businesses establish and grow their online presence without breaking the budget.",
+    category: "Services",
+    question: "Do you run campaigns to get leads?",
+    answer: "Yes, for businesses in real estate, restaurants, retail, coaching, D2C, and services.",
   },
   {
     id: "6",
-    category: "Process",
-    question: "What is your typical onboarding process?",
-    answer: "Our onboarding process begins with a discovery call to understand your business, goals, and challenges. We then conduct a comprehensive audit of your current digital presence, develop a customized strategy, and present a detailed proposal. Once approved, we set up tracking tools and begin implementation with regular check-ins.",
+    category: "Services",
+    question: "Do you make websites?",
+    answer: "Yes, business websites, landing pages, corporate sites, and online stores.",
   },
   {
     id: "7",
-    category: "Process",
-    question: "How do you communicate progress and updates?",
-    answer: "We maintain transparent communication through multiple channels including email, scheduled calls, and a client portal. You'll receive weekly updates, monthly comprehensive reports, and have access to real-time dashboards. We're also available for urgent questions via phone or chat.",
+    category: "Services",
+    question: "Do you do UI/UX design?",
+    answer: "Yes, a modern, responsive UI/UX that is optimized for conversions.",
   },
   {
     id: "8",
-    category: "Results",
-    question: "How long does it take to see results from SEO?",
-    answer: "SEO is a long-term strategy, and results typically start appearing within 3-6 months. However, the timeline varies based on factors like your website's current state, competition level, and the keywords you're targeting. We provide monthly progress reports so you can track improvements along the way.",
+    category: "Services",
+    question: "Do you write content for other people?",
+    answer: "We write SEO blogs, website content, scripts for reels, ads, emails, and brochures.",
   },
   {
     id: "9",
-    category: "Results",
-    question: "How do you measure success and ROI?",
-    answer: "We track key performance indicators (KPIs) such as website traffic, search rankings, conversion rates, lead generation, social media engagement, and revenue growth. We provide detailed monthly reports with clear metrics and insights, so you always know how your campaigns are performing.",
+    category: "Services",
+    question: "Are you able to handle Google My Business (GMB)?",
+    answer: "Yes, posting, optimizing, writing descriptions that are full of keywords, and managing reviews.",
   },
   {
     id: "10",
+    category: "Services",
+    question: "Do you offer marketing and automation for WhatsApp?",
+    answer: "Yes, setting up the WhatsApp API, automation flows, broadcast templates, and retargeting.",
+  },
+  {
+    id: "11",
+    category: "Services",
+    question: "Do you help with branding?",
+    answer: "Yes, we do brand identity design, tone development, brand messaging, and logo design.",
+  },
+  {
+    id: "12",
+    category: "Services",
+    question: "Do you help new businesses?",
+    answer: "Yes, there are quick-launch digital marketing packages that are meant to help businesses grow.",
+  },
+  {
+    id: "13",
+    category: "Services",
+    question: "Do you run paid ads for clients from other countries?",
+    answer: "Yes, the US, UAE, UK, Canada, Singapore, and more.",
+  },
+  {
+    id: "14",
+    category: "Services",
+    question: "What kinds of businesses do you work with?",
+    answer: "Real estate, restaurants, finance, coaching, direct-to-consumer brands, healthcare, and business-to-business.",
+  },
+  {
+    id: "15",
+    category: "Services",
+    question: "Can you handle all of your digital marketing in one place?",
+    answer: "Yes, we offer 360° digital marketing with performance tracking and unified reporting.",
+  },
+  // SECTION 2: PRICING
+  {
+    id: "16",
+    category: "Pricing",
+    question: "How much do services for digital marketing cost?",
+    answer: "Depending on the scope of the service, packages start at ₹15,000 per month.",
+  },
+  {
+    id: "17",
+    category: "Pricing",
+    question: "Do you have packages with prices that can be changed?",
+    answer: "Yes, they are customized based on the size, goals, and deadlines of the business.",
+  },
+  {
+    id: "18",
+    category: "Pricing",
+    question: "How do you bill for paid ads?",
+    answer: "We charge a fee for management, and you pay Google/Meta directly for ads.",
+  },
+  {
+    id: "19",
+    category: "Pricing",
+    question: "Is there a minimum amount of time for the contract?",
+    answer: "A three-month engagement is usually best for getting steady results.",
+  },
+  {
+    id: "20",
+    category: "Pricing",
+    question: "Do you charge extra for creative work?",
+    answer: "Yes, premium motion graphics are included in plans; standard creatives are not.",
+  },
+  {
+    id: "21",
+    category: "Pricing",
+    question: "Do you give prices for one-time projects?",
+    answer: "Yes, for building websites, branding, audits, and meetings.",
+  },
+  {
+    id: "22",
+    category: "Pricing",
+    question: "Is it possible to start with a small plan and then make it bigger?",
+    answer: "Yes, you can upgrade whenever you want.",
+  },
+  {
+    id: "23",
+    category: "Pricing",
+    question: "Do you have to pay to get started?",
+    answer: "When you sign up for a full digital marketing retainer, onboarding is usually free.",
+  },
+  {
+    id: "24",
+    category: "Pricing",
+    question: "Do you charge based on performance?",
+    answer: "Yes, but only in certain fields where tracking is accurate.",
+  },
+  {
+    id: "25",
+    category: "Pricing",
+    question: "Do you give discounts for long-term commitments?",
+    answer: "Yes, there are special prices for quarterly and yearly retainers.",
+  },
+  // SECTION 3: PROCESS
+  {
+    id: "26",
+    category: "Process",
+    question: "How do you get new employees started?",
+    answer: "Brand discovery, setting up access, auditing competitors, making a strategy map, and making a content calendar.",
+  },
+  {
+    id: "27",
+    category: "Process",
+    question: "What steps do you take to create a digital marketing plan?",
+    answer: "Before we start, we look at our competitors, our audience, our keywords, our platforms, and our KPIs.",
+  },
+  {
+    id: "28",
+    category: "Process",
+    question: "How often do you send out reports?",
+    answer: "Depending on the plan, once a week, every other week, or once a month.",
+  },
+  {
+    id: "29",
+    category: "Process",
+    question: "Do you make calendars for your content every month?",
+    answer: "Yes, well-planned monthly calendars with creative ideas and videos.",
+  },
+  {
+    id: "30",
+    category: "Process",
+    question: "Do you look into your competitors?",
+    answer: "Yes, their ads, SEO, social media, and messages.",
+  },
+  {
+    id: "31",
+    category: "Process",
+    question: "How do you run ad campaigns?",
+    answer: "A/B tests, optimizing every day, managing keywords, and strategies for bidding.",
+  },
+  {
+    id: "32",
+    category: "Process",
+    question: "Do you give each client a separate account manager?",
+    answer: "Yes, for talking, getting approvals, and making plans.",
+  },
+  {
+    id: "33",
+    category: "Process",
+    question: "How often do you improve your campaigns?",
+    answer: "Weekly optimization and daily checking.",
+  },
+  {
+    id: "34",
+    category: "Process",
+    question: "How do you know if your SEO is working?",
+    answer: "Rankings, organic traffic, page health, keyword movement, and improvement over the course of a month.",
+  },
+  {
+    id: "35",
+    category: "Process",
+    question: "What do you need from the client to get things going?",
+    answer: "Brand assets, access to the website, ad accounts, and information about products and services.",
+  },
+  {
+    id: "36",
+    category: "Process",
+    question: "Do you help people set up Google Analytics and Pixel?",
+    answer: "Yes, full setup and integration of tracking.",
+  },
+  {
+    id: "37",
+    category: "Process",
+    question: "Do you stick to the rules for your brand?",
+    answer: "Yes, the fonts, colors, tone, and layouts all stay the same.",
+  },
+  {
+    id: "38",
+    category: "Process",
+    question: "Can you control the tone of our brand messaging?",
+    answer: "Yes, you can be professional, friendly, bold, high-end, corporate, or modern.",
+  },
+  {
+    id: "39",
+    category: "Process",
+    question: "Do you offer dashboards?",
+    answer: "Yes, there are GA4, Looker, and custom performance dashboards.",
+  },
+  {
+    id: "40",
+    category: "Process",
+    question: "How do you get approvals?",
+    answer: "We send each other content every week to get approval before posting.",
+  },
+  // SECTION 4: RESULTS
+  {
+    id: "41",
     category: "Results",
-    question: "What kind of results can I expect?",
-    answer: "Results vary based on your industry, competition, and goals. Typically, our clients see increased website traffic (20-50% within 6 months), improved search rankings, higher conversion rates, more qualified leads, and measurable ROI. We set realistic expectations during our initial consultation and work towards achieving them.",
+    question: "When will I start to see results?",
+    answer: "SEO: 2 to 4 months. Ads that cost money: 1–7 days. Social Media: 45 to 60 days. Website: Immediate improvement after launch.",
+  },
+  {
+    id: "42",
+    category: "Results",
+    question: "Can you promise leads or sales?",
+    answer: "No ethical agency can promise results, but we can promise hard work, improvement, and honesty.",
+  },
+  {
+    id: "43",
+    category: "Results",
+    question: "How do you find out how much money your campaign made?",
+    answer: "Using GA4, UTM tracking, attribution models, lead quality scoring, and conversion metrics.",
+  },
+  {
+    id: "44",
+    category: "Results",
+    question: "What key performance indicators do you keep an eye on?",
+    answer: "CTR, CAC, ROAS, impressions, conversions, leads, ranking, and engagement are all important.",
+  },
+  {
+    id: "45",
+    category: "Results",
+    question: "Will paid ads bring in traffic right away?",
+    answer: "Yes, paid ads start getting clicks and impressions within hours.",
+  },
+  {
+    id: "46",
+    category: "Results",
+    question: "What do you do to make leads better?",
+    answer: "Better targeting, better landing pages, better ad messages, and better audience filtering.",
+  },
+  {
+    id: "47",
+    category: "Results",
+    question: "Do you give suggestions for how to improve performance?",
+    answer: "Yes, weekly strategic suggestions.",
+  },
+  {
+    id: "48",
+    category: "Results",
+    question: "Can digital marketing help people learn more about your brand?",
+    answer: "Yes, definitely. Through social media, search engine optimization, ads, content, and GMB.",
+  },
+  {
+    id: "49",
+    category: "Results",
+    question: "How do you tell how well your content is doing?",
+    answer: "Views, reads, time spent on the page, shares, saves, and organic keyword ranking.",
+  },
+  {
+    id: "50",
+    category: "Results",
+    question: "How do you know if your social media is working?",
+    answer: "The number of people who engage with your posts, the number of people who see them, the number of new followers, the number of profile visits, and the number of story interactions.",
+  },
+  {
+    id: "51",
+    category: "Results",
+    question: "Can digital marketing help my business that isn't online?",
+    answer: "Yes, with local SEO, GMB, WhatsApp automation, and ads that target people in your area.",
+  },
+  {
+    id: "52",
+    category: "Results",
+    question: "Is it guaranteed that there will be ROI every month?",
+    answer: "Optimizations make ROI better, but no agency can promise returns.",
   },
 ];
 
@@ -161,7 +417,7 @@ export default function FAQPage() {
                       onClick={() => handleCategoryClick(category)}
                       className={`w-full flex items-center justify-between p-4 rounded-lg transition-all duration-300 ${
                         isSelected
-                          ? "bg-primary-accent text-white shadow-lg"
+                          ? "bg-primary text-white shadow-lg"
                           : "bg-muted/50 hover:bg-muted text-foreground"
                       }`}
                     >
@@ -203,7 +459,7 @@ export default function FAQPage() {
                           aria-expanded={isOpen}
                         >
                           <div className="flex-1 pr-4">
-                            <span className="text-xs font-semibold text-primary-accent uppercase tracking-wide mb-2 block">
+                            <span className="text-xs font-semibold text-primary uppercase tracking-wide mb-2 block">
                               {faq.category}
                             </span>
                             <h3 className="text-lg md:text-xl font-semibold text-foreground">
@@ -213,8 +469,8 @@ export default function FAQPage() {
                           <div
                             className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                               isOpen
-                                ? "bg-primary-accent text-white rotate-180"
-                                : "bg-muted text-muted-foreground"
+                                ? "bg-primary text-white rotate-180"
+                                : "bg-primary/10 text-primary"
                             }`}
                           >
                             <ChevronDown className="w-5 h-5" />
@@ -226,7 +482,7 @@ export default function FAQPage() {
                           }`}
                         >
                           <div className="px-6 pb-6 pt-2">
-                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                            <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
                               {faq.answer}
                             </p>
                           </div>

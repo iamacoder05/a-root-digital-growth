@@ -98,7 +98,7 @@ const Footer = () => {
       {/* Purple Footer Section - Full Width */}
       <div className="bg-gradient-primary text-white pt-6 sm:pt-8 md:pt-10 pb-6 sm:pb-8 md:pb-10 w-full text-center text-xs sm:text-sm md:text-base">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          <p className="mb-3 text-white/90">&copy; 2025 ARoot Digital. All rights reserved.</p>
+          <p className="mb-3 text-white/90">&copy; 2026 ARoot Digital. All rights reserved.</p>
           <div className="flex items-center justify-center gap-3 sm:gap-4">
             <Link href="/privacy-policy" className="text-white/90 hover:text-white transition-colors">
               Privacy Policy

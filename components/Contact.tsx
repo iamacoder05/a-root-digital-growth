@@ -124,13 +124,14 @@ const Contact = () => {
   });
 
   const services = [
-    "Search Engine Optimization",
     "Digital Marketing",
-    "App Marketing",
-    "Content Marketing",
+    "Search Engine Optimization",
+    "Social Media Marketing",
     "Meta and Performance Marketing",
+    "Web Design and Development",
+    "Content Marketing",
+    "App Marketing",
     // "MarTech / Data Analytics",
-    "Web Design and Development"
   ];
 
   const handleServiceToggle = (service: string) => {

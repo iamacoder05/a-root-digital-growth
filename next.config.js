@@ -21,13 +21,38 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
-  generateEtags: true,
+  generateEtags: false, // Disable ETags to prevent caching issues
   reactStrictMode: true,
   // Optimize production builds
   swcMinify: true,
   // Reduce JavaScript bundle size
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Add headers to prevent aggressive caching
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: process.env.NODE_ENV === 'development' 
+              ? 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0'
+              : 'public, s-maxage=60, stale-while-revalidate=300',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 }
 

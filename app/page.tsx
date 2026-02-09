@@ -8,9 +8,9 @@ import type { Metadata } from "next";
 const About = dynamic(() => import("@/components/About"), {
   loading: () => <div className="min-h-[400px]" />,
 });
-const Portfolio = dynamic(() => import("@/components/Portfolio"), {
-  loading: () => <div className="min-h-[400px]" />,
-});
+// const Portfolio = dynamic(() => import("@/components/Portfolio"), {
+//   loading: () => <div className="min-h-[400px]" />,
+// });
 const Clients = dynamic(() => import("@/components/Clients"), {
   loading: () => <div className="min-h-[300px]" />,
 });
@@ -166,7 +166,7 @@ export default function Home() {
           <SectionDivider />
           <About />
           <SectionDivider />
-          <Portfolio />
+          {/* <Portfolio /> */}
           <SectionDivider />
           <Clients />
           <SectionDivider />

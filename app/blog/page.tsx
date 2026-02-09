@@ -20,50 +20,40 @@ import {
 const allBlogPosts = [
   {
     id: "1",
-    slug: "10-seo-tips-to-boost-your-website-ranking",
-    title: "10 SEO Tips to Boost Your Website Ranking in 2025",
-    excerpt: "Discover proven SEO strategies that can help improve your website's search engine rankings and drive more organic traffic. Learn about keyword research, on-page optimization, and technical SEO.",
-    image: "/placeholder.svg",
-    date: "2025-01-15",
-    category: "SEO",
-    readTime: "5 min read",
-    author: "Sarah Johnson"
+    slug: "social-media-marketing-trends-2026",
+    title: "Social Media Marketing Trends to Watch in 2026",
+    excerpt: "A future-ready guide by Aroot Digital. Even just two years ago, social media looked very different in 2026. With AI-powered feeds, a lot of short-form videos, and highly personalized content ecosystems, brands need to change quickly to stay visible and relevant.",
+    image: "/assets/social-media-trends-2026.png",
+    date: "2026-01-30",
+    category: "Social Media",
+    readTime: "12 min read",
+    author: "Aroot Digital"
   },
   {
     id: "2",
-    slug: "advanced-seo-techniques-2025",
-    title: "Advanced SEO Techniques for 2025: Beyond the Basics",
-    excerpt: "Take your SEO strategy to the next level with these advanced techniques that go beyond basic optimization. Learn about technical SEO, schema markup, and advanced link building strategies.",
-    image: "/placeholder.svg",
-    date: "2025-01-12",
+    slug: "ten-things-to-rank-higher-2026",
+    title: "Ten things you can do to make your website rank higher in 2026",
+    excerpt: "Aroot Digital has made a useful guide that has a big impact. Search engines are smarter, easier to use, and more focused on how people use them than they have ever been before in 2026. Your SEO plan needs to change as AI-driven ranking systems, brand reputation signals, and dynamic SERP layouts change.",
+    image: "/assets/seo-ranking-tips-2026.png",
+    date: "2026-01-30",
     category: "SEO",
-    readTime: "12 min read",
-    author: "Sarah Johnson"
+    readTime: "10 min read",
+    author: "Aroot Digital"
   },
   {
     id: "3",
-    slug: "local-seo-strategy-guide",
-    title: "Local SEO Strategy: Dominate Your Local Market",
-    excerpt: "Learn how to optimize your business for local search and attract customers in your area. Master Google Business Profile optimization and local citation strategies.",
-    image: "/placeholder.svg",
-    date: "2025-01-08",
-    category: "SEO",
-    readTime: "8 min read",
-    author: "Sarah Johnson"
-  },
-  {
-    id: "4",
-    slug: "social-media-marketing-trends-2025",
-    title: "Social Media Marketing Trends to Watch in 2025",
-    excerpt: "Stay ahead of the curve with these emerging social media marketing trends that will shape digital marketing this year. From video content to AI-powered tools.",
-    image: "/placeholder.svg",
-    date: "2025-01-10",
+    slug: "linkedin-marketing-for-business",
+    title: "LinkedIn Marketing for B2B Businesses: The Complete 2026 Guide",
+    excerpt: "LinkedIn is now the best place in the world to market to other businesses. It helps businesses gain credibility, affects people's buying decisions, and brings in high-value leads from decision-makers and executives all over the world.",
+    image: "/assets/linkedin-b2b-marketing-2026.png",
+    date: "2026-01-30",
     category: "Social Media",
-    readTime: "7 min read",
-    author: "Michael Chen"
-  },
+    readTime: "15 min read",
+    author: "Aroot Digital"
+  }
+  /* Commented out other blog posts for now
   {
-    id: "5",
+    id: "6",
     slug: "instagram-marketing-strategies",
     title: "Instagram Marketing Strategies That Drive Engagement",
     excerpt: "Discover proven Instagram marketing strategies to grow your following and increase engagement. Learn about Stories, Reels, and IGTV optimization.",
@@ -74,18 +64,18 @@ const allBlogPosts = [
     author: "Michael Chen"
   },
   {
-    id: "6",
+    id: "7",
     slug: "linkedin-marketing-for-business",
-    title: "LinkedIn Marketing for B2B Businesses: Complete Guide",
-    excerpt: "Master LinkedIn marketing to generate leads and build your B2B brand presence. Learn about LinkedIn Ads, content strategy, and networking techniques.",
-    image: "/placeholder.svg",
-    date: "2025-01-03",
+    title: "LinkedIn Marketing for B2B Businesses: The Complete 2026 Guide",
+    excerpt: "LinkedIn is now the best place in the world to market to other businesses. It helps businesses gain credibility, affects people's buying decisions, and brings in high-value leads from decision-makers and executives all over the world.",
+    image: "/assets/linkedin-b2b-marketing-2026.png",
+    date: "2026-01-30",
     category: "Social Media",
-    readTime: "11 min read",
-    author: "Michael Chen"
+    readTime: "15 min read",
+    author: "Aroot Digital"
   },
   {
-    id: "7",
+    id: "8",
     slug: "content-marketing-strategy-guide",
     title: "Complete Guide to Content Marketing Strategy",
     excerpt: "Learn how to create a comprehensive content marketing strategy that engages your audience and drives conversions. Includes templates and best practices.",
@@ -96,7 +86,7 @@ const allBlogPosts = [
     author: "Emily Rodriguez"
   },
   {
-    id: "8",
+    id: "9",
     slug: "blog-content-creation-tips",
     title: "Blog Content Creation: Tips for Engaging Readers",
     excerpt: "Learn how to create blog content that captivates your audience and keeps them coming back for more. Discover writing techniques and content formats that work.",
@@ -107,7 +97,7 @@ const allBlogPosts = [
     author: "Emily Rodriguez"
   },
   {
-    id: "9",
+    id: "10",
     slug: "video-content-marketing-guide",
     title: "Video Content Marketing: A Comprehensive Guide",
     excerpt: "Explore the power of video content marketing and how to create videos that convert. Learn about YouTube optimization, video SEO, and engagement strategies.",
@@ -118,7 +108,7 @@ const allBlogPosts = [
     author: "Emily Rodriguez"
   },
   {
-    id: "10",
+    id: "11",
     slug: "ppc-advertising-best-practices",
     title: "PPC Advertising Best Practices for Maximum ROI",
     excerpt: "Maximize your return on investment with these proven PPC advertising strategies. Learn about keyword selection, ad copywriting, and bid management.",
@@ -129,7 +119,7 @@ const allBlogPosts = [
     author: "David Thompson"
   },
   {
-    id: "11",
+    id: "12",
     slug: "google-ads-optimization-tips",
     title: "Google Ads Optimization: 10 Tips for Better Performance",
     excerpt: "Optimize your Google Ads campaigns with these proven strategies to improve performance and ROI. Learn about keyword match types, ad extensions, and quality scores.",
@@ -140,7 +130,7 @@ const allBlogPosts = [
     author: "David Thompson"
   },
   {
-    id: "12",
+    id: "13",
     slug: "facebook-ads-strategy-guide",
     title: "Facebook Ads Strategy: Maximize Your Ad Spend",
     excerpt: "Create effective Facebook ad campaigns that deliver results and maximize your advertising budget. Learn about audience targeting, ad formats, and optimization techniques.",
@@ -151,7 +141,7 @@ const allBlogPosts = [
     author: "David Thompson"
   },
   {
-    id: "13",
+    id: "14",
     slug: "email-marketing-automation-guide",
     title: "Email Marketing Automation: A Complete Guide",
     excerpt: "Discover how to automate your email marketing campaigns to save time and increase engagement. Learn about workflows, segmentation, and personalization.",
@@ -162,7 +152,7 @@ const allBlogPosts = [
     author: "Lisa Anderson"
   },
   {
-    id: "14",
+    id: "15",
     slug: "email-campaign-design-best-practices",
     title: "Email Campaign Design: Best Practices for 2025",
     excerpt: "Design email campaigns that stand out in crowded inboxes and drive action from your subscribers. Learn about responsive design, CTAs, and visual hierarchy.",
@@ -173,7 +163,7 @@ const allBlogPosts = [
     author: "Lisa Anderson"
   },
   {
-    id: "15",
+    id: "16",
     slug: "newsletter-marketing-strategies",
     title: "Newsletter Marketing Strategies That Convert",
     excerpt: "Build and grow your newsletter subscriber base with these effective marketing strategies. Learn about lead magnets, segmentation, and content planning.",
@@ -184,7 +174,7 @@ const allBlogPosts = [
     author: "Lisa Anderson"
   },
   {
-    id: "16",
+    id: "17",
     slug: "website-conversion-optimization",
     title: "Website Conversion Optimization: 15 Proven Techniques",
     excerpt: "Transform your website visitors into customers with these conversion optimization techniques. From A/B testing to landing page design.",
@@ -195,7 +185,7 @@ const allBlogPosts = [
     author: "James Wilson"
   },
   {
-    id: "17",
+    id: "18",
     slug: "landing-page-optimization-guide",
     title: "Landing Page Optimization: Turn Visitors into Customers",
     excerpt: "Optimize your landing pages to convert more visitors into customers with these proven techniques. Learn about headline optimization, form design, and trust signals.",
@@ -206,7 +196,7 @@ const allBlogPosts = [
     author: "James Wilson"
   },
   {
-    id: "18",
+    id: "19",
     slug: "ab-testing-strategies",
     title: "A/B Testing Strategies: Data-Driven Optimization",
     excerpt: "Learn how to conduct effective A/B tests to optimize your website and improve conversion rates. Discover testing frameworks and statistical significance.",
@@ -217,7 +207,7 @@ const allBlogPosts = [
     author: "James Wilson"
   },
   {
-    id: "19",
+    id: "20",
     slug: "technical-seo-checklist-2025",
     title: "Technical SEO Checklist: Complete Guide for 2025",
     excerpt: "Master technical SEO with this comprehensive checklist covering site speed, mobile optimization, structured data, and more.",
@@ -228,7 +218,7 @@ const allBlogPosts = [
     author: "Sarah Johnson"
   },
   {
-    id: "20",
+    id: "21",
     slug: "keyword-research-mastery",
     title: "Keyword Research Mastery: Find the Right Keywords",
     excerpt: "Discover advanced keyword research techniques to identify high-value keywords that drive traffic and conversions.",
@@ -239,7 +229,7 @@ const allBlogPosts = [
     author: "Sarah Johnson"
   },
   {
-    id: "21",
+    id: "22",
     slug: "link-building-strategies",
     title: "Link Building Strategies: Build Quality Backlinks",
     excerpt: "Learn proven link building strategies to improve your domain authority and search engine rankings.",
@@ -250,7 +240,7 @@ const allBlogPosts = [
     author: "Sarah Johnson"
   },
   {
-    id: "22",
+    id: "23",
     slug: "twitter-marketing-guide",
     title: "Twitter Marketing Guide: Grow Your Following",
     excerpt: "Master Twitter marketing to build your brand presence and engage with your audience effectively.",
@@ -261,7 +251,7 @@ const allBlogPosts = [
     author: "Michael Chen"
   },
   {
-    id: "23",
+    id: "24",
     slug: "tiktok-marketing-strategies",
     title: "TikTok Marketing Strategies for Business Growth",
     excerpt: "Leverage TikTok's growing platform to reach younger audiences and drive brand awareness.",
@@ -272,7 +262,7 @@ const allBlogPosts = [
     author: "Michael Chen"
   },
   {
-    id: "24",
+    id: "25",
     slug: "youtube-marketing-tips",
     title: "YouTube Marketing Tips: Build Your Channel",
     excerpt: "Grow your YouTube channel with these proven marketing strategies and optimization techniques.",
@@ -283,7 +273,7 @@ const allBlogPosts = [
     author: "Michael Chen"
   },
   {
-    id: "25",
+    id: "26",
     slug: "content-calendar-planning",
     title: "Content Calendar Planning: Stay Organized",
     excerpt: "Create an effective content calendar that keeps your marketing efforts organized and consistent.",
@@ -294,7 +284,7 @@ const allBlogPosts = [
     author: "Emily Rodriguez"
   },
   {
-    id: "26",
+    id: "27",
     slug: "infographic-design-guide",
     title: "Infographic Design Guide: Visual Content That Converts",
     excerpt: "Create compelling infographics that communicate your message effectively and drive engagement.",
@@ -305,7 +295,7 @@ const allBlogPosts = [
     author: "Emily Rodriguez"
   },
   {
-    id: "27",
+    id: "28",
     slug: "podcast-marketing-strategies",
     title: "Podcast Marketing Strategies: Grow Your Audience",
     excerpt: "Learn how to market your podcast effectively and build a loyal listener base.",
@@ -316,7 +306,7 @@ const allBlogPosts = [
     author: "Emily Rodriguez"
   },
   {
-    id: "28",
+    id: "29",
     slug: "bing-ads-optimization",
     title: "Bing Ads Optimization: Maximize Your Reach",
     excerpt: "Optimize your Bing Ads campaigns to reach a different audience and improve your ad performance.",
@@ -327,7 +317,7 @@ const allBlogPosts = [
     author: "David Thompson"
   },
   {
-    id: "29",
+    id: "30",
     slug: "retargeting-campaigns-guide",
     title: "Retargeting Campaigns: Re-engage Your Visitors",
     excerpt: "Create effective retargeting campaigns that bring back visitors and convert them into customers.",
@@ -338,7 +328,7 @@ const allBlogPosts = [
     author: "David Thompson"
   },
   {
-    id: "30",
+    id: "31",
     slug: "shopping-ads-optimization",
     title: "Shopping Ads Optimization: Boost E-commerce Sales",
     excerpt: "Optimize your Google Shopping ads to increase visibility and drive more sales for your products.",
@@ -349,7 +339,7 @@ const allBlogPosts = [
     author: "David Thompson"
   },
   {
-    id: "31",
+    id: "32",
     slug: "email-segmentation-strategies",
     title: "Email Segmentation Strategies: Personalize Your Campaigns",
     excerpt: "Segment your email list effectively to deliver personalized messages that resonate with each audience.",
@@ -360,7 +350,7 @@ const allBlogPosts = [
     author: "Lisa Anderson"
   },
   {
-    id: "32",
+    id: "33",
     slug: "subject-line-optimization",
     title: "Subject Line Optimization: Increase Open Rates",
     excerpt: "Write compelling email subject lines that grab attention and boost your open rates significantly.",
@@ -371,7 +361,7 @@ const allBlogPosts = [
     author: "Lisa Anderson"
   },
   {
-    id: "33",
+    id: "34",
     slug: "transactional-email-best-practices",
     title: "Transactional Email Best Practices: Enhance User Experience",
     excerpt: "Design transactional emails that not only inform but also engage and convert your customers.",
@@ -382,7 +372,7 @@ const allBlogPosts = [
     author: "Lisa Anderson"
   },
   {
-    id: "34",
+    id: "35",
     slug: "checkout-optimization-guide",
     title: "Checkout Optimization Guide: Reduce Cart Abandonment",
     excerpt: "Optimize your checkout process to reduce cart abandonment and increase completed purchases.",
@@ -393,7 +383,7 @@ const allBlogPosts = [
     author: "James Wilson"
   },
   {
-    id: "35",
+    id: "36",
     slug: "cta-optimization-tips",
     title: "CTA Optimization Tips: Drive More Clicks",
     excerpt: "Create compelling call-to-action buttons that encourage clicks and drive conversions.",
@@ -404,7 +394,7 @@ const allBlogPosts = [
     author: "James Wilson"
   },
   {
-    id: "36",
+    id: "37",
     slug: "mobile-conversion-optimization",
     title: "Mobile Conversion Optimization: Mobile-First Approach",
     excerpt: "Optimize your mobile experience to convert more mobile visitors into customers.",
@@ -414,6 +404,7 @@ const allBlogPosts = [
     readTime: "8 min read",
     author: "James Wilson"
   }
+  */
 ];
 
 function BlogPageContent() {
@@ -483,11 +474,11 @@ function BlogPageContent() {
       </div>
 
       {/* Blog Posts Grid */}
-      <section className="py-12 md:py-16 px-4">
+      <section className="py-12 md:py-16 px-4 mt-6 md:mt-8">
         <div className="container mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-6">
-            {/* Blog Posts - Takes 3 columns on large screens */}
-            <div className="lg:col-span-3">
+            {/* Blog Posts - Takes full width now since categories are commented out */}
+            <div className="lg:col-span-4">
               {filteredPosts.length === 0 ? (
                 <div className="text-center py-12">
                   <p className="text-muted-foreground text-lg">No posts found in this category.</p>
@@ -499,7 +490,7 @@ function BlogPageContent() {
                   </button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 max-w-6xl mx-auto">
                   {filteredPosts.map((post) => (
               <Card
                 key={post.id}
@@ -545,13 +536,12 @@ function BlogPageContent() {
               )}
             </div>
 
-            {/* Categories Sidebar - Takes 1 column on large screens */}
-            <aside className="lg:col-span-1">
+            {/* Categories Sidebar - Commented out for now */}
+            {/* <aside className="lg:col-span-1">
               <div className="sticky top-24">
                 <Card className="p-6 border-primary/10 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
                   <h3 className="text-xl font-bold text-foreground mb-4">Categories</h3>
                   <div className="space-y-2">
-                    {/* All Categories Option */}
                     <button
                       onClick={() => handleCategoryClick(null)}
                       className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors group ${
@@ -581,7 +571,6 @@ function BlogPageContent() {
                       </span>
                     </button>
 
-                    {/* Category Options */}
                     {categories.map((category) => {
                       const count = allBlogPosts.filter(post => post.category === category).length;
                       const isSelected = selectedCategory === category;
@@ -620,7 +609,7 @@ function BlogPageContent() {
                   </div>
                 </Card>
               </div>
-            </aside>
+            </aside> */}
           </div>
         </div>
       </section>

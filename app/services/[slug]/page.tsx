@@ -1022,132 +1022,252 @@ const serviceDetails = {
 const serviceFAQs: Record<string, Array<{ question: string; answer: string }>> = {
   'search-engine-optimization': [
     {
-      question: "How long does it take to see SEO results?",
-      answer: "SEO is a long-term strategy, and results typically start appearing within 3-6 months. However, the timeline varies based on factors like your website's current state, competition level, and the keywords you're targeting. We provide monthly progress reports so you can track improvements along the way."
+      question: "What types of SEO services does Aroot Digital provide?",
+      answer: "We do keyword research, SEO for content, links, and tracking analytics. We also do technical SEO, UX optimization, and link building."
     },
     {
-      question: "What is included in your SEO optimization service?",
-      answer: "Our comprehensive SEO service includes keyword research and analysis, on-page optimization, technical SEO audit and fixes, content optimization and strategy, link building and outreach, local SEO optimization, and monthly reporting and analytics. We tailor our approach to your specific business needs and goals."
+      question: "How long does it take for SEO to start working?",
+      answer: "It usually takes 3 to 4 months for stable improvements to happen, depending on the website's competition, content, and strength."
     },
     {
-      question: "Do you work with businesses of all sizes?",
-      answer: "Yes, we work with businesses of all sizes, from startups to large enterprises. Our SEO strategies are scalable and customized to meet your specific needs, budget, and goals. Whether you're a local business or a multinational corporation, we can help improve your search engine visibility."
+      question: "What kinds of companies do you do SEO work for?",
+      answer: "We work in a lot of different areas, such as technology, education, real estate, food and drink, and more. You can use our frameworks in any niche."
     },
     {
-      question: "How do you measure SEO success?",
-      answer: "We track key performance indicators including organic traffic growth, keyword rankings, click-through rates, conversion rates, backlink quality and quantity, and overall search visibility. You'll receive detailed monthly reports with clear metrics and insights showing your progress."
+      question: "Do you help businesses in Pune with local SEO?",
+      answer: "Yes, we work on improving local citations, Google Business Profiles, local keywords, reviews, and ways to move up in map rankings."
     },
     {
-      question: "Will you need access to my website?",
-      answer: "Yes, we'll need access to your website's backend (CMS) and analytics tools to implement optimizations effectively. We use secure, read-only access where possible and follow strict security protocols. All access is temporary and can be revoked at any time."
+      question: "Is SEO better than ads that cost money?",
+      answer: "They both do their jobs. Paid ads get you seen right away, but SEO builds up organic traffic over time."
     },
     {
-      question: "Can you help with local SEO?",
-      answer: "Absolutely! Local SEO is a core part of our service. We optimize your Google Business Profile, improve local citations, create location-specific content, and implement schema markup to help you rank higher in local search results and Google Maps."
+      question: "Will you fix technical SEO issues?",
+      answer: "Yes, things like Core Web Vitals, site speed, indexing, schema markup, mobile performance, and URL structure."
+    },
+    {
+      question: "How do you pick keywords?",
+      answer: "We look at your business goals, what users want, how many searches there are, how hard it is to rank, and how competitive the market is."
+    },
+    {
+      question: "Do you promise to be the best?",
+      answer: "No agency can honestly say they can help you get to the top. We promise to give you structured, best-practice SEO that will help you in ways you can see."
+    },
+    {
+      question: "What does an SEO audit look at?",
+      answer: "We check over 100 things, including the site's technical health, keyword gaps, content quality, backlink profile, UX issues, and how strong the competition is."
+    },
+    {
+      question: "Can you help me write content that is good for search engine optimization?",
+      answer: "Yes, we write blogs, landing pages, and website copy that are good for SEO and sound like your brand."
+    },
+    {
+      question: "Do you send out SEO reports every month?",
+      answer: "Yes, there are reports that show how well things are going, including rankings, traffic, links, and what to do next."
+    },
+    {
+      question: "What tools do you use to make your search engine optimization better?",
+      answer: "We use common business tools like Search Console, GA4, SEMrush, Ahrefs, Screaming Frog, and our own analytics platforms."
     }
   ],
   'digital-marketing': [
     {
-      question: "What digital marketing channels do you manage?",
-      answer: "We manage all major digital marketing channels including SEO, social media, email marketing, content marketing, paid advertising, and more. We'll help you identify which channels are most relevant for your business and create integrated strategies to maximize your online presence and ROI."
+      question: "What does Aroot Digital do as a digital marketing business?",
+      answer: "We use SEO, social media, sponsored ads, content, website optimization, and analytics to help brands grow online by making them more visible, getting more leads, and improving their digital performance over time."
     },
     {
-      question: "How do you create a comprehensive digital marketing strategy?",
-      answer: "We start with a thorough analysis of your business, target audience, competitors, and goals. Then we develop a multi-channel strategy that integrates SEO, social media, content, email, and paid advertising to create a cohesive approach that drives results across all touchpoints."
+      question: "How do you come up with a digital marketing plan for my business?",
+      answer: "To start, we want to know about your business, your target market, your competitors, and your goals. We then make a plan just for you that is based on data and works with your brand's positioning and growth goals."
     },
     {
-      question: "Do you handle all aspects of digital marketing?",
-      answer: "Yes! We provide end-to-end digital marketing services including strategy development, content creation, campaign management, performance tracking, and optimization. We can handle everything from a single channel to a complete digital marketing ecosystem."
+      question: "How long does it take for digital marketing to start working?",
+      answer: "Organic results usually take 60 to 90 days, but funded projects get results faster. We want to grow steadily over time, not just have short bursts of growth."
     },
     {
-      question: "How do you measure digital marketing success?",
-      answer: "We track comprehensive metrics including website traffic, lead generation, conversion rates, brand awareness, engagement rates, and ROI across all channels. You'll receive integrated reports showing how all your digital marketing efforts work together to drive business growth."
+      question: "Do you work with new businesses, small businesses, and local brands?",
+      answer: "Yes, Aroot Digital helps businesses of all sizes, from new businesses to local brands in Pune to national companies, with plans that can grow with them."
     },
     {
-      question: "Can you help with both B2B and B2C digital marketing?",
-      answer: "Absolutely! We have experience working with both B2B and B2C businesses across various industries. Our strategies are adapted to your target audience, whether you're selling to businesses or directly to consumers, ensuring the right message reaches the right people."
+      question: "How much money do you need to get started with digital marketing?",
+      answer: "It all depends on what you want your business to do. We have different plans, but for basic digital activities, not including ad costs, you should expect to pay between ₹15,000 and ₹40,000+."
     },
     {
-      question: "How do you ensure consistency across all digital channels?",
-      answer: "We develop a unified brand voice and messaging strategy that's consistent across all channels while being optimized for each platform's unique characteristics. This ensures your brand presents a cohesive experience whether customers find you through search, social media, email, or paid ads."
+      question: "How can you tell if a campaign was successful?",
+      answer: "We keep track of KPIs like leads, traffic, engagement, ROAS, CTR, conversions, and content interactions, and we send you reports that are easy to read."
+    },
+    {
+      question: "Can you promise leads or results?",
+      answer: "No ethical agency makes promises about results. We promise a solid plan, execution, and optimization that is tailored to you so that performance stays the same."
+    },
+    {
+      question: "Do you take care of everything from beginning to end?",
+      answer: "Yes, we do strategy, creative work, ads, content, SEO, analytics, and reporting. You can focus on your business while we take care of the digital side of things."
+    },
+    {
+      question: "Will I have a manager for my account?",
+      answer: "Yes, each client has one person they can talk to who makes sure that communication and reporting go well."
+    },
+    {
+      question: "Is digital marketing a good idea for businesses that sell to other businesses?",
+      answer: "Yes, for sure. We know how to use LinkedIn, Google Search, content, and targeted performance ads to make B2B funnels."
+    },
+    {
+      question: "How do you handle being open and reporting?",
+      answer: "We send out performance reports every week and month that are easy to read and don't use hard to understand language."
+    },
+    {
+      question: "What makes Aroot Digital different from other agencies?",
+      answer: "We use a mix of strategy, creativity, and data, along with thinking about the brand first and being completely open no templates, no guessing."
     }
   ],
   'app-marketing': [
     {
-      question: "What is App Store Optimization (ASO)?",
-      answer: "ASO is the process of optimizing your mobile app's listing in app stores to improve visibility and increase downloads. We optimize your app title, description, keywords, screenshots, and other elements to help your app rank higher in search results and get discovered by more users."
+      question: "What do you offer in your app promotion service?",
+      answer: "Getting new users, keeping them, ASO, getting reviews, running app install campaigns, and using analytics."
     },
     {
-      question: "Which app stores do you optimize for?",
-      answer: "We optimize for both Apple App Store (iOS) and Google Play Store (Android). Each platform has different requirements and algorithms, so we create platform-specific optimization strategies to maximize your app's visibility and downloads on both stores."
+      question: "Do you sell apps for both Android and iOS?",
+      answer: "Yes, you can advertise and optimize on Google Play and the App Store."
     },
     {
-      question: "How do you help with app user acquisition?",
-      answer: "We use a combination of ASO, paid app advertising (Apple Search Ads, Google Ads), influencer partnerships, content marketing, and PR to drive app downloads. We'll develop a comprehensive user acquisition strategy tailored to your app's target audience and budget."
+      question: "What does ASO mean, and why is it important?",
+      answer: "With software Store Optimization, you don't have to do anything to help your software be found, rank higher, and get more installs."
     },
     {
-      question: "Can you help improve app retention and engagement?",
-      answer: "Yes! Beyond acquisition, we help improve user retention through push notification campaigns, in-app messaging strategies, email marketing, and engagement campaigns. We analyze user behavior to identify opportunities to increase retention and lifetime value."
+      question: "How much money do you need to run campaigns to get people to install your app?",
+      answer: "Depending on the category and how many other people are competing, budgets can be anywhere from ₹20,000 to ₹1 lakh or more."
     },
     {
-      question: "How do you measure app marketing success?",
-      answer: "We track key metrics including downloads, app store rankings, keyword rankings, conversion rates, user acquisition cost, retention rates, and lifetime value. You'll receive detailed reports showing how your app marketing efforts are driving growth."
+      question: "How can you tell if your app promotion is working?",
+      answer: "Cost per install (CPI), number of installs, retention rates, in-app engagement, and value of a user over their lifetime."
     },
     {
-      question: "How long does it take to see results from app marketing?",
-      answer: "ASO improvements can start showing results within 2-4 weeks, while paid app advertising can generate immediate downloads. However, building sustainable app growth typically takes 2-3 months as we optimize campaigns and improve your app store presence."
+      question: "How long does it take to make an app bigger?",
+      answer: "Most apps get a lot of use within 30 to 60 days if they are set up correctly."
+    },
+    {
+      question: "Do you make movies or other things to help apps get more users?",
+      answer: "Yes, screenshots, video ads, highlights of features, and information about the app listing."
+    },
+    {
+      question: "Can you help cut down on the number of people who uninstall?",
+      answer: "Yes, we improve onboarding, engagement strategies, push alerts, and targeting audiences."
+    },
+    {
+      question: "Do you handle app ratings and reviews?",
+      answer: "We support ways for users to give feedback and ways to review things that are ethical."
+    },
+    {
+      question: "Can you help get the word out about a new app?",
+      answer: "Yes, you should run campaigns on social media, with influencers, for SEO, and with ads."
+    },
+    {
+      question: "Do you set up dashboards for analytics?",
+      answer: "Yes, you can get Firebase, Apps flyer, Mix panel, and attribution settings whenever you need them."
+    },
+    {
+      question: "What does Aroot Digital do to make sure the installs are good?",
+      answer: "Our main goals are to target based on intent, improve creatives, and get rid of low-quality or bot traffic."
     }
   ],
   'content-marketing': [
     {
-      question: "What types of content do you create?",
-      answer: "We create a wide variety of content including blog posts, articles, whitepapers, case studies, infographics, videos, social media content, email newsletters, press releases, and web copy. We'll develop a content mix that best serves your audience and business goals."
+      question: "What types of content services do you provide?",
+      answer: "Good for SEO are blogs, website copy, social media posts, ad copy, emailers, scripts, and articles."
     },
     {
-      question: "How often will you publish new content?",
-      answer: "Content publishing frequency depends on your goals and resources. We typically recommend 2-4 blog posts per month for most businesses, but we can adjust based on your needs. We'll create a content calendar that ensures consistent, high-quality content publication."
+      question: "How do you make sure that the content sounds like our brand?",
+      answer: "We create a style guide for your content based on the tone you want: professional, friendly, premium, or conversational."
     },
     {
-      question: "Do you write content for our industry?",
-      answer: "Yes! Our team includes writers with expertise across various industries. We conduct thorough research and work closely with you to ensure all content is accurate, relevant, and aligned with your industry standards and best practices."
+      question: "How often should a business publish new content?",
+      answer: "You should write four to eight blogs a month and post to social media once a week, depending on what you want to achieve."
     },
     {
-      question: "How do you ensure content quality?",
-      answer: "Every piece of content goes through our quality assurance process including research, writing, editing, proofreading, SEO optimization, and client review. We maintain high standards for grammar, accuracy, readability, and engagement."
+      question: "Do you write content that is keyword-rich?",
+      answer: "Yes, the content is organized, good for SEO, and matches the intent of the ranking."
     },
     {
-      question: "Can you help with content distribution?",
-      answer: "Absolutely! Beyond content creation, we help distribute your content through social media, email marketing, content syndication, and outreach to industry publications. We'll ensure your content reaches the right audience at the right time."
+      question: "Can you write about things that are important to your field, like real estate or finance?",
+      answer: "Yes, our writers are very good at writing content that is technical, compliant, and focused on the industry."
     },
     {
-      question: "How do you measure content marketing ROI?",
-      answer: "We track metrics including website traffic, time on page, bounce rate, social shares, lead generation, conversion rates, and revenue attribution. We'll show you how your content is performing and contributing to your business goals."
+      question: "How long should a post on a blog be?",
+      answer: "It usually has between 800 and 1,500 words, but that depends on the competition and what people want."
+    },
+    {
+      question: "Do you write scripts for videos or reels?",
+      answer: "Yes, short, catchy scripts that make people want to buy things for brand storytelling."
+    },
+    {
+      question: "Can you improve or change things that are already there?",
+      answer: "Yes, we fix and update information that is old or not working well."
+    },
+    {
+      question: "How can you tell if your content is good?",
+      answer: "Traffic from search engines, engagement, keyword rankings, and leads."
+    },
+    {
+      question: "Do you help people plan their content?",
+      answer: "Yes, there are full content funnels, schedules, and strategies for positioning."
+    },
+    {
+      question: "Can you quickly send out content?",
+      answer: "Yes, the usual delivery time is 3 to 5 days, but there are faster options."
+    },
+    {
+      question: "Do you really need to market your content?",
+      answer: "Yes, content builds trust, helps with SEO, teaches users, and boosts conversions."
     }
   ],
   'ppc-paid-marketing': [
     {
-      question: "Which Meta and performance marketing platforms do you manage?",
-      answer: "We manage Google Ads (Search, Display, Shopping, YouTube), Microsoft Advertising, Facebook Ads, Instagram Ads, LinkedIn Ads, and other platform-specific advertising solutions. We'll help you identify which platforms offer the best ROI for your business."
+      question: "What kinds of platforms do you use for performance marketing?",
+      answer: "There are many kinds of ads, such as Google Ads, Meta Ads, YouTube Ads, LinkedIn Ads, display networks, and retargeting funnels."
     },
     {
-      question: "What is your minimum budget requirement?",
-      answer: "We work with businesses of all budget sizes. While there's no strict minimum, we typically recommend starting with at least $500-1000 per month for effective campaigns. We'll work with your budget to maximize results and ROI."
+      question: "How do you plan campaigns to get the most out of your money?",
+      answer: "By strategically targeting, A/B testing, dividing the audience into groups, optimizing the creatives, and keeping an eye on things all the time."
     },
     {
-      question: "How quickly will I see results from Meta and performance marketing?",
-      answer: "Meta and performance marketing campaigns can start generating results immediately, often within 24-48 hours of launch. However, it typically takes 2-4 weeks to optimize campaigns and see consistent performance. We continuously monitor and optimize to improve results over time."
+      question: "How much do you want to spend on ads every month?",
+      answer: "It depends on the industry, but it's usually between ₹20,000 and ₹1 lakh or more. We help you make budgets that you can stick to."
     },
     {
-      question: "Do you create the ad copy and creative?",
-      answer: "Yes! Our team creates all ad copy, graphics, and video content. We'll develop multiple ad variations to test what resonates best with your audience and continuously refine based on performance data."
+      question: "Do you get a share of the money spent on ads?",
+      answer: "We have different ways to set prices for each case: retainer, hybrid, or performance-based."
     },
     {
-      question: "How do you optimize Meta and performance marketing campaigns?",
-      answer: "We optimize campaigns through keyword research and refinement, bid management, ad copy testing, landing page optimization, audience targeting adjustments, and performance analysis. We make data-driven decisions to improve your ROI continuously."
+      question: "When will I see results?",
+      answer: "Paid ads usually start showing you results within 7 to 14 days."
     },
     {
-      question: "What reporting do you provide?",
-      answer: "You'll receive weekly performance summaries and comprehensive monthly reports showing impressions, clicks, conversions, cost per click, cost per acquisition, ROI, and other key metrics. We'll also provide insights and recommendations for improvement."
+      question: "Can you make each lead cost less for me?",
+      answer: "Yes, by improving targeting, landing pages, creatives, and ongoing optimization."
+    },
+    {
+      question: "Do you help set up tracking for conversions?",
+      answer: "Yes, we set up UTM tracking, analytics dashboards, pixels, and events."
+    },
+    {
+      question: "Do you offer remarketing as a service?",
+      answer: "Yes, we make remarketing funnels for people who leave their carts, come to our website, or are already interested in what we have to offer."
+    },
+    {
+      question: "Can you start campaigns to get leads?",
+      answer: "Yes, we create landing pages and lead forms that are optimized for high-intent conversions."
+    },
+    {
+      question: "How easy is it to read your reports?",
+      answer: "You get weekly and monthly reports that show your spending, return on investment (ROI), cost per lead (CPL), click-through rate (CTR), and tips on how to make your ads better."
+    },
+    {
+      question: "Do you also create ads?",
+      answer: "Yes, there are designs for static, carousel, video, and performance-first."
+    },
+    {
+      question: "Can you help fix campaigns that aren't going well?",
+      answer: "Yes, we look at campaigns that aren't working and make changes to them."
     }
   ],
   // 'martech-data-analytics': [
@@ -1334,54 +1454,102 @@ const serviceFAQs: Record<string, Array<{ question: string; answer: string }>> =
   ],
   'web-design': [
     {
-      question: "What is included in your web design service?",
-      answer: "Our comprehensive web design service includes responsive web design, user experience (UX) optimization, user interface (UI) design, mobile-first approach, conversion rate optimization, website redesign and updates, and performance optimization. We create websites that are both visually appealing and highly functional."
+      question: "What types of websites does Aroot Digital build?",
+      answer: "Websites for businesses, landing pages, eCommerce, portfolios, personal branding, and custom websites for companies."
     },
     {
-      question: "Do you design websites for all industries?",
-      answer: "Yes! We design websites for businesses across all industries including e-commerce, healthcare, finance, technology, real estate, education, and more. Our team adapts design styles and functionality to match your industry requirements and target audience preferences."
+      question: "What kinds of platforms do you use?",
+      answer: "WordPress, Webflow, Shopify, or custom-coded builds, depending on how well they work and how much they need to grow."
     },
     {
-      question: "How long does it take to design a website?",
-      answer: "The timeline depends on the scope and complexity of your project. A simple website typically takes 2-4 weeks, while more complex sites with custom features can take 6-12 weeks. We'll provide a detailed timeline during our initial consultation based on your specific requirements."
+      question: "How long does it take to build a website?",
+      answer: "A basic site takes 2 to 4 weeks to build, while a more complex site can take 6 to 10 weeks, depending on the features."
     },
     {
-      question: "Will my website be mobile-responsive?",
-      answer: "Absolutely! All our websites are designed with a mobile-first approach, ensuring they look and function perfectly on all devices including smartphones, tablets, and desktops. Mobile responsiveness is a core requirement for all our web design projects."
+      question: "What does a website package include?",
+      answer: "Designing the UI/UX, organizing the content, writing the code, testing it, making sure it works on mobile devices, and doing basic on-page SEO."
     },
     {
-      question: "Can you redesign my existing website?",
-      answer: "Yes! We offer website redesign services to modernize your existing site, improve user experience, enhance functionality, and boost conversions. We'll analyze your current site and create a redesign plan that addresses your specific goals and challenges."
+      question: "Do you write the content for the website?",
+      answer: "Yes, we write content that is good for SEO and fits the style of your business."
     },
     {
-      question: "Do you provide ongoing website maintenance?",
-      answer: "Yes, we offer ongoing website maintenance services including content updates, security patches, performance monitoring, and technical support. We can create a maintenance plan tailored to your needs to keep your website running smoothly and securely."
+      question: "Will my website work on phones and tablets?",
+      answer: "Yes, all of the sites work well on mobile devices and are ready for mobile-first indexing."
+    },
+    {
+      question: "Do you take care of websites?",
+      answer: "Yes, there are plans to make improvements, upgrade security, and do other things every month or every three months."
+    },
+    {
+      question: "Is it possible to make an old website look new?",
+      answer: "Yes, we change the UI, speed things up, improve the user experience, the content, and the SEO."
+    },
+    {
+      question: "Do you use lead forms and CRM together?",
+      answer: "Yes, we connect automated lead workflows with platforms like HubSpot, Zoho, and Mailchimp."
+    },
+    {
+      question: "Will my site load quickly?",
+      answer: "Yes, we speed things up, compress images, use clean code, and follow the rules for Core Web Vitals."
+    },
+    {
+      question: "Do you help with domain names and hosting?",
+      answer: "Yes, I can help you choose the best options for safety and performance."
+    },
+    {
+      question: "Can you build websites for online stores?",
+      answer: "Shopify, WooCommerce, or both can help you set up your own store with payment gateways, product pages, and analytics."
     }
   ],
   'social-media-marketing': [
     {
-      question: "Which social media platforms do you manage?",
-      answer: "We manage campaigns and content across all major social media platforms including Facebook, Instagram, LinkedIn, Twitter/X, YouTube, TikTok, and more. We'll help you identify which platforms are best for your business and create platform-specific strategies that maximize engagement and ROI."
+      question: "What social media sites do you manage?",
+      answer: "Instagram, Facebook, LinkedIn, Twitter/X, YouTube, and other new sites that your audience might be interested in."
     },
     {
-      question: "How do you handle Facebook advertising management?",
-      answer: "Our Facebook advertising management includes strategic campaign planning, audience targeting, ad creative development, budget optimization, A/B testing, performance monitoring, and continuous optimization. We use data-driven approaches to ensure your Facebook ads deliver measurable results and strong ROI."
+      question: "What does your social media service do?",
+      answer: "Creative design, captions, reels, scheduling, tracking performance, looking up hashtags, getting people involved, and running the community."
     },
     {
-      question: "What's included in your social media marketing service?",
-      answer: "Our comprehensive social media marketing service includes content strategy and planning, creative content creation (images, videos, reels), community management, paid advertising campaigns, performance analytics and reporting, competitor analysis, crisis communication support, and brand storytelling. We're a full-service social media marketing agency."
+      question: "How many posts do you write every month?",
+      answer: "We make sure our services meet the needs of each brand. This usually means 8 to 20 posts, 4 to 12 reels, stories, and activities to get people involved."
     },
     {
-      question: "How often will you post on our social media accounts?",
-      answer: "Posting frequency depends on your industry, audience, and platform. We create a customized content calendar based on best practices for each platform and your specific business goals. Typically, we recommend daily posts for platforms like Instagram and Facebook, and strategic posting for LinkedIn and Twitter."
+      question: "How do you decide on the content strategy?",
+      answer: "Based on your marketing goals, the story of your brand, how your audience acts, trends in your field, and a look at your competitors."
     },
     {
-      question: "Do you provide social media analytics and reporting?",
-      answer: "Yes! We provide monthly performance dashboards that track engagement metrics, audience growth, campaign performance, ROI, and other key indicators. Our reports are transparent, easy to understand, and include actionable insights to help improve your social media strategy."
+      question: "Do you create content or do you need clients to provide it?",
+      answer: "We handle everything, including shoots, creative work, captions, editing, and strategy."
     },
     {
-      question: "Can you help with influencer marketing?",
-      answer: "Yes, as a full-service social media marketing agency, we can help with influencer campaigns, creator partnerships, and brand collaborations. We'll identify the right influencers for your brand, manage relationships, and ensure campaigns align with your marketing goals."
+      question: "How quickly can we get more people to follow us?",
+      answer: "The speed of your growth depends on the quality of your content, your niche, how often you post, and how well your ads do. We care more about real growth than fake numbers."
+    },
+    {
+      question: "Will you reply to comments and direct messages?",
+      answer: "We can do community management as an extra service or as part of a package."
+    },
+    {
+      question: "Do you also put ads on social media?",
+      answer: "Yes, we use ads on social media to get more leads, reach, and engagement."
+    },
+    {
+      question: "Can you keep the voice of our brand?",
+      answer: "Yes, of course! To make sure everything is the same, we set brand tone standards."
+    },
+    {
+      question: "How do you know how well your social media is doing?",
+      answer: "Using dashboards to keep track of reach, engagement, follower growth, CTR, and how well your content is doing."
+    },
+    {
+      question: "Can you help with marketing by using influencers?",
+      answer: "Yes, you can work with micro, nano, and macro influencers to reach your goals."
+    },
+    {
+      question: "Do you support campaigns for holidays and festivals?",
+      answer: "Yes, we make festival creatives, reels, and campaigns that are specific to your industry and have a big effect."
     }
   ]
 };
@@ -1660,9 +1828,9 @@ export default function ServicePage({ params }: ServicePageProps) {
                 </>
               ) : (
                 <>
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
-                    {service.title}
-                  </h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
+                {service.title}
+              </h1>
                   {service.description && (
                     <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 font-light">
                       {service.description}
@@ -1808,8 +1976,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                           <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                             We write articles, website content, or even full website copy that is easy for your customers to understand and helps you reach your business goals.
                           </p>
-                        </div>
-                      ) : (
+                    </div>
+                  ) : (
                         <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
                           <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             In today's world, data by itself isn't enough. Companies need analytics and insights that take raw data and turn it into clear, confident, and measurable direction. Structured insights and analytics frameworks are what we use at Aroot Digital to help brands make smart decisions, understand complicated facts, and find hidden opportunities.
@@ -1817,7 +1985,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                           <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                             You can use data to improve your marketing, learn more about your customers, or make your business run better. Our team makes sure that you always get insights that matter.
                           </p>
-                        </div>
+                      </div>
                       )}
                     </section>
 
@@ -1862,7 +2030,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                               <div className="relative flex items-start gap-4">
                                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
                                   <CheckCircle className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
-                                </div>
+                    </div>
                                 <span className="text-base text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300 flex-1">{benefit}</span>
                               </div>
                             </Card>
@@ -1907,7 +2075,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                               className="absolute top-0 left-0 w-full bg-gradient-to-b from-primary via-primary-light to-primary-accent rounded-full transition-all duration-1000"
                               style={{ height: '100%' }}
                             ></div>
-                          </div>
+                </div>
                           
                           <div className="space-y-6">
                             {service.howItWorks.map((step: { step: string; description: string }, index: number) => {
@@ -2274,24 +2442,24 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                       {service.longDescription}
                     </p>
-                  </div>
+              </div>
 
-                  {/* Stats */}
+              {/* Stats */}
                   {'stats' in service && service.stats && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                      {service.stats.map((stat, index) => (
-                        <div key={index} className="text-center p-3 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300">
-                          <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
-                          <div className="text-xl font-bold text-foreground mb-1">{stat.value}</div>
-                          <div className="text-sm text-muted-foreground">{stat.label}</div>
-                        </div>
-                      ))}
-                    </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                {service.stats.map((stat, index) => (
+                  <div key={index} className="text-center p-3 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300">
+                    <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                    <div className="text-xl font-bold text-foreground mb-1">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
                   )}
 
                   {/* SEO Services Cards - Only for SEO service */}
                   {params.slug === 'search-engine-optimization' && (
-                  <div className="mt-12">
+              <div className="mt-12">
                 <div className="mb-10 md:mb-12 text-center max-w-4xl mx-auto">
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
                     SEO Services in India That Drive Real Business Growth
@@ -2553,7 +2721,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
       {/* Tools We Use Section */}
       <div id="tools-we-use-section">
-        <ToolsWeUse />
+      <ToolsWeUse />
       </div>
 
       {/* Section Divider */}

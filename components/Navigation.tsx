@@ -67,7 +67,7 @@ const Navigation = () => {
     { label: "About", id: "about" },
     { label: "Services", id: "services" },
     { label: "Our Work", id: "portfolio" },
-    { label: "Industry", id: "industry" },
+    // { label: "Industry", id: "industry" },
     { label: "Blog", id: "blog", isRoute: true }
   ];
 
@@ -311,7 +311,7 @@ const Navigation = () => {
                       {isMobilePortfolioOpen && (
                         <div className="pl-4 space-y-2 border-l-2 border-primary/20 animate-fade-in">
                           {[
-                            { icon: Briefcase, title: "Portfolio", id: "portfolio" },
+                            // { icon: Briefcase, title: "Portfolio", id: "portfolio" },
                             { icon: MessageSquare, title: "Testimonials", id: "testimonials" },
                           ].map((item) => {
                             const IconComponent = item.icon;

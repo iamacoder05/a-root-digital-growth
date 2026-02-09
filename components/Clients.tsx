@@ -4,14 +4,16 @@ import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const clients = [
-  { name: "TechStart Inc", logo: "/placeholder.svg" },
-  { name: "GrowthCo", logo: "/placeholder.svg" },
-  { name: "StyleHub", logo: "/placeholder.svg" },
-  { name: "InnovateLab", logo: "/placeholder.svg" },
-  { name: "DigitalFlow", logo: "/placeholder.svg" },
-  { name: "CloudSync", logo: "/placeholder.svg" },
-  { name: "NextGen Solutions", logo: "/placeholder.svg" },
-  { name: "SmartBiz", logo: "/placeholder.svg" },
+  { name: "Anand Organics", logo: "/assets/clients/Anand Organics.webp" },
+  { name: "Bluerigger", logo: "/assets/clients/Bluerigger Logo.jpg.jpeg" },
+  { name: "Digital Cance", logo: "/assets/clients/Digital Cance.jpg.jpeg" },
+  { name: "Fashion Rap", logo: "/assets/clients/fashion Rap.png" },
+  { name: "GVPL Technologies", logo: "/assets/clients/GVPL technologies.png" },
+  { name: "Midas Wealth Advisory", logo: "/assets/clients/Midas Wealth Advisory.jpg.jpeg" },
+  { name: "Rajdhani Darbar Biryani House", logo: "/assets/clients/Rajdhani Darbar biryani House.jpg.jpeg" },
+  { name: "Suri Tours", logo: "/assets/clients/Suri tours.png" },
+  { name: "Taste Hackers", logo: "/assets/clients/taste hackers logo (3).jpg.jpeg" },
+  { name: "Urdukan", logo: "/assets/clients/urdukan.webp" },
 ];
 
 const Clients = () => {
@@ -53,17 +55,30 @@ const Clients = () => {
                 key={`${client.name}-${index}`}
                 className="flex-shrink-0 mx-4 md:mx-8 flex items-center justify-center group"
               >
-                <div className="flex flex-col items-center gap-2 md:gap-3 px-4 md:px-6 py-3 md:py-4 rounded-lg hover:bg-muted/50 transition-all duration-300 min-w-[120px] md:min-w-[150px]">
-                  <div className="relative w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 grayscale group-hover:grayscale-0 transition-all duration-300">
-                    <Image
-                      src={client.logo}
-                      alt={`${client.name} logo`}
-                      fill
-                      className="object-contain"
-                      loading="lazy"
-                    />
+                <div className="flex flex-col items-center gap-2 md:gap-3 px-4 md:px-6 py-3 md:py-4 rounded-lg transition-all duration-300 min-w-[120px] md:min-w-[150px] relative">
+                  {/* Logo - always visible */}
+                  <div className="relative w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 transition-all duration-300 flex items-center justify-center">
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      <Image
+                        src={client.logo}
+                        alt={`${client.name} logo`}
+                        fill
+                        className="object-contain"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
+                      />
+                    </div>
                   </div>
-                  <span className="text-xs md:text-sm text-muted-foreground group-hover:text-foreground transition-colors text-center font-medium">
+                  {/* Name - shown in grey rectangle on hover */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div className="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-lg">
+                      <span className="text-xs md:text-sm text-foreground text-center font-medium whitespace-nowrap">
+                        {client.name}
+                      </span>
+                    </div>
+                  </div>
+                  {/* Name - shown normally when not hovering */}
+                  <span className="text-xs md:text-sm text-muted-foreground transition-colors text-center font-medium group-hover:opacity-0">
                     {client.name}
                   </span>
                 </div>
