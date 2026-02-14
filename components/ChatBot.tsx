@@ -44,13 +44,13 @@ const ChatBot = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const availableServices = [
-    "Search Engine Optimization",
     "Digital Marketing",
-    "App Marketing",
-    "Content Marketing",
+    "Search Engine Optimization",
+    "Social Media Marketing",
     "Meta and Performance Marketing",
-    // "MarTech / Data Analytics",
     "Web Design and Development",
+    "Content Marketing",
+    "App Marketing",
   ];
 
   const scrollToBottom = () => {
@@ -95,7 +95,7 @@ const ChatBot = () => {
     setFormData((prev) => {
       const currentServices = prev.services;
       const isSelected = currentServices.includes(service);
-      
+
       let updatedServices: string[];
       if (isSelected) {
         // Remove service if already selected
@@ -104,7 +104,7 @@ const ChatBot = () => {
         // Add service if not selected
         updatedServices = [...currentServices, service];
       }
-      
+
       return { ...prev, services: updatedServices };
     });
   };
@@ -112,7 +112,7 @@ const ChatBot = () => {
   const handleContinueAfterServices = () => {
     // Read current services from state
     const currentServices = formData.services;
-    
+
     const servicesError = validateServicesField(currentServices);
     if (servicesError) {
       setFieldErrors((prev) => ({ ...prev, services: servicesError }));
@@ -125,7 +125,7 @@ const ChatBot = () => {
       ]);
       return;
     }
-    
+
     setFieldErrors((prev) => ({ ...prev, services: undefined }));
     setShowServiceOptions(false);
     setCurrentStep(4);
@@ -157,31 +157,48 @@ const ChatBot = () => {
     if (!phone.trim()) {
       return "Please enter your phone number.";
     }
-    
+
     // Remove spaces, dashes, parentheses for validation
     const cleaned = phone.replace(/[\s\-\(\)\.]/g, "");
-    
-    // Extract only digits
-    const digits = cleaned.replace(/\D/g, "");
-    
+
+    // Check if it starts with a + (country code included)
+    let phoneDigits = "";
+    let extractedCountryCode = "";
+
+    if (cleaned.startsWith("+")) {
+      // Extract country code and phone number
+      // Common country codes: +1 (1 digit), +91 (2 digits), +971 (3 digits), etc.
+      const match = cleaned.match(/^\+(\d{1,3})(\d+)$/);
+
+      if (!match) {
+        return "Invalid phone number format. Please include country code (e.g., +91 6789012345)";
+      }
+
+      extractedCountryCode = "+" + match[1];
+      phoneDigits = match[2];
+    } else {
+      // No country code provided, extract digits only
+      phoneDigits = cleaned.replace(/\D/g, "");
+    }
+
     // Check if empty after removing non-digits
-    if (digits.length === 0) {
+    if (phoneDigits.length === 0) {
       return "Phone number must contain only numeric digits.";
     }
-    
+
     // Check exact length (10 digits excluding country code)
-    if (digits.length !== 10) {
+    if (phoneDigits.length !== 10) {
       return "Phone number must be exactly 10 digits (excluding country code).";
     }
-    
+
     // Check if starts with invalid digits (1, 2, 3, 4, or 5)
-    const firstDigit = parseInt(digits[0]);
+    const firstDigit = parseInt(phoneDigits[0]);
     if (firstDigit >= 1 && firstDigit <= 5) {
       return "Phone number cannot start with 1, 2, 3, 4, or 5.";
     }
-    
+
     // Combine country code with phone for comprehensive validation
-    const fullPhone = `${countryCode}${digits}`;
+    const fullPhone = `${extractedCountryCode || countryCode}${phoneDigits}`;
     const result = validatePhone(fullPhone);
     return result.isValid ? undefined : result.error;
   };
@@ -234,7 +251,7 @@ const ChatBot = () => {
           ]);
           return;
         }
-        
+
         const emailError = validateEmailField(userMessage);
         if (emailError) {
           setFieldErrors((prev) => ({ ...prev, email: emailError }));
@@ -335,7 +352,7 @@ const ChatBot = () => {
       if (nameError) errorMessages.push(`Name: ${nameError}`);
       if (phoneError) errorMessages.push(`Phone: ${phoneError}`);
       if (servicesError) errorMessages.push(`Services: ${servicesError}`);
-      
+
       setMessages((prev) => [
         ...prev,
         {
@@ -482,11 +499,10 @@ const ChatBot = () => {
           setIsOpen(!isOpen);
           setHasInteractedInSession(true);
         }}
-        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary text-white shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 flex items-center justify-center group ${
-          isOpen ? "scale-90 rotate-90" : "hover:scale-110 hover:rotate-12"
-        } relative overflow-hidden border-2 border-white/30 ring-2 sm:ring-4 ring-primary-accent/30`}
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary text-white shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 flex items-center justify-center group ${isOpen ? "scale-90 rotate-90" : "hover:scale-110 hover:rotate-12"
+          } relative overflow-hidden border-2 border-white/30 ring-2 sm:ring-4 ring-primary-accent/30`}
         aria-label="Open RAYA"
-        style={{ 
+        style={{
           zIndex: 9999,
           position: 'fixed',
           backgroundColor: 'hsl(285, 95%, 20%)'
@@ -495,7 +511,7 @@ const ChatBot = () => {
         {/* Animated background glow */}
         <div className="absolute inset-0 bg-primary-accent/50 rounded-full animate-ping opacity-75" />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary-light/90 rounded-full" />
-        
+
         {isOpen ? (
           <X className="w-6 h-6 relative z-10 transition-transform duration-300 text-white drop-shadow-lg" />
         ) : (
@@ -517,7 +533,7 @@ const ChatBot = () => {
       {/* Chat Window */}
       {isOpen && (
         <div className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-24 z-[9998] w-auto sm:w-96 max-w-full sm:max-w-[calc(100vw-3rem)] h-[60vh] sm:h-[600px] max-h-[60vh] sm:max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-primary-accent/20 animate-slide-up-chat"
-        style={{ zIndex: 9998 }}
+          style={{ zIndex: 9998 }}
         >
           {/* Header */}
           <div className="bg-gradient-primary text-white p-3 sm:p-4 flex items-center justify-between relative overflow-hidden">
@@ -526,7 +542,7 @@ const ChatBot = () => {
               <div className="absolute top-0 left-0 w-32 h-32 bg-white rounded-full blur-3xl animate-pulse" />
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-primary-accent rounded-full blur-2xl animate-pulse" style={{ animationDelay: "1s" }} />
             </div>
-            
+
             <div className="flex items-center gap-2 sm:gap-3 relative z-10">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center relative group flex-shrink-0 overflow-hidden">
                 <div className="absolute inset-0 bg-white/30 rounded-full animate-ping" />
@@ -584,11 +600,10 @@ const ChatBot = () => {
                   </div>
                 )}
                 <div
-                  className={`max-w-[75%] rounded-2xl px-4 py-3 transition-all duration-300 hover:scale-[1.02] ${
-                    msg.type === "user"
-                      ? "bg-gradient-to-br from-primary-accent to-primary-lighter text-primary rounded-br-sm shadow-lg hover:shadow-xl"
-                      : "bg-white text-foreground rounded-bl-sm shadow-md border border-gray-200 hover:border-primary-accent/30"
-                  }`}
+                  className={`max-w-[75%] rounded-2xl px-4 py-3 transition-all duration-300 hover:scale-[1.02] ${msg.type === "user"
+                    ? "bg-gradient-to-br from-primary-accent to-primary-lighter text-primary rounded-br-sm shadow-lg hover:shadow-xl"
+                    : "bg-white text-foreground rounded-bl-sm shadow-md border border-gray-200 hover:border-primary-accent/30"
+                    }`}
                 >
                   <p className="text-sm whitespace-pre-line leading-relaxed">{msg.message}</p>
                 </div>
@@ -626,7 +641,7 @@ const ChatBot = () => {
                 </div>
               </div>
             )}
-            
+
             {/* Service Selection Options */}
             {showServiceOptions && (
               <div className="space-y-3 animate-message-slide-in">
@@ -637,11 +652,10 @@ const ChatBot = () => {
                       <button
                         key={service}
                         onClick={() => handleServiceSelect(service)}
-                        className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
-                          isSelected
-                            ? "bg-gradient-to-br from-primary-accent to-primary-lighter text-primary shadow-lg ring-2 ring-primary-accent/50"
-                            : "bg-white text-foreground border-2 border-gray-200 hover:border-primary-accent/50 hover:shadow-md"
-                        }`}
+                        className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${isSelected
+                          ? "bg-gradient-to-br from-primary-accent to-primary-lighter text-primary shadow-lg ring-2 ring-primary-accent/50"
+                          : "bg-white text-foreground border-2 border-gray-200 hover:border-primary-accent/50 hover:shadow-md"
+                          }`}
                       >
                         {isSelected && "✓ "}
                         {service}
@@ -659,7 +673,7 @@ const ChatBot = () => {
                 </button>
               </div>
             )}
-            
+
             <div ref={messagesEndRef} />
           </div>
 

@@ -1568,63 +1568,63 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       description: 'Boost app installs, engagement & retention with data-led app marketing, WhatsApp message marketing & social media advertising by Aroot Digital.',
     };
   }
-  
+
   if (params.slug === 'web-design') {
     return {
       title: 'Hire professionals to help you design and build websites.',
       description: 'Aroot Digital makes websites and designs user interfaces (UI) and user experiences (UX). Create websites that load quickly, look modern, and are ready to turn visitors into customers.',
     };
   }
-  
+
   if (params.slug === 'search-engine-optimization') {
     return {
       title: 'Aroot Digital is the best SEO company to work with in India.',
       description: 'Aroot Digital offers professional SEO services in India that can help you get more visitors, be seen, and improve your reputation.',
     };
   }
-  
+
   if (params.slug === 'ppc-paid-marketing') {
     return {
       title: 'Professionals run Meta and performance marketing campaigns.',
       description: 'Aroot Digital\'s Meta and performance marketing campaigns will bring in more visitors and customers. Strategic Meta and performance marketing campaigns are meant to help your business grow in a way that people can see.',
     };
   }
-  
+
   if (params.slug === 'digital-marketing') {
     return {
       title: 'Aroot Digital can help your business grow by offering digital marketing services.',
       description: 'Aroot Digital offers great digital marketing services that help businesses grow. They use strategy, creativity, and digital marketing tools that are all about getting results.',
     };
   }
-  
+
   if (params.slug === 'content-marketing') {
     return {
       title: 'Professional Copywriting and Writing Services for Websites and Articles',
       description: 'Hire professional writers to rewrite articles and websites, write SEO content, and use AI to make content. People write high-quality copy for global brands.',
     };
   }
-  
+
   // if (params.slug === 'martech-data-analytics') {
   //   return {
   //     title: 'You can use analytics and insights services to help you run your business better.',
   //     description: 'Get good analytics and insights that will help you understand things better, do better, and grow. You can trust the decisions you make with the help of Aroot Digital.',
   //   };
   // }
-  
+
   if (params.slug === 'social-media-marketing') {
     return {
       title: 'Aroot Digital India offers social media marketing services.',
       description: 'We help brands in India and all over the world with their social media marketing. Strategic management of Facebook ads, campaigns, and content.',
     };
   }
-  
+
   const service = serviceDetails[params.slug as keyof typeof serviceDetails];
   if (!service) {
     return {
       title: 'Service Not Found',
     };
   }
-  
+
   return {
     title: `${service.title} | Aroot Digital`,
     description: service.description,
@@ -1780,29 +1780,29 @@ export default function ServicePage({ params }: ServicePageProps) {
                     </li>
                   </ul>
                 </>
-              // ) : params.slug === 'martech-data-analytics' ? (
-              //   <>
-              //     <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
-              //       If you want to make decisions based on data, use advanced analytics and insights
-              //     </h1>
-              //     <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 font-light">
-              //       You can make better, faster, and more sure of your business decisions with Aroot Digital's help. They help you make sense of complicated data and find insights and analytics that are useful.
-              //     </p>
-              //     <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
-              //       <li className="flex items-center gap-2">
-              //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
-              //         <span>Make smart decisions by using accurate data insights</span>
-              //       </li>
-              //       <li className="flex items-center gap-2">
-              //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
-              //         <span>Use accurate customer analytics to learn how your customers behave</span>
-              //       </li>
-              //       <li className="flex items-center gap-2">
-              //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
-              //         <span>Look through data to learn business lessons that will help you do better</span>
-              //       </li>
-              //     </ul>
-              //   </>
+                // ) : params.slug === 'martech-data-analytics' ? (
+                //   <>
+                //     <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
+                //       If you want to make decisions based on data, use advanced analytics and insights
+                //     </h1>
+                //     <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 font-light">
+                //       You can make better, faster, and more sure of your business decisions with Aroot Digital's help. They help you make sense of complicated data and find insights and analytics that are useful.
+                //     </p>
+                //     <ul className="mt-4 space-y-2 text-base md:text-lg text-white/80">
+                //       <li className="flex items-center gap-2">
+                //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+                //         <span>Make smart decisions by using accurate data insights</span>
+                //       </li>
+                //       <li className="flex items-center gap-2">
+                //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+                //         <span>Use accurate customer analytics to learn how your customers behave</span>
+                //       </li>
+                //       <li className="flex items-center gap-2">
+                //         <Rocket className="w-5 h-5 text-white flex-shrink-0" />
+                //         <span>Look through data to learn business lessons that will help you do better</span>
+                //       </li>
+                //     </ul>
+                //   </>
               ) : params.slug === 'social-media-marketing' ? (
                 <>
                   <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
@@ -1828,9 +1828,9 @@ export default function ServicePage({ params }: ServicePageProps) {
                 </>
               ) : (
                 <>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
-                {service.title}
-              </h1>
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
+                    {service.title}
+                  </h1>
                   {service.description && (
                     <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 font-light">
                       {service.description}
@@ -1886,21 +1886,21 @@ export default function ServicePage({ params }: ServicePageProps) {
                     {/* Introduction Section */}
                     <section>
                       <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                        {params.slug === 'app-marketing' 
-                          ? '1. Introduction — Why App Marketing Matters More Than Ever'
+                        {params.slug === 'app-marketing'
+                          ? 'Introduction — Why App Marketing Matters More Than Ever'
                           : params.slug === 'web-design'
-                          ? '1. Begin — What the service is and why it matters'
-                          : params.slug === 'search-engine-optimization'
-                          ? 'What SEO is and why it still matters'
-                          : params.slug === 'ppc-paid-marketing'
-                          ? '1. At the beginning, tell people what the service is and why it\'s important'
-                          : params.slug === 'digital-marketing'
-                          ? '1. The start'
-                          : params.slug === 'content-marketing'
-                          ? '1. Introduction— Why Writing Content Is Still the Best'
-                          : params.slug === 'social-media-marketing'
-                          ? '1. The start'
-                          : '1. What analytics and insights are and why they\'re important'}
+                            ? 'Begin — What the service is and why it matters'
+                            : params.slug === 'search-engine-optimization'
+                              ? 'What SEO is and why it still matters'
+                              : params.slug === 'ppc-paid-marketing'
+                                ? 'At the beginning, tell people what the service is and why it\'s important'
+                                : params.slug === 'digital-marketing'
+                                  ? 'The start'
+                                  : params.slug === 'content-marketing'
+                                    ? 'Introduction— Why Writing Content Is Still the Best'
+                                    : params.slug === 'social-media-marketing'
+                                      ? 'The start'
+                                      : 'What analytics and insights are and why they\'re important'}
                       </h2>
                       {params.slug === 'app-marketing' ? (
                         <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
@@ -1976,8 +1976,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                           <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                             We write articles, website content, or even full website copy that is easy for your customers to understand and helps you reach your business goals.
                           </p>
-                    </div>
-                  ) : (
+                        </div>
+                      ) : (
                         <div className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed space-y-4">
                           <p className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             In today's world, data by itself isn't enough. Companies need analytics and insights that take raw data and turn it into clear, confident, and measurable direction. Structured insights and analytics frameworks are what we use at Aroot Digital to help brands make smart decisions, understand complicated facts, and find hidden opportunities.
@@ -1985,7 +1985,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                           <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                             You can use data to improve your marketing, learn more about your customers, or make your business run better. Our team makes sure that you always get insights that matter.
                           </p>
-                      </div>
+                        </div>
                       )}
                     </section>
 
@@ -1993,21 +1993,21 @@ export default function ServicePage({ params }: ServicePageProps) {
                     {'benefits' in service && service.benefits && (
                       <section>
                         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                          {params.slug === 'app-marketing' 
-                            ? '2. Key Benefits — Outcome-Driven, Not Overstated'
+                          {params.slug === 'app-marketing'
+                            ? 'Key Benefits — Outcome-Driven, Not Overstated'
                             : params.slug === 'web-design'
-                            ? '2. The best things about them are that they are useful, results-oriented, and real.'
-                            : params.slug === 'search-engine-optimization'
-                            ? 'Better visibility where it counts—show up for the right searches, not just any search'
-                            : params.slug === 'ppc-paid-marketing'
-                            ? '2. The main benefits are real, not fake'
-                            : params.slug === 'digital-marketing'
-                            ? '2. The main advantages'
-                            : params.slug === 'content-marketing'
-                            ? '2. Main Benefits—What You Get'
-                            : params.slug === 'social-media-marketing'
-                            ? '2. The main advantages'
-                            : '2. Important Pros and Cons — Doable and focused on outcomes'}
+                              ? 'The best things about them are that they are useful, results-oriented, and real.'
+                              : params.slug === 'search-engine-optimization'
+                                ? 'Better visibility where it counts—show up for the right searches, not just any search'
+                                : params.slug === 'ppc-paid-marketing'
+                                  ? 'The main benefits are real, not fake'
+                                  : params.slug === 'digital-marketing'
+                                    ? 'The main advantages'
+                                    : params.slug === 'content-marketing'
+                                      ? 'Main Benefits—What You Get'
+                                      : params.slug === 'social-media-marketing'
+                                        ? 'The main advantages'
+                                        : 'Important Pros and Cons — Doable and focused on outcomes'}
                         </h2>
                         {params.slug === 'digital-marketing' && (
                           <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
@@ -2021,8 +2021,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                         )}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {service.benefits.map((benefit: string, index: number) => (
-                            <Card 
-                              key={index} 
+                            <Card
+                              key={index}
                               className="group relative p-5 bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700"
                               style={{ animationDelay: `${index * 100}ms` }}
                             >
@@ -2030,7 +2030,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                               <div className="relative flex items-start gap-4">
                                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
                                   <CheckCircle className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
-                    </div>
+                                </div>
                                 <span className="text-base text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300 flex-1">{benefit}</span>
                               </div>
                             </Card>
@@ -2043,21 +2043,21 @@ export default function ServicePage({ params }: ServicePageProps) {
                     {'howItWorks' in service && service.howItWorks && (
                       <section>
                         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-                          {params.slug === 'app-marketing' 
-                            ? '3. How It Works — A Clear, Strategic Workflow'
+                          {params.slug === 'app-marketing'
+                            ? 'How It Works — A Clear, Strategic Workflow'
                             : params.slug === 'web-design'
-                            ? '3. How It Works—Our Simple, Tested Method'
-                            : params.slug === 'search-engine-optimization'
-                            ? 'How It Works: The SEO Process at Aroot Digital'
-                            : params.slug === 'ppc-paid-marketing'
-                            ? '3. It works by putting users first in a simple way'
-                            : params.slug === 'digital-marketing'
-                            ? '3. How it works: How We Get Things Done'
-                            : params.slug === 'content-marketing'
-                            ? '3. How it works: simple, clear, and not hard to understand'
-                            : params.slug === 'social-media-marketing'
-                            ? '3. How It Works: How We Do It'
-                            : '3. How it works: A clear and easy process'}
+                              ? 'How It Works—Our Simple, Tested Method'
+                              : params.slug === 'search-engine-optimization'
+                                ? 'How It Works: The SEO Process at Aroot Digital'
+                                : params.slug === 'ppc-paid-marketing'
+                                  ? 'It works by putting users first in a simple way'
+                                  : params.slug === 'digital-marketing'
+                                    ? 'How it works: How We Get Things Done'
+                                    : params.slug === 'content-marketing'
+                                      ? 'How it works: simple, clear, and not hard to understand'
+                                      : params.slug === 'social-media-marketing'
+                                        ? 'How It Works: How We Do It'
+                                        : 'How it works: A clear and easy process'}
                         </h2>
                         {(params.slug === 'digital-marketing' || params.slug === 'content-marketing') && (
                           <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-6">
@@ -2071,12 +2071,12 @@ export default function ServicePage({ params }: ServicePageProps) {
                           <div className="hidden md:block absolute left-[30px] top-0 bottom-0 w-0.5">
                             <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20 rounded-full"></div>
                             {/* Animated progress line */}
-                            <div 
+                            <div
                               className="absolute top-0 left-0 w-full bg-gradient-to-b from-primary via-primary-light to-primary-accent rounded-full transition-all duration-1000"
                               style={{ height: '100%' }}
                             ></div>
-                </div>
-                          
+                          </div>
+
                           <div className="space-y-6">
                             {service.howItWorks.map((step: { step: string; description: string }, index: number) => {
                               // Use different icons for different services
@@ -2109,10 +2109,10 @@ export default function ServicePage({ params }: ServicePageProps) {
                               };
                               const StepIcon = getStepIcon();
                               const isLast = index === service.howItWorks.length - 1;
-                              
+
                               return (
-                                <div 
-                                  key={index} 
+                                <div
+                                  key={index}
                                   className="group relative flex gap-4 items-start"
                                 >
                                   {/* Journey Stop Point */}
@@ -2121,17 +2121,17 @@ export default function ServicePage({ params }: ServicePageProps) {
                                     {!isLast && (
                                       <div className="absolute left-1/2 top-[60px] -translate-x-1/2 w-0.5 h-8 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/20 group-hover:from-primary group-hover:via-primary-light group-hover:to-primary/50 transition-all duration-500 rounded-full"></div>
                                     )}
-                                    
+
                                     {/* Journey Marker */}
                                     <div className="relative">
                                       {/* Outer Pulse Ring */}
                                       <div className="absolute inset-0 rounded-full bg-primary/30 blur-lg opacity-0 group-hover:opacity-100 animate-pulse scale-125 transition-opacity duration-500"></div>
-                                      
+
                                       {/* Main Journey Circle */}
                                       <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary-accent flex items-center justify-center shadow-lg border-2 border-background group-hover:scale-110 group-hover:shadow-primary/60 group-hover:rotate-6 transition-all duration-500">
                                         {/* Inner Glow */}
                                         <div className="absolute inset-1 rounded-full bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        
+
                                         {/* Icon */}
                                         <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center group-hover:bg-white/25 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
                                           <StepIcon className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:scale-110 transition-transform duration-300" />
@@ -2139,16 +2139,16 @@ export default function ServicePage({ params }: ServicePageProps) {
                                       </div>
                                     </div>
                                   </div>
-                                  
+
                                   {/* Journey Content Card */}
                                   <Card className="flex-1 p-4 md:p-5 bg-gradient-to-br from-card via-card/98 to-card/95 backdrop-blur-lg border-2 border-border/70 group-hover:border-primary/80 group-hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-500 group-hover:-translate-y-1 overflow-hidden relative">
                                     {/* Journey Path Indicator */}
                                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 to-primary/10 group-hover:from-primary group-hover:to-primary/30 transition-all duration-500"></div>
-                                    
+
                                     {/* Animated Background */}
                                     <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-1/2 translate-x-1/2"></div>
-                                    
+
                                     {/* Content */}
                                     <div className="relative z-10 pl-3 md:pl-4">
                                       {/* Step Header */}
@@ -2157,10 +2157,10 @@ export default function ServicePage({ params }: ServicePageProps) {
                                         <p className="text-xs md:text-sm text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300">{step.description}</p>
                                       </div>
                                     </div>
-                                    
+
                                     {/* Shine Effect */}
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"></div>
-                                    
+
                                     {/* Journey Corner Accent */}
                                     <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-full"></div>
                                   </Card>
@@ -2176,19 +2176,19 @@ export default function ServicePage({ params }: ServicePageProps) {
                     {'features' in service && service.features && (
                       <section>
                         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                          {params.slug === 'app-marketing' 
-                            ? '4. Features / Service Details — Simple, Clear, Professional'
+                          {params.slug === 'app-marketing'
+                            ? 'Features / Service Details — Simple, Clear, Professional'
                             : params.slug === 'web-design'
-                            ? '4. Information about the services and features'
-                            : params.slug === 'search-engine-optimization'
-                            ? 'Information about services and products'
-                            : params.slug === 'ppc-paid-marketing'
-                            ? '4. Details and information about the services'
-                            : params.slug === 'digital-marketing'
-                            ? '4. Information about products and services'
-                            : params.slug === 'content-marketing'
-                            ? '4. Details about the services and features'
-                            : '4. Information on the items and services'}
+                              ? 'Information about the services and features'
+                              : params.slug === 'search-engine-optimization'
+                                ? 'Information about services and products'
+                                : params.slug === 'ppc-paid-marketing'
+                                  ? 'Details and information about the services'
+                                  : params.slug === 'digital-marketing'
+                                    ? 'Information about products and services'
+                                    : params.slug === 'content-marketing'
+                                      ? 'Details about the services and features'
+                                      : 'Information on the items and services'}
                         </h2>
                         {(params.slug === 'digital-marketing' || params.slug === 'content-marketing') && (
                           <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
@@ -2199,8 +2199,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                         )}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                           {service.features.map((feature: string, index: number) => (
-                            <Card 
-                              key={index} 
+                            <Card
+                              key={index}
                               className="group relative p-4 bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700"
                               style={{ animationDelay: `${index * 50}ms` }}
                             >
@@ -2236,35 +2236,35 @@ export default function ServicePage({ params }: ServicePageProps) {
                     {'differentiators' in service && service.differentiators && (
                       <section>
                         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                          {params.slug === 'app-marketing' 
-                            ? '5. Aroot Digital Differentiators — What Makes Us Stand Out'
+                          {params.slug === 'app-marketing'
+                            ? 'Aroot Digital Differentiators — What Makes Us Stand Out'
                             : params.slug === 'web-design'
-                            ? '5. What sets Aroot apart'
-                            : params.slug === 'search-engine-optimization'
-                            ? 'What makes Aroot Digital stand out'
-                            : params.slug === 'ppc-paid-marketing'
-                            ? '5. What sets Aroot apart from other sites?'
-                            : params.slug === 'digital-marketing'
-                            ? '5. The Digital Differences of Aroot'
-                            : params.slug === 'content-marketing'
-                            ? '5. What Sets Aroot Digital Apart'
-                            : '5. What Makes Aroot Stand Out'}
+                              ? 'What sets Aroot apart'
+                              : params.slug === 'search-engine-optimization'
+                                ? 'What makes Aroot Digital stand out'
+                                : params.slug === 'ppc-paid-marketing'
+                                  ? 'What sets Aroot apart from other sites?'
+                                  : params.slug === 'digital-marketing'
+                                    ? 'The Digital Differences of Aroot'
+                                    : params.slug === 'content-marketing'
+                                      ? 'What Sets Aroot Digital Apart'
+                                      : 'What Makes Aroot Stand Out'}
                         </h2>
                         {(params.slug === 'web-design' || params.slug === 'search-engine-optimization' || params.slug === 'ppc-paid-marketing' || params.slug === 'digital-marketing') && (
                           <p className="text-lg font-semibold text-foreground mb-4">
-                            {params.slug === 'web-design' 
+                            {params.slug === 'web-design'
                               ? 'What sets us apart from other businesses that build websites?'
                               : params.slug === 'search-engine-optimization'
-                              ? 'Why do businesses choose us as their top SEO company?'
-                              : params.slug === 'digital-marketing'
-                              ? 'Brands think we\'re one of the best digital marketing companies for planning and doing. Why?'
-                              : ''}
+                                ? 'Why do businesses choose us as their top SEO company?'
+                                : params.slug === 'digital-marketing'
+                                  ? 'Brands think we\'re one of the best digital marketing companies for planning and doing. Why?'
+                                  : ''}
                           </p>
                         )}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {service.differentiators.map((item: string, index: number) => (
-                            <Card 
-                              key={index} 
+                            <Card
+                              key={index}
                               className="group relative p-5 bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-right-4 duration-700"
                               style={{ animationDelay: `${index * 100}ms` }}
                             >
@@ -2285,19 +2285,19 @@ export default function ServicePage({ params }: ServicePageProps) {
                     {'useCases' in service && service.useCases && (
                       <section>
                         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                          {params.slug === 'app-marketing' 
-                            ? '6. Use Cases / Practical Examples — Real Scenarios'
+                          {params.slug === 'app-marketing'
+                            ? 'Use Cases / Practical Examples — Real Scenarios'
                             : params.slug === 'web-design'
-                            ? '6. Real-life examples of how it could be used'
-                            : params.slug === 'search-engine-optimization'
-                            ? 'Examples and situations where this is useful'
-                            : params.slug === 'ppc-paid-marketing'
-                            ? '6. Use real-life stories or examples'
-                            : params.slug === 'digital-marketing'
-                            ? '6. Examples from real life or use cases'
-                            : params.slug === 'content-marketing'
-                            ? '6. Real-world examples and use cases'
-                            : '6. Business Store and Online Shopping Use Cases and Scenarios'}
+                              ? 'Real-life examples of how it could be used'
+                              : params.slug === 'search-engine-optimization'
+                                ? 'Examples and situations where this is useful'
+                                : params.slug === 'ppc-paid-marketing'
+                                  ? 'Use real-life stories or examples'
+                                  : params.slug === 'digital-marketing'
+                                    ? 'Examples from real life or use cases'
+                                    : params.slug === 'content-marketing'
+                                      ? 'Real-world examples and use cases'
+                                      : 'Business Store and Online Shopping Use Cases and Scenarios'}
                         </h2>
                         {(params.slug === 'digital-marketing' || params.slug === 'content-marketing') && (
                           <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
@@ -2311,7 +2311,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                             const isLast = index === service.useCases.length - 1;
                             const isOddTotal = service.useCases.length % 2 !== 0;
                             const shouldSpanFull = isLast && isOddTotal;
-                            
+
                             const cardClasses = [
                               'group',
                               'relative',
@@ -2334,14 +2334,14 @@ export default function ServicePage({ params }: ServicePageProps) {
                               'slide-in-from-bottom-4',
                               'duration-700'
                             ];
-                            
+
                             if (shouldSpanFull) {
                               cardClasses.push('md:col-span-2');
                             }
-                            
+
                             return (
-                              <Card 
-                                key={index} 
+                              <Card
+                                key={index}
                                 className={cardClasses.join(' ')}
                                 style={{ animationDelay: `${index * 100}ms` }}
                               >
@@ -2367,24 +2367,24 @@ export default function ServicePage({ params }: ServicePageProps) {
                     {'trustElements' in service && service.trustElements && (
                       <section>
                         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                          {params.slug === 'app-marketing' 
-                            ? '7. Trust Elements — Credibility, Experience, Reliability'
+                          {params.slug === 'app-marketing'
+                            ? 'Trust Elements — Credibility, Experience, Reliability'
                             : params.slug === 'web-design'
-                            ? '7. You can trust someone if they are credible, have experience, and follow the rules that apply all over the world.'
-                            : params.slug === 'search-engine-optimization'
-                            ? 'Many brands choose us because'
-                            : params.slug === 'ppc-paid-marketing'
-                            ? '7. People trust you based on how much you know, how big you are, and how steady you are'
-                            : params.slug === 'digital-marketing'
-                            ? '7. What makes Aroot Digital trustworthy?'
-                            : params.slug === 'content-marketing'
-                            ? '7. Trust Elements: Why Brands Trust Us'
-                            : '7. Things that clients trust that make them choose Aroot Digital'}
+                              ? 'You can trust someone if they are credible, have experience, and follow the rules that apply all over the world.'
+                              : params.slug === 'search-engine-optimization'
+                                ? 'Many brands choose us because'
+                                : params.slug === 'ppc-paid-marketing'
+                                  ? 'People trust you based on how much you know, how big you are, and how steady you are'
+                                  : params.slug === 'digital-marketing'
+                                    ? 'What makes Aroot Digital trustworthy?'
+                                    : params.slug === 'content-marketing'
+                                      ? 'Trust Elements: Why Brands Trust Us'
+                                      : 'Things that clients trust that make them choose Aroot Digital'}
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {service.trustElements.map((item: string, index: number) => (
-                            <Card 
-                              key={index} 
+                            <Card
+                              key={index}
                               className="group relative p-5 bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-left-4 duration-700"
                               style={{ animationDelay: `${index * 80}ms` }}
                             >
@@ -2407,19 +2407,19 @@ export default function ServicePage({ params }: ServicePageProps) {
                         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg pointer-events-none z-0"></div>
                         <div className="relative z-10">
                           <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">
-                            {params.slug === 'app-marketing' 
-                              ? '8. Soft CTA — Professional, Advisory-Led'
+                            {params.slug === 'app-marketing'
+                              ? 'Soft CTA — Professional, Advisory-Led'
                               : params.slug === 'web-design'
-                              ? '8. Soft CTA—Advice-Based'
-                              : params.slug === 'search-engine-optimization'
-                              ? 'Our staff is here to help you'
-                              : params.slug === 'ppc-paid-marketing'
-                              ? '8. Soft CTA: Professionally and skillfully led'
-                              : params.slug === 'digital-marketing'
-                              ? ''
-                              : params.slug === 'content-marketing'
-                              ? 'A Gentle, Businesslike Call to Action'
-                              : '8. Soft CTA: Be professional and don\'t try to sell'}
+                                ? 'Soft CTA—Advice-Based'
+                                : params.slug === 'search-engine-optimization'
+                                  ? 'Our staff is here to help you'
+                                  : params.slug === 'ppc-paid-marketing'
+                                    ? 'Soft CTA: Professionally and skillfully led'
+                                    : params.slug === 'digital-marketing'
+                                      ? ''
+                                      : params.slug === 'content-marketing'
+                                        ? 'A Gentle, Businesslike Call to Action'
+                                        : 'Soft CTA: Be professional and don\'t try to sell'}
                           </h2>
                           <p className="text-lg md:text-xl text-gray-900 dark:text-gray-100 leading-relaxed font-medium mb-6 group-hover:text-black dark:group-hover:text-white transition-colors duration-300">
                             {service.softCTA}
@@ -2442,208 +2442,208 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                       {service.longDescription}
                     </p>
-              </div>
-
-              {/* Stats */}
-                  {'stats' in service && service.stats && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                {service.stats.map((stat, index) => (
-                  <div key={index} className="text-center p-3 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300">
-                    <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
-                    <div className="text-xl font-bold text-foreground mb-1">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
                   </div>
-                ))}
-              </div>
+
+                  {/* Stats */}
+                  {'stats' in service && service.stats && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                      {service.stats.map((stat, index) => (
+                        <div key={index} className="text-center p-3 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300">
+                          <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                          <div className="text-xl font-bold text-foreground mb-1">{stat.value}</div>
+                          <div className="text-sm text-muted-foreground">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
                   )}
 
                   {/* SEO Services Cards - Only for SEO service */}
                   {params.slug === 'search-engine-optimization' && (
-              <div className="mt-12">
-                <div className="mb-10 md:mb-12 text-center max-w-4xl mx-auto">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                    SEO Services in India That Drive Real Business Growth
-                  </h2>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    At Techmagnate, we offer a full suite of SEO services in India designed to boost visibility, leads, and revenue. Whether you're an enterprise brand, an eCommerce business, or a startup, our award-winning SEO company delivers scalable, AI-driven strategies to help you dominate search results.
-                  </p>
-                </div>
-
-                {/* 9 Service Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
-                  {/* Connecting Lines - Visual Flow */}
-                  <div className="hidden lg:block absolute inset-0 pointer-events-none">
-                    <svg className="w-full h-full opacity-20">
-                      <defs>
-                        <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="hsl(285 95% 20%)" stopOpacity="0" />
-                          <stop offset="50%" stopColor="hsl(285 86% 80%)" stopOpacity="0.3" />
-                          <stop offset="100%" stopColor="hsl(285 95% 20%)" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                      <line x1="16.66%" y1="33.33%" x2="16.66%" y2="66.66%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <line x1="50%" y1="33.33%" x2="50%" y2="66.66%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <line x1="83.33%" y1="33.33%" x2="83.33%" y2="66.66%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <line x1="16.66%" y1="66.66%" x2="16.66%" y2="100%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <line x1="50%" y1="66.66%" x2="50%" y2="100%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <line x1="83.33%" y1="66.66%" x2="83.33%" y2="100%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </svg>
-                  </div>
-
-                  {/* Enterprise SEO Services */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <Building2 className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Enterprise SEO Services</h3>
+                    <div className="mt-12">
+                      <div className="mb-10 md:mb-12 text-center max-w-4xl mx-auto">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                          SEO Services in India That Drive Real Business Growth
+                        </h2>
+                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                          At Techmagnate, we offer a full suite of SEO services in India designed to boost visibility, leads, and revenue. Whether you're an enterprise brand, an eCommerce business, or a startup, our award-winning SEO company delivers scalable, AI-driven strategies to help you dominate search results.
+                        </p>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Get higher search rankings and attract more leads with enterprise SEO services in India, designed for large organizations managing multiple locations, products, and services.
-                      </p>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
 
-                  {/* LLM Optimization */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <Brain className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                      {/* 9 Service Cards Grid */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+                        {/* Connecting Lines - Visual Flow */}
+                        <div className="hidden lg:block absolute inset-0 pointer-events-none">
+                          <svg className="w-full h-full opacity-20">
+                            <defs>
+                              <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="hsl(285 95% 20%)" stopOpacity="0" />
+                                <stop offset="50%" stopColor="hsl(285 86% 80%)" stopOpacity="0.3" />
+                                <stop offset="100%" stopColor="hsl(285 95% 20%)" stopOpacity="0" />
+                              </linearGradient>
+                            </defs>
+                            <line x1="16.66%" y1="33.33%" x2="16.66%" y2="66.66%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <line x1="50%" y1="33.33%" x2="50%" y2="66.66%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <line x1="83.33%" y1="33.33%" x2="83.33%" y2="66.66%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <line x1="16.66%" y1="66.66%" x2="16.66%" y2="100%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <line x1="50%" y1="66.66%" x2="50%" y2="100%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <line x1="83.33%" y1="66.66%" x2="83.33%" y2="100%" stroke="url(#connectionGradient)" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          </svg>
                         </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">LLM Optimization</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Our AI SEO experts ensure your content is easily discoverable, understandable, and cited by AI models like ChatGPT and Gemini through authoritative, well-structured content optimized for AI search.
-                      </p>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
 
-                  {/* AI SEO */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <Sparkles className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">AI SEO</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Stay ahead of search trends with AI-driven SEO services that use data insights and automation to improve content relevance, streamline optimizations, and drive better engagement and visibility.
-                      </p>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
+                        {/* Enterprise SEO Services */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <Building2 className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Enterprise SEO Services</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Get higher search rankings and attract more leads with enterprise SEO services in India, designed for large organizations managing multiple locations, products, and services.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
 
-                  {/* ECommerce SEO */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <ShoppingCart className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">ECommerce SEO</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Increase online sales and visibility for your products with our eCommerce SEO services in India. We make product pages more search-friendly, optimize metadata, and improve the overall user experience for higher conversions.
-                      </p>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
+                        {/* LLM Optimization */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <Brain className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">LLM Optimization</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Our AI SEO experts ensure your content is easily discoverable, understandable, and cited by AI models like ChatGPT and Gemini through authoritative, well-structured content optimized for AI search.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
 
-                  {/* Mobile SEO */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <Smartphone className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Mobile SEO</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Ensure a seamless experience for mobile users with mobile SEO optimization services. We create fast, responsive, and easy-to-navigate websites optimized for on-the-go mobile searches to boost your mobile rankings.
-                      </p>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
+                        {/* AI SEO */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <Sparkles className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">AI SEO</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Stay ahead of search trends with AI-driven SEO services that use data insights and automation to improve content relevance, streamline optimizations, and drive better engagement and visibility.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
 
-                  {/* App Store Marketing & Optimization */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <AppWindow className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">App Store Marketing & Optimization</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Get more people to discover, download, and use your app through App Store Optimization (ASO) and app marketing services that include keyword optimization, paid ads, and user engagement strategies.
-                      </p>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
+                        {/* ECommerce SEO */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <ShoppingCart className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">ECommerce SEO</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Increase online sales and visibility for your products with our eCommerce SEO services in India. We make product pages more search-friendly, optimize metadata, and improve the overall user experience for higher conversions.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
 
-                  {/* Content Marketing Services */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <FileText className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Content Marketing Services</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Engage and educate your audience with SEO-driven content marketing services that build trust, drive inquiries, and improve your online visibility through blogs, press releases, and web content.
-                      </p>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
+                        {/* Mobile SEO */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <Smartphone className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Mobile SEO</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Ensure a seamless experience for mobile users with mobile SEO optimization services. We create fast, responsive, and easy-to-navigate websites optimized for on-the-go mobile searches to boost your mobile rankings.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
 
-                  {/* Local and Hyperlocal SEO */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <MapPin className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Local and Hyperlocal SEO</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Reach more nearby customers and increase foot traffic with local SEO and hyperlocal marketing services. Improve your visibility in Google Maps and location-based search results to attract high-intent customers.
-                      </p>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
+                        {/* App Store Marketing & Optimization */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <AppWindow className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">App Store Marketing & Optimization</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Get more people to discover, download, and use your app through App Store Optimization (ASO) and app marketing services that include keyword optimization, paid ads, and user engagement strategies.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
 
-                  {/* Vernacular SEO */}
-                  <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
-                          <Globe className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Vernacular SEO</h3>
+                        {/* Content Marketing Services */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <FileText className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Content Marketing Services</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Engage and educate your audience with SEO-driven content marketing services that build trust, drive inquiries, and improve your online visibility through blogs, press releases, and web content.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
+
+                        {/* Local and Hyperlocal SEO */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <MapPin className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Local and Hyperlocal SEO</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Reach more nearby customers and increase foot traffic with local SEO and hyperlocal marketing services. Improve your visibility in Google Maps and location-based search results to attract high-intent customers.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
+
+                        {/* Vernacular SEO */}
+                        <Card className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                <Globe className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                              </div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">Vernacular SEO</h3>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                              Connect with a wider audience through vernacular SEO in India by optimizing content in regional Indian languages — making your brand accessible and relevant to diverse audiences nationwide.
+                            </p>
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Card>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                        Connect with a wider audience through vernacular SEO in India by optimizing content in regional Indian languages — making your brand accessible and relevant to diverse audiences nationwide.
-                      </p>
                     </div>
-                    <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </Card>
-                </div>
-              </div>
                   )}
                 </>
               )}
@@ -2659,18 +2659,18 @@ export default function ServicePage({ params }: ServicePageProps) {
                 {/* Related Blog Posts Section */}
                 {(() => {
                   const blogCategory = serviceToBlogCategory[params.slug];
-                  const relatedBlogs = blogCategory 
+                  const relatedBlogs = blogCategory
                     ? allBlogPosts.filter(post => post.category === blogCategory).slice(0, 3)
                     : [];
-                  
+
                   if (relatedBlogs.length === 0) return null;
 
                   const formatDate = (dateString: string) => {
                     const date = new Date(dateString);
-                    return date.toLocaleDateString("en-US", { 
-                      year: "numeric", 
-                      month: "short", 
-                      day: "numeric" 
+                    return date.toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric"
                     });
                   };
 
@@ -2679,8 +2679,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                       <h3 className="text-xl font-bold text-foreground mb-4">Related Articles</h3>
                       <div className="space-y-4">
                         {relatedBlogs.map((blog) => (
-                          <Link 
-                            key={blog.id} 
+                          <Link
+                            key={blog.id}
                             href={`/blog/${blog.slug}`}
                             className="block group"
                           >
@@ -2692,13 +2692,13 @@ export default function ServicePage({ params }: ServicePageProps) {
                                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                                   <Calendar className="w-3 h-3" />
                                   <span>{formatDate(blog.date)}</span>
-            </div>
-          </div>
+                                </div>
+                              </div>
                               <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1" />
-        </div>
+                            </div>
                           </Link>
-                ))}
-              </div>
+                        ))}
+                      </div>
                       <Link
                         href={`/blog?category=${encodeURIComponent(blogCategory)}`}
                         className="mt-4 inline-flex items-center text-sm font-semibold text-primary hover:text-primary-accent transition-colors duration-300"
@@ -2721,7 +2721,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
       {/* Tools We Use Section */}
       <div id="tools-we-use-section">
-      <ToolsWeUse />
+        <ToolsWeUse />
       </div>
 
       {/* Section Divider */}

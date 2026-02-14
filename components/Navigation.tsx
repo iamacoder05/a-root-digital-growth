@@ -21,7 +21,7 @@ const Navigation = () => {
   // Separate state for mobile dropdowns to avoid conflicts
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isMobilePortfolioOpen, setIsMobilePortfolioOpen] = useState(false);
-  
+
   const phoneNumber = "+91 7498826065 ";
   const phoneNumberTel = "+917498826065"; // Format for tel: link
 
@@ -66,7 +66,7 @@ const Navigation = () => {
     { label: "Home", id: "hero" },
     { label: "About", id: "about" },
     { label: "Services", id: "services" },
-    { label: "Our Work", id: "portfolio" },
+    // { label: "Our Work", id: "portfolio" },
     // { label: "Industry", id: "industry" },
     { label: "Blog", id: "blog", isRoute: true }
   ];
@@ -87,8 +87,8 @@ const Navigation = () => {
           >
             <div className="relative">
               <Image
-                src="/assets/ar-logo.png"
-                alt="A-Root Digital Growth Logo"
+                src="/logo.png"
+                alt="Aroot Digital Logo"
                 width={112}
                 height={112}
                 sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
@@ -127,9 +127,8 @@ const Navigation = () => {
                     >
                       {link.label}
                       <ChevronDown className={`w-5 h-5 md:w-5 md:h-5 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
-                      <span className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${
-                        isServicesDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
-                      } bg-primary`}></span>
+                      <span className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${isServicesDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
+                        } bg-primary`}></span>
                     </button>
                     <ServicesDropdown
                       isOpen={isServicesDropdownOpen}
@@ -167,9 +166,8 @@ const Navigation = () => {
                     >
                       {link.label}
                       <ChevronDown className={`w-5 h-5 md:w-5 md:h-5 transition-transform duration-200 ${isPortfolioDropdownOpen ? 'rotate-180' : ''}`} />
-                      <span className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${
-                        isPortfolioDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
-                      } bg-primary`}></span>
+                      <span className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${isPortfolioDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
+                        } bg-primary`}></span>
                     </button>
                     <PortfolioDropdown
                       isOpen={isPortfolioDropdownOpen}
@@ -185,14 +183,14 @@ const Navigation = () => {
                 );
               }
               return (
-              <button
-                key={link.id}
+                <button
+                  key={link.id}
                   onClick={() => scrollToSection(link.id, link.isRoute)}
                   className="font-semibold text-base md:text-lg transition-colors hover:text-primary-accent relative group h-full text-foreground"
-              >
-                {link.label}
+                >
+                  {link.label}
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300 bg-primary"></span>
-              </button>
+                </button>
               );
             })}
             {/* Phone Number */}
@@ -239,7 +237,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div 
+          <div
             id="mobile-menu"
             className="lg:hidden fixed top-24 md:top-28 left-0 right-0 bg-background shadow-2xl border-t-2 border-primary-accent/20 z-[100] max-h-[calc(100vh-6rem)] md:max-h-[calc(100vh-7rem)] overflow-y-auto"
           >
@@ -337,14 +335,14 @@ const Navigation = () => {
                   );
                 }
                 return (
-                <button
-                  key={link.id}
-                  type="button"
+                  <button
+                    key={link.id}
+                    type="button"
                     onClick={() => scrollToSection(link.id, link.isRoute)}
-                  className="block w-full text-left font-semibold text-lg text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3"
-                >
-                  {link.label}
-                </button>
+                    className="block w-full text-left font-semibold text-lg text-foreground hover:text-primary-accent hover:bg-primary-accent/10 transition-all duration-200 rounded-lg px-4 py-3"
+                  >
+                    {link.label}
+                  </button>
                 );
               })}
               {/* Phone Number */}

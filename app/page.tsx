@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "ARoot Digital",
   },
-  description: "Transform your digital presence with A-Root Digital Growth. Expert digital marketing services including SEO, social media marketing, content strategy, and PPC advertising.",
+  description: "Transform your digital presence with Aroot Digital Growth. Expert digital marketing services including SEO, social media marketing, content strategy, and PPC advertising.",
   alternates: {
     canonical: "https://arootdigital.com",
   },
@@ -47,13 +47,11 @@ const structuredData = {
     {
       "@type": "Organization",
       "@id": "https://arootdigital.com/#organization",
-      name: "A-Root Digital Growth",
+      name: "Aroot Digital",
       url: "https://arootdigital.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://arootdigital.com/assets/ar-logo.png",
-        width: 224,
-        height: 224,
+        url: "https://arootdigital.com/logo.png",
       },
       sameAs: [
         "https://www.facebook.com/arootdigital",
@@ -74,7 +72,7 @@ const structuredData = {
       "@type": "WebSite",
       "@id": "https://arootdigital.com/#website",
       url: "https://arootdigital.com",
-      name: "A-Root Digital Growth",
+      name: "Aroot Digital",
       description: "Expert digital marketing services to transform your online presence",
       publisher: {
         "@id": "https://arootdigital.com/#organization",
@@ -89,14 +87,16 @@ const structuredData = {
       "@type": "WebPage",
       "@id": "https://arootdigital.com/#webpage",
       url: "https://arootdigital.com",
-      name: "A-Root Digital Growth | Expert Digital Marketing Services",
+      name: "Aroot Digital | Digital Marketing & SEO Agency",
       isPartOf: {
         "@id": "https://arootdigital.com/#website",
       },
       about: {
         "@id": "https://arootdigital.com/#organization",
       },
-      description: "Transform your digital presence with our expert digital marketing services including SEO, social media marketing, content strategy, and PPC advertising.",
+      description: "Aroot Digital is a digital marketing agency offering SEO services, PPC marketing, content marketing, web design and MarTech solutions to help businesses grow online.",
+      datePublished: "2025-01-01",
+      dateModified: "2026-01-01",
     },
     {
       "@type": "Service",
@@ -171,9 +171,8 @@ export default function Home() {
           <Clients />
           <SectionDivider />
           <LatestBlog />
-          <SectionDivider />
-          <Testimonials />
-          <SectionDivider />
+          {/* <Testimonials /> */}
+          {/* <SectionDivider /> */}
           <FAQ />
           <SectionDivider />
           <Contact />

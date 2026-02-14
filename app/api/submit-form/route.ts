@@ -380,7 +380,7 @@ async function sendAutoReply(data: FormData) {
   try {
     const emailContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #5a0d73;">Thank You for Contacting A-Root Digital Growth!</h2>
+        <h2 style="color: #5a0d73;">Thank You for Contacting Aroot Digital Growth!</h2>
         <p>Hi ${data.name},</p>
         <p>Thank you for reaching out to us! We've received your message and one of our team members will get back to you within 24 hours.</p>
         <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
@@ -390,7 +390,7 @@ async function sendAutoReply(data: FormData) {
           ${data.serviceName ? `<p>Service: ${data.serviceName}</p>` : ''}
         </div>
         <p>In the meantime, feel free to explore our services and blog for more insights.</p>
-        <p>Best regards,<br><strong>A-Root Digital Growth Team</strong></p>
+        <p>Best regards,<br><strong>Aroot Digital Growth Team</strong></p>
         <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
         <p style="color: #666; font-size: 12px;">
           This is an automated email. Please do not reply to this message.
@@ -401,7 +401,7 @@ async function sendAutoReply(data: FormData) {
     const result = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
       to: data.email,
-      subject: 'Thank You for Contacting A-Root Digital Growth',
+      subject: 'Thank You for Contacting Aroot Digital Growth',
       html: emailContent,
     });
 
