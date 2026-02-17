@@ -9,6 +9,7 @@ import Navigation from "@/components/Navigation";
 import ChunkErrorHandler from "@/components/ChunkErrorHandler";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 
 // Lazy load non-critical components
 const Footer = dynamic(() => import("@/components/Footer"), {
@@ -106,13 +107,37 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-RMYJMJYGBB"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RMYJMJYGBB');
+          `}
+        </Script>
+
+        {/* Google Tag Manager */}
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-K2M9L657');`}
+        </Script>
+
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        
+
         {/* Resource hints for performance */}
         <link rel="prefetch" href="/assets/raya-img.webp" as="image" />
-        
+
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
@@ -121,6 +146,15 @@ export default function RootLayout({
         <meta name="theme-color" content="#5a0d73" />
       </head>
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K2M9L657"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <ChunkErrorHandler />
         <Providers>
           <TooltipProvider>
@@ -140,4 +174,3 @@ export default function RootLayout({
     </html>
   );
 }
-
