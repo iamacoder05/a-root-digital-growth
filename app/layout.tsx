@@ -88,9 +88,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
   },
   verification: {
     google: "your-google-verification-code",
@@ -138,12 +137,7 @@ export default function RootLayout({
         {/* Resource hints for performance */}
         <link rel="prefetch" href="/assets/raya-img.webp" as="image" />
 
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
-        <meta name="msapplication-TileImage" content="/favicon.ico" />
-        <meta name="msapplication-TileColor" content="#5a0d73" />
-        <meta name="theme-color" content="#5a0d73" />
+
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
