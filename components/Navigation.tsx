@@ -261,20 +261,19 @@ const Navigation = () => {
                       {isMobileServicesOpen && (
                         <div className="pl-4 space-y-2 border-l-2 border-primary/20 animate-fade-in">
                           {[
-                            { icon: Share2, title: "Digital Marketing", slug: "digital-marketing" },
-                            { icon: Search, title: "Search Engine Optimization", slug: "search-engine-optimization" },
-                            { icon: MessageSquare, title: "Social Media Marketing", slug: "social-media-marketing" },
-                            { icon: MousePointerClick, title: "Meta and Performance Marketing", slug: "ppc-paid-marketing" },
-                            { icon: Palette, title: "Web Design and Development", slug: "web-design" },
-                            { icon: FileText, title: "Content Marketing", slug: "content-marketing" },
-                            { icon: AppWindow, title: "App Marketing", slug: "app-marketing" },
-                            // { icon: BarChart, title: "MarTech / Data Analytics", slug: "martech-data-analytics" },
+                            { icon: Share2, title: "Digital Marketing", path: "/digital-marketing-agency-in-pune-pcmc" },
+                            { icon: Search, title: "Search Engine Optimization", path: "/seo-agency-in-pune-pcmc" },
+                            { icon: MessageSquare, title: "Social Media Marketing", path: "/social-media-marketing-agency-in-pune-pcmc" },
+                            { icon: MousePointerClick, title: "Meta and Performance Marketing", path: "/performance-marketing-agency-in-pune-pcmc" },
+                            { icon: Palette, title: "Web Design and Development", path: "/website-development-company-in-pune-pcmc" },
+                            { icon: FileText, title: "Content Marketing", path: "/content-marketing-agency-in-pune-pcmc" },
+                            { icon: AppWindow, title: "App Marketing", path: "/app-marketing-agency-in-pune-pcmc" },
                           ].map((service) => {
                             const IconComponent = service.icon;
                             return (
                               <Link
-                                key={service.slug}
-                                href={`/services/${service.slug}`}
+                                key={service.path}
+                                href={service.path}
                                 onClick={() => {
                                   setIsMobileMenuOpen(false);
                                   setIsMobileServicesOpen(false);

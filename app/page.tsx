@@ -31,10 +31,8 @@ const SectionDivider = dynamic(() => import("@/components/SectionDivider"), {
 });
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "ARoot Digital",
-  },
-  description: "Transform your digital presence with Aroot Digital Growth. Expert digital marketing services including SEO, social media marketing, content strategy, and PPC advertising.",
+  title: "Digital Marketing Agency in Pune, PCMC | SEO, Ads & Websites",
+  description: "Aroot Digital is a leading digital marketing agency in Pune & PCMC offering SEO, performance marketing, social media marketing & web development services.",
   alternates: {
     canonical: "https://arootdigital.com",
   },

@@ -1562,66 +1562,50 @@ interface ServicePageProps {
 
 // Generate metadata for services
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-  if (params.slug === 'app-marketing') {
-    return {
-      title: 'App Marketing Services for Faster Growth | Aroot Digital',
-      description: 'Boost app installs, engagement & retention with data-led app marketing, WhatsApp message marketing & social media advertising by Aroot Digital.',
-    };
-  }
+  const serviceMetas: Record<string, { title: string, description: string }> = {
+    'digital-marketing': {
+      title: 'Digital Marketing Agency in Pune, PCMC | Growth Experts',
+      description: 'Grow your business with Aroot Digital, a trusted digital marketing agency in Pune & PCMC offering SEO, ads, and complete online marketing solutions.',
+    },
+    'search-engine-optimization': {
+      title: 'SEO Agency in Pune, PCMC | Rank Higher on Google',
+      description: 'Aroot Digital is a top SEO agency in Pune & PCMC, helping businesses improve rankings, traffic, and leads with result-driven SEO strategies.',
+    },
+    'social-media-marketing': {
+      title: 'Social Media Marketing Agency in Pune, PCMC | Grow the brand',
+      description: 'Build your brand with expert social media marketing services in Pune & PCMC. We create content and run ads that drive engagement and leads.',
+    },
+    'ppc-paid-marketing': {
+      title: 'Performance Marketing Agency in Pune, PCMC | ROI Driven Ads',
+      description: 'Boost ROI with our performance marketing services in Pune & PCMC. Experts in Google Ads, Meta Ads, and lead generation campaigns.',
+    },
+    'web-design': {
+      title: 'Website Development Company in Pune, PCMC | 100% Quality',
+      description: 'Aroot Digital is a Professional website development company in Pune & PCMC creating responsive, SEO-friendly websites that help your business grow online.',
+    },
+    'content-marketing': {
+      title: 'Content Marketing Agency in Pune, PCMC | Best SEO Content',
+      description: 'Drive traffic and engage customers with storytelling and impactful content. We provide blogs, social media content, and copywriting that delivers results.',
+    },
+    'app-marketing': {
+      title: 'App Marketing Agency in Pune, PCMC | Increase App Downloads',
+      description: 'Get more installs with our app marketing services in Pune & PCMC. Focused on performance campaigns and user acquisition strategies.',
+    }
+  };
 
-  if (params.slug === 'web-design') {
+  const meta = serviceMetas[params.slug];
+  
+  if (meta) {
     return {
-      title: 'Hire professionals to help you design and build websites.',
-      description: 'Aroot Digital makes websites and designs user interfaces (UI) and user experiences (UX). Create websites that load quickly, look modern, and are ready to turn visitors into customers.',
-    };
-  }
-
-  if (params.slug === 'search-engine-optimization') {
-    return {
-      title: 'Aroot Digital is the best SEO company to work with in India.',
-      description: 'Aroot Digital offers professional SEO services in India that can help you get more visitors, be seen, and improve your reputation.',
-    };
-  }
-
-  if (params.slug === 'ppc-paid-marketing') {
-    return {
-      title: 'Professionals run Meta and performance marketing campaigns.',
-      description: 'Aroot Digital\'s Meta and performance marketing campaigns will bring in more visitors and customers. Strategic Meta and performance marketing campaigns are meant to help your business grow in a way that people can see.',
-    };
-  }
-
-  if (params.slug === 'digital-marketing') {
-    return {
-      title: 'Aroot Digital can help your business grow by offering digital marketing services.',
-      description: 'Aroot Digital offers great digital marketing services that help businesses grow. They use strategy, creativity, and digital marketing tools that are all about getting results.',
-    };
-  }
-
-  if (params.slug === 'content-marketing') {
-    return {
-      title: 'Professional Copywriting and Writing Services for Websites and Articles',
-      description: 'Hire professional writers to rewrite articles and websites, write SEO content, and use AI to make content. People write high-quality copy for global brands.',
-    };
-  }
-
-  // if (params.slug === 'martech-data-analytics') {
-  //   return {
-  //     title: 'You can use analytics and insights services to help you run your business better.',
-  //     description: 'Get good analytics and insights that will help you understand things better, do better, and grow. You can trust the decisions you make with the help of Aroot Digital.',
-  //   };
-  // }
-
-  if (params.slug === 'social-media-marketing') {
-    return {
-      title: 'Aroot Digital India offers social media marketing services.',
-      description: 'We help brands in India and all over the world with their social media marketing. Strategic management of Facebook ads, campaigns, and content.',
+      title: meta.title,
+      description: meta.description,
     };
   }
 
   const service = serviceDetails[params.slug as keyof typeof serviceDetails];
   if (!service) {
     return {
-      title: 'Service Not Found',
+      title: 'Service | Aroot Digital',
     };
   }
 

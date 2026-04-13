@@ -54,6 +54,78 @@ const nextConfig = {
       },
     ];
   },
+  // SEO Rewrites and Redirects
+  async rewrites() {
+    return [
+      {
+        source: '/digital-marketing-agency-in-pune-pcmc',
+        destination: '/services/digital-marketing',
+      },
+      {
+        source: '/seo-agency-in-pune-pcmc',
+        destination: '/services/search-engine-optimization',
+      },
+      {
+        source: '/social-media-marketing-agency-in-pune-pcmc',
+        destination: '/services/social-media-marketing',
+      },
+      {
+        source: '/performance-marketing-agency-in-pune-pcmc',
+        destination: '/services/ppc-paid-marketing',
+      },
+      {
+        source: '/website-development-company-in-pune-pcmc',
+        destination: '/services/web-design',
+      },
+      {
+        source: '/content-marketing-agency-in-pune-pcmc',
+        destination: '/services/content-marketing',
+      },
+      {
+        source: '/app-marketing-agency-in-pune-pcmc',
+        destination: '/services/app-marketing',
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/services/digital-marketing',
+        destination: '/digital-marketing-agency-in-pune-pcmc',
+        permanent: true,
+      },
+      {
+        source: '/services/search-engine-optimization',
+        destination: '/seo-agency-in-pune-pcmc',
+        permanent: true,
+      },
+      {
+        source: '/services/social-media-marketing',
+        destination: '/social-media-marketing-agency-in-pune-pcmc',
+        permanent: true,
+      },
+      {
+        source: '/services/ppc-paid-marketing',
+        destination: '/performance-marketing-agency-in-pune-pcmc',
+        permanent: true,
+      },
+      {
+        source: '/services/web-design',
+        destination: '/website-development-company-in-pune-pcmc',
+        permanent: true,
+      },
+      {
+        source: '/services/content-marketing',
+        destination: '/content-marketing-agency-in-pune-pcmc',
+        permanent: true,
+      },
+      {
+        source: '/services/app-marketing',
+        destination: '/app-marketing-agency-in-pune-pcmc',
+        permanent: true,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig

@@ -21,50 +21,51 @@ const services = [
     icon: Share2,
     title: "Digital Marketing",
     slug: "digital-marketing",
+    path: "/digital-marketing-agency-in-pune-pcmc",
     description: "Comprehensive digital marketing solutions that drive growth across all online channels.",
   },
   {
     icon: Search,
     title: "Search Engine Optimization",
     slug: "search-engine-optimization",
+    path: "/seo-agency-in-pune-pcmc",
     description: "Boost your search rankings with data-driven SEO strategies that deliver measurable results.",
   },
   {
     icon: MessageSquare,
     title: "Social Media Marketing",
     slug: "social-media-marketing",
+    path: "/social-media-marketing-agency-in-pune-pcmc",
     description: "Strategic social media marketing that builds brands and drives real engagement.",
   },
   {
     icon: MousePointerClick,
     title: "Meta and Performance Marketing",
     slug: "ppc-paid-marketing",
+    path: "/performance-marketing-agency-in-pune-pcmc",
     description: "Maximize ROI with strategic paid advertising campaigns across Google and social platforms.",
   },
   {
     icon: Palette,
     title: "Web Design and Development",
     slug: "web-design",
+    path: "/website-development-company-in-pune-pcmc",
     description: "Stunning, user-friendly websites that convert visitors into customers.",
   },
   {
     icon: FileText,
     title: "Content Marketing",
     slug: "content-marketing",
+    path: "/content-marketing-agency-in-pune-pcmc",
     description: "Compelling content that tells your story and resonates with your target audience.",
   },
   {
     icon: AppWindow,
     title: "App Marketing",
     slug: "app-marketing",
+    path: "/app-marketing-agency-in-pune-pcmc",
     description: "Get your app discovered, downloaded, and used by the right audience.",
   },
-  // {
-  //   icon: BarChart,
-  //   title: "MarTech / Data Analytics",
-  //   slug: "martech-data-analytics",
-  //   description: "Data-driven insights and marketing technology solutions that power your growth.",
-  // },
 ];
 
 const Services = () => {
@@ -123,7 +124,7 @@ const Services = () => {
           {services.map((service, index) => (
               <Link
               key={index}
-              href={`/services/${service.slug}`}
+              href={service.path}
                 className={`group flex flex-col items-center min-w-[120px] md:min-w-[160px] max-w-[140px] md:max-w-[180px] flex-shrink-0 snap-center transition-all duration-700 hover:-translate-y-3 cursor-pointer ${
                   service.title === 'Digital Marketing' ? '-ml-2 md:-ml-3' : ''
                 } ${

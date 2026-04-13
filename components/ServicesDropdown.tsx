@@ -19,50 +19,51 @@ const services = [
     icon: Share2,
     title: "Digital Marketing",
     slug: "digital-marketing",
+    path: "/digital-marketing-agency-in-pune-pcmc",
     description: "Comprehensive digital marketing solutions across all channels.",
   },
   {
     icon: Search,
     title: "Search Engine Optimization",
     slug: "search-engine-optimization",
+    path: "/seo-agency-in-pune-pcmc",
     description: "Boost your search rankings with data-driven SEO strategies.",
   },
   {
     icon: MessageSquare,
     title: "Social Media Marketing",
     slug: "social-media-marketing",
+    path: "/social-media-marketing-agency-in-pune-pcmc",
     description: "Strategic social media marketing that builds brands.",
   },
   {
     icon: MousePointerClick,
     title: "Meta and Performance Marketing",
     slug: "ppc-paid-marketing",
+    path: "/performance-marketing-agency-in-pune-pcmc",
     description: "Maximize ROI with strategic paid advertising campaigns.",
   },
   {
     icon: Palette,
     title: "Web Design and Development",
     slug: "web-design",
+    path: "/website-development-company-in-pune-pcmc",
     description: "Stunning, user-friendly websites that convert visitors.",
   },
   {
     icon: FileText,
     title: "Content Marketing",
     slug: "content-marketing",
+    path: "/content-marketing-agency-in-pune-pcmc",
     description: "Compelling content that tells your story and resonates.",
   },
   {
     icon: AppWindow,
     title: "App Marketing",
     slug: "app-marketing",
+    path: "/app-marketing-agency-in-pune-pcmc",
     description: "Get your app discovered, downloaded, and used.",
   },
-  // {
-  //   icon: BarChart,
-  //   title: "MarTech / Data Analytics",
-  //   slug: "martech-data-analytics",
-  //   description: "Data-driven insights and marketing technology solutions.",
-  // },
 ];
 
 interface ServicesDropdownProps {
@@ -117,7 +118,7 @@ const ServicesDropdown = ({ isOpen, onClose }: ServicesDropdownProps) => {
             return (
               <Link
                 key={service.slug}
-                href={`/services/${service.slug}`}
+                href={service.path}
                 onClick={onClose}
                 className="group relative p-3 md:p-4 lg:p-5 rounded-lg md:rounded-xl border border-border/50 hover:border-primary/50 bg-gradient-to-br from-card/80 to-card/50 hover:from-card hover:to-card/90 transition-all duration-300 hover:shadow-xl md:hover:shadow-2xl hover:-translate-y-1 md:hover:-translate-y-2 overflow-hidden"
               >
