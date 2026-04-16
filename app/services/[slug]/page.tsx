@@ -1597,7 +1597,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   
   if (meta) {
     return {
-      title: meta.title,
+      title: { absolute: meta.title },
       description: meta.description,
     };
   }
@@ -1605,12 +1605,12 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const service = serviceDetails[params.slug as keyof typeof serviceDetails];
   if (!service) {
     return {
-      title: 'Service | Aroot Digital',
+      title: { absolute: 'Service | Aroot Digital' },
     };
   }
 
   return {
-    title: `${service.title} | Aroot Digital`,
+    title: { absolute: `${service.title} | Aroot Digital` },
     description: service.description,
   };
 }
