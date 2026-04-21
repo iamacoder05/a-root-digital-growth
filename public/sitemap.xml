@@ -1,100 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-  <url>
-    <loc>https://www.arootdigital.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
 
-  <url>
-    <loc>https://www.arootdigital.com/services/digital-marketing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+<url>
+  <loc>https://www.arootdigital.com/</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/digital-marketing-agency-in-pune-pcmc</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/seo-agency-in-pune-pcmc</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/social-media-marketing-agency-in-pune-pcmc</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/performance-marketing-agency-in-pune-pcmc</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/website-development-company-in-pune-pcmc</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/content-marketing-agency-in-pune-pcmc</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/app-marketing-agency-in-pune-pcmc</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog/social-media-marketing-trends-2026</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog/ten-things-to-rank-higher-2026</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog/linkedin-marketing-for-business</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/faq</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/privacy-policy</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/terms-conditions</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog/10-seo-tips-to-boost-your-website-ranking</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog/advanced-seo-techniques-2025</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog/local-seo-strategy-guide</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog?category=SEO</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog?category=PPC</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog/content-marketing-strategy-guide</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog/blog-content-creation-tips</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.arootdigital.com/blog?category=Content%20Marketing</loc>
+  <lastmod>2026-04-20T07:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
-  <url>
-    <loc>https://www.arootdigital.com/services/search-engine-optimization</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/services/social-media-marketing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/services/ppc-paid-marketing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/services/web-design</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/services/content-marketing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/services/app-marketing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/privacy-policy</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/terms-conditions</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/faq</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/blog/social-media-marketing-trends-2026</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/blog/ten-things-to-rank-higher-2026</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/blog/linkedin-marketing-for-business</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.arootdigital.com/blog/local-seo-strategy-guide</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
 
 </urlset>
