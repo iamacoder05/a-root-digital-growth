@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle, Star, Users, Target, Award, TrendingUp, Share2, ImageIcon, Building2, Brain, Sparkles, ShoppingCart, Smartphone, AppWindow, FileText, MapPin, Globe, Calendar, ArrowRight, BarChart, Palette, Rocket, Search, MessageSquare } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Check, CheckCircle2, Star, Users, Target, Award, TrendingUp, Share2, ImageIcon, Building2, Brain, Sparkles, ShoppingCart, Smartphone, AppWindow, FileText, MapPin, Globe, Calendar, ArrowRight, BarChart, Palette, Rocket, Search, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CallbackRequestForm from '@/components/CallbackRequestForm';
 import StickyCallbackScript from '@/components/StickyCallbackScript';
@@ -149,6 +149,10 @@ const serviceToBlogCategory: Record<string, string> = {
   'digital-services-new-york-city': 'Digital Marketing',
   'digital-services-pune': 'Digital Marketing',
   'seo-services-pune': 'SEO'
+,
+  'digital-marketing-agency-in-balewadi': 'Digital Marketing',
+  'digital-marketing-agency-in-hinjewadi': 'Digital Marketing',
+  'digital-marketing-agency-in-ravet': 'Digital Marketing'
 };
 
 // Service data with detailed information
@@ -1016,6 +1020,334 @@ const serviceDetails = {
       { label: 'Client Satisfaction', value: '96%', icon: Star }
     ]
   }
+,
+  'digital-marketing-agency-in-balewadi': {
+    "title": "Digital Marketing Agency in Balewadi",
+    "icon": "Target",
+    "image": "/assets/SEO.jpg",
+    "description": "Digital Marketing Agency in Balewadi for SEO, Ads & Business Growth",
+    "subtitle": "Aroot Digital is a growth-focused digital marketing agency in Balewadi helping businesses improve online visibility, generate quality leads, and grow through SEO, performance marketing, social media marketing, website development, content marketing, and app marketing services.",
+    "longDescription": "Looking for a reliable digital marketing agency in Balewadi? Aroot Digital offers complete online marketing services for businesses that want better visibility, more enquiries, and measurable growth.\n\nOur digital marketing services in Balewadi include SEO, paid ads, performance marketing, social media marketing, content marketing, website design, website development, and app marketing. Whether you are a local business, startup, real estate company, healthcare brand, education institute, or service provider, we create customized strategies based on your business goals.\n\nIf your business wants to target customers in Balewadi, PCMC, Pune, Wakad, Hinjewadi, Balewadi, Baner, and nearby areas, local SEO is very important. We optimize your website and content with location-specific keywords to improve visibility for searches like digital marketing agency in Balewadi, SEO agency in Balewadi, website development company in Balewadi, and performance marketing agency in Balewadi.",
+    "features": [
+        "SEO Agency",
+        "As an SEO agency in Balewadi, we help your website rank better on Google through keyword optimization, technical SEO, on-page SEO, local SEO, content strategy, and link-building activities.",
+        "Performance Marketing Agency",
+        "Our performance marketing services in Balewadi focus on ROI-driven campaigns through Google Ads, Meta Ads, lead generation campaigns, and conversion tracking.",
+        "Social Media Marketing Agency",
+        "We help businesses build a strong brand presence through social media marketing in Balewadi, including content planning, creative strategy, audience engagement, and paid promotions.",
+        "Website Development Company",
+        "Aroot Digital is also a website development company in Balewadi offering responsive, fast, SEO-friendly, and conversion-focused websites for businesses.",
+        "App Marketing Agency",
+        "Our app marketing services in Balewadi help increase app installs, improve user acquisition, and run performance campaigns for mobile applications."
+    ],
+    "benefits": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Balewadi, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "howItWorks": [
+        {
+            "step": "1. Keyword Research",
+            "description": "We identify high-intent keywords like digital marketing agency in Balewadi, SEO agency in Balewadi, social media marketing agency in Balewadi, and website development company in Balewadi."
+        },
+        {
+            "step": "2. Website & SEO Audit",
+            "description": "We check your website structure, content, technical SEO, indexing, speed, and user experience."
+        },
+        {
+            "step": "3. Strategy Planning",
+            "description": "We create a customized plan for SEO, paid marketing, social media, content, and website improvements."
+        },
+        {
+            "step": "4. Campaign Execution",
+            "description": "We execute SEO activities, ad campaigns, content updates, and performance tracking."
+        },
+        {
+            "step": "5. Monthly Reporting",
+            "description": "We share clear reports showing ranking progress, traffic, leads, and campaign performance."
+        }
+    ],
+    "differentiators": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Balewadi, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "useCases": [
+        {
+            "title": "Real estate businesses",
+            "description": "Helping real estate businesses grow online."
+        },
+        {
+            "title": "Healthcare clinics",
+            "description": "Helping healthcare clinics grow online."
+        },
+        {
+            "title": "Education institutes",
+            "description": "Helping education institutes grow online."
+        },
+        {
+            "title": "E-commerce brands",
+            "description": "Helping e-commerce brands grow online."
+        },
+        {
+            "title": "IT companies",
+            "description": "Helping it companies grow online."
+        },
+        {
+            "title": "Interior designers",
+            "description": "Helping interior designers grow online."
+        },
+        {
+            "title": "Consultants",
+            "description": "Helping consultants grow online."
+        },
+        {
+            "title": "Local service businesses",
+            "description": "Helping local service businesses grow online."
+        },
+        {
+            "title": "Hospitality brands",
+            "description": "Helping hospitality brands grow online."
+        },
+        {
+            "title": "Startups",
+            "description": "Helping startups grow online."
+        }
+    ],
+    "trustElements": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Balewadi, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "softCTA": "Grow Your Business with a Digital Marketing Agency in Balewadi"
+},
+  'digital-marketing-agency-in-hinjewadi': {
+    "title": "Digital Marketing Agency in Hinjewadi",
+    "icon": "Target",
+    "image": "/assets/SEO.jpg",
+    "description": "Digital Marketing Agency in Hinjewadi for SEO, Ads & Business Growth",
+    "subtitle": "Aroot Digital is a growth-focused digital marketing agency in Hinjewadi helping businesses improve online visibility, generate quality leads, and grow through SEO, performance marketing, social media marketing, website development, content marketing, and app marketing services.",
+    "longDescription": "Looking for a reliable digital marketing agency in Hinjewadi? Aroot Digital offers complete online marketing services for businesses that want better visibility, more enquiries, and measurable growth.\n\nOur digital marketing services in Hinjewadi include SEO, paid ads, performance marketing, social media marketing, content marketing, website design, website development, and app marketing. Whether you are a local business, startup, real estate company, healthcare brand, education institute, or service provider, we create customized strategies based on your business goals.\n\nIf your business wants to target customers in Hinjewadi, PCMC, Pune, Wakad, Hinjewadi, Balewadi, Baner, and nearby areas, local SEO is very important. We optimize your website and content with location-specific keywords to improve visibility for searches like digital marketing agency in Hinjewadi, SEO agency in Hinjewadi, website development company in Hinjewadi, and performance marketing agency in Hinjewadi.",
+    "features": [
+        "SEO Agency",
+        "As an SEO agency in Hinjewadi, we help your website rank better on Google through keyword optimization, technical SEO, on-page SEO, local SEO, content strategy, and link-building activities.",
+        "Performance Marketing Agency",
+        "Our performance marketing services in Hinjewadi focus on ROI-driven campaigns through Google Ads, Meta Ads, lead generation campaigns, and conversion tracking.",
+        "Social Media Marketing Agency",
+        "We help businesses build a strong brand presence through social media marketing in Hinjewadi, including content planning, creative strategy, audience engagement, and paid promotions.",
+        "Website Development Company",
+        "Aroot Digital is also a website development company in Hinjewadi offering responsive, fast, SEO-friendly, and conversion-focused websites for businesses.",
+        "App Marketing Agency",
+        "Our app marketing services in Hinjewadi help increase app installs, improve user acquisition, and run performance campaigns for mobile applications."
+    ],
+    "benefits": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Hinjewadi, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "howItWorks": [
+        {
+            "step": "1. Keyword Research",
+            "description": "We identify high-intent keywords like digital marketing agency in Hinjewadi, SEO agency in Hinjewadi, social media marketing agency in Hinjewadi, and website development company in Hinjewadi."
+        },
+        {
+            "step": "2. Website & SEO Audit",
+            "description": "We check your website structure, content, technical SEO, indexing, speed, and user experience."
+        },
+        {
+            "step": "3. Strategy Planning",
+            "description": "We create a customized plan for SEO, paid marketing, social media, content, and website improvements."
+        },
+        {
+            "step": "4. Campaign Execution",
+            "description": "We execute SEO activities, ad campaigns, content updates, and performance tracking."
+        },
+        {
+            "step": "5. Monthly Reporting",
+            "description": "We share clear reports showing ranking progress, traffic, leads, and campaign performance."
+        }
+    ],
+    "differentiators": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Hinjewadi, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "useCases": [
+        {
+            "title": "Real estate businesses",
+            "description": "Helping real estate businesses grow online."
+        },
+        {
+            "title": "Healthcare clinics",
+            "description": "Helping healthcare clinics grow online."
+        },
+        {
+            "title": "Education institutes",
+            "description": "Helping education institutes grow online."
+        },
+        {
+            "title": "E-commerce brands",
+            "description": "Helping e-commerce brands grow online."
+        },
+        {
+            "title": "IT companies",
+            "description": "Helping it companies grow online."
+        },
+        {
+            "title": "Interior designers",
+            "description": "Helping interior designers grow online."
+        },
+        {
+            "title": "Consultants",
+            "description": "Helping consultants grow online."
+        },
+        {
+            "title": "Local service businesses",
+            "description": "Helping local service businesses grow online."
+        },
+        {
+            "title": "Hospitality brands",
+            "description": "Helping hospitality brands grow online."
+        },
+        {
+            "title": "Startups",
+            "description": "Helping startups grow online."
+        }
+    ],
+    "trustElements": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Hinjewadi, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "softCTA": "Grow Your Business with a Digital Marketing Agency in Hinjewadi"
+},
+  'digital-marketing-agency-in-ravet': {
+    "title": "Digital Marketing Agency in Ravet",
+    "icon": "Target",
+    "image": "/assets/SEO.jpg",
+    "description": "Digital Marketing Agency in Ravet for SEO, Ads & Business Growth",
+    "subtitle": "Aroot Digital is a growth-focused digital marketing agency in Ravet helping businesses improve online visibility, generate quality leads, and grow through SEO, performance marketing, social media marketing, website development, content marketing, and app marketing services.",
+    "longDescription": "Looking for a reliable digital marketing agency in Ravet? Aroot Digital offers complete online marketing services for businesses that want better visibility, more enquiries, and measurable growth.\n\nOur digital marketing services in Ravet include SEO, paid ads, performance marketing, social media marketing, content marketing, website design, website development, and app marketing. Whether you are a local business, startup, real estate company, healthcare brand, education institute, or service provider, we create customized strategies based on your business goals.\n\nIf your business wants to target customers in Ravet, PCMC, Pune, Wakad, Hinjewadi, Balewadi, Baner, and nearby areas, local SEO is very important. We optimize your website and content with location-specific keywords to improve visibility for searches like digital marketing agency in Ravet, SEO agency in Ravet, website development company in Ravet, and performance marketing agency in Ravet.",
+    "features": [
+        "SEO Agency",
+        "As an SEO agency in Ravet, we help your website rank better on Google through keyword optimization, technical SEO, on-page SEO, local SEO, content strategy, and link-building activities.",
+        "Performance Marketing Agency",
+        "Our performance marketing services in Ravet focus on ROI-driven campaigns through Google Ads, Meta Ads, lead generation campaigns, and conversion tracking.",
+        "Social Media Marketing Agency",
+        "We help businesses build a strong brand presence through social media marketing in Ravet, including content planning, creative strategy, audience engagement, and paid promotions.",
+        "Website Development Company",
+        "Aroot Digital is also a website development company in Ravet offering responsive, fast, SEO-friendly, and conversion-focused websites for businesses.",
+        "App Marketing Agency",
+        "Our app marketing services in Ravet help increase app installs, improve user acquisition, and run performance campaigns for mobile applications."
+    ],
+    "benefits": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Ravet, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "howItWorks": [
+        {
+            "step": "1. Keyword Research",
+            "description": "We identify high-intent keywords like digital marketing agency in Ravet, SEO agency in Ravet, social media marketing agency in Ravet, and website development company in Ravet."
+        },
+        {
+            "step": "2. Website & SEO Audit",
+            "description": "We check your website structure, content, technical SEO, indexing, speed, and user experience."
+        },
+        {
+            "step": "3. Strategy Planning",
+            "description": "We create a customized plan for SEO, paid marketing, social media, content, and website improvements."
+        },
+        {
+            "step": "4. Campaign Execution",
+            "description": "We execute SEO activities, ad campaigns, content updates, and performance tracking."
+        },
+        {
+            "step": "5. Monthly Reporting",
+            "description": "We share clear reports showing ranking progress, traffic, leads, and campaign performance."
+        }
+    ],
+    "differentiators": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Ravet, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "useCases": [
+        {
+            "title": "Real estate businesses",
+            "description": "Helping real estate businesses grow online."
+        },
+        {
+            "title": "Healthcare clinics",
+            "description": "Helping healthcare clinics grow online."
+        },
+        {
+            "title": "Education institutes",
+            "description": "Helping education institutes grow online."
+        },
+        {
+            "title": "E-commerce brands",
+            "description": "Helping e-commerce brands grow online."
+        },
+        {
+            "title": "IT companies",
+            "description": "Helping it companies grow online."
+        },
+        {
+            "title": "Interior designers",
+            "description": "Helping interior designers grow online."
+        },
+        {
+            "title": "Consultants",
+            "description": "Helping consultants grow online."
+        },
+        {
+            "title": "Local service businesses",
+            "description": "Helping local service businesses grow online."
+        },
+        {
+            "title": "Hospitality brands",
+            "description": "Helping hospitality brands grow online."
+        },
+        {
+            "title": "Startups",
+            "description": "Helping startups grow online."
+        }
+    ],
+    "trustElements": [
+        "SEO-focused digital marketing strategy",
+        "Google Ads and Meta Ads campaign expertise",
+        "Local SEO for Ravet, Pune, and PCMC audience",
+        "Website design and development support",
+        "Social media content and paid promotion strategy",
+        "Performance tracking and monthly reporting"
+    ],
+    "softCTA": "Grow Your Business with a Digital Marketing Agency in Ravet"
+}
 };
 
 // Service-specific FAQ data
@@ -1552,6 +1884,73 @@ const serviceFAQs: Record<string, Array<{ question: string; answer: string }>> =
       answer: "Yes, we make festival creatives, reels, and campaigns that are specific to your industry and have a big effect."
     }
   ]
+,
+  'digital-marketing-agency-in-balewadi': [
+    {
+        "question": "Which is the best digital marketing agency in Balewadi?",
+        "answer": "Aroot Digital is a result-focused digital marketing agency in Balewadi offering SEO, performance marketing, social media marketing, website development, content marketing, and app marketing services."
+    },
+    {
+        "question": "Do you provide SEO services in Balewadi?",
+        "answer": "Yes, we provide SEO services in Balewadi including on-page SEO, technical SEO, local SEO, keyword research, content optimization, and backlink strategy."
+    },
+    {
+        "question": "Do you offer website development in Balewadi?",
+        "answer": "Yes, we offer website design and development services in Balewadi for business websites, service websites, landing pages, and SEO-friendly websites."
+    },
+    {
+        "question": "Can you run Google Ads and Meta Ads?",
+        "answer": "Yes, we provide performance marketing services including Google Ads, Meta Ads, lead generation campaigns, and conversion tracking."
+    },
+    {
+        "question": "How long does SEO take to show results?",
+        "answer": "SEO usually takes 3 to 6 months depending on your website condition, competition, keyword difficulty, and consistency of SEO activities."
+    }
+],
+  'digital-marketing-agency-in-hinjewadi': [
+    {
+        "question": "Which is the best digital marketing agency in Hinjewadi?",
+        "answer": "Aroot Digital is a result-focused digital marketing agency in Hinjewadi offering SEO, performance marketing, social media marketing, website development, content marketing, and app marketing services."
+    },
+    {
+        "question": "Do you provide SEO services in Hinjewadi?",
+        "answer": "Yes, we provide SEO services in Hinjewadi including on-page SEO, technical SEO, local SEO, keyword research, content optimization, and backlink strategy."
+    },
+    {
+        "question": "Do you offer website development in Hinjewadi?",
+        "answer": "Yes, we offer website design and development services in Hinjewadi for business websites, service websites, landing pages, and SEO-friendly websites."
+    },
+    {
+        "question": "Can you run Google Ads and Meta Ads?",
+        "answer": "Yes, we provide performance marketing services including Google Ads, Meta Ads, lead generation campaigns, and conversion tracking."
+    },
+    {
+        "question": "How long does SEO take to show results?",
+        "answer": "SEO usually takes 3 to 6 months depending on your website condition, competition, keyword difficulty, and consistency of SEO activities."
+    }
+],
+  'digital-marketing-agency-in-ravet': [
+    {
+        "question": "Which is the best digital marketing agency in Ravet?",
+        "answer": "Aroot Digital is a result-focused digital marketing agency in Ravet offering SEO, performance marketing, social media marketing, website development, content marketing, and app marketing services."
+    },
+    {
+        "question": "Do you provide SEO services in Ravet?",
+        "answer": "Yes, we provide SEO services in Ravet including on-page SEO, technical SEO, local SEO, keyword research, content optimization, and backlink strategy."
+    },
+    {
+        "question": "Do you offer website development in Ravet?",
+        "answer": "Yes, we offer website design and development services in Ravet for business websites, service websites, landing pages, and SEO-friendly websites."
+    },
+    {
+        "question": "Can you run Google Ads and Meta Ads?",
+        "answer": "Yes, we provide performance marketing services including Google Ads, Meta Ads, lead generation campaigns, and conversion tracking."
+    },
+    {
+        "question": "How long does SEO take to show results?",
+        "answer": "SEO usually takes 3 to 6 months depending on your website condition, competition, keyword difficulty, and consistency of SEO activities."
+    }
+]
 };
 
 interface ServicePageProps {
@@ -2432,13 +2831,183 @@ export default function ServicePage({ params }: ServicePageProps) {
                   {'stats' in service && service.stats && (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                       {service.stats.map((stat, index) => (
-                        <div key={index} className="text-center p-3 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300">
-                          <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
-                          <div className="text-xl font-bold text-foreground mb-1">{stat.value}</div>
-                          <div className="text-sm text-muted-foreground">{stat.label}</div>
+                        <div key={index} className="text-center p-3 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          <div className="relative z-10">
+                            <stat.icon className="w-5 h-5 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform duration-300" />
+                            <div className="text-xl font-bold text-foreground mb-1 transition-colors duration-300">{stat.value}</div>
+                            <div className="text-sm text-muted-foreground">{stat.label}</div>
+                          </div>
                         </div>
                       ))}
                     </div>
+                  )}
+
+                  
+                  {/* Features */}
+                  {'features' in service && service.features && (
+                    <section className="mt-16">
+                      <div className="text-center mb-10">
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Services</h2>
+                        <div className="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                      </div>
+                      
+                      {params.slug.startsWith('digital-marketing-agency-in-') ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+                          {service.features.reduce((result: any[], value: string, index: number, array: string[]) => {
+                            if (index % 2 === 0) result.push({ title: value, description: array[index + 1] });
+                            return result;
+                          }, []).map((pair: any, index: number) => (
+                            <Card key={index} className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-gradient-hero hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                              <div className="relative z-10">
+                                <div className="flex items-center gap-3 mb-4">
+                                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary via-primary-light to-primary-accent group-hover:!bg-white group-hover:[background-image:none] flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-primary/50">
+                                    <Check className="w-6 h-6 text-white group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                                  </div>
+                                  <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors duration-300">{pair.title}</h3>
+                                </div>
+                                <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                                  {pair.description}
+                                </p>
+                              </div>
+                              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </Card>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {service.features.map((feature: string, index: number) => (
+                            <div key={index} className="flex gap-3 p-4 bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg hover:border-primary/50 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                              <div className="flex-shrink-0 mt-1">
+                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                  <Check className="w-4 h-4 text-primary" />
+                                </div>
+                              </div>
+                              <p className="text-base text-gray-900 dark:text-gray-100">{feature}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </section>
+                  )}
+
+                  {/* Benefits / Differentiators */}
+                  {'benefits' in service && service.benefits && (
+                    <section className="mt-12">
+                      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Why Choose Us?</h2>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {service.benefits.map((benefit: string, index: number) => (
+                          <div key={index} className="p-4 bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                            <div className="flex items-center gap-3 relative z-10">
+                              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
+                              <span className="font-semibold transition-colors duration-300">{benefit}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                  )}
+
+                  {/* How It Works / Process */}
+                  {'howItWorks' in service && service.howItWorks && (
+                    <section className="mt-12">
+                      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Our Process</h2>
+                      <div className="relative py-4">
+                        {/* Journey Path Line */}
+                        <div className="hidden md:block absolute left-[30px] top-0 bottom-0 w-0.5">
+                          <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20 rounded-full"></div>
+                          {/* Animated progress line */}
+                          <div
+                            className="absolute top-0 left-0 w-full bg-gradient-to-b from-primary via-primary-light to-primary-accent rounded-full transition-all duration-1000"
+                            style={{ height: '100%' }}
+                          ></div>
+                        </div>
+
+                        <div className="space-y-6">
+                          {service.howItWorks.map((step: any, index: number) => {
+                            const StepIcon = CheckCircle;
+                            const isLast = index === service.howItWorks.length - 1;
+
+                            return (
+                              <div
+                                key={index}
+                                className="group relative flex gap-4 items-start"
+                              >
+                                {/* Journey Stop Point */}
+                                <div className="relative z-20 flex-shrink-0">
+                                  {/* Connecting Path */}
+                                  {!isLast && (
+                                    <div className="absolute left-1/2 top-[60px] -translate-x-1/2 w-0.5 h-8 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/20 group-hover:from-primary group-hover:via-primary-light group-hover:to-primary/50 transition-all duration-500 rounded-full"></div>
+                                  )}
+
+                                  {/* Journey Marker */}
+                                  <div className="relative">
+                                    {/* Outer Pulse Ring */}
+                                    <div className="absolute inset-0 rounded-full bg-primary/30 blur-lg opacity-0 group-hover:opacity-100 animate-pulse scale-125 transition-opacity duration-500"></div>
+
+                                    {/* Main Journey Circle */}
+                                    <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary-accent flex items-center justify-center shadow-lg border-2 border-background group-hover:scale-110 group-hover:shadow-primary/60 group-hover:rotate-6 transition-all duration-500">
+                                      {/* Inner Glow */}
+                                      <div className="absolute inset-1 rounded-full bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                                      {/* Icon */}
+                                      <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center group-hover:bg-white/25 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                                        <StepIcon className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:scale-110 transition-transform duration-300" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {/* Journey Content Card */}
+                                <Card className="flex-1 p-4 md:p-5 bg-gradient-to-br from-card via-card/98 to-card/95 backdrop-blur-lg border-2 border-border/70 group-hover:border-primary/80 group-hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-500 group-hover:-translate-y-1 overflow-hidden relative">
+                                  {/* Journey Path Indicator */}
+                                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 to-primary/10 group-hover:from-primary group-hover:to-primary/30 transition-all duration-500"></div>
+
+                                  {/* Animated Background */}
+                                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                  <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-1/2 translate-x-1/2"></div>
+
+                                  {/* Content */}
+                                  <div className="relative z-10 pl-3 md:pl-4">
+                                    {/* Step Header */}
+                                    <div className="mb-2">
+                                      <h3 className="text-sm md:text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{step.step}</h3>
+                                      <p className="text-xs md:text-sm text-gray-900 dark:text-gray-100 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-50 transition-colors duration-300">{step.description}</p>
+                                    </div>
+                                  </div>
+
+                                  {/* Shine Effect */}
+                                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"></div>
+
+                                  {/* Journey Corner Accent */}
+                                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-full"></div>
+                                </Card>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </section>
+                  )}
+
+                  {/* Use Cases / Industries */}
+                  {'useCases' in service && service.useCases && (
+                    <section className="mt-12">
+                      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Industries We Work With</h2>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {service.useCases.map((useCase: any, index: number) => (
+                          <div key={index} className="p-4 bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                            <div className="relative z-10">
+                              <h3 className="font-bold text-foreground mb-1 transition-colors duration-300">{useCase.title}</h3>
+                              <p className="text-sm text-muted-foreground transition-colors duration-300">{useCase.description}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
                   )}
 
                   {/* SEO Services Cards - Only for SEO service */}

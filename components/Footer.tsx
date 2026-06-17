@@ -52,12 +52,9 @@ const Footer = () => {
               {/* <li><Link href="/services/seo-services-pune" className="hover:text-primary transition-colors inline-block">SEO Services in Pune</Link></li> */}
 
               {/* Updated code - navigate to home section */}
-              <li><Link href="/#home" className="hover:text-primary transition-colors inline-block">SEO Services in Dubai</Link></li>
-              <li><Link href="/#home" className="hover:text-primary transition-colors inline-block">SEO Services in Malaysia</Link></li>
-              <li><Link href="/#home" className="hover:text-primary transition-colors inline-block">Digital Services in Singapore</Link></li>
-              <li><Link href="/#home" className="hover:text-primary transition-colors inline-block">Digital Services in New York City</Link></li>
-              <li><Link href="/#home" className="hover:text-primary transition-colors inline-block">Digital Services in Pune</Link></li>
-              <li><Link href="/#home" className="hover:text-primary transition-colors inline-block">SEO Services in Pune</Link></li>
+              <li><Link href="/services/digital-marketing-agency-in-balewadi" className="hover:text-primary transition-colors inline-block">Digital Marketing in Balewadi</Link></li>
+              <li><Link href="/services/digital-marketing-agency-in-hinjewadi" className="hover:text-primary transition-colors inline-block">Digital Marketing in Hinjewadi</Link></li>
+              <li><Link href="/services/digital-marketing-agency-in-ravet" className="hover:text-primary transition-colors inline-block">Digital Marketing in Ravet</Link></li>
             </ul>
           </div>
 
